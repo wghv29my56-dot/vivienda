@@ -1,0 +1,5 @@
+id,barrio_id,codigo_publico,tipo_vivienda,superficie_m2,ano_adquisicion,valor_base,fuente_valor,estado_conservacion,regimen
+viv-001,centro-norte,CN-001,piso antiguo reformado,72,2000,200000,precio historico declarado,bueno,alquiler habitual
+viv-002,bahia-este,BE-014,vivienda en isla tensionada,85,2008,260000,tasacion sintetica inicial,muy bueno,alquiler habitual
+viv-003,vega-sur,VS-022,piso periferico con mejora energetica,68,2014,155000,precio historico declarado,correcto,alquiler habitual
+

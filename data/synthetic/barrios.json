@@ -1,0 +1,30 @@
+[
+  {
+    "id": "centro-norte",
+    "ciudad_id": "ciudad-alba",
+    "nombre": "Centro Norte",
+    "tipo_zona": "urbana consolidada",
+    "nivel_tension": "alto",
+    "disponibilidad_suelo": "muy baja",
+    "renta_media_sintetica": 1280
+  },
+  {
+    "id": "bahia-este",
+    "ciudad_id": "ciudad-alba",
+    "nombre": "Bahia Este",
+    "tipo_zona": "isla o territorio equivalente",
+    "nivel_tension": "muy alto",
+    "disponibilidad_suelo": "estructuralmente limitada",
+    "renta_media_sintetica": 1520
+  },
+  {
+    "id": "vega-sur",
+    "ciudad_id": "ciudad-alba",
+    "nombre": "Vega Sur",
+    "tipo_zona": "periferia con suelo desbloqueable",
+    "nivel_tension": "medio",
+    "disponibilidad_suelo": "media",
+    "renta_media_sintetica": 820
+  }
+]
+

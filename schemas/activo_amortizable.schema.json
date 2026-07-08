@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Activo amortizable sintetico",
+  "type": "object",
+  "required": [
+    "id",
+    "vivienda_id",
+    "concepto",
+    "categoria",
+    "importe",
+    "ano_inicio",
+    "vida_util",
+    "fuente_documental",
+    "es_verificado"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "vivienda_id": { "type": "string" },
+    "concepto": { "type": "string" },
+    "categoria": { "type": "string" },
+    "importe": { "type": "number", "minimum": 0 },
+    "ano_inicio": { "type": "integer", "minimum": 1900 },
+    "vida_util": { "type": "integer", "minimum": 1 },
+    "fuente_documental": { "type": "string" },
+    "es_verificado": { "type": "boolean" }
+  }
+}
+

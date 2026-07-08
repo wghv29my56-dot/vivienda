@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Zona de suelo sintetica",
+  "type": "object",
+  "required": [
+    "id",
+    "barrio_id",
+    "tipo_suelo",
+    "estado_actual",
+    "potencial_viviendas",
+    "bloqueo_principal",
+    "prioridad_liberalizacion"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "barrio_id": { "type": "string" },
+    "tipo_suelo": { "type": "string" },
+    "estado_actual": { "type": "string" },
+    "potencial_viviendas": { "type": "integer", "minimum": 0 },
+    "bloqueo_principal": { "type": "string" },
+    "prioridad_liberalizacion": { "type": "string" }
+  }
+}
+
