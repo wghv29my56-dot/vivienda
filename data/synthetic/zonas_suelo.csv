@@ -1,0 +1,5 @@
+id,barrio_id,tipo_suelo,estado_actual,potencial_viviendas,bloqueo_principal,prioridad_liberalizacion
+suelo-001,centro-norte,urbano consolidado,sin capacidad relevante,120,densidad y proteccion patrimonial,baja
+suelo-002,bahia-este,rustico con presion residencial,bloqueado,900,limitacion geografica y normativa,alta
+suelo-003,vega-sur,urbanizable,pendiente de desarrollo,2400,planeamiento municipal lento,muy alta
+

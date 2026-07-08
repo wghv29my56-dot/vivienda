@@ -1,0 +1,4 @@
+vivienda_id,codigo_publico,ano_calculo,rentabilidad,amortizacion_anual_activa,rentabilidad_anual,renta_anual,renta_mensual,activos_activos,activos_agotados
+viv-001,CN-001,2026,8.0,5200.0,416.0,5616.0,468.0,3,0
+viv-002,BE-014,2026,8.0,7608.33,608.67,8217.0,684.75,3,0
+viv-003,VS-022,2026,8.0,3713.33,297.07,4010.4,334.2,3,0

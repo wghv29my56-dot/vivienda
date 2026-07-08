@@ -1,0 +1,30 @@
+[
+  {
+    "id": "suelo-001",
+    "barrio_id": "centro-norte",
+    "tipo_suelo": "urbano consolidado",
+    "estado_actual": "sin capacidad relevante",
+    "potencial_viviendas": 120,
+    "bloqueo_principal": "densidad y proteccion patrimonial",
+    "prioridad_liberalizacion": "baja"
+  },
+  {
+    "id": "suelo-002",
+    "barrio_id": "bahia-este",
+    "tipo_suelo": "rustico con presion residencial",
+    "estado_actual": "bloqueado",
+    "potencial_viviendas": 900,
+    "bloqueo_principal": "limitacion geografica y normativa",
+    "prioridad_liberalizacion": "alta"
+  },
+  {
+    "id": "suelo-003",
+    "barrio_id": "vega-sur",
+    "tipo_suelo": "urbanizable",
+    "estado_actual": "pendiente de desarrollo",
+    "potencial_viviendas": 2400,
+    "bloqueo_principal": "planeamiento municipal lento",
+    "prioridad_liberalizacion": "muy alta"
+  }
+]
+

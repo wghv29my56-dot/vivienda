@@ -1,0 +1,11 @@
+id,vivienda_id,concepto,categoria,importe,ano_inicio,vida_util,fuente_documental,es_verificado
+act-001,viv-001,Vivienda base,vivienda,200000,2000,50,precio historico,true
+act-002,viv-001,Reforma de bano,reforma,10000,2018,10,factura sintetica,true
+act-003,viv-001,Nevera,equipamiento,1200,2021,6,factura sintetica,true
+act-004,viv-002,Vivienda base,vivienda,260000,2008,50,tasacion sintetica,true
+act-005,viv-002,Aislamiento termico,mejora energetica,18000,2020,15,licencia sintetica,true
+act-006,viv-002,Cocina,reforma,14500,2023,12,factura sintetica,true
+act-007,viv-003,Vivienda base,vivienda,155000,2014,50,precio historico,true
+act-008,viv-003,Ventanas,mejora energetica,7200,2022,15,factura sintetica,true
+act-009,viv-003,Lavadora,equipamiento,800,2024,6,factura sintetica,true
+

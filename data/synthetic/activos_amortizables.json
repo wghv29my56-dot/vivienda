@@ -1,0 +1,102 @@
+[
+  {
+    "id": "act-001",
+    "vivienda_id": "viv-001",
+    "concepto": "Vivienda base",
+    "categoria": "vivienda",
+    "importe": 200000,
+    "ano_inicio": 2000,
+    "vida_util": 50,
+    "fuente_documental": "precio historico",
+    "es_verificado": true
+  },
+  {
+    "id": "act-002",
+    "vivienda_id": "viv-001",
+    "concepto": "Reforma de bano",
+    "categoria": "reforma",
+    "importe": 10000,
+    "ano_inicio": 2018,
+    "vida_util": 10,
+    "fuente_documental": "factura sintetica",
+    "es_verificado": true
+  },
+  {
+    "id": "act-003",
+    "vivienda_id": "viv-001",
+    "concepto": "Nevera",
+    "categoria": "equipamiento",
+    "importe": 1200,
+    "ano_inicio": 2021,
+    "vida_util": 6,
+    "fuente_documental": "factura sintetica",
+    "es_verificado": true
+  },
+  {
+    "id": "act-004",
+    "vivienda_id": "viv-002",
+    "concepto": "Vivienda base",
+    "categoria": "vivienda",
+    "importe": 260000,
+    "ano_inicio": 2008,
+    "vida_util": 50,
+    "fuente_documental": "tasacion sintetica",
+    "es_verificado": true
+  },
+  {
+    "id": "act-005",
+    "vivienda_id": "viv-002",
+    "concepto": "Aislamiento termico",
+    "categoria": "mejora energetica",
+    "importe": 18000,
+    "ano_inicio": 2020,
+    "vida_util": 15,
+    "fuente_documental": "licencia sintetica",
+    "es_verificado": true
+  },
+  {
+    "id": "act-006",
+    "vivienda_id": "viv-002",
+    "concepto": "Cocina",
+    "categoria": "reforma",
+    "importe": 14500,
+    "ano_inicio": 2023,
+    "vida_util": 12,
+    "fuente_documental": "factura sintetica",
+    "es_verificado": true
+  },
+  {
+    "id": "act-007",
+    "vivienda_id": "viv-003",
+    "concepto": "Vivienda base",
+    "categoria": "vivienda",
+    "importe": 155000,
+    "ano_inicio": 2014,
+    "vida_util": 50,
+    "fuente_documental": "precio historico",
+    "es_verificado": true
+  },
+  {
+    "id": "act-008",
+    "vivienda_id": "viv-003",
+    "concepto": "Ventanas",
+    "categoria": "mejora energetica",
+    "importe": 7200,
+    "ano_inicio": 2022,
+    "vida_util": 15,
+    "fuente_documental": "factura sintetica",
+    "es_verificado": true
+  },
+  {
+    "id": "act-009",
+    "vivienda_id": "viv-003",
+    "concepto": "Lavadora",
+    "categoria": "equipamiento",
+    "importe": 800,
+    "ano_inicio": 2024,
+    "vida_util": 6,
+    "fuente_documental": "factura sintetica",
+    "es_verificado": true
+  }
+]
+

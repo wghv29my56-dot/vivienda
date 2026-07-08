@@ -1,0 +1,5 @@
+id,ciudad_id,nombre,tipo_zona,nivel_tension,disponibilidad_suelo,renta_media_sintetica
+centro-norte,ciudad-alba,Centro Norte,urbana consolidada,alto,muy baja,1280
+bahia-este,ciudad-alba,Bahia Este,isla o territorio equivalente,muy alto,estructuralmente limitada,1520
+vega-sur,ciudad-alba,Vega Sur,periferia con suelo desbloqueable,medio,media,820
+

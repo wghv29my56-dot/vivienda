@@ -1,0 +1,8 @@
+{
+  "id": "ciudad-alba",
+  "nombre": "Ciudad Alba",
+  "descripcion": "Ciudad ficticia usada para ensayar el modelo de vivienda por amortizacion.",
+  "poblacion_sintetica": 642000,
+  "notas_metodologicas": "Datos sinteticos no atribuibles a ninguna ciudad real."
+}
+

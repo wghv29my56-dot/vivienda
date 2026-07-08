@@ -1,0 +1,39 @@
+[
+  {
+    "id": "viv-001",
+    "barrio_id": "centro-norte",
+    "codigo_publico": "CN-001",
+    "tipo_vivienda": "piso antiguo reformado",
+    "superficie_m2": 72,
+    "ano_adquisicion": 2000,
+    "valor_base": 200000,
+    "fuente_valor": "precio historico declarado",
+    "estado_conservacion": "bueno",
+    "regimen": "alquiler habitual"
+  },
+  {
+    "id": "viv-002",
+    "barrio_id": "bahia-este",
+    "codigo_publico": "BE-014",
+    "tipo_vivienda": "vivienda en isla tensionada",
+    "superficie_m2": 85,
+    "ano_adquisicion": 2008,
+    "valor_base": 260000,
+    "fuente_valor": "tasacion sintetica inicial",
+    "estado_conservacion": "muy bueno",
+    "regimen": "alquiler habitual"
+  },
+  {
+    "id": "viv-003",
+    "barrio_id": "vega-sur",
+    "codigo_publico": "VS-022",
+    "tipo_vivienda": "piso periferico con mejora energetica",
+    "superficie_m2": 68,
+    "ano_adquisicion": 2014,
+    "valor_base": 155000,
+    "fuente_valor": "precio historico declarado",
+    "estado_conservacion": "correcto",
+    "regimen": "alquiler habitual"
+  }
+]
+

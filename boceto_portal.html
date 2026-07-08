@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivienda Thinktank | Boceto portal</title>
+  <style>
+    :root {
+      --ink: #1f385b;
+      --navy: #1d3556;
+      --muted: #6f84a2;
+      --soft: #f6f9fd;
+      --white: #ffffff;
+      --teal: #45b9ad;
+      --gold: #f2b845;
+      --blue: #7892b6;
+      --line: rgba(31, 56, 91, 0.14);
+      --shadow: 0 24px 70px rgba(31, 56, 91, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Avenir Next, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar .shell {
+      display: flex;
+      align-items: center;
+      min-height: 72px;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(27, 52, 84, 0.18);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      padding: 108px 0 86px;
+      background:
+        linear-gradient(90deg, rgba(242, 184, 69, 0.10) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, rgba(120, 146, 182, 0.10) 0 1px, transparent 1px 100%),
+        #ffffff;
+      background-size: 96px 96px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+    }
+
+    h1 {
+      max-width: 1040px;
+      margin: 0;
+      font-size: clamp(54px, 8vw, 124px);
+      line-height: 0.91;
+      letter-spacing: 0;
+      color: var(--navy);
+    }
+
+    .intro {
+      max-width: 620px;
+      margin: 34px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.48;
+    }
+
+    .ideas {
+      border-top: 1px solid var(--line);
+      background: var(--white);
+      padding: 82px 0 92px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .parallel {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+      padding-top: 54px;
+    }
+
+    .parallel::before {
+      content: "";
+      position: absolute;
+      top: 78px;
+      bottom: 40px;
+      left: 50%;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .parallel-badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: 2;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 136px;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--navy);
+      box-shadow: 0 10px 30px rgba(31, 56, 91, 0.12);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .branch {
+      border: 1px solid var(--line);
+      border-top: 8px solid var(--detail-color, var(--navy));
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 34px;
+      min-height: 620px;
+      box-shadow: 0 16px 40px rgba(27, 52, 84, 0.06);
+    }
+
+    .parallel > article:first-of-type {
+      --detail-color: var(--teal);
+    }
+
+    .parallel > article:last-of-type {
+      --detail-color: var(--gold);
+    }
+
+    .branch-number {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 18px 0 16px;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .branch-lead {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.56;
+    }
+
+    .points {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .points li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 13px;
+      color: #2b4059;
+      font-size: 16px;
+      line-height: 1.52;
+    }
+
+    .points li::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--detail-color, var(--blue));
+    }
+
+    .note {
+      margin-top: 30px;
+      border-left: 4px solid var(--detail-color, var(--blue));
+      padding: 2px 0 2px 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .simulator {
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+      padding: 82px 0 92px;
+    }
+
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .simulator-panel,
+    .result-panel,
+    .roadmap-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 28px;
+      box-shadow: 0 12px 34px rgba(27, 52, 84, 0.05);
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .field input {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 14px;
+      color: var(--ink);
+      background: #fbfdff;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .result-panel {
+      display: grid;
+      align-content: space-between;
+      border-top: 8px solid var(--gold);
+    }
+
+    .result-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .result-number {
+      margin: 20px 0 10px;
+      color: var(--navy);
+      font-size: clamp(52px, 7vw, 94px);
+      line-height: 0.9;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .result-number span {
+      color: var(--muted);
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .breakdown {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .breakdown-row strong {
+      color: var(--ink);
+    }
+
+    .preview-panel {
+      border-top: 8px solid var(--teal);
+    }
+
+    .preview-copy {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.58;
+    }
+
+    .preview-list {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .preview-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 13px;
+      color: #2b4059;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .preview-list li::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      margin-top: 28px;
+      border-radius: 8px;
+      padding: 0 20px;
+      color: var(--white);
+      background: var(--navy);
+      font-weight: 850;
+      text-decoration: none;
+      box-shadow: 0 16px 34px rgba(31, 56, 91, 0.18);
+    }
+
+    .roadmap {
+      border-top: 1px solid var(--line);
+      background: var(--white);
+      padding: 82px 0 92px;
+    }
+
+    .roadmap-card {
+      border-top: 8px solid var(--detail-color, var(--navy));
+      min-height: 380px;
+    }
+
+    .roadmap-phase {
+      margin-top: 28px;
+    }
+
+    .roadmap-single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .roadmap-single > article:first-of-type {
+      --detail-color: var(--blue);
+    }
+
+    .roadmap-single::before {
+      display: none;
+    }
+
+    .roadmap-single .roadmap-card {
+      min-height: auto;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      background: var(--navy);
+      color: var(--white);
+      padding: 28px 0;
+    }
+
+    .footer .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer strong {
+      font-size: 16px;
+    }
+
+    .footer span {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .topbar .shell {
+        align-items: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 72px 0 56px;
+      }
+
+      .hero-grid,
+      .section-head,
+      .parallel,
+      .simulator-grid,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .parallel-badge {
+        position: static;
+        transform: none;
+        justify-self: start;
+        margin-bottom: 2px;
+      }
+
+      .parallel {
+        gap: 16px;
+        padding-top: 0;
+        padding-left: 24px;
+      }
+
+      .parallel::before {
+        top: 48px;
+        bottom: 12px;
+        left: 8px;
+        width: 3px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--teal), var(--gold));
+      }
+
+      .parallel > article {
+        position: relative;
+      }
+
+      .parallel > article::before {
+        content: "";
+        position: absolute;
+        top: 30px;
+        left: -23px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--detail-color, var(--navy));
+        box-shadow: 0 0 0 5px var(--white);
+      }
+
+      .roadmap-single {
+        padding-left: 0;
+      }
+
+      .roadmap-single::before,
+      .roadmap-single > article::before {
+        display: none;
+      }
+
+      .branch {
+        min-height: auto;
+        padding: 26px;
+      }
+
+      .footer .shell {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell">
+      <div class="brand">
+        <img class="brand-logo" src="assets/brand/vivienda-thinktank-logo-final.png" alt="">
+        <span>Vivienda Thinktank</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <h1>No tenemos un plan, pero queremos tener uno.</h1>
+          <p class="intro">
+            El problema de la vivienda es ya una crisis generacional, que está destrozando vidas y planes
+            de futuro. Si nadie hace nada, empezaremos por crear una plan realista, sin ideologia ni
+            intereses políticos.
+            <br><br>
+            Algo habrá que hacer.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ideas" id="ideas">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Ideas en proceso.</h2>
+          <p>
+            El proyecto tiene el objetivo de ordenar hipótesis, construir simulaciones y explicar qué medidas
+            tendrían que encadenarse para que la vivienda vuelva a ser accesible construyendo un mapa de nuevos
+            incentivos que dirijan el mercado hacia donde queremos.
+          </p>
+        </div>
+
+        <div class="parallel">
+          <div class="parallel-badge">En paralelo</div>
+
+          <article class="branch">
+            <div class="branch-number">Rama 01</div>
+            <h3>Control temporal de precios por amortización.</h3>
+            <p class="branch-lead">
+              Una medida complementaria para zonas tensionadas que calcula rentas máximas a partir del valor
+              amortizable del activo, las inversiones realizadas y una rentabilidad mínima razonable para el
+              propietario.
+            </p>
+
+            <ul class="points">
+              <li>El control de precios por sí solo no arregla el problema de la vivienda y debe acompañar a medidas de aumento de oferta.</li>
+              <li>Debe garantizar una rentabilidad mínima y razonable para el propietario.</li>
+              <li>Solo debería penalizar a quien busque rentabilidades excesivas e injustificadas.</li>
+              <li>Debe plantearse siempre como medida temporal porque su resultado será peor que un libre mercado con oferta y demanda balanceadas.</li>
+              <li>Premia la inversión en la vivienda porque reformas, mejoras y equipamiento entrarían en el cálculo amortizable.</li>
+            </ul>
+
+            <p class="note">
+              Necesita un plan de ejecución técnico, jurídico y administrativo muy preparado. También necesitará una
+              estrategia inicial para valorar activos comprados en otras épocas, tasar obras y ordenar mejoras. Nunca
+              funcionará sin una letra pequeña que funcione.
+            </p>
+          </article>
+
+          <article class="branch">
+            <div class="branch-number">Rama 02</div>
+            <h3>Oferta, suelo y reglas de acceso.</h3>
+            <p class="branch-lead">
+              La regulación de precios solo tendría sentido si avanza junto a una agenda agresiva de aumento de oferta,
+              reducción de costes y revisión de las reglas que bloquean vivienda nueva.
+            </p>
+
+            <ul class="points">
+              <li>Seleccionar ciudades, regiones, islas o zonas equivalentes donde desarrollar escenarios concretos.</li>
+              <li>Liberalización masiva de suelo urbanizable, incluso cuando los ayuntamientos no quieran desbloquearlo.</li>
+              <li>Ampliar la posibilidad de construir en suelo rústico bajo criterios técnicos, ambientales y de infraestructura.</li>
+              <li>Eliminar tasas e impuestos vinculados a la vivienda para reducir costes de promoción, compra y alquiler.</li>
+              <li>Reformar el código de edificación para modernizarlo y permitir nuevas técnicas constructivas.</li>
+              <li>Estudiar una suspensión temporal de compra de vivienda por extranjeros de cualquier renta, con análisis jurídico específico.</li>
+              <li>Limitar la VPO a primera vivienda y activar recompra obligatoria por la administración cuando deje de serlo.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="simulator" id="simulador">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Simulador de control de precios.</h2>
+          <p>
+            La primera herramienta pública debe permitir probar el modelo con viviendas ficticias. El objetivo no es
+            dictar una renta perfecta, sino hacer visible qué variables empujan el precio, como el valor amortizable,
+            las mejoras, la vida útil y la rentabilidad razonable.
+          </p>
+        </div>
+
+        <div class="simulator-grid">
+          <article class="simulator-panel preview-panel">
+            <div class="branch-number">Vista previa</div>
+            <h3>Del ejemplo simple al modelo completo.</h3>
+            <p class="preview-copy">
+              El portal mostrará una lectura rápida del cálculo, pero el simulador real debe permitir cambiar año,
+              vivienda ficticia, activos amortizables, reformas, equipamiento, vida útil y rentabilidad.
+            </p>
+            <ul class="preview-list">
+              <li>Escoger una vivienda sintética y cargar sus datos de partida.</li>
+              <li>Añadir inversiones y comprobar si siguen dentro de su vida útil.</li>
+              <li>Ver el desglose anual y mensual con trazabilidad de cada activo.</li>
+            </ul>
+            <a class="cta-link" href="simulador_total.html">Abrir simulador completo</a>
+          </article>
+
+          <aside class="result-panel" aria-live="polite">
+            <div>
+              <div class="result-label">Ejemplo rápido</div>
+              <div class="result-number">468<span> €/mes</span></div>
+              <p class="branch-lead">
+                Resultado orientativo para una vivienda comprada por 200.000 euros, una reforma de baño y equipamiento
+                básico. La pantalla completa permitirá cambiar todos los supuestos.
+              </p>
+            </div>
+            <div class="breakdown">
+              <div class="breakdown-row"><span>Amortización anual</span><strong>5.200 €</strong></div>
+              <div class="breakdown-row"><span>Rentabilidad anual</span><strong>416 €</strong></div>
+              <div class="breakdown-row"><span>Renta anual resultante</span><strong>5.616 €</strong></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="roadmap" id="hoja-ruta">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Hoja de ruta.</h2>
+          <p>
+            La propuesta solo tiene sentido si combina regulación temporal, liberación de oferta y reformas
+            normativas. Las dos primeras líneas deben avanzar en paralelo para no convertir el control de precios
+            en una solución aislada.
+          </p>
+        </div>
+
+        <div class="parallel">
+          <div class="parallel-badge">Paso 01</div>
+
+          <article class="roadmap-card">
+            <div class="branch-number">Control temporal</div>
+            <h3>Concretar el sistema de control.</h3>
+            <p class="branch-lead">
+              Definir en qué zonas tendría coherencia aplicar una limitación temporal, con qué datos, durante cuánto
+              tiempo y bajo qué garantías para propietarios e inquilinos.
+            </p>
+            <ul class="points">
+              <li>Criterios objetivos para declarar zona tensionada.</li>
+              <li>Vida útil, mejoras amortizables y rentabilidad mínima.</li>
+              <li>Condiciones de entrada, revisión y salida del sistema.</li>
+            </ul>
+          </article>
+
+          <article class="roadmap-card">
+            <div class="branch-number">Mapa de oferta</div>
+            <h3>Crear un mapa interactivo de suelo.</h3>
+            <p class="branch-lead">
+              Identificar zonas potenciales donde liberalizar suelo, ampliar oferta o probar nuevas fórmulas de
+              construcción, especialmente donde la falta de suelo disponible agrava el problema.
+            </p>
+            <ul class="points">
+              <li>Capas de suelo urbano, urbanizable, rústico e infraestructuras.</li>
+              <li>Escenarios de desbloqueo aunque existan resistencias municipales.</li>
+              <li>Estimación de impacto potencial sobre oferta, tiempos y precios.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="parallel roadmap-phase">
+          <div class="parallel-badge">Paso 02</div>
+
+          <article class="roadmap-card">
+            <div class="branch-number">Normativa control</div>
+            <h3>Plan normativo para el control de precios.</h3>
+            <p class="branch-lead">
+              Convertir el modelo de amortización en una regla aplicable sin depender de improvisaciones
+              administrativas ni de valoraciones opacas.
+            </p>
+            <ul class="points">
+              <li>Resolver los problemas de tasación inicial y actualización periódica.</li>
+              <li>Crear acuerdos marco con entidades y colegios profesionales para valoraciones iniciales.</li>
+              <li>Definir medidas específicas para periodos transitorios y salida ordenada del sistema.</li>
+            </ul>
+          </article>
+
+          <article class="roadmap-card">
+            <div class="branch-number">Normativa oferta</div>
+            <h3>Nuevo marco normativo modelo.</h3>
+            <p class="branch-lead">
+              Trabajar una propuesta base que pueda servir como referencia para reformas reales orientadas a aumentar
+              oferta y reducir bloqueos estructurales.
+            </p>
+            <ul class="points">
+              <li>Modernizar el código de edificación y permitir técnicas constructivas más eficientes.</li>
+              <li>Redefinir VPO, recompra pública y reglas de permanencia como primera vivienda.</li>
+              <li>Regular construcción en suelo rústico bajo criterios técnicos, ambientales e infraestructurales.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="parallel roadmap-phase roadmap-single">
+          <div class="parallel-badge">Paso 03</div>
+
+          <article class="roadmap-card">
+            <div class="branch-number">Acción colectiva</div>
+            <h3>Guía de acciones individuales realistas.</h3>
+            <p class="branch-lead">
+              Ordenar pasos que ciudadanos, propietarios, profesionales, comunidades y administraciones puedan ejecutar
+              de forma coordinada para mitigar el problema. Si no es para nuestra generación, al menos para las
+              siguientes.
+            </p>
+            <ul class="points">
+              <li>Identificar decisiones individuales que tengan impacto cuando se coordinan de forma colectiva.</li>
+              <li>Separar acciones inmediatas, acciones de transición y acciones con efecto a largo plazo.</li>
+              <li>Convertir la guía en una herramienta pública, revisable y fácil de ampliar.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <strong>Vivienda Thinktank</strong>
+    </div>
+  </footer>
+
+</body>
+</html>

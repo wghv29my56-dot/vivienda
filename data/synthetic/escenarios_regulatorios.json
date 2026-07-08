@@ -1,0 +1,30 @@
+[
+  {
+    "id": "esc-base-8",
+    "nombre": "Base 8 por ciento",
+    "rentabilidad": 8,
+    "vida_util_vivienda": 50,
+    "aplica_zona_tensionada": true,
+    "duracion_temporal": 5,
+    "descripcion": "Escenario inicial usado en el portal y en el ejemplo simplificado."
+  },
+  {
+    "id": "esc-prudente-6",
+    "nombre": "Prudente 6 por ciento",
+    "rentabilidad": 6,
+    "vida_util_vivienda": 50,
+    "aplica_zona_tensionada": true,
+    "duracion_temporal": 5,
+    "descripcion": "Escenario de rentabilidad mas contenida."
+  },
+  {
+    "id": "esc-transicion-10",
+    "nombre": "Transicion 10 por ciento",
+    "rentabilidad": 10,
+    "vida_util_vivienda": 40,
+    "aplica_zona_tensionada": true,
+    "duracion_temporal": 3,
+    "descripcion": "Escenario para tension muy alta y periodo transitorio corto."
+  }
+]
+

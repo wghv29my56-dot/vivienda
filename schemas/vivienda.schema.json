@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vivienda sintetica",
+  "type": "object",
+  "required": [
+    "id",
+    "barrio_id",
+    "codigo_publico",
+    "tipo_vivienda",
+    "superficie_m2",
+    "ano_adquisicion",
+    "valor_base",
+    "fuente_valor",
+    "estado_conservacion",
+    "regimen"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "barrio_id": { "type": "string" },
+    "codigo_publico": { "type": "string" },
+    "tipo_vivienda": { "type": "string" },
+    "superficie_m2": { "type": "number", "minimum": 1 },
+    "ano_adquisicion": { "type": "integer", "minimum": 1900 },
+    "valor_base": { "type": "number", "minimum": 0 },
+    "fuente_valor": { "type": "string" },
+    "estado_conservacion": { "type": "string" },
+    "regimen": { "type": "string" }
+  }
+}
+

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Escenario regulatorio sintetico",
+  "type": "object",
+  "required": [
+    "id",
+    "nombre",
+    "rentabilidad",
+    "vida_util_vivienda",
+    "aplica_zona_tensionada",
+    "duracion_temporal",
+    "descripcion"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "nombre": { "type": "string" },
+    "rentabilidad": { "type": "number", "minimum": 0 },
+    "vida_util_vivienda": { "type": "integer", "minimum": 1 },
+    "aplica_zona_tensionada": { "type": "boolean" },
+    "duracion_temporal": { "type": "integer", "minimum": 1 },
+    "descripcion": { "type": "string" }
+  }
+}
+
