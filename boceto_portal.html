@@ -50,6 +50,7 @@
     .topbar .shell {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       min-height: 72px;
       gap: 24px;
     }
@@ -70,19 +71,63 @@
       box-shadow: 0 8px 24px rgba(27, 52, 84, 0.18);
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .simulator-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 0 18px;
+      border: 1px solid rgba(31, 56, 91, 0.14);
+      border-radius: 999px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 12px 28px rgba(31, 56, 91, 0.16);
+    }
+
+    .simulator-button::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+
     .hero {
+      position: relative;
+      overflow: hidden;
       min-height: calc(100vh - 72px);
       display: grid;
       align-items: center;
       padding: 108px 0 86px;
       background:
-        linear-gradient(90deg, rgba(242, 184, 69, 0.10) 0 1px, transparent 1px 100%),
-        linear-gradient(180deg, rgba(120, 146, 182, 0.10) 0 1px, transparent 1px 100%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.52) 46%, rgba(255, 255, 255, 0.30) 100%),
+        url("assets/landing/fondo-grafica-transparente.png") center center / cover no-repeat,
         #ffffff;
-      background-size: 96px 96px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.08) 42%, rgba(255, 255, 255, 0.72) 100%);
     }
 
     .hero-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       align-items: center;
@@ -465,12 +510,17 @@
       }
 
       .topbar .shell {
-        align-items: flex-start;
+        align-items: center;
+        gap: 16px;
       }
 
       .hero {
         min-height: auto;
         padding: 72px 0 56px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.52) 48%, rgba(255, 255, 255, 0.82) 100%),
+          url("assets/landing/fondo-grafica-transparente.png") center center / auto 100% no-repeat,
+          #ffffff;
       }
 
       .hero-grid,
@@ -539,6 +589,22 @@
       }
 
     }
+
+    @media (max-width: 520px) {
+      .brand {
+        gap: 10px;
+      }
+
+      .brand span {
+        max-width: 116px;
+        line-height: 1.05;
+      }
+
+      .simulator-button {
+        min-height: 40px;
+        padding: 0 14px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -547,6 +613,9 @@
       <div class="brand">
         <img class="brand-logo" src="assets/brand/vivienda-thinktank-logo-final.png" alt="">
         <span>Vivienda Thinktank</span>
+      </div>
+      <div class="header-actions">
+        <a class="simulator-button" href="simulador_total.html">Simulador</a>
       </div>
     </div>
   </header>
@@ -561,7 +630,7 @@
             de futuro. Si nadie hace nada, empezaremos por crear una plan realista, sin ideologia ni
             intereses políticos.
             <br><br>
-            Algo habrá que hacer.
+            <strong>Algo habrá que hacer.</strong>
           </p>
         </div>
       </div>
