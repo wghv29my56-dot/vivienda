@@ -925,14 +925,16 @@
         method: "POST",
         headers: supabaseHeaders({
           "Content-Type": "application/json",
-          "Prefer": "return=representation"
+          "Prefer": "return=minimal"
         }),
         body: JSON.stringify(payload)
       }).then(function (response) {
-        if (!response.ok) throw new Error("No se pudo guardar");
-        return response.json();
-      }).then(function (rows) {
-        return rows && rows[0] ? rows[0] : null;
+        if (!response.ok) {
+          return response.text().then(function (message) {
+            throw new Error(message || "No se pudo guardar");
+          });
+        }
+        return null;
       });
     }
 
@@ -975,6 +977,14 @@
 
     function parseCoords(value) {
       if (!value) return null;
+      if (Array.isArray(value)) return normalizeCoordsArray(value);
+      if (typeof value === "object") {
+        if (value.type === "Feature") return parseGeoJsonGeometry(value.geometry);
+        if (value.type) return parseGeoJsonGeometry(value);
+        return null;
+      }
+      if (typeof value !== "string") return null;
+
       try {
         var parsed = JSON.parse(value);
         if (Array.isArray(parsed)) return normalizeCoordsArray(parsed);
