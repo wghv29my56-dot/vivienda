@@ -1,0 +1,50 @@
+name: Save map proposal
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: save-map-proposal-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  save:
+    if: contains(github.event.issue.body, 'vivienda-thinktank-propuesta:v1')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Save proposal in CSV
+        run: python3 scripts/save_issue_proposal.py
+
+      - name: Commit CSV update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/propuestas_zonas.csv data/propuestas_fiscalidad.csv
+          if git diff --cached --quiet; then
+            echo "No CSV changes to commit."
+          else
+            git commit -m "Save map proposal from issue #${{ github.event.issue.number }}"
+            git push
+          fi
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "Propuesta guardada en el CSV como pendiente de revisión. Para publicarla en el mapa hay que marcar `aprobado` como `sí`."
+            });

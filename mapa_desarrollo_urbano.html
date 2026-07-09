@@ -542,12 +542,12 @@
             </div>
 
             <div class="field">
-              <label for="contact">Contacto (opcional)</label>
+              <label for="contact">Contacto público (opcional)</label>
               <input type="email" id="contact" name="contact" placeholder="tu@correo.com">
             </div>
 
             <button type="submit" class="submit-button" id="submitBtn" disabled>Enviar propuesta</button>
-            <p class="form-msg" id="formMsg">Gracias. Tu propuesta queda registrada y pendiente de revisión: aparecerá en el mapa y en el listado solo si el equipo la aprueba.</p>
+            <p class="form-msg" id="formMsg">Gracias. Se abrirá GitHub con la propuesta preparada. Al confirmarla allí, quedará guardada en el CSV como pendiente de revisión.</p>
           </form>
         </aside>
       </div>
@@ -596,6 +596,8 @@
 
     var STORAGE_KEY = "vtt_propuestas_zonas_v1";
     var CSV_URL = "data/propuestas_zonas.csv";
+    var ISSUE_URL = "https://github.com/wghv29my56-dot/vivienda/issues/new";
+    var PROPOSAL_TYPE = "desarrollo_urbano";
     var PROVINCE_MUNICIPALITIES = window.VIVIENDA_MUNICIPIOS_ESPANA || {};
 
     /* ---------------------------------------------------------------
@@ -763,6 +765,7 @@
       map.removeLayer(currentDraw);
       currentDraw = null;
       drawPendingZone(item);
+      openProposalIssue(item);
 
       form.reset();
       populateMunicipalities("");
@@ -770,6 +773,40 @@
       formMsg.classList.add("show");
       setTimeout(function () { formMsg.classList.remove("show"); }, 6000);
     });
+
+    function openProposalIssue(item) {
+      var url = ISSUE_URL +
+        "?title=" + encodeURIComponent("[Mapa desarrollo urbano] " + item.zoneName) +
+        "&body=" + encodeURIComponent(buildProposalIssueBody(item));
+      var issueWindow = window.open(url, "_blank", "noopener");
+      if (!issueWindow) window.location.href = url;
+    }
+
+    function buildProposalIssueBody(item) {
+      var payload = {
+        tipo: PROPOSAL_TYPE,
+        nombre_zona: item.zoneName,
+        provincia: item.province,
+        municipio: item.municipality,
+        viviendas_estimadas: item.viviendas,
+        justificacion: item.justification,
+        contacto: item.contact,
+        fecha: item.date,
+        aprobado: "",
+        coordenadas: item.coords
+      };
+
+      return [
+        "Propuesta generada desde Vivienda Thinktank.",
+        "",
+        "Al enviar este issue, una acción automática guardará la propuesta en `data/propuestas_zonas.csv` como pendiente. Solo aparecerá públicamente en el mapa cuando el campo `aprobado` se marque como `sí`.",
+        "",
+        "<!-- vivienda-thinktank-propuesta:v1 -->",
+        "```json",
+        JSON.stringify(payload, null, 2),
+        "```"
+      ].join("\n");
+    }
 
     /* ---------------------------------------------------------------
        4) Render de la tabla (solo aprobadas) + contadores
