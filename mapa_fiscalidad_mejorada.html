@@ -434,7 +434,7 @@
         <img class="brand-logo" src="assets/brand/vivienda-thinktank-logo-final.png" alt="">
         <span>Vivienda Thinktank</span>
       </div>
-      <a class="nav-button" href="index.html">Volver al portal</a>
+      <a class="nav-button" href="index.html">Volver</a>
     </div>
   </header>
 
@@ -503,8 +503,7 @@
 
         <aside class="side-panel">
           <div>
-            <div class="label">Tu propuesta</div>
-            <h2>Justifícala.</h2>
+            <h2>Tu propuesta.</h2>
           </div>
 
           <form class="proposal" id="proposalForm">
@@ -534,7 +533,7 @@
 
             <div class="field">
               <label for="justification">Justificación</label>
-              <textarea id="justification" name="justification" placeholder="¿Por qué esta zona? Baja densidad, suelo disponible, infraestructura mínima ampliable, conectividad, servicios públicos, tejido económico que reactivar…" required></textarea>
+              <textarea id="justification" name="justification" minlength="20" placeholder="¿Por qué esta zona? Baja densidad, suelo disponible, infraestructura mínima ampliable, conectividad, servicios públicos, tejido económico que reactivar…" required></textarea>
             </div>
 
             <div class="field">
@@ -543,7 +542,7 @@
             </div>
 
             <button type="submit" class="submit-button" id="submitBtn" disabled>Enviar propuesta</button>
-            <p class="form-msg" id="formMsg">Gracias. Se abrirá GitHub con la propuesta preparada. Al confirmarla allí, quedará registrada como pendiente de revisión.</p>
+            <p class="form-msg" id="formMsg">Gracias. Tu propuesta se ha enviado y queda pendiente de revisión.</p>
           </form>
         </aside>
       </div>
@@ -552,7 +551,6 @@
       <div class="shell submissions">
         <div class="section-head">
           <div>
-            <div class="label">Zonas aprobadas</div>
             <h2>Zonas aceptadas.</h2>
           </div>
           <p class="hint" style="text-align:right">Solo se muestran las zonas aprobadas tras revisión. Las propuestas nuevas quedan pendientes.</p>
@@ -596,9 +594,10 @@
     "use strict";
 
     var STORAGE_KEY = "vtt_propuestas_fiscalidad_v1";
-    var DATA_URL = "data/propuestas_fiscalidad.csv";
-    var ISSUE_URL = "https://github.com/wghv29my56-dot/vivienda/issues/new";
-    var PROPOSAL_TYPE = "fiscalidad_mejorada";
+    var SUPABASE_URL = "https://qskdwrvobxlshebocwjr.supabase.co";
+    var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFza2R3cnZvYnhsc2hlYm9jd2pyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MTg2MjgsImV4cCI6MjA5OTE5NDYyOH0.NmtvaoBpoN-oo9318dOH2S8VItBp7oV_XYXIhwufeos";
+    var SUPABASE_TABLE = "propuestas_fiscalidad_mejorada";
+    var SUPABASE_SELECT = "id,created_at,nombre_zona,provincia,municipio,poblacion,justificacion,contacto,coordenadas";
     var PROVINCE_MUNICIPALITIES = window.VIVIENDA_MUNICIPIOS_ESPANA || {};
 
     /* ---------------------------------------------------------------
@@ -759,55 +758,34 @@
         date: new Date().toISOString()
       };
 
-      var list = loadUser();
-      list.push(item);
-      saveUser(list);
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
 
-      map.removeLayer(currentDraw);
-      currentDraw = null;
-      drawPendingZone(item);
-      openProposalIssue(item);
+      saveProposal(item)
+        .then(function (saved) {
+          if (saved && saved.id) item.id = saved.id;
+          var list = loadUser();
+          list.push(item);
+          saveUser(list);
 
-      form.reset();
-      populateMunicipalities("");
-      clearDrawn();
-      formMsg.classList.add("show");
-      setTimeout(function () { formMsg.classList.remove("show"); }, 6000);
+          map.removeLayer(currentDraw);
+          currentDraw = null;
+          drawPendingZone(item);
+
+          form.reset();
+          populateMunicipalities("");
+          clearDrawn();
+          showFormMessage("Gracias. Tu propuesta se ha enviado y queda pendiente de revisión.");
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          showFormMessage("No se ha podido enviar la propuesta. Revisa la conexión e inténtalo de nuevo.");
+        })
+        .finally(function () {
+          submitBtn.textContent = "Enviar propuesta";
+          if (currentDraw) submitBtn.disabled = false;
+        });
     });
-
-    function openProposalIssue(item) {
-      var url = ISSUE_URL +
-        "?title=" + encodeURIComponent("[Mapa fiscalidad mejorada] " + item.zoneName) +
-        "&body=" + encodeURIComponent(buildProposalIssueBody(item));
-      var issueWindow = window.open(url, "_blank", "noopener");
-      if (!issueWindow) window.location.href = url;
-    }
-
-    function buildProposalIssueBody(item) {
-      var payload = {
-        tipo: PROPOSAL_TYPE,
-        nombre_zona: item.zoneName,
-        provincia: item.province,
-        municipio: item.municipality,
-        poblacion: item.poblacion,
-        justificacion: item.justification,
-        contacto: item.contact,
-        fecha: item.date,
-        aprobado: "",
-        coordenadas: item.coords
-      };
-
-      return [
-        "Propuesta generada desde Vivienda Thinktank.",
-        "",
-        "Al enviar este issue, la propuesta quedará registrada como pendiente de revisión. Solo aparecerá públicamente en el mapa cuando sea aprobada.",
-        "",
-        "<!-- vivienda-thinktank-propuesta:v1 -->",
-        "```json",
-        JSON.stringify(payload, null, 2),
-        "```"
-      ].join("\n");
-    }
 
     /* ---------------------------------------------------------------
        4) Render de la tabla (solo aprobadas) + contadores
@@ -875,13 +853,19 @@
     }
 
     function loadAcceptedData() {
-      return fetch(DATA_URL, { cache: "no-store" })
+      var url = SUPABASE_URL + "/rest/v1/" + SUPABASE_TABLE +
+        "?select=" + encodeURIComponent(SUPABASE_SELECT) +
+        "&status=eq.aprobada&order=created_at.desc";
+
+      return fetch(url, { cache: "no-store", headers: supabaseHeaders() })
         .then(function (response) {
           if (!response.ok) throw new Error("Datos no disponibles");
-          return response.text();
+          return response.json();
         })
-        .then(function (text) {
-          acceptedZones = parseZonesCsv(text);
+        .then(function (rows) {
+          acceptedZones = rows.map(normalizeSupabaseZone).filter(function (item) {
+            return item.zoneName && item.coords && item.coords.length;
+          });
           rebuildAcceptedLayer(acceptedZones);
           render();
         })
@@ -892,41 +876,71 @@
         });
     }
 
-    function isApproved(value) {
-      var v = (value || "").trim().toLowerCase();
-      return ["si", "sí", "true", "1", "x", "yes", "y", "aprobado", "aprobada"].indexOf(v) >= 0;
+    function saveProposal(item) {
+      var payload = {
+        status: "pendiente",
+        nombre_zona: item.zoneName,
+        provincia: item.province,
+        municipio: item.municipality,
+        poblacion: toIntegerOrNull(item.poblacion),
+        justificacion: item.justification,
+        contacto: item.contact || null,
+        coordenadas: item.coords,
+        metadata: {
+          origen: "mapa_fiscalidad_mejorada",
+          fecha_cliente: item.date
+        }
+      };
+
+      return fetch(SUPABASE_URL + "/rest/v1/" + SUPABASE_TABLE, {
+        method: "POST",
+        headers: supabaseHeaders({
+          "Content-Type": "application/json",
+          "Prefer": "return=representation"
+        }),
+        body: JSON.stringify(payload)
+      }).then(function (response) {
+        if (!response.ok) throw new Error("No se pudo guardar");
+        return response.json();
+      }).then(function (rows) {
+        return rows && rows[0] ? rows[0] : null;
+      });
     }
 
-    function parseZonesCsv(text) {
-      var rows = parseCsv(text).filter(function (row) {
-        return row.some(function (cell) { return cell.trim() !== ""; });
+    function supabaseHeaders(extra) {
+      var headers = {
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+      };
+      Object.keys(extra || {}).forEach(function (key) {
+        headers[key] = extra[key];
       });
-      if (rows.length < 2) return [];
-
-      var headers = rows.shift().map(normalizeKey);
-      return rows.map(function (row) {
-        var raw = {};
-        headers.forEach(function (key, index) {
-          raw[key] = (row[index] || "").trim();
-        });
-        return normalizeCsvZone(raw);
-      }).filter(function (item) {
-        return item.zoneName && item.approved;
-      });
+      return headers;
     }
 
-    function normalizeCsvZone(raw) {
+    function showFormMessage(message) {
+      formMsg.textContent = message;
+      formMsg.classList.add("show");
+      setTimeout(function () { formMsg.classList.remove("show"); }, 6000);
+    }
+
+    function toIntegerOrNull(value) {
+      if (value === "" || value === null || typeof value === "undefined") return null;
+      var number = Number(value);
+      return isFinite(number) ? Math.round(number) : null;
+    }
+
+    function normalizeSupabaseZone(raw) {
       return {
         id: raw.id || "",
-        zoneName: raw.nombre_zona || raw.zona || raw.zone_name || "",
-        province: raw.provincia || raw.province || "",
-        municipality: raw.municipio || raw.municipality || "",
-        poblacion: raw.poblacion || raw.habitantes || raw.viviendas || "",
-        justification: raw.justificacion || raw.justification || "",
-        contact: raw.contacto || raw.contact || "",
-        date: raw.fecha || raw.date || "",
-        approved: isApproved(raw.aprobado || raw.aprobada || raw.approved || ""),
-        coords: parseCoords(raw.coordenadas || raw.coords || raw.geojson || raw.geometry || "")
+        zoneName: raw.nombre_zona || "",
+        province: raw.provincia || "",
+        municipality: raw.municipio || "",
+        poblacion: raw.poblacion || "",
+        justification: raw.justificacion || "",
+        contact: raw.contacto || "",
+        date: raw.created_at || "",
+        coords: parseCoords(raw.coordenadas || "")
       };
     }
 
@@ -966,49 +980,6 @@
       }).filter(function (point) {
         return isFinite(point[0]) && isFinite(point[1]);
       });
-    }
-
-    function normalizeKey(key) {
-      return key.trim().toLowerCase()
-        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "_")
-        .replace(/^_+|_+$/g, "");
-    }
-
-    function parseCsv(text) {
-      var rows = [];
-      var row = [];
-      var cell = "";
-      var quoted = false;
-
-      for (var i = 0; i < text.length; i++) {
-        var ch = text[i];
-        var next = text[i + 1];
-
-        if (ch === '"' && quoted && next === '"') {
-          cell += '"';
-          i++;
-        } else if (ch === '"') {
-          quoted = !quoted;
-        } else if (ch === "," && !quoted) {
-          row.push(cell);
-          cell = "";
-        } else if ((ch === "\n" || ch === "\r") && !quoted) {
-          if (ch === "\r" && next === "\n") i++;
-          row.push(cell);
-          rows.push(row);
-          row = [];
-          cell = "";
-        } else {
-          cell += ch;
-        }
-      }
-
-      if (cell || row.length) {
-        row.push(cell);
-        rows.push(row);
-      }
-      return rows;
     }
 
     /* ---------------------------------------------------------------
