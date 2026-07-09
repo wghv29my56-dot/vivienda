@@ -549,7 +549,7 @@
             </div>
 
             <button type="submit" class="submit-button" id="submitBtn" disabled>Enviar propuesta</button>
-            <p class="form-msg" id="formMsg">Gracias. Se abrirá GitHub con la propuesta preparada. Al confirmarla allí, quedará guardada como pendiente de revisión.</p>
+            <p class="form-msg" id="formMsg">Gracias. Se abrirá GitHub con la propuesta preparada. Al confirmarla allí, quedará registrada como pendiente de revisión.</p>
           </form>
         </aside>
       </div>
@@ -561,7 +561,7 @@
             <div class="label">Zonas aprobadas</div>
             <h2>Zonas aceptadas.</h2>
           </div>
-          <p class="hint" style="text-align:right">Solo se muestran las zonas marcadas como aprobadas. Las propuestas nuevas quedan pendientes de revisión.</p>
+          <p class="hint" style="text-align:right">Solo se muestran las zonas aprobadas tras revisión. Las propuestas nuevas quedan pendientes.</p>
         </div>
 
         <div class="table-wrap">
@@ -599,7 +599,7 @@
     "use strict";
 
     var STORAGE_KEY = "vtt_propuestas_zonas_v1";
-    var CSV_URL = "data/propuestas_zonas.csv";
+    var DATA_URL = "data/propuestas_zonas.csv";
     var ISSUE_URL = "https://github.com/wghv29my56-dot/vivienda/issues/new";
     var PROPOSAL_TYPE = "desarrollo_urbano";
     var PROVINCE_MUNICIPALITIES = window.VIVIENDA_MUNICIPIOS_ESPANA || {};
@@ -803,7 +803,7 @@
       return [
         "Propuesta generada desde Vivienda Thinktank.",
         "",
-        "Al enviar este issue, una acción automática guardará la propuesta en `data/propuestas_zonas.csv` como pendiente. Solo aparecerá públicamente en el mapa cuando el campo `aprobado` se marque como `sí`.",
+        "Al enviar este issue, la propuesta quedará registrada como pendiente de revisión. Solo aparecerá públicamente en el mapa cuando sea aprobada.",
         "",
         "<!-- vivienda-thinktank-propuesta:v1 -->",
         "```json",
@@ -824,7 +824,7 @@
       if (acceptedZones.length === 0) {
         var tr = document.createElement("tr");
         tr.className = "empty-row";
-        tr.innerHTML = '<td colspan="' + COLS + '">Aún no hay ninguna zona aprobada. Cuando el equipo apruebe zonas en el CSV, aparecerán aquí y sobre el mapa.</td>';
+        tr.innerHTML = '<td colspan="' + COLS + '">Aún no hay ninguna zona aprobada. Cuando el equipo apruebe propuestas, aparecerán aquí y sobre el mapa.</td>';
         zonesBody.appendChild(tr);
       } else {
         acceptedZones.forEach(function (item) {
@@ -877,10 +877,10 @@
       if (bounds.isValid()) map.fitBounds(bounds.pad(0.18));
     }
 
-    function loadAcceptedFromCsv() {
-      return fetch(CSV_URL, { cache: "no-store" })
+    function loadAcceptedData() {
+      return fetch(DATA_URL, { cache: "no-store" })
         .then(function (response) {
-          if (!response.ok) throw new Error("CSV no disponible");
+          if (!response.ok) throw new Error("Datos no disponibles");
           return response.text();
         })
         .then(function (text) {
@@ -1019,7 +1019,7 @@
     ----------------------------------------------------------------*/
     setupLocationSelects();
     rebuildPendingLayer(loadUser());
-    loadAcceptedFromCsv();
+    loadAcceptedData();
     render();
   })();
   </script>
