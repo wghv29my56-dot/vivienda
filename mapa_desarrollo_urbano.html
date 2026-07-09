@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vivienda Thinktank | Mapa de desarrollo urbano</title>
+
+  <!-- Leaflet (mapa) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Leaflet-Geoman (dibujo y selección de zonas, gratuito/open-source) -->
+  <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.17.0/dist/leaflet-geoman.css" />
+
   <style>
     :root {
       --ink: #1f385b;
@@ -18,9 +24,7 @@
       --line: rgba(31, 56, 91, 0.14);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -29,19 +33,14 @@
       background: var(--soft);
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
-    .shell {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
       border-bottom: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(18px);
@@ -55,27 +54,16 @@
       gap: 20px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 850;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 850; }
 
     .brand-logo {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 8px 24px rgba(27, 52, 84, 0.18);
     }
 
-    .nav-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 10px;
-    }
+    .nav-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 
     .nav-button {
       display: inline-flex;
@@ -93,7 +81,7 @@
     }
 
     .hero {
-      padding: 72px 0 46px;
+      padding: 64px 0 42px;
       background:
         linear-gradient(90deg, rgba(242, 184, 69, 0.10) 0 1px, transparent 1px 100%),
         linear-gradient(180deg, rgba(69, 185, 173, 0.10) 0 1px, transparent 1px 100%),
@@ -106,43 +94,35 @@
       max-width: 920px;
       margin: 0;
       color: var(--navy);
-      font-size: clamp(48px, 7vw, 96px);
+      font-size: clamp(44px, 6.4vw, 88px);
       line-height: 0.95;
-      letter-spacing: 0;
     }
 
     .hero p {
-      max-width: 720px;
-      margin: 24px 0 0;
+      max-width: 760px;
+      margin: 22px 0 0;
       color: var(--muted);
-      font-size: clamp(18px, 2vw, 22px);
+      font-size: clamp(17px, 2vw, 21px);
       line-height: 1.5;
     }
 
-    .workspace {
-      padding: 34px 0 72px;
-    }
+    .workspace { padding: 34px 0 72px; }
 
     .map-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.38fr);
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.4fr);
       gap: 24px;
-      align-items: stretch;
+      align-items: start;
     }
 
-    .map-panel,
-    .side-panel,
-    .zone-card {
+    .map-panel, .side-panel {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--white);
       box-shadow: 0 14px 40px rgba(31, 56, 91, 0.06);
     }
 
-    .map-panel {
-      min-height: 620px;
-      padding: 22px;
-    }
+    .map-panel { padding: 22px; }
 
     .label {
       color: var(--muted);
@@ -153,177 +133,178 @@
     }
 
     h2 {
-      margin: 10px 0 18px;
+      margin: 10px 0 8px;
       color: var(--navy);
-      font-size: clamp(28px, 3vw, 44px);
+      font-size: clamp(26px, 3vw, 40px);
       line-height: 1;
-      letter-spacing: 0;
     }
 
-    .fake-map {
-      position: relative;
+    .panel-lead { margin: 0 0 18px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+
+    /* Mapa */
+    #map {
+      height: 540px;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
       overflow: hidden;
-      min-height: 470px;
+      background: #edf4f8;
+    }
+
+    .map-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 16px 0 0;
+    }
+
+    .tool-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 16px;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(120, 146, 182, 0.14), transparent 28%),
-        linear-gradient(45deg, transparent 0 64%, rgba(242, 184, 69, 0.16) 64% 68%, transparent 68%),
-        #edf4f8;
-    }
-
-    .water {
-      position: absolute;
-      right: -7%;
-      top: -8%;
-      width: 35%;
-      height: 116%;
-      border-radius: 46% 0 0 52%;
-      background: rgba(120, 146, 182, 0.38);
-    }
-
-    .road {
-      position: absolute;
-      left: 8%;
-      top: 52%;
-      width: 70%;
-      height: 12px;
       border-radius: 999px;
-      background: rgba(31, 56, 91, 0.26);
-      transform: rotate(-18deg);
-    }
-
-    .road.secondary {
-      left: 20%;
-      top: 30%;
-      width: 54%;
-      background: rgba(31, 56, 91, 0.16);
-      transform: rotate(24deg);
-    }
-
-    .zone {
-      position: absolute;
-      display: grid;
-      place-items: center;
-      width: 150px;
-      min-height: 96px;
-      border: 2px solid rgba(255, 255, 255, 0.88);
-      border-radius: 8px;
-      padding: 12px;
-      color: var(--navy);
-      background: rgba(255, 255, 255, 0.82);
-      text-align: center;
-      font-size: 13px;
-      font-weight: 850;
-      box-shadow: 0 18px 44px rgba(31, 56, 91, 0.16);
-    }
-
-    .zone strong {
-      display: block;
-      font-size: 24px;
-    }
-
-    .zone.high {
-      left: 56%;
-      top: 20%;
-      border-color: rgba(217, 107, 99, 0.62);
-      background: rgba(217, 107, 99, 0.15);
-    }
-
-    .zone.medium {
-      left: 22%;
-      top: 44%;
-      border-color: rgba(242, 184, 69, 0.70);
-      background: rgba(242, 184, 69, 0.18);
-    }
-
-    .zone.low {
-      left: 11%;
-      top: 15%;
-      border-color: rgba(69, 185, 173, 0.58);
-      background: rgba(69, 185, 173, 0.16);
-    }
-
-    .side-panel {
-      display: grid;
-      gap: 16px;
-      padding: 22px;
-    }
-
-    .zone-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .zone-card {
-      padding: 16px;
-      box-shadow: none;
-    }
-
-    .zone-card strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--navy);
-      font-size: 17px;
-    }
-
-    .zone-card p {
-      margin: 0;
-      color: var(--muted);
+      background: var(--navy);
+      color: var(--white);
       font-size: 14px;
-      line-height: 1.48;
+      font-weight: 850;
+      cursor: pointer;
     }
 
-    .metric-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
+    .tool-button.ghost { background: var(--white); color: var(--navy); }
+    .tool-button:disabled { opacity: 0.45; cursor: not-allowed; }
 
-    .metric {
+    .hint { color: var(--muted); font-size: 13px; margin: 0; flex: 1 1 220px; }
+
+    /* Panel lateral: formulario */
+    .side-panel { display: grid; gap: 16px; padding: 22px; }
+
+    form.proposal { display: grid; gap: 14px; }
+
+    .field { display: grid; gap: 7px; }
+    .field label { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .field input, .field select, .field textarea {
+      width: 100%;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 14px;
+      padding: 12px 14px;
+      color: var(--ink);
       background: #fbfdff;
+      font: inherit;
+      font-size: 15px;
+    }
+    .field textarea { min-height: 96px; resize: vertical; }
+
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: none;
+      border-radius: 8px;
+      padding: 0 20px;
+      color: var(--white);
+      background: var(--navy);
+      font: inherit;
+      font-weight: 850;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(31, 56, 91, 0.18);
+    }
+    .submit-button:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+
+    /* Listado inferior: tabla de zonas aceptadas */
+    .submissions { margin-top: 40px; }
+    .submissions .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      overflow-x: auto;
+      box-shadow: 0 14px 40px rgba(31, 56, 91, 0.06);
     }
 
-    .metric strong {
-      display: block;
-      color: var(--navy);
-      font-size: 24px;
+    table.zones {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 760px;
     }
 
-    .metric span {
+    table.zones thead th {
+      text-align: left;
       color: var(--muted);
-      font-size: 13px;
-      font-weight: 750;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfdff;
+      white-space: nowrap;
     }
 
+    table.zones tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      color: #2b4059;
+      vertical-align: top;
+    }
+
+    table.zones tbody tr:last-child td { border-bottom: none; }
+
+    table.zones tbody td.zone-name { font-weight: 850; color: var(--navy); white-space: nowrap; }
+    table.zones tbody td.justif { min-width: 260px; line-height: 1.5; }
+
+    .pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+    .pill.p-muyalta { color: #8f2f28; background: rgba(217,107,99,0.18); }
+    .pill.p-alta { color: #8a5414; background: rgba(224,149,90,0.20); }
+    .pill.p-media { color: #8a6414; background: rgba(242,184,69,0.18); }
+    .pill.p-baja { color: #1f7a70; background: rgba(69,185,173,0.18); }
+
+    .empty-row td {
+      text-align: center;
+      color: var(--muted);
+      padding: 40px 16px !important;
+      font-size: 15px;
+    }
+
+    .row-actions { display: flex; gap: 12px; white-space: nowrap; }
+    .link-button { background: none; border: none; color: var(--navy); font-weight: 850; font-size: 13px; cursor: pointer; padding: 0; text-decoration: underline; }
+    .link-button.danger { color: var(--red); }
+
+    .source {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .footer { border-top: 1px solid var(--line); background: var(--navy); color: var(--white); padding: 28px 0; }
+    .footer .shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer strong { font-size: 16px; }
+
+    @media (max-width: 940px) {
+      .map-grid { grid-template-columns: 1fr; }
+      #map { height: 440px; }
+    }
     @media (max-width: 900px) {
-      .topbar .shell,
-      .map-grid,
-      .metric-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .topbar .shell {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      .nav-actions {
-        justify-content: flex-start;
-      }
-
-      .map-panel {
-        min-height: auto;
-      }
-
-      .fake-map {
-        min-height: 420px;
-      }
+      .topbar .shell { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .nav-actions { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -346,8 +327,8 @@
       <div class="shell">
         <h1>Mapa de desarrollo urbano.</h1>
         <p>
-          Boceto inicial para visualizar dónde podría desbloquearse suelo, qué zonas tienen más potencial de vivienda y
-          qué bloqueos normativos o geográficos habría que resolver.
+          Un mapa colaborativo de España para señalar zonas potencialmente prioritarias de urbanización.
+          Dibuja el área sobre el mapa, justifica por qué debería desbloquearse suelo allí y envíanos tu propuesta.
         </p>
       </div>
     </section>
@@ -355,50 +336,452 @@
     <section class="workspace">
       <div class="shell map-grid">
         <section class="map-panel">
-          <div class="label">Ciudad ficticia</div>
-          <h2>Zonas potenciales.</h2>
+          <div class="label">Mapa colaborativo</div>
+          <h2>Señala una zona.</h2>
+          <p class="panel-lead">
+            Usa las herramientas de dibujo para trazar un polígono o rectángulo sobre la zona que propones.
+            Puedes cambiar la cartografía de fondo con el control de capas (arriba a la derecha del mapa).
+          </p>
 
-          <div class="fake-map" aria-label="Mapa conceptual de zonas urbanas">
-            <div class="water"></div>
-            <div class="road"></div>
-            <div class="road secondary"></div>
-            <div class="zone low"><span>Centro norte</span><strong>120</strong><span>viviendas</span></div>
-            <div class="zone medium"><span>Bahía este</span><strong>900</strong><span>viviendas</span></div>
-            <div class="zone high"><span>Vega sur</span><strong>2.400</strong><span>viviendas</span></div>
-          </div>
+          <div id="map"></div>
 
-          <div class="metric-strip">
-            <div class="metric"><strong>3</strong><span>zonas iniciales</span></div>
-            <div class="metric"><strong>3.420</strong><span>viviendas potenciales</span></div>
-            <div class="metric"><strong>1</strong><span>prioridad muy alta</span></div>
+          <div class="map-tools">
+            <button type="button" class="tool-button" id="btnDraw">Dibujar zona</button>
+            <button type="button" class="tool-button ghost" id="btnClear" disabled>Descartar dibujo</button>
+            <p class="hint">Cartografía base: IGN (oficial de España), ortofoto PNOA y OpenStreetMap.</p>
           </div>
         </section>
 
         <aside class="side-panel">
           <div>
-            <div class="label">Lectura rápida</div>
-            <h2>Qué debe medir.</h2>
+            <div class="label">Tu propuesta</div>
+            <h2>Justifícala.</h2>
           </div>
 
-          <div class="zone-list">
-            <article class="zone-card">
-              <strong>Suelo urbanizable pendiente</strong>
-              <p>Detectar áreas donde el planeamiento lento bloquea oferta relevante y cuantificar su impacto posible.</p>
-            </article>
+          <form class="proposal" id="proposalForm">
+            <div class="field">
+              <label for="zoneName">Nombre de la zona</label>
+              <input type="text" id="zoneName" name="zoneName" placeholder="Ej. Corredor sur de Guadalajara" required>
+            </div>
 
-            <article class="zone-card">
-              <strong>Rústico con presión residencial</strong>
-              <p>Analizar supuestos excepcionales donde tendría sentido ampliar construcción sin destruir valor ambiental.</p>
-            </article>
+            <div class="field">
+              <label for="priority">Prioridad propuesta</label>
+              <select id="priority" name="priority">
+                <option value="muy alta">Muy alta</option>
+                <option value="alta">Alta</option>
+                <option value="media" selected>Media</option>
+                <option value="baja">Baja</option>
+              </select>
+            </div>
 
-            <article class="zone-card">
-              <strong>Bloqueos administrativos</strong>
-              <p>Separar los límites físicos reales de los límites creados por trámites, tasas, licencias o normas obsoletas.</p>
-            </article>
-          </div>
+            <div class="field">
+              <label for="viviendas">Viviendas potenciales estimadas</label>
+              <input type="number" id="viviendas" name="viviendas" min="0" step="10" placeholder="Ej. 1200">
+            </div>
+
+            <div class="field">
+              <label for="justification">Justificación</label>
+              <textarea id="justification" name="justification" placeholder="¿Por qué esta zona? Suelo disponible, presión de demanda, infraestructura existente, bloqueos administrativos que resolver…" required></textarea>
+            </div>
+
+            <div class="field">
+              <label for="contact">Contacto (opcional)</label>
+              <input type="email" id="contact" name="contact" placeholder="tu@correo.com">
+            </div>
+
+            <button type="submit" class="submit-button" id="submitBtn" disabled>Enviar propuesta</button>
+          </form>
         </aside>
+      </div>
+
+      <!-- Listado inferior: tabla de zonas aceptadas -->
+      <div class="shell submissions">
+        <div class="section-head">
+          <div>
+            <div class="label">Zonas recogidas</div>
+            <h2>Zonas aceptadas.</h2>
+          </div>
+          <p class="hint" style="text-align:right">Las zonas aceptadas se cargan desde CSV. Las nuevas propuestas se guardan de momento en este navegador.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="zones">
+            <thead>
+              <tr>
+                <th>Zona</th>
+                <th>Prioridad</th>
+                <th>Viviendas est.</th>
+                <th>Justificación</th>
+                <th>Origen</th>
+              </tr>
+            </thead>
+            <tbody id="zonesBody"></tbody>
+          </table>
+        </div>
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <strong>Vivienda Thinktank</strong>
+    </div>
+  </footer>
+
+  <!-- Leaflet + Geoman -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.17.0/dist/leaflet-geoman.min.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    var STORAGE_KEY = "vtt_propuestas_zonas_v1";
+    var CSV_URL = "data/propuestas_zonas.csv";
+
+    /* ---------------------------------------------------------------
+       1) MAPA (Leaflet) centrado en España + capas base IGN/OSM
+    ----------------------------------------------------------------*/
+    var map = L.map("map", { center: [40.0, -3.7], zoom: 6, minZoom: 5 });
+
+    // IGN Base (cartografía oficial de España, gratuita, sin API key)
+    var ignBase = L.tileLayer(
+      "https://www.ign.es/wmts/ign-base?request=GetTile&service=WMTS&version=1.0.0&layer=IGNBaseTodo&style=default&format=image/png&tilematrixset=GoogleMapsCompatible&tilematrix={z}&tilerow={y}&tilecol={x}",
+      { attribution: "© Instituto Geográfico Nacional de España", maxZoom: 18 }
+    );
+
+    // IGN Ortofoto PNOA (imagen aérea)
+    var ignPnoa = L.tileLayer(
+      "https://www.ign.es/wmts/pnoa-ma?request=GetTile&service=WMTS&version=1.0.0&layer=OI.OrthoimageCoverage&style=default&format=image/jpeg&tilematrixset=GoogleMapsCompatible&tilematrix={z}&tilerow={y}&tilecol={x}",
+      { attribution: "© Instituto Geográfico Nacional (PNOA)", maxZoom: 19 }
+    );
+
+    // OpenStreetMap (respaldo)
+    var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors", maxZoom: 19
+    });
+
+    ignBase.addTo(map);
+    // Si las teselas del IGN no cargasen, se activa OSM automáticamente como respaldo.
+    var ignFailures = 0;
+    ignBase.on("tileerror", function () {
+      ignFailures++;
+      if (ignFailures === 6 && map.hasLayer(ignBase)) {
+        map.removeLayer(ignBase);
+        osm.addTo(map);
+      }
+    });
+
+    L.control.layers(
+      { "IGN Base (España)": ignBase, "Ortofoto PNOA": ignPnoa, "OpenStreetMap": osm },
+      null,
+      { position: "topright", collapsed: false }
+    ).addTo(map);
+
+    /* ---------------------------------------------------------------
+       2) Herramientas de dibujo (Leaflet-Geoman)
+    ----------------------------------------------------------------*/
+    map.pm.setLang("es");
+    var currentDraw = null;
+
+    var submitBtn = document.getElementById("submitBtn");
+    var btnClear = document.getElementById("btnClear");
+    var btnDraw = document.getElementById("btnDraw");
+
+    function setDrawn(layer) {
+      if (currentDraw) { map.removeLayer(currentDraw); }
+      currentDraw = layer;
+      submitBtn.disabled = false;
+      btnClear.disabled = false;
+    }
+
+    function clearDrawn() {
+      if (currentDraw) { map.removeLayer(currentDraw); currentDraw = null; }
+      submitBtn.disabled = true;
+      btnClear.disabled = true;
+    }
+
+    btnDraw.addEventListener("click", function () {
+      map.pm.enableDraw("Polygon", { snappable: true, templineStyle: { color: "#7892b6" } });
+    });
+    btnClear.addEventListener("click", clearDrawn);
+
+    map.on("pm:create", function (e) {
+      if (e.layer.setStyle) {
+        e.layer.setStyle({ color: "#7892b6", weight: 2, fillColor: "#7892b6", fillOpacity: 0.3 });
+      }
+      setDrawn(e.layer);
+      map.pm.disableDraw();
+    });
+
+    /* ---------------------------------------------------------------
+       3) Envío del formulario -> guardar + tabla + marcar en mapa
+    ----------------------------------------------------------------*/
+    var form = document.getElementById("proposalForm");
+
+    function loadUser() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+      catch (err) { return []; }
+    }
+    function saveUser(list) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch (err) {}
+    }
+
+    var acceptedLayer = L.featureGroup().addTo(map);
+    var userLayer = L.featureGroup().addTo(map);
+    var acceptedZones = [];
+
+    function drawAcceptedZone(item) {
+      if (!item.coords || !item.coords.length) return;
+      var poly = L.polygon(item.coords, {
+        color: "#f2b845", weight: 2, fillColor: "#f2b845", fillOpacity: 0.26
+      }).addTo(acceptedLayer);
+      poly.bindPopup("<strong>" + escapeHtml(item.zoneName) + "</strong><br>Prioridad: " + escapeHtml(item.priority) + "<br><br>" + escapeHtml(item.justification));
+      item._layer = poly;
+    }
+
+    function drawUserZone(item) {
+      if (!item.coords || !item.coords.length) return;
+      var poly = L.polygon(item.coords, {
+        color: "#7892b6", weight: 2, fillColor: "#7892b6", fillOpacity: 0.28
+      }).addTo(userLayer);
+      poly.bindPopup("<strong>" + escapeHtml(item.zoneName) + "</strong><br>Prioridad: " + escapeHtml(item.priority) + "<br><br>" + escapeHtml(item.justification));
+      item._layer = poly;
+    }
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (!currentDraw) return;
+
+      var latlngs = currentDraw.getLatLngs()[0].map(function (p) { return [p.lat, p.lng]; });
+      var item = {
+        id: Date.now(),
+        zoneName: document.getElementById("zoneName").value.trim(),
+        priority: document.getElementById("priority").value,
+        viviendas: document.getElementById("viviendas").value.trim(),
+        justification: document.getElementById("justification").value.trim(),
+        contact: document.getElementById("contact").value.trim(),
+        coords: latlngs,
+        date: new Date().toISOString()
+      };
+
+      var list = loadUser();
+      list.push(item);
+      saveUser(list);
+
+      map.removeLayer(currentDraw);
+      currentDraw = null;
+      drawUserZone(item);
+
+      form.reset();
+      clearDrawn();
+      render();
+    });
+
+    /* ---------------------------------------------------------------
+       4) Render de la tabla
+    ----------------------------------------------------------------*/
+    var zonesBody = document.getElementById("zonesBody");
+    var COLS = 5;
+
+    function priorityWord(p) {
+      p = p || "media";
+      return p.charAt(0).toUpperCase() + p.slice(1);
+    }
+    function priorityClass(p) { return "p-" + (p || "media").replace(/\s+/g, ""); }
+
+    function render() {
+      var localList = loadUser().map(function (item) {
+        item.source = "Propuesta local";
+        return item;
+      });
+      var list = acceptedZones.concat(localList.slice().reverse());
+      zonesBody.innerHTML = "";
+
+      if (list.length === 0) {
+        var tr = document.createElement("tr");
+        tr.className = "empty-row";
+        tr.innerHTML = '<td colspan="' + COLS + '">Aún no hay zonas cargadas. Cuando el CSV tenga registros, aparecerán aquí y se dibujarán sobre el mapa.</td>';
+        zonesBody.appendChild(tr);
+        return;
+      }
+
+      list.forEach(function (item) {
+        var tr = document.createElement("tr");
+        tr.innerHTML =
+          '<td class="zone-name">' + escapeHtml(item.zoneName) + "</td>" +
+          '<td><span class="pill ' + priorityClass(item.priority) + '">' + priorityWord(item.priority) + "</span></td>" +
+          "<td>" + (item.viviendas ? Number(item.viviendas).toLocaleString("es-ES") : "—") + "</td>" +
+          '<td class="justif">' + escapeHtml(item.justification) + "</td>" +
+          '<td><span class="source">' + escapeHtml(item.source || "CSV") + "</span></td>";
+        zonesBody.appendChild(tr);
+      });
+    }
+
+    function escapeHtml(s) {
+      return (s || "").replace(/[&<>"']/g, function (m) {
+        return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[m];
+      });
+    }
+
+    function rebuildUserLayer(list) {
+      userLayer.clearLayers();
+      list.forEach(drawUserZone);
+    }
+
+    function rebuildAcceptedLayer(list) {
+      acceptedLayer.clearLayers();
+      list.forEach(drawAcceptedZone);
+      fitMapToVisibleZones();
+    }
+
+    function fitMapToVisibleZones() {
+      var groups = [];
+      if (acceptedLayer.getLayers().length) groups.push(acceptedLayer);
+      if (userLayer.getLayers().length) groups.push(userLayer);
+      if (!groups.length) return;
+
+      var bounds = L.featureGroup(groups).getBounds();
+      if (bounds.isValid()) map.fitBounds(bounds.pad(0.18));
+    }
+
+    function loadAcceptedFromCsv() {
+      return fetch(CSV_URL, { cache: "no-store" })
+        .then(function (response) {
+          if (!response.ok) throw new Error("CSV no disponible");
+          return response.text();
+        })
+        .then(function (text) {
+          acceptedZones = parseZonesCsv(text);
+          rebuildAcceptedLayer(acceptedZones);
+          render();
+        })
+        .catch(function () {
+          acceptedZones = [];
+          fitMapToVisibleZones();
+          render();
+        });
+    }
+
+    function parseZonesCsv(text) {
+      var rows = parseCsv(text).filter(function (row) {
+        return row.some(function (cell) { return cell.trim() !== ""; });
+      });
+      if (rows.length < 2) return [];
+
+      var headers = rows.shift().map(normalizeKey);
+      return rows.map(function (row) {
+        var raw = {};
+        headers.forEach(function (key, index) {
+          raw[key] = (row[index] || "").trim();
+        });
+        return normalizeCsvZone(raw);
+      }).filter(function (item) {
+        return item.zoneName;
+      });
+    }
+
+    function normalizeCsvZone(raw) {
+      return {
+        id: raw.id || "",
+        zoneName: raw.nombre_zona || raw.zona || raw.zone_name || "",
+        priority: (raw.prioridad || raw.priority || "media").toLowerCase(),
+        viviendas: raw.viviendas_estimadas || raw.viviendas || "",
+        justification: raw.justificacion || raw.justification || "",
+        contact: raw.contacto || raw.contact || "",
+        date: raw.fecha || raw.date || "",
+        coords: parseCoords(raw.coordenadas || raw.coords || raw.geojson || raw.geometry || ""),
+        source: "CSV"
+      };
+    }
+
+    function parseCoords(value) {
+      if (!value) return null;
+      try {
+        var parsed = JSON.parse(value);
+        if (Array.isArray(parsed)) return normalizeCoordsArray(parsed);
+        if (parsed && parsed.type === "Feature") return parseGeoJsonGeometry(parsed.geometry);
+        if (parsed && parsed.type) return parseGeoJsonGeometry(parsed);
+      } catch (err) {}
+
+      return value.split("|").map(function (pair) {
+        var parts = pair.trim().split(/[,\s]+/).map(Number);
+        if (parts.length < 2 || !isFinite(parts[0]) || !isFinite(parts[1])) return null;
+        return [parts[0], parts[1]];
+      }).filter(Boolean);
+    }
+
+    function parseGeoJsonGeometry(geometry) {
+      if (!geometry || !geometry.coordinates) return null;
+      if (geometry.type === "Polygon") return normalizeLngLatRing(geometry.coordinates[0] || []);
+      if (geometry.type === "MultiPolygon") return normalizeLngLatRing((geometry.coordinates[0] || [])[0] || []);
+      return null;
+    }
+
+    function normalizeCoordsArray(coords) {
+      if (!Array.isArray(coords) || !coords.length) return null;
+      if (Array.isArray(coords[0]) && typeof coords[0][0] === "number") return coords;
+      if (Array.isArray(coords[0]) && Array.isArray(coords[0][0]) && typeof coords[0][0][0] === "number") return coords[0];
+      return null;
+    }
+
+    function normalizeLngLatRing(ring) {
+      return ring.map(function (point) {
+        return [point[1], point[0]];
+      }).filter(function (point) {
+        return isFinite(point[0]) && isFinite(point[1]);
+      });
+    }
+
+    function normalizeKey(key) {
+      return key.trim().toLowerCase()
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
+    }
+
+    function parseCsv(text) {
+      var rows = [];
+      var row = [];
+      var cell = "";
+      var quoted = false;
+
+      for (var i = 0; i < text.length; i++) {
+        var ch = text[i];
+        var next = text[i + 1];
+
+        if (ch === '"' && quoted && next === '"') {
+          cell += '"';
+          i++;
+        } else if (ch === '"') {
+          quoted = !quoted;
+        } else if (ch === "," && !quoted) {
+          row.push(cell);
+          cell = "";
+        } else if ((ch === "\n" || ch === "\r") && !quoted) {
+          if (ch === "\r" && next === "\n") i++;
+          row.push(cell);
+          rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += ch;
+        }
+      }
+
+      if (cell || row.length) {
+        row.push(cell);
+        rows.push(row);
+      }
+      return rows;
+    }
+
+    /* ---------------------------------------------------------------
+       5) Inicialización
+    ----------------------------------------------------------------*/
+    rebuildUserLayer(loadUser());
+    loadAcceptedFromCsv();
+    render();
+  })();
+  </script>
 </body>
 </html>

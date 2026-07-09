@@ -275,9 +275,14 @@
     .parallel.three-branches > article:nth-of-type(3) {
       --detail-color: var(--blue);
       grid-column: 1 / -1;
-      justify-self: center;
-      width: min(760px, 100%);
+      justify-self: stretch;
+      width: 100%;
+      max-width: none;
       min-height: auto;
+    }
+
+    .parallel.three-branches::before {
+      display: none;
     }
 
     .branch-number {
