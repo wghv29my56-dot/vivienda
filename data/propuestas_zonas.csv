@@ -1,1 +1,1 @@
-id,nombre_zona,prioridad,viviendas_estimadas,justificacion,contacto,fecha,coordenadas
+id,nombre_zona,provincia,municipio,viviendas_estimadas,justificacion,contacto,fecha,aprobado,coordenadas

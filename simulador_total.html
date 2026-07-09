@@ -86,13 +86,28 @@
     }
 
     .hero {
-      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(242, 184, 69, 0.10) 0 1px, transparent 1px 100%),
-        linear-gradient(180deg, rgba(120, 146, 182, 0.10) 0 1px, transparent 1px 100%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0.54) 46%, rgba(255, 255, 255, 0.32) 100%),
+        url("assets/landing/fondo-grafica-transparente.png") center center / cover no-repeat,
         #ffffff;
-      background-size: 96px 96px;
+      border-bottom: 1px solid var(--line);
       padding: 72px 0 52px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.08) 42%, rgba(255, 255, 255, 0.72) 100%);
+    }
+
+    .hero .shell {
+      position: relative;
+      z-index: 1;
     }
 
     h1 {

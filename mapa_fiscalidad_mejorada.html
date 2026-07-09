@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vivienda Thinktank | Mapa de desarrollo urbano</title>
+  <title>Vivienda Thinktank | Mapa de fiscalidad mejorada</title>
 
   <!-- Leaflet (mapa) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -148,7 +148,7 @@
       align-content: space-between;
       min-height: 310px;
       padding: 34px;
-      border-top: 8px solid var(--teal);
+      border-top: 8px solid var(--gold);
     }
 
     .intro-main h2 {
@@ -184,7 +184,7 @@
       border-top: 6px solid var(--detail-color, var(--blue));
     }
 
-    .intro-card:nth-child(1) { --detail-color: var(--gold); }
+    .intro-card:nth-child(1) { --detail-color: var(--teal); }
     .intro-card:nth-child(2) { --detail-color: var(--blue); }
 
     .intro-card strong {
@@ -272,35 +272,10 @@
 
     .hint { color: var(--muted); font-size: 13px; margin: 0; flex: 1 1 220px; }
 
-    /* Contadores */
-    .metric-strip {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .metric { border: 1px solid var(--line); border-radius: 8px; padding: 16px; background: #fbfdff; }
-    .metric strong { display: block; color: var(--navy); font-size: 30px; line-height: 1.1; }
-    .metric span { color: var(--muted); font-size: 13px; font-weight: 750; }
-
     /* Panel lateral: formulario */
     .side-panel { display: grid; gap: 16px; padding: 22px; }
 
     form.proposal { display: grid; gap: 14px; }
-
-    .form-msg {
-      display: none;
-      margin: 0;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: rgba(69, 185, 173, 0.12);
-      border: 1px solid rgba(69, 185, 173, 0.4);
-      color: #1f7a70;
-      font-size: 14px;
-      font-weight: 750;
-      line-height: 1.45;
-    }
-    .form-msg.show { display: block; }
 
     .field { display: grid; gap: 7px; }
     .field label { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -403,14 +378,30 @@
     .link-button { background: none; border: none; color: var(--navy); font-weight: 850; font-size: 13px; cursor: pointer; padding: 0; text-decoration: underline; }
     .link-button.danger { color: var(--red); }
 
-    .source {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 850;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      white-space: nowrap;
+    /* Contadores */
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
     }
+    .metric { border: 1px solid var(--line); border-radius: 8px; padding: 16px; background: #fbfdff; }
+    .metric strong { display: block; color: var(--navy); font-size: 30px; line-height: 1.1; }
+    .metric span { color: var(--muted); font-size: 13px; font-weight: 750; }
+
+    .form-msg {
+      display: none;
+      margin: 0;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: rgba(69, 185, 173, 0.12);
+      border: 1px solid rgba(69, 185, 173, 0.4);
+      color: #1f7a70;
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.45;
+    }
+    .form-msg.show { display: block; }
 
     .footer { border-top: 1px solid var(--line); background: var(--navy); color: var(--white); padding: 28px 0; }
     .footer .shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
@@ -446,10 +437,11 @@
   <main>
     <section class="hero">
       <div class="shell">
-        <h1>Mapa de desarrollo urbano.</h1>
+        <h1>Mapa de fiscalidad mejorada.</h1>
         <p>
-          Un mapa colaborativo de España para señalar zonas potencialmente prioritarias de urbanización.
-          Buscamos información local de personas que conozcan la zona y puedan explicar dónde hay suelo no urbano sin una justificación real.
+          Un mapa colaborativo de España para proponer zonas de baja densidad donde aplicar una fiscalidad
+          especial que atraiga población, empresas y empleo. Dibuja el área sobre el mapa, justifica por qué
+          encaja y envíanos tu propuesta.
         </p>
       </div>
     </section>
@@ -459,25 +451,25 @@
         <article class="intro-main">
           <div>
             <div class="label">Antes de dibujar</div>
-            <h2>El mapa debe convertir suelo potencial en una discusión concreta.</h2>
+            <h2>El mapa debe detectar dónde tendría sentido premiar vivir y emprender.</h2>
             <p>
-              La idea no es señalar cualquier espacio libre, sino ordenar zonas donde tendría sentido estudiar nueva vivienda por presión de demanda, infraestructura existente y suelo no urbano sin una justificación real.
+              La fiscalidad mejorada solo tendría sentido en zonas con baja densidad, pérdida de población y capacidad real para absorber nuevos residentes, empresas o empleo sin crear otro problema de vivienda.
             </p>
           </div>
           <div class="intro-note">
-            El objetivo es recoger conocimiento local para separar límites físicos reales de clasificaciones de suelo que no responden a una razón clara.
+            Buscamos información local de gente que conozca servicios, conectividad, suelo disponible, tejido empresarial y obstáculos reales para fijar población.
           </div>
         </article>
 
         <div class="intro-cards">
           <article class="intro-card">
-            <strong>Oferta donde exista presión</strong>
-            <p>Priorizar ciudades, barrios y localidades donde transformar suelo no urbano sin justificación real pueda aliviar de verdad el acceso a la vivienda.</p>
+            <strong>Incentivo potente y verificable</strong>
+            <p>Identificar zonas donde una reducción fiscal agresiva pueda cambiar decisiones reales de residencia, inversión o actividad económica.</p>
           </article>
 
           <article class="intro-card">
-            <strong>Infraestructura aprovechable</strong>
-            <p>Valorar transporte, servicios, empleo cercano y capacidad municipal antes de proponer crecimiento residencial.</p>
+            <strong>Capacidad para recibir población</strong>
+            <p>Valorar vivienda disponible, suelo, servicios públicos, conectividad y empleo potencial antes de proponer un régimen especial.</p>
           </article>
         </div>
       </div>
@@ -500,8 +492,8 @@
           </div>
 
           <div class="metric-strip">
-            <div class="metric"><strong id="cZonas">0</strong><span>zonas propuestas aprobadas</span></div>
-            <div class="metric"><strong id="cViviendas">0</strong><span>viviendas estimadas a construir</span></div>
+            <div class="metric"><strong id="cZonas">0</strong><span>zonas despobladas aceptadas</span></div>
+            <div class="metric"><strong id="cPoblacion">0</strong><span>población potencial</span></div>
           </div>
         </section>
 
@@ -514,7 +506,7 @@
           <form class="proposal" id="proposalForm">
             <div class="field">
               <label for="zoneName">Nombre de la zona</label>
-              <input type="text" id="zoneName" name="zoneName" placeholder="Ej. Corredor sur de Guadalajara" required>
+              <input type="text" id="zoneName" name="zoneName" placeholder="Ej. Comarca de Sayago (Zamora)" required>
             </div>
 
             <div class="field">
@@ -532,13 +524,13 @@
             </div>
 
             <div class="field">
-              <label for="viviendas">Viviendas potenciales estimadas</label>
-              <input type="number" id="viviendas" name="viviendas" min="0" step="10" placeholder="Ej. 1200">
+              <label for="poblacion">Población actual estimada (hab.)</label>
+              <input type="number" id="poblacion" name="poblacion" min="0" step="10" placeholder="Ej. 3500">
             </div>
 
             <div class="field">
               <label for="justification">Justificación</label>
-              <textarea id="justification" name="justification" placeholder="¿Por qué esta zona? Suelo disponible, presión de demanda, infraestructura existente, conocimiento local y motivo por el que la clasificación no urbana no parece tener justificación real…" required></textarea>
+              <textarea id="justification" name="justification" placeholder="¿Por qué esta zona? Baja densidad, suelo disponible, infraestructura mínima ampliable, conectividad, servicios públicos, tejido económico que reactivar…" required></textarea>
             </div>
 
             <div class="field">
@@ -569,7 +561,7 @@
                 <th>Zona</th>
                 <th>Provincia</th>
                 <th>Municipio</th>
-                <th>Viviendas est.</th>
+                <th>Población</th>
                 <th>Justificación</th>
               </tr>
             </thead>
@@ -593,8 +585,8 @@
   (function () {
     "use strict";
 
-    var STORAGE_KEY = "vtt_propuestas_zonas_v1";
-    var CSV_URL = "data/propuestas_zonas.csv";
+    var STORAGE_KEY = "vtt_propuestas_fiscalidad_v1";
+    var CSV_URL = "data/propuestas_fiscalidad.csv";
     var PROVINCE_MUNICIPALITIES = {
       "A Coruña": ["A Coruña", "Santiago de Compostela", "Varios municipios de la provincia", "Otro municipio de la provincia"],
       "Albacete": ["Albacete", "Varios municipios de la provincia", "Otro municipio de la provincia"],
@@ -771,10 +763,10 @@
     function drawApprovedZone(item) {
       if (!item.coords || !item.coords.length) return;
       var poly = L.polygon(item.coords, {
-        color: "#f2b845", weight: 2, fillColor: "#f2b845", fillOpacity: 0.30
+        color: "#45b9ad", weight: 2, fillColor: "#45b9ad", fillOpacity: 0.26
       }).addTo(approvedLayer);
-      var viv = item.viviendas ? "<br>≈ " + Number(item.viviendas).toLocaleString("es-ES") + " viviendas" : "";
-      poly.bindPopup("<strong>" + escapeHtml(item.zoneName) + "</strong> (aprobada)" + viv + "<br><br>" + escapeHtml(item.justification));
+      var pob = item.poblacion ? "<br>≈ " + Number(item.poblacion).toLocaleString("es-ES") + " hab." : "";
+      poly.bindPopup("<strong>" + escapeHtml(item.zoneName) + "</strong> (aprobada)" + pob + "<br><br>" + escapeHtml(item.justification));
       item._layer = poly;
     }
 
@@ -797,7 +789,7 @@
         zoneName: document.getElementById("zoneName").value.trim(),
         province: provinceSelect.value,
         municipality: municipalitySelect.value,
-        viviendas: document.getElementById("viviendas").value.trim(),
+        poblacion: document.getElementById("poblacion").value.trim(),
         justification: document.getElementById("justification").value.trim(),
         contact: document.getElementById("contact").value.trim(),
         coords: latlngs,
@@ -840,7 +832,7 @@
             '<td class="zone-name">' + escapeHtml(item.zoneName) + "</td>" +
             "<td>" + escapeHtml(item.province || "—") + "</td>" +
             "<td>" + escapeHtml(item.municipality || "—") + "</td>" +
-            "<td>" + (item.viviendas ? Number(item.viviendas).toLocaleString("es-ES") : "—") + "</td>" +
+            "<td>" + (item.poblacion ? Number(item.poblacion).toLocaleString("es-ES") : "—") + "</td>" +
             '<td class="justif">' + escapeHtml(item.justification) + "</td>";
           zonesBody.appendChild(tr);
         });
@@ -850,11 +842,11 @@
     }
 
     function updateCounters() {
-      var totalViv = acceptedZones.reduce(function (a, z) {
-        return a + (z.viviendas ? Number(z.viviendas) || 0 : 0);
+      var totalPob = acceptedZones.reduce(function (a, z) {
+        return a + (z.poblacion ? Number(z.poblacion) || 0 : 0);
       }, 0);
       document.getElementById("cZonas").textContent = acceptedZones.length.toLocaleString("es-ES");
-      document.getElementById("cViviendas").textContent = totalViv.toLocaleString("es-ES");
+      document.getElementById("cPoblacion").textContent = totalPob.toLocaleString("es-ES");
     }
 
     function escapeHtml(s) {
@@ -931,7 +923,7 @@
         zoneName: raw.nombre_zona || raw.zona || raw.zone_name || "",
         province: raw.provincia || raw.province || "",
         municipality: raw.municipio || raw.municipality || "",
-        viviendas: raw.viviendas_estimadas || raw.viviendas || "",
+        poblacion: raw.poblacion || raw.habitantes || raw.viviendas || "",
         justification: raw.justificacion || raw.justification || "",
         contact: raw.contacto || raw.contact || "",
         date: raw.fecha || raw.date || "",

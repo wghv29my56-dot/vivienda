@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vivienda Thinktank | Boceto portal</title>
+  <title>Vivienda Thinktank | Algo habrá que hacer </title>
   <style>
     :root {
       --ink: #1f385b;
@@ -221,6 +221,7 @@
       left: 50%;
       width: 1px;
       background: var(--line);
+      z-index: 0;
     }
 
     .parallel-badge {
@@ -247,6 +248,8 @@
     }
 
     .branch {
+      position: relative;
+      z-index: 1;
       border: 1px solid var(--line);
       border-top: 8px solid var(--detail-color, var(--navy));
       border-radius: 8px;
@@ -266,23 +269,59 @@
 
     .parallel.three-branches > article:nth-of-type(1) {
       --detail-color: var(--teal);
+      grid-column: 1;
+      grid-row: 2;
     }
 
     .parallel.three-branches > article:nth-of-type(2) {
       --detail-color: var(--gold);
+      grid-column: 2;
+      grid-row: 2;
     }
 
     .parallel.three-branches > article:nth-of-type(3) {
       --detail-color: var(--blue);
       grid-column: 1 / -1;
+      grid-row: 4;
       justify-self: stretch;
       width: 100%;
       max-width: none;
       min-height: auto;
     }
 
-    .parallel.three-branches::before {
-      display: none;
+    .branch-break {
+      justify-self: center;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+      height: 34px;
+      margin: -6px 0 -6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--white);
+      box-shadow: 0 10px 30px rgba(31, 56, 91, 0.10);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .branch-break.full {
+      grid-column: 1 / -1;
+      grid-row: 3;
+    }
+
+    .three-branches .branch-break:nth-of-type(2) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .three-branches .branch-break:nth-of-type(3) {
+      grid-column: 2;
+      grid-row: 1;
     }
 
     .branch-number {
@@ -540,6 +579,19 @@
         margin-bottom: 2px;
       }
 
+      .branch-break {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        justify-self: start;
+        margin: 0 0 0 -16px;
+        box-shadow: 0 0 0 6px var(--white);
+      }
+
+      .parallel.three-branches > article {
+        grid-column: auto !important;
+        grid-row: auto !important;
+      }
+
       .parallel {
         gap: 16px;
         padding-top: 0;
@@ -654,8 +706,9 @@
         <div class="parallel three-branches">
           <div class="parallel-badge">Las 3 ramas en paralelo</div>
 
+          <div class="branch-break">Rama 01</div>
+
           <article class="branch">
-            <div class="branch-number">Rama 01</div>
             <h3>Control temporal de precios por amortización.</h3>
             <p class="branch-lead">
               Una medida complementaria para zonas tensionadas que calcula rentas máximas a partir del valor
@@ -673,8 +726,9 @@
             </ul>
           </article>
 
+          <div class="branch-break">Rama 02</div>
+
           <article class="branch">
-            <div class="branch-number">Rama 02</div>
             <h3>Oferta, suelo y reglas de acceso.</h3>
             <p class="branch-lead">
               La regulación de precios solo tendría sentido si avanza junto a una agenda agresiva de aumento de oferta,
@@ -693,8 +747,9 @@
             <a class="branch-link" href="mapa_desarrollo_urbano.html">Abrir mapa de desarrollo urbano</a>
           </article>
 
+          <div class="branch-break full">Rama 03</div>
+
           <article class="branch">
-            <div class="branch-number">Rama 03</div>
             <h3>Movilidad hacia zonas con menor presión.</h3>
             <p class="branch-lead">
               Reducir la presión sobre las zonas tensionadas también exige facilitar que población, empresas y empleo
@@ -708,6 +763,7 @@
               <li>Plantear una intensidad fiscal equivalente al régimen de Ceuta o Melilla, siempre vinculada a residencia efectiva.</li>
               <li>Combinar incentivos fiscales con vivienda, conectividad, servicios públicos y actividad económica local.</li>
             </ul>
+            <a class="branch-link" href="mapa_fiscalidad_mejorada.html">Abrir mapa de fiscalidad mejorada</a>
           </article>
         </div>
       </div>
@@ -716,7 +772,7 @@
     <section class="simulator" id="simulador">
       <div class="shell">
         <div class="section-head">
-          <h2>Simulador de control de precios.</h2>
+          <h2>Simulador de control de precios del alquiler.</h2>
           <p>
             La primera herramienta pública debe permitir probar el modelo con viviendas ficticias. El objetivo no es
             dictar una renta perfecta, sino hacer visible qué variables empujan el precio, como el valor amortizable,
@@ -783,7 +839,6 @@
               <li>Escenarios de desbloqueo aunque existan resistencias municipales.</li>
               <li>Estimación de impacto potencial sobre oferta, tiempos y precios.</li>
             </ul>
-            <a class="cta-link" href="mapa_desarrollo_urbano.html">Abrir mapa básico</a>
           </article>
         </div>
 
