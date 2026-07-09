@@ -501,7 +501,18 @@
     }
 
     .roadmap-card.roadmap-wide {
-      min-height: auto;
+      align-self: start;
+      height: fit-content;
+      min-height: 0;
+      padding-bottom: 22px;
+    }
+
+    .roadmap-card.roadmap-wide .branch-lead {
+      margin-bottom: 18px;
+    }
+
+    .roadmap-card.roadmap-wide .points {
+      gap: 10px;
     }
 
     @media (min-width: 881px) {
