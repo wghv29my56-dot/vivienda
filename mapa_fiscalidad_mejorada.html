@@ -581,66 +581,14 @@
   <!-- Leaflet + Geoman -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.17.0/dist/leaflet-geoman.min.js"></script>
+  <script src="data/municipios_espana.js"></script>
   <script>
   (function () {
     "use strict";
 
     var STORAGE_KEY = "vtt_propuestas_fiscalidad_v1";
     var CSV_URL = "data/propuestas_fiscalidad.csv";
-    var PROVINCE_MUNICIPALITIES = {
-      "A Coruña": ["A Coruña", "Santiago de Compostela", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Albacete": ["Albacete", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Alicante": ["Alicante", "Elche", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Almería": ["Almería", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Araba/Álava": ["Vitoria-Gasteiz", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Asturias": ["Oviedo", "Gijón", "Avilés", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Ávila": ["Ávila", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Badajoz": ["Badajoz", "Mérida", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Barcelona": ["Barcelona", "L'Hospitalet de Llobregat", "Badalona", "Sabadell", "Terrassa", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Bizkaia": ["Bilbao", "Barakaldo", "Getxo", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Burgos": ["Burgos", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Cáceres": ["Cáceres", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Cádiz": ["Cádiz", "Jerez de la Frontera", "Algeciras", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Cantabria": ["Santander", "Torrelavega", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Castellón": ["Castelló de la Plana", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Ceuta": ["Ceuta"],
-      "Ciudad Real": ["Ciudad Real", "Puertollano", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Córdoba": ["Córdoba", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Cuenca": ["Cuenca", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Gipuzkoa": ["Donostia/San Sebastián", "Irun", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Girona": ["Girona", "Figueres", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Granada": ["Granada", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Guadalajara": ["Guadalajara", "Azuqueca de Henares", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Huelva": ["Huelva", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Huesca": ["Huesca", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Illes Balears": ["Palma", "Ibiza", "Maó", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Jaén": ["Jaén", "Linares", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "La Rioja": ["Logroño", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Las Palmas": ["Las Palmas de Gran Canaria", "Telde", "Arrecife", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "León": ["León", "Ponferrada", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Lleida": ["Lleida", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Lugo": ["Lugo", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Madrid": ["Madrid", "Alcalá de Henares", "Alcobendas", "Fuenlabrada", "Getafe", "Leganés", "Móstoles", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Málaga": ["Málaga", "Marbella", "Vélez-Málaga", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Melilla": ["Melilla"],
-      "Murcia": ["Murcia", "Cartagena", "Lorca", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Navarra": ["Pamplona/Iruña", "Tudela", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Ourense": ["Ourense", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Palencia": ["Palencia", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Pontevedra": ["Pontevedra", "Vigo", "Vilagarcía de Arousa", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Salamanca": ["Salamanca", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Santa Cruz de Tenerife": ["Santa Cruz de Tenerife", "San Cristóbal de La Laguna", "Arona", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Segovia": ["Segovia", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Sevilla": ["Sevilla", "Dos Hermanas", "Alcalá de Guadaíra", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Soria": ["Soria", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Tarragona": ["Tarragona", "Reus", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Teruel": ["Teruel", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Toledo": ["Toledo", "Talavera de la Reina", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Valencia": ["Valencia", "Gandia", "Torrent", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Valladolid": ["Valladolid", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Zamora": ["Zamora", "Benavente", "Varios municipios de la provincia", "Otro municipio de la provincia"],
-      "Zaragoza": ["Zaragoza", "Calatayud", "Varios municipios de la provincia", "Otro municipio de la provincia"]
-    };
+    var PROVINCE_MUNICIPALITIES = window.VIVIENDA_MUNICIPIOS_ESPANA || {};
 
     /* ---------------------------------------------------------------
        1) MAPA (Leaflet) centrado en España + capas base IGN/OSM
@@ -712,7 +660,11 @@
       }
       municipalitySelect.disabled = false;
       municipalitySelect.add(new Option("Selecciona municipio", ""));
-      (PROVINCE_MUNICIPALITIES[province] || []).forEach(function (municipality) {
+      var municipalities = PROVINCE_MUNICIPALITIES[province] || [];
+      if (municipalities.length > 1) {
+        municipalitySelect.add(new Option("Varios municipios de la provincia", "Varios municipios de la provincia"));
+      }
+      municipalities.forEach(function (municipality) {
         municipalitySelect.add(new Option(municipality, municipality));
       });
     }
