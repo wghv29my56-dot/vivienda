@@ -255,8 +255,43 @@
     footer {
       padding: 28px 0;
       border-top: 1px solid var(--line);
-      color: var(--muted);
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    footer strong {
+      font-size: 1rem;
+    }
+
+    .footer-note {
+      color: rgba(255, 255, 255, 0.74);
       font-size: 0.92rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid rgba(242, 184, 69, 0.44);
+      border-radius: 999px;
+      background: rgba(242, 184, 69, 0.12);
+      color: var(--white);
+      font-size: 0.92rem;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     @media (max-width: 760px) {
@@ -327,17 +362,17 @@
     <section id="resumen">
       <h2>Resumen ejecutivo</h2>
       <p>El proyecto plantea crear un portal público, inicialmente alojado en GitHub Pages y posteriormente en un dominio propio, para validar una idea de sistema de regulación de precios de vivienda basado en el principio contable de la amortización.</p>
-      <p>Vivienda Thinktank tiene un carácter divulgativo y de think tank: ordenar una idea, hacerla pública, someterla a crítica, mostrar simulaciones y explicar con datos sintéticos cómo podría funcionar. No pretende vender una solución mágica, sino poner encima de la mesa una pieza concreta dentro de una política de vivienda más amplia.</p>
+      <p>Vivienda Thinktank tiene un carácter divulgativo y de think tank orientado a ordenar una idea, hacerla pública, someterla a crítica, mostrar simulaciones y explicar con datos sintéticos cómo podría funcionar. No pretende vender una solución mágica, sino poner encima de la mesa una pieza concreta dentro de una política de vivienda más amplia.</p>
       <p>La idea principal es ajustar el precio de alquiler teniendo en cuenta la amortización del activo y garantizando una rentabilidad mínima razonable al propietario. Como hipótesis inicial se plantea una rentabilidad del 8%, con el objetivo de que quien invierte no pierda riqueza frente a la inflación, obtenga una rentabilidad moderada y pueda amortizar el activo en un plazo razonable de 30 a 50 años.</p>
       <p>El sistema busca evitar pelotazos, garantizar una rentabilidad del activo y limitar subidas abusivas no justificadas. A diferencia de los modelos centrados solo en precio por metro cuadrado, incorporaría al cálculo el precio de compra de la vivienda y toda inversión o reforma ejecutada sobre ella.</p>
       <div class="callout">
-        <strong>Idea central:</strong> si la mejora real de una vivienda forma parte del cálculo, el propietario mantiene incentivos para invertir en la calidad del inmueble.
+        <strong>Idea central.</strong> Si la mejora real de una vivienda forma parte del cálculo, el propietario mantiene incentivos para invertir en la calidad del inmueble.
       </div>
     </section>
 
     <section id="tesis">
       <h2>Tesis de partida</h2>
-      <p>El portal no pretende presentar una norma cerrada, sino validar una tesis: la regulación del alquiler puede ser más trazable si se vincula a la amortización del activo y a inversiones verificables.</p>
+      <p>El portal no pretende presentar una norma cerrada, sino validar la tesis de que la regulación del alquiler puede ser más trazable si se vincula a la amortización del activo y a inversiones verificables.</p>
       <ul>
         <li>El alquiler regulado debería poder justificarse vivienda por vivienda, no solo mediante un índice agregado.</li>
         <li>El propietario debe poder recuperar ordenadamente la inversión realizada y obtener una rentabilidad razonable.</li>
@@ -350,7 +385,7 @@
 
     <section id="thinktank">
       <h2>Carácter divulgativo y de think tank</h2>
-      <p>El portal debe funcionar como una iniciativa divulgativa: explicar una idea compleja de forma comprensible, permitir que cualquier persona pruebe simulaciones sobre viviendas ficticias y abrir una conversación pública sobre sus límites.</p>
+      <p>El portal debe funcionar como una iniciativa divulgativa que explique una idea compleja de forma comprensible, permita que cualquier persona pruebe simulaciones sobre viviendas ficticias y abra una conversación pública sobre sus límites.</p>
       <div class="two-col">
         <div>
           <h3>Qué debe hacer</h3>
@@ -375,7 +410,7 @@
 
     <section id="medidas">
       <h2>Paquete de medidas encadenadas</h2>
-      <p>La herramienta de amortización no debería presentarse como una solución aislada. Debe explicarse como una medida más dentro de una serie de actuaciones encadenadas. El principio general sería: primero aumentar oferta y reducir costes artificiales; después, si siguen existiendo mercados bloqueados o tensionados, aplicar herramientas temporales de regulación.</p>
+      <p>La herramienta de amortización no debería presentarse como una solución aislada. Debe explicarse como una medida más dentro de una serie de actuaciones encadenadas. El principio general sería aumentar primero la oferta y reducir costes artificiales. Después, si siguen existiendo mercados bloqueados o tensionados, tendría sentido aplicar herramientas temporales de regulación.</p>
       <ul>
         <li>Liberación masiva de suelo urbanizable.</li>
         <li>Coste 0 en tasas e impuestos vinculados directamente a la promoción, construcción, adquisición o puesta en uso de vivienda, según el encaje competencial de cada administración.</li>
@@ -399,7 +434,7 @@
         <li>Pueden generar conflictos probatorios sobre el valor real del inmueble o de las mejoras.</li>
       </ul>
       <p>El problema principal de muchos modelos de control de precio de vivienda habitual es que terminan reduciendo la discusión a un precio por metro cuadrado. Ese enfoque puede servir como referencia simple, pero ignora el estado real del activo, sus mejoras, sus instalaciones y la inversión ejecutada para mantenerlo o elevar su calidad.</p>
-      <p>La propuesta del proyecto parte de una intuición distinta: si el precio máximo se apoyase en una lógica contable, basada en amortización y rentabilidad razonable, podría construirse un sistema más trazable, auditable y explicable.</p>
+      <p>La propuesta del proyecto parte de una intuición distinta. Si el precio máximo se apoyase en una lógica contable, basada en amortización y rentabilidad razonable, podría construirse un sistema más trazable, auditable y explicable.</p>
     </section>
 
     <section id="modelo">
@@ -416,7 +451,7 @@ precio_mensual_regulado = precio_anual_regulado / 12</pre>
       <p>El porcentaje de rentabilidad se plantea inicialmente como hipótesis de trabajo. Se parte de un 8%, pero este valor debería analizarse, justificarse y compararse con otros escenarios. La lógica no es premiar la especulación, sino garantizar que el propietario no pierda riqueza en términos reales, pueda escapar razonablemente de la inflación y termine de amortizar el activo en un plazo razonable.</p>
       <h3>Qué hace diferente al enfoque</h3>
       <p>La aportación principal está en combinar control de precios, garantía de rentabilidad e incentivo a la mejora. Si una vivienda se reforma, esa inversión se incorpora como activo amortizable y puede aumentar el alquiler máximo permitido. Si la reforma ya se ha amortizado por completo, deja de justificar incremento de precio, salvo que se defina una regla específica.</p>
-      <p>Frente a un sistema basado exclusivamente en precio por metro cuadrado, este enfoque intenta resolver una debilidad importante: el propietario no queda desincentivado a invertir en el inmueble, porque la inversión real forma parte del cálculo.</p>
+      <p>Frente a un sistema basado exclusivamente en precio por metro cuadrado, este enfoque intenta resolver una debilidad importante. El propietario no queda desincentivado a invertir en el inmueble, porque la inversión real forma parte del cálculo.</p>
       <ul>
         <li>Evita rentas extraordinarias no vinculadas a inversión real.</li>
         <li>Garantiza una rentabilidad razonable del activo.</li>
@@ -565,7 +600,7 @@ precio_mensual_regulado = precio_anual_regulado / 12</pre>
         </div>
         <div>
           <h3>Aportación propia</h3>
-          <p>La amortización contable puede aportar una capa adicional de justicia interna: no solo pregunta cuánto se paga en la zona, sino qué inversión existe detrás de esa vivienda concreta y qué rentabilidad razonable debería reconocerse.</p>
+          <p>La amortización contable puede aportar una capa adicional de justicia interna porque no solo pregunta cuánto se paga en la zona, sino qué inversión existe detrás de esa vivienda concreta y qué rentabilidad razonable debería reconocerse.</p>
         </div>
       </div>
     </section>
@@ -591,7 +626,7 @@ precio_mensual_regulado = precio_anual_regulado / 12</pre>
 
     <section id="preguntas">
       <h2>Preguntas abiertas</h2>
-      <p>Estas preguntas deberían corregirse, ampliarse o responderse durante el desarrollo:</p>
+      <p>Estas preguntas deberían corregirse, ampliarse o responderse durante el desarrollo.</p>
       <ul>
         <li>La rentabilidad permitida debe aplicarse sobre la amortización anual, sobre el valor pendiente o sobre otra base?</li>
         <li>Cómo se trata el suelo, que normalmente no se amortiza?</li>
@@ -615,7 +650,7 @@ precio_mensual_regulado = precio_anual_regulado / 12</pre>
       <h2>Próximos pasos</h2>
       <ol>
         <li>Corregir esta explicación y fijar el enfoque.</li>
-        <li>Definir el mensaje público del portal: qué afirma, qué no afirma y qué quiere validar.</li>
+        <li>Definir el mensaje público del portal, qué afirma, qué no afirma y qué quiere validar.</li>
         <li>Decidir el nombre del proyecto y preparar su publicación en GitHub Pages.</li>
         <li>Diseñar la ciudad ficticia y sus barrios.</li>
         <li>Definir la página de think tank/divulgación y el tono público del proyecto.</li>
@@ -634,7 +669,9 @@ precio_mensual_regulado = precio_anual_regulado / 12</pre>
 
   <footer>
     <div class="wrap">
-      Documento de trabajo inicial para Vivienda Thinktank.
+      <strong>Vivienda Thinktank</strong>
+      <span class="footer-note">Este proyecto no ha recibido financiación ni pública ni privada.</span>
+      <a class="footer-link" href="https://x.com/viviendathinkt" target="_blank" rel="noreferrer">X @viviendathinkt</a>
     </div>
   </footer>
 </body>
