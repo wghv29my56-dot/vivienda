@@ -74,10 +74,13 @@
     .header-actions {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-left: auto;
     }
 
-    .simulator-button {
+    .header-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -94,13 +97,36 @@
       box-shadow: 0 12px 28px rgba(31, 56, 91, 0.16);
     }
 
-    .simulator-button::after {
+    .header-button::after {
       content: "";
       width: 7px;
       height: 7px;
       border-top: 2px solid currentColor;
       border-right: 2px solid currentColor;
       transform: rotate(45deg);
+    }
+
+    .header-button.primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .header-button.secondary {
+      border-color: rgba(69, 185, 173, 0.38);
+      background: rgba(69, 185, 173, 0.12);
+      color: var(--navy);
+      box-shadow: none;
+    }
+
+    .header-button.social {
+      border-color: rgba(242, 184, 69, 0.46);
+      background: rgba(242, 184, 69, 0.14);
+      color: var(--navy);
+      box-shadow: none;
+    }
+
+    .header-button.social::after {
+      display: none;
     }
 
     .hero {
@@ -208,6 +234,7 @@
       justify-content: center;
       min-width: 136px;
       height: 36px;
+      padding: 0 18px;
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--white);
@@ -235,6 +262,22 @@
 
     .parallel > article:last-of-type {
       --detail-color: var(--gold);
+    }
+
+    .parallel.three-branches > article:nth-of-type(1) {
+      --detail-color: var(--teal);
+    }
+
+    .parallel.three-branches > article:nth-of-type(2) {
+      --detail-color: var(--gold);
+    }
+
+    .parallel.three-branches > article:nth-of-type(3) {
+      --detail-color: var(--blue);
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: min(760px, 100%);
+      min-height: auto;
     }
 
     .branch-number {
@@ -285,15 +328,6 @@
       background: var(--detail-color, var(--blue));
     }
 
-    .note {
-      margin-top: 30px;
-      border-left: 4px solid var(--detail-color, var(--blue));
-      padding: 2px 0 2px 18px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
     .simulator {
       border-top: 1px solid var(--line);
       background: var(--soft);
@@ -302,13 +336,12 @@
 
     .simulator-grid {
       display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 28px;
       align-items: stretch;
     }
 
     .simulator-panel,
-    .result-panel,
     .roadmap-card {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -349,57 +382,9 @@
       font-weight: 700;
     }
 
-    .result-panel {
-      display: grid;
-      align-content: space-between;
-      border-top: 8px solid var(--gold);
-    }
-
-    .result-label {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 850;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .result-number {
-      margin: 20px 0 10px;
-      color: var(--navy);
-      font-size: clamp(52px, 7vw, 94px);
-      line-height: 0.9;
-      font-weight: 850;
-      letter-spacing: 0;
-    }
-
-    .result-number span {
-      color: var(--muted);
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    .breakdown {
-      display: grid;
-      gap: 12px;
-      margin-top: 26px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-    }
-
-    .breakdown-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .breakdown-row strong {
-      color: var(--ink);
-    }
-
     .preview-panel {
       border-top: 8px solid var(--teal);
+      max-width: 860px;
     }
 
     .preview-copy {
@@ -450,6 +435,14 @@
       box-shadow: 0 16px 34px rgba(31, 56, 91, 0.18);
     }
 
+    .branch-link {
+      display: inline-flex;
+      margin-top: 26px;
+      color: var(--navy);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
     .roadmap {
       border-top: 1px solid var(--line);
       background: var(--white);
@@ -459,6 +452,10 @@
     .roadmap-card {
       border-top: 8px solid var(--detail-color, var(--navy));
       min-height: 380px;
+    }
+
+    .roadmap-card[id] {
+      scroll-margin-top: 96px;
     }
 
     .roadmap-phase {
@@ -600,7 +597,7 @@
         line-height: 1.05;
       }
 
-      .simulator-button {
+      .header-button {
         min-height: 40px;
         padding: 0 14px;
       }
@@ -615,7 +612,9 @@
         <span>Vivienda Thinktank</span>
       </div>
       <div class="header-actions">
-        <a class="simulator-button" href="simulador_total.html">Simulador</a>
+        <a class="header-button primary" href="simulador_total.html">Simulador de alquiler regulado</a>
+        <a class="header-button secondary" href="mapa_desarrollo_urbano.html">Mapa de desarrollo urbano</a>
+        <a class="header-button social" href="https://x.com/viviendathinkt" target="_blank" rel="noreferrer">X @viviendathinkt</a>
       </div>
     </div>
   </header>
@@ -647,8 +646,8 @@
           </p>
         </div>
 
-        <div class="parallel">
-          <div class="parallel-badge">En paralelo</div>
+        <div class="parallel three-branches">
+          <div class="parallel-badge">Las 3 ramas en paralelo</div>
 
           <article class="branch">
             <div class="branch-number">Rama 01</div>
@@ -665,13 +664,8 @@
               <li>Solo debería penalizar a quien busque rentabilidades excesivas e injustificadas.</li>
               <li>Debe plantearse siempre como medida temporal porque su resultado será peor que un libre mercado con oferta y demanda balanceadas.</li>
               <li>Premia la inversión en la vivienda porque reformas, mejoras y equipamiento entrarían en el cálculo amortizable.</li>
+              <li>Exige una ejecución técnica, jurídica y administrativa precisa para valorar activos antiguos, tasar obras y ordenar mejoras.</li>
             </ul>
-
-            <p class="note">
-              Necesita un plan de ejecución técnico, jurídico y administrativo muy preparado. También necesitará una
-              estrategia inicial para valorar activos comprados en otras épocas, tasar obras y ordenar mejoras. Nunca
-              funcionará sin una letra pequeña que funcione.
-            </p>
           </article>
 
           <article class="branch">
@@ -683,13 +677,31 @@
             </p>
 
             <ul class="points">
-              <li>Seleccionar ciudades, regiones, islas o zonas equivalentes donde desarrollar escenarios concretos.</li>
+              <li>Seleccionar ciudades, regiones, barrios o localidades que desarrollar y hacer crecer urbanísticamente de forma estratégica.</li>
               <li>Liberalización masiva de suelo urbanizable, incluso cuando los ayuntamientos no quieran desbloquearlo.</li>
               <li>Ampliar la posibilidad de construir en suelo rústico bajo criterios técnicos, ambientales y de infraestructura.</li>
               <li>Eliminar tasas e impuestos vinculados a la vivienda para reducir costes de promoción, compra y alquiler.</li>
               <li>Reformar el código de edificación para modernizarlo y permitir nuevas técnicas constructivas.</li>
               <li>Estudiar una suspensión temporal de compra de vivienda por extranjeros de cualquier renta, con análisis jurídico específico.</li>
               <li>Limitar la VPO a primera vivienda y activar recompra obligatoria por la administración cuando deje de serlo.</li>
+            </ul>
+            <a class="branch-link" href="mapa_desarrollo_urbano.html">Abrir mapa de desarrollo urbano</a>
+          </article>
+
+          <article class="branch">
+            <div class="branch-number">Rama 03</div>
+            <h3>Movilidad hacia zonas con menor presión.</h3>
+            <p class="branch-lead">
+              Reducir la presión sobre las zonas tensionadas también exige facilitar que población, empresas y empleo
+              se desplacen hacia territorios con baja densidad y mayor disponibilidad potencial de suelo urbanizable o
+              rural edificable.
+            </p>
+
+            <ul class="points">
+              <li>Identificar zonas con baja densidad poblacional, suelo disponible e infraestructura mínima ampliable.</li>
+              <li>Diseñar una reducción fiscal agresiva para personas físicas y jurídicas que trasladen residencia o actividad real.</li>
+              <li>Plantear una intensidad fiscal equivalente al régimen de Ceuta o Melilla, siempre vinculada a residencia efectiva.</li>
+              <li>Combinar incentivos fiscales con vivienda, conectividad, servicios públicos y actividad económica local.</li>
             </ul>
           </article>
         </div>
@@ -720,24 +732,8 @@
               <li>Añadir inversiones y comprobar si siguen dentro de su vida útil.</li>
               <li>Ver el desglose anual y mensual con trazabilidad de cada activo.</li>
             </ul>
-            <a class="cta-link" href="simulador_total.html">Abrir simulador completo</a>
+            <a class="cta-link" href="simulador_total.html">Abrir simulador de alquiler regulado</a>
           </article>
-
-          <aside class="result-panel" aria-live="polite">
-            <div>
-              <div class="result-label">Ejemplo rápido</div>
-              <div class="result-number">468<span> €/mes</span></div>
-              <p class="branch-lead">
-                Resultado orientativo para una vivienda comprada por 200.000 euros, una reforma de baño y equipamiento
-                básico. La pantalla completa permitirá cambiar todos los supuestos.
-              </p>
-            </div>
-            <div class="breakdown">
-              <div class="breakdown-row"><span>Amortización anual</span><strong>5.200 €</strong></div>
-              <div class="breakdown-row"><span>Rentabilidad anual</span><strong>416 €</strong></div>
-              <div class="breakdown-row"><span>Renta anual resultante</span><strong>5.616 €</strong></div>
-            </div>
-          </aside>
         </div>
       </div>
     </section>
@@ -770,7 +766,7 @@
             </ul>
           </article>
 
-          <article class="roadmap-card">
+          <article class="roadmap-card" id="mapa-desarrollo-urbano">
             <div class="branch-number">Mapa de oferta</div>
             <h3>Crear un mapa interactivo de suelo.</h3>
             <p class="branch-lead">
@@ -782,6 +778,7 @@
               <li>Escenarios de desbloqueo aunque existan resistencias municipales.</li>
               <li>Estimación de impacto potencial sobre oferta, tiempos y precios.</li>
             </ul>
+            <a class="cta-link" href="mapa_desarrollo_urbano.html">Abrir mapa básico</a>
           </article>
         </div>
 
@@ -821,17 +818,17 @@
           <div class="parallel-badge">Paso 03</div>
 
           <article class="roadmap-card">
-            <div class="branch-number">Acción colectiva</div>
-            <h3>Guía de acciones individuales realistas.</h3>
+            <div class="branch-number">Medidas ejecutables</div>
+            <h3>Batería realista de medidas contra la crisis de vivienda.</h3>
             <p class="branch-lead">
-              Ordenar pasos que ciudadanos, propietarios, profesionales, comunidades y administraciones puedan ejecutar
-              de forma coordinada para mitigar el problema. Si no es para nuestra generación, al menos para las
-              siguientes.
+              El objetivo final de Vivienda Thinktank es construir una batería de medidas realistas, ejecutables de
+              forma inmediata o escalonada, que puedan aliviar el problema de la vivienda aunque sus efectos completos
+              lleguen tarde para esta generación y sirvan, como mínimo, para la siguiente.
             </p>
             <ul class="points">
-              <li>Identificar decisiones individuales que tengan impacto cuando se coordinan de forma colectiva.</li>
-              <li>Separar acciones inmediatas, acciones de transición y acciones con efecto a largo plazo.</li>
-              <li>Convertir la guía en una herramienta pública, revisable y fácil de ampliar.</li>
+              <li>Separar medidas inmediatas, reformas transitorias y cambios estructurales que puedan desplegarse por fases.</li>
+              <li>Definir para cada medida responsable, plazo, coste administrativo, riesgo jurídico y efecto esperado.</li>
+              <li>Convertir el portal en un repositorio público de propuestas corregibles, priorizadas y listas para debate técnico.</li>
             </ul>
           </article>
         </div>

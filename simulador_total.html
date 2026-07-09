@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vivienda Thinktank | Simulador completo</title>
+  <title>Vivienda Thinktank | Simulador de alquiler</title>
   <style>
     :root {
       --ink: #1f385b;
@@ -14,6 +14,7 @@
       --teal: #45b9ad;
       --gold: #f2b845;
       --blue: #7892b6;
+      --red: #d96b63;
       --line: rgba(31, 56, 91, 0.14);
       --shadow: 0 24px 70px rgba(31, 56, 91, 0.10);
     }
@@ -122,6 +123,12 @@
       align-items: start;
     }
 
+    .grid > *,
+    .stack,
+    .panel {
+      min-width: 0;
+    }
+
     .stack {
       display: grid;
       gap: 22px;
@@ -170,7 +177,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: minmax(190px, 1.2fr) minmax(150px, 1fr);
       gap: 14px;
     }
 
@@ -201,18 +208,10 @@
       font-weight: 700;
     }
 
-    .scenario-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
     button {
       font: inherit;
     }
 
-    .scenario-button,
     .ghost-button,
     .primary-button {
       min-height: 44px;
@@ -221,17 +220,10 @@
       cursor: pointer;
     }
 
-    .scenario-button,
     .ghost-button {
       border: 1px solid var(--line);
       color: var(--navy);
       background: var(--white);
-    }
-
-    .scenario-button.active {
-      border-color: transparent;
-      color: var(--white);
-      background: var(--navy);
     }
 
     .primary-button {
@@ -251,15 +243,53 @@
     }
 
     .table-wrap {
+      max-width: 100%;
       overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: 8px;
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
       width: 100%;
-      min-width: 860px;
+      min-width: 840px;
       border-collapse: collapse;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      min-width: 250px;
+      width: 250px;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      min-width: 120px;
+      width: 120px;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      min-width: 150px;
+      width: 150px;
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+      min-width: 126px;
+      width: 126px;
+    }
+
+    td input[data-field="amount"] {
+      min-width: 94px;
+    }
+
+    td input[data-field="concept"] {
+      min-width: 0;
+    }
+
+    td input[data-field="start"] {
+      min-width: 118px;
     }
 
     th,
@@ -288,6 +318,13 @@
       border-bottom: 0;
     }
 
+    .concept-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+    }
+
     .status {
       display: inline-flex;
       align-items: center;
@@ -298,6 +335,9 @@
       background: rgba(69, 185, 173, 0.16);
       font-size: 12px;
       font-weight: 850;
+      justify-content: center;
+      min-width: 94px;
+      white-space: nowrap;
     }
 
     .status.expired {
@@ -305,19 +345,24 @@
       background: rgba(242, 184, 69, 0.22);
     }
 
+    .status.residual {
+      color: var(--navy);
+      background: rgba(120, 146, 182, 0.22);
+    }
+
     .remove-button {
       min-height: 36px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      color: var(--navy);
-      background: #fff;
+      padding: 0 10px;
+      color: #8e332d;
+      background: rgba(217, 107, 99, 0.10);
       font-weight: 850;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .result-panel {
-      position: sticky;
-      top: 96px;
       border-top: 8px solid var(--gold);
     }
 
@@ -356,15 +401,6 @@
       color: var(--ink);
     }
 
-    .formula {
-      margin-top: 24px;
-      border-left: 4px solid var(--teal);
-      padding-left: 16px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
     .trace-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -391,17 +427,90 @@
       line-height: 1.45;
     }
 
+    .lower-stack {
+      display: grid;
+      gap: 40px;
+      margin-top: 44px;
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.58;
+    }
+
+    .problem-grid,
+    .precedent-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .problem-card,
+    .precedent-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 24px;
+      box-shadow: 0 14px 40px rgba(31, 56, 91, 0.06);
+    }
+
+    .problem-card strong,
+    .precedent-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-size: 19px;
+    }
+
+    .problem-card p,
+    .precedent-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .problem-card {
+      border-top: 8px solid var(--red);
+      background: linear-gradient(180deg, rgba(217, 107, 99, 0.08), #ffffff 34%);
+    }
+
+    .precedent-card {
+      border-top: 8px solid var(--teal);
+    }
+
+    .precedent-card:nth-child(2) {
+      border-top-color: var(--gold);
+    }
+
+    .precedent-card a {
+      display: inline-flex;
+      margin-top: 16px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 850;
+      text-decoration: none;
+    }
+
     @media (max-width: 980px) {
       .grid,
       .controls,
-      .scenario-grid,
-      .trace-grid {
+      .trace-grid,
+      .problem-grid,
+      .precedent-grid {
         grid-template-columns: 1fr;
       }
 
-      .result-panel {
-        position: static;
-      }
     }
 
     @media (max-width: 720px) {
@@ -417,6 +526,11 @@
 
       .hero {
         padding: 54px 0 42px;
+      }
+
+      .asset-toolbar {
+        align-items: stretch;
+        flex-direction: column;
       }
     }
   </style>
@@ -435,10 +549,11 @@
   <main>
     <section class="hero">
       <div class="shell">
-        <h1>Simulador completo de renta por amortización.</h1>
+        <h1>Simulador de alquiler por amortización.</h1>
         <p>
-          Boceto funcional para probar el cálculo con viviendas ficticias, activos amortizables y una rentabilidad
-          razonable. La utilidad real estará en ver qué parte del precio sale de cada decisión.
+          Esta herramienta permite estimar un alquiler máximo orientativo a partir del valor de compra o tasación, la
+          actualización por IPC, las mejoras amortizables y una rentabilidad garantizada para el propietario. Los datos
+          son ficticios y editables para probar el modelo antes de convertirlo en una propuesta normativa.
         </p>
       </div>
     </section>
@@ -450,15 +565,10 @@
             <div class="label">Vivienda ficticia</div>
             <h2>Supuestos de partida.</h2>
             <p>
-              Cada escenario carga una vivienda sintética. Después se puede ajustar el año de cálculo, la rentabilidad
-              y la lista de activos para comprobar cómo cambia la renta máxima orientativa.
+              El simulador parte de una vivienda de ejemplo. La fecha de adquisición es clave porque el valor de la
+              vivienda se actualiza por IPC antes de calcular la amortización regulada. La rentabilidad preestablecida
+              es del 8%, un porcentaje muy razonable dentro del mercado inmobiliario.
             </p>
-
-            <div class="scenario-grid" aria-label="Escenarios de vivienda">
-              <button class="scenario-button active" type="button" data-scenario="centro">Centro tensionado</button>
-              <button class="scenario-button" type="button" data-scenario="isla">Isla con poco suelo</button>
-              <button class="scenario-button" type="button" data-scenario="periferia">Periferia desbloqueada</button>
-            </div>
 
             <div class="controls" style="margin-top: 20px;">
               <div class="field">
@@ -468,18 +578,6 @@
               <div class="field">
                 <label for="return-rate">Rentabilidad</label>
                 <input id="return-rate" type="number" min="0" max="25" step="0.5" value="8">
-              </div>
-              <div class="field">
-                <label for="temporary-years">Límite temporal</label>
-                <input id="temporary-years" type="number" min="1" max="20" step="1" value="5">
-              </div>
-              <div class="field">
-                <label for="zone-status">Zona</label>
-                <select id="zone-status">
-                  <option>Zona tensionada</option>
-                  <option>Isla o territorio equivalente</option>
-                  <option>Mercado en transición</option>
-                </select>
               </div>
             </div>
           </section>
@@ -500,10 +598,9 @@
                     <th>Concepto</th>
                     <th>Tipo</th>
                     <th>Importe</th>
-                    <th>Año</th>
+                    <th>Año de origen</th>
                     <th>Vida útil</th>
                     <th>Estado</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody id="asset-body"></tbody>
@@ -512,20 +609,32 @@
           </section>
 
           <section class="panel panel-blue">
-            <div class="label">Trazabilidad</div>
-            <h2>Qué debe explicar el simulador.</h2>
+            <div class="label">Reglas básicas</div>
+            <h2>Cómo funciona el sistema.</h2>
             <div class="trace-grid">
               <div class="trace-item">
-                <strong>Origen del valor</strong>
-                <span>Compra histórica, tasación inicial o valoración oficial cuando no haya dato fiable.</span>
+                <strong>Valor actualizado por IPC</strong>
+                <span>El activo de compra de vivienda se actualiza desde su año de adquisición hasta el año de cálculo.</span>
               </div>
               <div class="trace-item">
-                <strong>Vida útil aplicada</strong>
-                <span>Cada reforma o elemento se amortiza con una vida útil propia y deja de contar al agotarse.</span>
+                <strong>Residual mínimo del 15%</strong>
+                <span>La vivienda no baja de un 15% de valor residual. Reformas, obras y equipamiento sí se amortizan hasta cero al final de su vida útil.</span>
               </div>
               <div class="trace-item">
-                <strong>Control temporal</strong>
-                <span>El cálculo debe poder apagarse cuando la zona deje de justificar una intervención.</span>
+                <strong>Costes operativos no incluidos</strong>
+                <span>Otros costes como IBI, comunidad, seguros o mantenimiento podrán añadirse en una versión operativa. No forman parte de esta versión conceptual.</span>
+              </div>
+              <div class="trace-item">
+                <strong>Vidas útiles base</strong>
+                <span>El modelo parte de 50 años para inmuebles, 10 años para reformas y obras, y 6 años para electrodomésticos o equipamiento básico.</span>
+              </div>
+              <div class="trace-item">
+                <strong>Valor de entrada verificable</strong>
+                <span>El precio de compra o reforma será el importe efectivo cuando exista soporte documental. En la transición podrá usarse el valor aprobado mediante tasaciones bajo una norma común.</span>
+              </div>
+              <div class="trace-item">
+                <strong>Rentabilidad garantizada razonable</strong>
+                <span>La rentabilidad garantizada del activo, por defecto el 8%, busca garantizar el patrimonio del propietario y evitar subidas injustificadas sin inversión real detrás.</span>
               </div>
             </div>
           </section>
@@ -534,24 +643,74 @@
         <aside class="panel result-panel" aria-live="polite">
           <div class="label">Resultado orientativo</div>
           <div class="result-number"><output id="monthly-rent">0</output><span> €/mes</span></div>
-          <p>
-            Renta calculada a partir de la amortización anual activa más una rentabilidad razonable. Es un boceto de
-            cálculo, no una propuesta jurídica cerrada.
-          </p>
 
           <div class="breakdown">
             <div class="breakdown-row"><span>Amortización anual activa</span><strong><output id="annual-amortization">0 €</output></strong></div>
             <div class="breakdown-row"><span>Rentabilidad anual</span><strong><output id="annual-return">0 €</output></strong></div>
-            <div class="breakdown-row"><span>Renta anual resultante</span><strong><output id="annual-rent">0 €</output></strong></div>
+            <div class="breakdown-row"><span>Alquiler anual resultante</span><strong><output id="annual-rent">0 €</output></strong></div>
+            <div class="breakdown-row"><span>Vivienda actualizada por IPC</span><strong><output id="housing-adjusted-value">0 €</output></strong></div>
+            <div class="breakdown-row"><span>Residual vivienda protegido</span><strong><output id="housing-residual-value">0 €</output></strong></div>
             <div class="breakdown-row"><span>Activos activos</span><strong><output id="active-assets">0</output></strong></div>
-            <div class="breakdown-row"><span>Activos agotados</span><strong><output id="expired-assets">0</output></strong></div>
+            <div class="breakdown-row"><span>Activos sin amortización</span><strong><output id="expired-assets">0</output></strong></div>
           </div>
 
-          <div class="formula">
-            Amortización activa anual más rentabilidad pactada. La siguiente versión deberá incorporar reglas de
-            tasación, auditoría documental, límites por zona y salida temporal del sistema.
-          </div>
         </aside>
+      </div>
+
+      <div class="shell lower-stack">
+        <section class="lower-section">
+          <div class="section-heading">
+            <div class="label">Problemas abiertos</div>
+            <h2>Lo que el sistema todavía tiene que resolver.</h2>
+          </div>
+
+          <div class="problem-grid">
+            <article class="problem-card">
+              <strong>El control de precios no es el objetivo final</strong>
+              <p>
+                Ningún sistema de control de precios del alquiler mejora un libre mercado con plenitud de oferta. Ese
+                mercado sano es precisamente el objetivo al que deberían empujar las medidas de fondo.
+              </p>
+            </article>
+
+            <article class="problem-card">
+              <strong>Asignación cuando la demanda sigue disparada</strong>
+              <p>
+                El gran reto es cómo gestionar quién se lleva el alquiler cuando la demanda es muy superior a la oferta.
+                Se están trabajando ideas justas para ordenar ese punto sin crear nuevas arbitrariedades.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="lower-section">
+          <div class="section-heading">
+            <div class="label">Referencias externas</div>
+            <h2>¿Existen precedentes?</h2>
+          </div>
+
+          <div class="precedent-grid">
+            <article class="precedent-card">
+              <strong>Alemania y la II. BV</strong>
+              <p>
+                La normativa alemana de cálculos inmobiliarios sirve como referencia por su lógica de renta vinculada a
+                costes reconocidos, amortización y rentabilidad del capital en vivienda regulada. No es el mismo modelo,
+                pero ayuda a pensar cómo documentar una fórmula verificable.
+              </p>
+              <a href="https://www.gesetze-im-internet.de/bvo_2/index.html" target="_blank" rel="noreferrer">Ver fuente oficial</a>
+            </article>
+
+            <article class="precedent-card">
+              <strong>Países Bajos y alquiler regulado</strong>
+              <p>
+                El sistema neerlandés distingue entre vivienda social, media y privada, usa límites de alquiler en
+                parte del mercado y cuenta con un tribunal especializado para disputas. Interesa por su trazabilidad y
+                por la existencia de una autoridad de revisión.
+              </p>
+              <a href="https://www.government.nl/themes/building-and-housing/housing/rented-housing" target="_blank" rel="noreferrer">Ver fuente oficial</a>
+            </article>
+          </div>
+        </section>
       </div>
     </section>
   </main>
@@ -567,53 +726,181 @@
       maximumFractionDigits: 0
     });
 
-    const scenarios = {
-      centro: {
-        year: 2026,
-        rate: 8,
-        zone: "Zona tensionada",
-        assets: [
-          { id: 1, concept: "Vivienda base", type: "Vivienda", amount: 200000, start: 2000, life: 50 },
-          { id: 2, concept: "Reforma baño", type: "Reforma", amount: 10000, start: 2018, life: 10 },
-          { id: 3, concept: "Nevera", type: "Equipamiento", amount: 1200, start: 2021, life: 6 }
-        ]
-      },
-      isla: {
-        year: 2026,
-        rate: 8,
-        zone: "Isla o territorio equivalente",
-        assets: [
-          { id: 1, concept: "Vivienda base", type: "Vivienda", amount: 260000, start: 2008, life: 50 },
-          { id: 2, concept: "Aislamiento térmico", type: "Mejora", amount: 18000, start: 2020, life: 15 },
-          { id: 3, concept: "Cocina", type: "Reforma", amount: 14500, start: 2023, life: 12 }
-        ]
-      },
-      periferia: {
-        year: 2026,
-        rate: 7,
-        zone: "Mercado en transición",
-        assets: [
-          { id: 1, concept: "Vivienda base", type: "Vivienda", amount: 155000, start: 2014, life: 50 },
-          { id: 2, concept: "Ventanas", type: "Mejora", amount: 7200, start: 2022, life: 15 },
-          { id: 3, concept: "Lavadora", type: "Equipamiento", amount: 800, start: 2024, life: 6 }
-        ]
-      }
-    };
+    const HOUSING_RESIDUAL_RATE = 0.15;
+    const assetTypes = ["Vivienda", "Reforma o mejora", "Equipamiento"];
+    const EMBEDDED_IPC_CSV = `ano,ipc_anual_pct,fuente
+1950,7.0000,estimacion_transitoria_pre_1960
+1951,9.3000,estimacion_transitoria_pre_1960
+1952,5.2000,estimacion_transitoria_pre_1960
+1953,4.6000,estimacion_transitoria_pre_1960
+1954,5.1000,estimacion_transitoria_pre_1960
+1955,7.5000,estimacion_transitoria_pre_1960
+1956,15.0000,estimacion_transitoria_pre_1960
+1957,12.0000,estimacion_transitoria_pre_1960
+1958,12.6000,estimacion_transitoria_pre_1960
+1959,6.5000,estimacion_transitoria_pre_1960
+1960,1.1778,world_bank_fp_cpi_totl_zg
+1961,0.8093,world_bank_fp_cpi_totl_zg
+1962,5.7065,world_bank_fp_cpi_totl_zg
+1963,8.7437,world_bank_fp_cpi_totl_zg
+1964,6.9792,world_bank_fp_cpi_totl_zg
+1965,13.2141,world_bank_fp_cpi_totl_zg
+1966,6.2404,world_bank_fp_cpi_totl_zg
+1967,6.3916,world_bank_fp_cpi_totl_zg
+1968,4.9544,world_bank_fp_cpi_totl_zg
+1969,2.1603,world_bank_fp_cpi_totl_zg
+1970,5.7311,world_bank_fp_cpi_totl_zg
+1971,8.2369,world_bank_fp_cpi_totl_zg
+1972,8.2723,world_bank_fp_cpi_totl_zg
+1973,11.4167,world_bank_fp_cpi_totl_zg
+1974,15.6804,world_bank_fp_cpi_totl_zg
+1975,16.9533,world_bank_fp_cpi_totl_zg
+1976,17.6249,world_bank_fp_cpi_totl_zg
+1977,24.5381,world_bank_fp_cpi_totl_zg
+1978,19.7737,world_bank_fp_cpi_totl_zg
+1979,15.6602,world_bank_fp_cpi_totl_zg
+1980,15.5619,world_bank_fp_cpi_totl_zg
+1981,14.5493,world_bank_fp_cpi_totl_zg
+1982,14.4150,world_bank_fp_cpi_totl_zg
+1983,12.1741,world_bank_fp_cpi_totl_zg
+1984,11.2803,world_bank_fp_cpi_totl_zg
+1985,8.8145,world_bank_fp_cpi_totl_zg
+1986,8.7949,world_bank_fp_cpi_totl_zg
+1987,5.2480,world_bank_fp_cpi_totl_zg
+1988,4.8373,world_bank_fp_cpi_totl_zg
+1989,6.7914,world_bank_fp_cpi_totl_zg
+1990,6.7218,world_bank_fp_cpi_totl_zg
+1991,5.9342,world_bank_fp_cpi_totl_zg
+1992,5.9245,world_bank_fp_cpi_totl_zg
+1993,4.5691,world_bank_fp_cpi_totl_zg
+1994,4.7184,world_bank_fp_cpi_totl_zg
+1995,4.6738,world_bank_fp_cpi_totl_zg
+1996,3.5588,world_bank_fp_cpi_totl_zg
+1997,1.9711,world_bank_fp_cpi_totl_zg
+1998,1.8343,world_bank_fp_cpi_totl_zg
+1999,2.3103,world_bank_fp_cpi_totl_zg
+2000,3.4335,world_bank_fp_cpi_totl_zg
+2001,3.5898,world_bank_fp_cpi_totl_zg
+2002,3.0657,world_bank_fp_cpi_totl_zg
+2003,3.0389,world_bank_fp_cpi_totl_zg
+2004,3.0392,world_bank_fp_cpi_totl_zg
+2005,3.3688,world_bank_fp_cpi_totl_zg
+2006,3.5156,world_bank_fp_cpi_totl_zg
+2007,2.7868,world_bank_fp_cpi_totl_zg
+2008,4.0753,world_bank_fp_cpi_totl_zg
+2009,-0.2878,world_bank_fp_cpi_totl_zg
+2010,1.7999,world_bank_fp_cpi_totl_zg
+2011,3.1961,world_bank_fp_cpi_totl_zg
+2012,2.4461,world_bank_fp_cpi_totl_zg
+2013,1.4086,world_bank_fp_cpi_totl_zg
+2014,-0.1511,world_bank_fp_cpi_totl_zg
+2015,-0.5004,world_bank_fp_cpi_totl_zg
+2016,-0.2026,world_bank_fp_cpi_totl_zg
+2017,1.9561,world_bank_fp_cpi_totl_zg
+2018,1.6750,world_bank_fp_cpi_totl_zg
+2019,0.6995,world_bank_fp_cpi_totl_zg
+2020,-0.3228,world_bank_fp_cpi_totl_zg
+2021,3.0931,world_bank_fp_cpi_totl_zg
+2022,8.3906,world_bank_fp_cpi_totl_zg
+2023,3.5324,world_bank_fp_cpi_totl_zg
+2024,2.7471,world_bank_fp_cpi_totl_zg
+2025,2.6999,world_bank_fp_cpi_totl_zg`;
+
+    const initialAssets = [
+      { id: 1, concept: "Vivienda base", type: "Vivienda", amount: 200000, start: 2000, life: 50 },
+      { id: 2, concept: "Reforma baño", type: "Reforma o mejora", amount: 10000, start: 2018, life: 10 },
+      { id: 3, concept: "Nevera", type: "Equipamiento", amount: 1200, start: 2021, life: 6 }
+    ];
 
     const clone = (value) => JSON.parse(JSON.stringify(value));
 
-    let assets = clone(scenarios.centro.assets);
-    let activeScenario = "centro";
+    let assets = clone(initialAssets);
     let nextId = 10;
 
     const assetBody = document.getElementById("asset-body");
     const calcYear = document.getElementById("calc-year");
     const returnRate = document.getElementById("return-rate");
-    const zoneStatus = document.getElementById("zone-status");
+    const ipcCoverage = document.getElementById("ipc-coverage");
 
     const getNumber = (value) => {
-      const parsed = Number(value);
+      if (typeof value === "number") {
+        return Number.isFinite(value) ? value : 0;
+      }
+
+      const text = String(value).trim().replace(/\s/g, "");
+      if (!text) {
+        return 0;
+      }
+
+      const normalized = text.includes(",")
+        ? text.replace(/\./g, "").replace(",", ".")
+        : /^-?\d{1,3}(\.\d{3})+$/.test(text)
+          ? text.replace(/\./g, "")
+          : text;
+      const parsed = Number(normalized);
       return Number.isFinite(parsed) ? parsed : 0;
+    };
+
+    const formatAmount = (value) => integer.format(Math.round(getNumber(value)));
+
+    const parseIpcCsv = (csv) => {
+      const rows = csv.trim().split(/\r?\n/).slice(1);
+      return new Map(rows.map((row) => {
+        const [year, rate] = row.split(",");
+        return [Number(year), Number(rate)];
+      }).filter(([year, rate]) => Number.isFinite(year) && Number.isFinite(rate)));
+    };
+
+    let ipcSeries = parseIpcCsv(EMBEDDED_IPC_CSV);
+
+    const getIpcYears = () => Array.from(ipcSeries.keys()).sort((a, b) => a - b);
+
+    const updateIpcCoverage = () => {
+      const years = getIpcYears();
+      if (!ipcCoverage) {
+        return;
+      }
+
+      if (!years.length) {
+        ipcCoverage.textContent = "IPC histórico no disponible.";
+        return;
+      }
+
+      ipcCoverage.textContent = `IPC histórico ${years[0]}-${years[years.length - 1]} cargado desde data/ipc_espana_anual.csv.`;
+    };
+
+    const isHousing = (asset) => asset.type === "Vivienda";
+
+    const inflationFactor = (asset, year) => {
+      if (!isHousing(asset)) {
+        return 1;
+      }
+
+      const years = getIpcYears();
+      if (!years.length || year <= asset.start) {
+        return 1;
+      }
+
+      const lastAvailableYear = Math.min(year, years[years.length - 1]);
+      let factor = 1;
+      for (let itemYear = asset.start + 1; itemYear <= lastAvailableYear; itemYear += 1) {
+        const rate = ipcSeries.get(itemYear);
+        if (Number.isFinite(rate)) {
+          factor *= 1 + (rate / 100);
+        }
+      }
+
+      return factor;
+    };
+
+    const adjustedAmount = (asset, year) => asset.amount * inflationFactor(asset, year);
+
+    const residualValue = (asset, year) => {
+      if (!isHousing(asset)) {
+        return 0;
+      }
+
+      return adjustedAmount(asset, year) * HOUSING_RESIDUAL_RATE;
     };
 
     const isActive = (asset, year) => {
@@ -626,28 +913,52 @@
         return 0;
       }
 
+      if (isHousing(asset)) {
+        return (adjustedAmount(asset, year) * (1 - HOUSING_RESIDUAL_RATE)) / asset.life;
+      }
+
       return asset.amount / asset.life;
+    };
+
+    const assetStatus = (asset, year) => {
+      if (year < asset.start) {
+        return { className: "expired", label: "Pendiente" };
+      }
+
+      if (isActive(asset, year)) {
+        return { className: "", label: "En curso" };
+      }
+
+      if (isHousing(asset)) {
+        return { className: "residual", label: "Residual 15%" };
+      }
+
+      return { className: "expired", label: "Agotado" };
     };
 
     const renderAssets = () => {
       const year = getNumber(calcYear.value);
       assetBody.innerHTML = assets.map((asset) => {
-        const active = isActive(asset, year);
+        const status = assetStatus(asset, year);
         return `
           <tr data-id="${asset.id}">
-            <td><input data-field="concept" value="${asset.concept}"></td>
+            <td>
+              <div class="concept-row">
+                <input data-field="concept" value="${asset.concept}">
+                <button class="remove-button" type="button" data-action="remove">Eliminar</button>
+              </div>
+            </td>
             <td>
               <select data-field="type">
-                ${["Vivienda", "Reforma", "Mejora", "Equipamiento"].map((type) => `
+                ${assetTypes.map((type) => `
                   <option ${type === asset.type ? "selected" : ""}>${type}</option>
                 `).join("")}
               </select>
             </td>
-            <td><input data-field="amount" type="number" min="0" step="100" value="${asset.amount}"></td>
+            <td><input data-field="amount" type="text" inputmode="numeric" value="${formatAmount(asset.amount)}"></td>
             <td><input data-field="start" type="number" min="1900" max="2100" step="1" value="${asset.start}"></td>
             <td><input data-field="life" type="number" min="1" max="100" step="1" value="${asset.life}"></td>
-            <td><span class="status ${active ? "" : "expired"}">${active ? "En curso" : "Agotado"}</span></td>
-            <td><button class="remove-button" type="button" data-action="remove">Quitar</button></td>
+            <td><span class="status ${status.className}">${status.label}</span></td>
           </tr>
         `;
       }).join("");
@@ -658,6 +969,9 @@
       const rate = getNumber(returnRate.value);
       const rows = assets.map((asset) => ({
         active: isActive(asset, year),
+        housing: isHousing(asset),
+        residual: residualValue(asset, year),
+        adjusted: isHousing(asset) ? adjustedAmount(asset, year) : 0,
         annual: amortization(asset, year)
       }));
 
@@ -665,11 +979,15 @@
       const annualReturn = annualAmortization * (rate / 100);
       const annualRent = annualAmortization + annualReturn;
       const activeCount = rows.filter((row) => row.active).length;
+      const housingAdjusted = rows.reduce((sum, row) => sum + row.adjusted, 0);
+      const housingResidual = rows.reduce((sum, row) => sum + row.residual, 0);
 
       document.getElementById("monthly-rent").value = integer.format(Math.round(annualRent / 12));
       document.getElementById("annual-amortization").value = euro.format(annualAmortization);
       document.getElementById("annual-return").value = euro.format(annualReturn);
       document.getElementById("annual-rent").value = euro.format(annualRent);
+      document.getElementById("housing-adjusted-value").value = euro.format(housingAdjusted);
+      document.getElementById("housing-residual-value").value = euro.format(housingResidual);
       document.getElementById("active-assets").value = activeCount;
       document.getElementById("expired-assets").value = rows.length - activeCount;
     };
@@ -679,26 +997,11 @@
       updateResults();
     };
 
-    document.querySelectorAll(".scenario-button").forEach((button) => {
-      button.addEventListener("click", () => {
-        activeScenario = button.dataset.scenario;
-        const scenario = scenarios[activeScenario];
-        assets = clone(scenario.assets);
-        calcYear.value = scenario.year;
-        returnRate.value = scenario.rate;
-        zoneStatus.value = scenario.zone;
-
-        document.querySelectorAll(".scenario-button").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        refresh();
-      });
-    });
-
     document.getElementById("add-asset").addEventListener("click", () => {
       assets.push({
         id: nextId++,
-        concept: "Nueva mejora",
-        type: "Mejora",
+        concept: "Nueva reforma o mejora",
+        type: "Reforma o mejora",
         amount: 5000,
         start: getNumber(calcYear.value),
         life: 10
@@ -739,12 +1042,30 @@
       refresh();
     });
 
-    [calcYear, returnRate, zoneStatus].forEach((element) => {
+    [calcYear, returnRate].forEach((element) => {
       element.addEventListener("input", refresh);
       element.addEventListener("change", refresh);
     });
 
+    const loadIpcSeries = async () => {
+      try {
+        const response = await fetch("data/ipc_espana_anual.csv", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("No se pudo cargar el CSV de IPC.");
+        }
+
+        ipcSeries = parseIpcCsv(await response.text());
+      } catch (error) {
+        ipcSeries = parseIpcCsv(EMBEDDED_IPC_CSV);
+      }
+
+      updateIpcCoverage();
+      refresh();
+    };
+
+    updateIpcCoverage();
     refresh();
+    loadIpcSeries();
   </script>
 </body>
 </html>

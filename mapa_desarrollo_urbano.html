@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivienda Thinktank | Mapa de desarrollo urbano</title>
+  <style>
+    :root {
+      --ink: #1f385b;
+      --navy: #1d3556;
+      --muted: #6f84a2;
+      --soft: #f6f9fd;
+      --white: #ffffff;
+      --teal: #45b9ad;
+      --gold: #f2b845;
+      --blue: #7892b6;
+      --red: #d96b63;
+      --line: rgba(31, 56, 91, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Avenir Next, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 850;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(27, 52, 84, 0.18);
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 16px;
+      color: var(--navy);
+      background: var(--white);
+      font-size: 14px;
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 72px 0 46px;
+      background:
+        linear-gradient(90deg, rgba(242, 184, 69, 0.10) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, rgba(69, 185, 173, 0.10) 0 1px, transparent 1px 100%),
+        #ffffff;
+      background-size: 96px 96px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.5;
+    }
+
+    .workspace {
+      padding: 34px 0 72px;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.38fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .map-panel,
+    .side-panel,
+    .zone-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 14px 40px rgba(31, 56, 91, 0.06);
+    }
+
+    .map-panel {
+      min-height: 620px;
+      padding: 22px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 10px 0 18px;
+      color: var(--navy);
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .fake-map {
+      position: relative;
+      overflow: hidden;
+      min-height: 470px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(120, 146, 182, 0.14), transparent 28%),
+        linear-gradient(45deg, transparent 0 64%, rgba(242, 184, 69, 0.16) 64% 68%, transparent 68%),
+        #edf4f8;
+    }
+
+    .water {
+      position: absolute;
+      right: -7%;
+      top: -8%;
+      width: 35%;
+      height: 116%;
+      border-radius: 46% 0 0 52%;
+      background: rgba(120, 146, 182, 0.38);
+    }
+
+    .road {
+      position: absolute;
+      left: 8%;
+      top: 52%;
+      width: 70%;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(31, 56, 91, 0.26);
+      transform: rotate(-18deg);
+    }
+
+    .road.secondary {
+      left: 20%;
+      top: 30%;
+      width: 54%;
+      background: rgba(31, 56, 91, 0.16);
+      transform: rotate(24deg);
+    }
+
+    .zone {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 150px;
+      min-height: 96px;
+      border: 2px solid rgba(255, 255, 255, 0.88);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.82);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 850;
+      box-shadow: 0 18px 44px rgba(31, 56, 91, 0.16);
+    }
+
+    .zone strong {
+      display: block;
+      font-size: 24px;
+    }
+
+    .zone.high {
+      left: 56%;
+      top: 20%;
+      border-color: rgba(217, 107, 99, 0.62);
+      background: rgba(217, 107, 99, 0.15);
+    }
+
+    .zone.medium {
+      left: 22%;
+      top: 44%;
+      border-color: rgba(242, 184, 69, 0.70);
+      background: rgba(242, 184, 69, 0.18);
+    }
+
+    .zone.low {
+      left: 11%;
+      top: 15%;
+      border-color: rgba(69, 185, 173, 0.58);
+      background: rgba(69, 185, 173, 0.16);
+    }
+
+    .side-panel {
+      display: grid;
+      gap: 16px;
+      padding: 22px;
+    }
+
+    .zone-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .zone-card {
+      padding: 16px;
+      box-shadow: none;
+    }
+
+    .zone-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 17px;
+    }
+
+    .zone-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfdff;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--navy);
+      font-size: 24px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    @media (max-width: 900px) {
+      .topbar .shell,
+      .map-grid,
+      .metric-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar .shell {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-actions {
+        justify-content: flex-start;
+      }
+
+      .map-panel {
+        min-height: auto;
+      }
+
+      .fake-map {
+        min-height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell">
+      <div class="brand">
+        <img class="brand-logo" src="assets/brand/vivienda-thinktank-logo-final.png" alt="">
+        <span>Vivienda Thinktank</span>
+      </div>
+      <nav class="nav-actions" aria-label="Navegación principal">
+        <a class="nav-button" href="boceto_portal.html">Portal</a>
+        <a class="nav-button" href="simulador_total.html">Simulador de alquiler</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <h1>Mapa de desarrollo urbano.</h1>
+        <p>
+          Boceto inicial para visualizar dónde podría desbloquearse suelo, qué zonas tienen más potencial de vivienda y
+          qué bloqueos normativos o geográficos habría que resolver.
+        </p>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="shell map-grid">
+        <section class="map-panel">
+          <div class="label">Ciudad ficticia</div>
+          <h2>Zonas potenciales.</h2>
+
+          <div class="fake-map" aria-label="Mapa conceptual de zonas urbanas">
+            <div class="water"></div>
+            <div class="road"></div>
+            <div class="road secondary"></div>
+            <div class="zone low"><span>Centro norte</span><strong>120</strong><span>viviendas</span></div>
+            <div class="zone medium"><span>Bahía este</span><strong>900</strong><span>viviendas</span></div>
+            <div class="zone high"><span>Vega sur</span><strong>2.400</strong><span>viviendas</span></div>
+          </div>
+
+          <div class="metric-strip">
+            <div class="metric"><strong>3</strong><span>zonas iniciales</span></div>
+            <div class="metric"><strong>3.420</strong><span>viviendas potenciales</span></div>
+            <div class="metric"><strong>1</strong><span>prioridad muy alta</span></div>
+          </div>
+        </section>
+
+        <aside class="side-panel">
+          <div>
+            <div class="label">Lectura rápida</div>
+            <h2>Qué debe medir.</h2>
+          </div>
+
+          <div class="zone-list">
+            <article class="zone-card">
+              <strong>Suelo urbanizable pendiente</strong>
+              <p>Detectar áreas donde el planeamiento lento bloquea oferta relevante y cuantificar su impacto posible.</p>
+            </article>
+
+            <article class="zone-card">
+              <strong>Rústico con presión residencial</strong>
+              <p>Analizar supuestos excepcionales donde tendría sentido ampliar construcción sin destruir valor ambiental.</p>
+            </article>
+
+            <article class="zone-card">
+              <strong>Bloqueos administrativos</strong>
+              <p>Separar los límites físicos reales de los límites creados por trámites, tasas, licencias o normas obsoletas.</p>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

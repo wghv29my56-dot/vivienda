@@ -1,4 +1,4 @@
-vivienda_id,codigo_publico,ano_calculo,rentabilidad,amortizacion_anual_activa,rentabilidad_anual,renta_anual,renta_mensual,activos_activos,activos_agotados
-viv-001,CN-001,2026,8.0,5200.0,416.0,5616.0,468.0,3,0
-viv-002,BE-014,2026,8.0,7608.33,608.67,8217.0,684.75,3,0
-viv-003,VS-022,2026,8.0,3713.33,297.07,4010.4,334.2,3,0
+vivienda_id,codigo_publico,ano_calculo,rentabilidad,ipc_serie_desde,ipc_serie_hasta,amortizacion_anual_activa,rentabilidad_anual,renta_anual,renta_mensual,valor_vivienda_actualizado_ipc,valor_residual_vivienda,activos_activos,activos_agotados
+viv-001,CN-001,2026,8.0,1950,2025,7246.37,579.71,7826.08,652.17,355668.8,53350.32,3,0
+viv-002,BE-014,2026,8.0,1950,2025,8466.24,677.3,9143.54,761.96,356347.72,53452.16,3,0
+viv-003,VS-022,2026,8.0,1950,2025,3936.93,314.95,4251.89,354.32,195505.91,29325.89,3,0
