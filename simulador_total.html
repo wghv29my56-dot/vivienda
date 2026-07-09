@@ -545,6 +545,19 @@
       text-align: center;
     }
 
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .footer-contact-title {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
     .footer-link {
       display: inline-flex;
       align-items: center;
@@ -778,7 +791,10 @@
     <div class="shell">
       <strong>Vivienda Thinktank</strong>
       <span class="footer-note">Este proyecto no ha recibido financiación ni pública ni privada.</span>
-      <a class="footer-link" href="https://x.com/viviendathinkt" target="_blank" rel="noreferrer">X @viviendathinkt</a>
+      <div class="footer-contact">
+        <span class="footer-contact-title">Contacto</span>
+        <a class="footer-link" href="https://x.com/viviendathinkt" target="_blank" rel="noreferrer">X @viviendathinkt</a>
+      </div>
     </div>
   </footer>
 
