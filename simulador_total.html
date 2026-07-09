@@ -132,10 +132,7 @@
     }
 
     .grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.42fr);
-      gap: 28px;
-      align-items: start;
+      display: block;
     }
 
     .grid > *,
@@ -379,6 +376,9 @@
 
     .result-panel {
       border-top: 8px solid var(--gold);
+      max-width: 900px;
+      width: 100%;
+      margin: 2px auto 0;
     }
 
     .result-number {
@@ -388,6 +388,7 @@
       line-height: 0.9;
       font-weight: 850;
       letter-spacing: 0;
+      text-align: center;
     }
 
     .result-number span {
@@ -398,6 +399,7 @@
 
     .breakdown {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       margin-top: 24px;
       padding-top: 22px;
@@ -520,6 +522,7 @@
     @media (max-width: 980px) {
       .grid,
       .controls,
+      .breakdown,
       .trace-grid,
       .problem-grid,
       .precedent-grid {
@@ -623,6 +626,21 @@
             </div>
           </section>
 
+          <aside class="panel result-panel" aria-live="polite">
+            <div class="label">Resultado orientativo</div>
+            <div class="result-number"><output id="monthly-rent">0</output><span> €/mes</span></div>
+
+            <div class="breakdown">
+              <div class="breakdown-row"><span>Amortización anual activa</span><strong><output id="annual-amortization">0 €</output></strong></div>
+              <div class="breakdown-row"><span>Rentabilidad anual</span><strong><output id="annual-return">0 €</output></strong></div>
+              <div class="breakdown-row"><span>Alquiler anual resultante</span><strong><output id="annual-rent">0 €</output></strong></div>
+              <div class="breakdown-row"><span>Vivienda actualizada por IPC</span><strong><output id="housing-adjusted-value">0 €</output></strong></div>
+              <div class="breakdown-row"><span>Residual vivienda protegido</span><strong><output id="housing-residual-value">0 €</output></strong></div>
+              <div class="breakdown-row"><span>Activos activos</span><strong><output id="active-assets">0</output></strong></div>
+              <div class="breakdown-row"><span>Activos sin amortización</span><strong><output id="expired-assets">0</output></strong></div>
+            </div>
+          </aside>
+
           <section class="panel panel-blue">
             <div class="label">Reglas básicas</div>
             <h2>Cómo funciona el sistema.</h2>
@@ -654,22 +672,6 @@
             </div>
           </section>
         </div>
-
-        <aside class="panel result-panel" aria-live="polite">
-          <div class="label">Resultado orientativo</div>
-          <div class="result-number"><output id="monthly-rent">0</output><span> €/mes</span></div>
-
-          <div class="breakdown">
-            <div class="breakdown-row"><span>Amortización anual activa</span><strong><output id="annual-amortization">0 €</output></strong></div>
-            <div class="breakdown-row"><span>Rentabilidad anual</span><strong><output id="annual-return">0 €</output></strong></div>
-            <div class="breakdown-row"><span>Alquiler anual resultante</span><strong><output id="annual-rent">0 €</output></strong></div>
-            <div class="breakdown-row"><span>Vivienda actualizada por IPC</span><strong><output id="housing-adjusted-value">0 €</output></strong></div>
-            <div class="breakdown-row"><span>Residual vivienda protegido</span><strong><output id="housing-residual-value">0 €</output></strong></div>
-            <div class="breakdown-row"><span>Activos activos</span><strong><output id="active-assets">0</output></strong></div>
-            <div class="breakdown-row"><span>Activos sin amortización</span><strong><output id="expired-assets">0</output></strong></div>
-          </div>
-
-        </aside>
       </div>
 
       <div class="shell lower-stack">

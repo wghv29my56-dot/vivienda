@@ -129,8 +129,8 @@
 
     .map-intro {
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 24px;
+      grid-template-columns: 1fr;
+      gap: 18px;
       align-items: stretch;
       margin-bottom: 28px;
     }
@@ -146,18 +146,18 @@
     .intro-main {
       display: grid;
       align-content: space-between;
-      min-height: 310px;
+      min-height: 250px;
       padding: 34px;
       border-top: 8px solid var(--gold);
     }
 
     .intro-main h2 {
-      max-width: 640px;
-      font-size: clamp(32px, 4vw, 56px);
+      max-width: 860px;
+      font-size: clamp(30px, 3.4vw, 50px);
     }
 
     .intro-main p {
-      max-width: 700px;
+      max-width: 860px;
       margin: 18px 0 0;
       color: var(--muted);
       font-size: 17px;
@@ -174,13 +174,13 @@
 
     .intro-cards {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 18px;
     }
 
     .intro-card {
-      min-height: 146px;
-      padding: 22px;
+      min-height: 182px;
+      padding: 26px;
       border-top: 6px solid var(--detail-color, var(--blue));
     }
 
@@ -190,15 +190,15 @@
     .intro-card strong {
       display: block;
       color: var(--navy);
-      font-size: 18px;
+      font-size: 21px;
       line-height: 1.2;
     }
 
     .intro-card p {
       margin: 12px 0 0;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.55;
     }
 
     .map-grid {
