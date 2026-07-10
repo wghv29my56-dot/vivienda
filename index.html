@@ -131,6 +131,10 @@
       display: none;
     }
 
+    .mobile-video-button {
+      display: none;
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -611,6 +615,41 @@
         gap: 16px;
       }
 
+      .mobile-video-button {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        gap: 2px;
+        min-width: 74px;
+        min-height: 39px;
+        padding: 4px 7px;
+        border: 1px solid rgba(154, 51, 61, 0.14);
+        border-radius: 10px;
+        background: linear-gradient(180deg, #f1a7a7 0%, #d86670 100%);
+        color: var(--white);
+        text-decoration: none;
+        box-shadow: 0 8px 18px rgba(151, 45, 52, 0.16);
+      }
+
+      .mobile-video-button svg {
+        width: 15px;
+        height: 15px;
+        fill: currentColor;
+      }
+
+      .mobile-video-button span {
+        display: block;
+        color: var(--white);
+        font-size: 8px;
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: 0;
+        text-shadow: 0 1px 2px rgba(112, 25, 34, 0.22);
+        text-transform: uppercase;
+      }
+
       .hero {
         min-height: auto;
         padding: 72px 0 56px;
@@ -782,6 +821,13 @@
         <a class="header-button primary" href="simulador_total.html">Simulador de alquiler regulado</a>
         <a class="header-button secondary" href="mapa_desarrollo_urbano.html">Mapa de desarrollo urbano</a>
       </div>
+      <a class="mobile-video-button" href="https://youtube.com/shorts/DYsJg4EVJuY" target="_blank" rel="noreferrer" aria-label="Ver video explicativo en YouTube">
+        <span>Mucho texto</span>
+        <span>TDAH</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8 1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10 14.9V9.1l5.2 2.9L10 14.9Z"></path>
+        </svg>
+      </a>
     </div>
   </header>
 
