@@ -1,0 +1,24 @@
+{
+  "current": "0.12.0-alpha",
+  "label": "Alfa 0.12",
+  "releases": [
+    {
+      "version": "0.12.0-alpha",
+      "label": "Alfa 0.12",
+      "date": "2026-10-03",
+      "changes": [
+        "Escenario nacional con demografía dinámica, referencias oficiales y fuentes consultables.",
+        "Impuestos y presupuestos ajustables en ambos sentidos, persistentes y con comprobación de financiación.",
+        "Informes trimestrales con curvas superpuestas del último año y balance final de partida.",
+        "Banco de 120 plantillas de comentarios adaptativos.",
+        "Integración en la web, navegación móvil y pie de página común.",
+        "Expropiación indemnizada para alquiler público, con premio de afección del 5 %, costes de tramitación y rechazo de propietarios.",
+        "Revisión de coherencia de las 67 medidas: esfuerzo de acceso, oferta anunciada, parque público, inversión privada, beneficiarios, reservas y efectos fiscales por hogar.",
+        "Felicidad colectiva de todos los grupos nacionales, clima social por recortes, presión fiscal y PIB; impactos directos y comunes separados y previsualizados en cada medida."
+      ]
+    }
+  ],
+  "history_note": "El registro de versiones comienza en Alfa 0.12. Las iteraciones anteriores no disponen de un historial numerado validado.",
+  "model_version": "0.12.0-alpha.collective1",
+  "public_release_date": "2026-10-05"
+}

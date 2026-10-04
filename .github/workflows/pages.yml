@@ -25,13 +25,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify public release
+        run: node scripts/verify_public_release.cjs
+
+      - name: Verify simulator
+        run: node scripts/check_simulator.cjs
+
+      - name: Prepare public files
+        run: python3 scripts/prepare_public_site.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment

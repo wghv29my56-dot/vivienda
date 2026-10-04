@@ -1,0 +1,7 @@
+
+# Evidencia original: conservar bytes y finales de línea del organismo fuente.
+data/simulator/evidence/* -text
+data/simulator/evidence/sale.csv whitespace=cr-at-eol
+
+# Mantener los bytes del motor asociado al manifiesto publicado en Supabase.
+assets/simulator/housing-policy.js -text whitespace=-blank-at-eol

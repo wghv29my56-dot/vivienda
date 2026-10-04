@@ -1,0 +1,22 @@
+const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm');
+const M=require('../assets/simulator/model-config'),H=require('../assets/simulator/housing-policy');
+const pack=M.fromCatalog(JSON.parse(fs.readFileSync('data/simulator/catalog.json'))),D=M.toCatalog(pack),by=id=>D.measures.find(m=>m.id===id),action=(m,intensity=1,start=1)=>({index:D.measures.indexOf(m),intensity,start,funding:[]});
+assert.deepEqual(M.validate(pack),[]);
+const p=by('a3_public_build'),a=action(p);
+assert.equal(H.supplyAt(p,a,31).completed,0);assert.ok(H.supplyAt(p,a,32).completed>0);assert.equal(H.supplyAt(p,a,40).completed,2e6);assert.equal(H.supplyAt(p,a,80).completed,2e6);
+assert.equal(H.supplyAt(p,action(p,.5),40).completed,1e6);
+assert.ok(H.programmeConflicts(D.measures,[action(p,.5),action(p,.5,40)]).length);
+assert.equal(H.programmeConflicts(D.measures,[action(p,.5),action(p,.5,41)]).length,0);
+assert.ok(H.programmeConflicts(D.measures,[a,action(p,.5,41)]).length);
+const land=by('a3_land_ready');assert.equal(H.supplyAt(land,action(land),11).land,0);assert.ok(H.supplyAt(land,action(land),12).land>0);assert.equal(H.supplyAt(land,action(land),12).completed,0);assert.equal(H.supplyAt(land,action(land),36).completed,650000);
+assert.equal(H.supplyAt(by('a3_upzone'),action(by('a3_upzone')),80).completed,30000);
+const training=by('a3_training'),ta=action(training);assert.equal(H.constructionCostFactor(D,16,[ta]),1);assert.equal(H.constructionCostFactor(D,24,[ta]),.96);assert.equal(H.supplyPipeline(D,80,[ta]).completed,0);
+assert.ok(H.costs(p,{...a,construction_cost_factor:.96}).quarter<H.costs(p,a).quarter);
+const industrial=by('a3_industrial'),ia={...action(industrial,0),tax_support:1};assert.equal(H.costs(industrial,ia).fiscalQuarter,25e6);assert.equal(H.costs(industrial,{...ia,tax_support:0}).quarter,0);
+assert.equal(H.costs(industrial,{...ia,intensity:1,tax_support:0}).quarter*40,1e9);
+const nodes=new Map(),ctx=vm.createContext({window:{SIM_CATALOG:D,SIM_MODEL:M},Intl,structuredClone,document:{getElementById(id){if(!nodes.has(id))nodes.set(id,{});return nodes.get(id);}}});for(const f of ['housing-policy','national','fiscal','advanced'])vm.runInContext(fs.readFileSync('assets/simulator/'+f+'.js','utf8'),ctx);
+ctx.a=a;const run=s=>vm.runInContext(s,ctx);assert.equal(run('outcome(31,[a])[15]'),run('outcome(31,[])[15]'));assert.ok(run('outcome(40,[a])[15]')>run('outcome(40,[])[15]'));assert.ok(run('outcome(40,[a])[6]')<run('outcome(40,[])[6]'));assert.ok(run('listingValues(outcome(40,[a])).rent')>run('listingValues(outcome(40,[])).rent'));
+for(const m of D.measures.filter(m=>m.supply_program)){const z=H.supplyPipeline(D,80,[action(m)]);assert.ok(Math.abs(z.completed-z.rentHomes-z.saleHomes)<1e-6);assert.ok(Number.isFinite(z.rentListings));}
+const bad=M.clone(pack);bad.model.measures.find(m=>m.id===p.id).supply_program.last_delivery_turn=2;assert.ok(M.validate(bad).length);
+const reordered=M.clone(pack);for(const s of reordered.model.funding_sources)s.group_effects=Object.fromEntries(Object.entries(s.group_effects).reverse());assert.deepEqual(M.validate(reordered),[]);
+console.log('PASS: delivery lags, permanent stock, finite land capacity, programme lock, costs, delayed efficiencies, independent industrial tax support, integrated prices/listings and JSONB key ordering.');

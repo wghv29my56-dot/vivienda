@@ -1,0 +1,361 @@
+[{"COD":"ECV2644", "Nombre":"Total Nacional. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":73.3, "Secreto":false}
+]
+}
+,{"COD":"ECV9760", "Nombre":"Total Nacional. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":48.9, "Secreto":false}
+]
+}
+,{"COD":"ECV9759", "Nombre":"Total Nacional. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":24.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2643", "Nombre":"Total Nacional. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":16.7, "Secreto":false}
+]
+}
+,{"COD":"ECV2642", "Nombre":"Total Nacional. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":3.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2641", "Nombre":"Total Nacional. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":6.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2640", "Nombre":"Andalucía. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":77.5, "Secreto":false}
+]
+}
+,{"COD":"ECV9758", "Nombre":"Andalucía. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":50.8, "Secreto":false}
+]
+}
+,{"COD":"ECV9757", "Nombre":"Andalucía. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":26.7, "Secreto":false}
+]
+}
+,{"COD":"ECV2639", "Nombre":"Andalucía. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":11.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2638", "Nombre":"Andalucía. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":2.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2637", "Nombre":"Andalucía. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":7.7, "Secreto":false}
+]
+}
+,{"COD":"ECV2636", "Nombre":"Aragón. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":78.3, "Secreto":false}
+]
+}
+,{"COD":"ECV9756", "Nombre":"Aragón. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":54.5, "Secreto":false}
+]
+}
+,{"COD":"ECV9755", "Nombre":"Aragón. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":23.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2635", "Nombre":"Aragón. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":14.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2634", "Nombre":"Aragón. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":1.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2633", "Nombre":"Aragón. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":5.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2632", "Nombre":"Asturias, Principado de. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":76.9, "Secreto":false}
+]
+}
+,{"COD":"ECV9754", "Nombre":"Asturias, Principado de. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":56.2, "Secreto":false}
+]
+}
+,{"COD":"ECV9753", "Nombre":"Asturias, Principado de. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":20.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2631", "Nombre":"Asturias, Principado de. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":13.1, "Secreto":false}
+]
+}
+,{"COD":"ECV2630", "Nombre":"Asturias, Principado de. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":3.1, "Secreto":false}
+]
+}
+,{"COD":"ECV2629", "Nombre":"Asturias, Principado de. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":7.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2628", "Nombre":"Balears, Illes. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":67.1, "Secreto":false}
+]
+}
+,{"COD":"ECV9752", "Nombre":"Balears, Illes. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":42.1, "Secreto":false}
+]
+}
+,{"COD":"ECV9751", "Nombre":"Balears, Illes. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":25.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2627", "Nombre":"Balears, Illes. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":21.3, "Secreto":false}
+]
+}
+,{"COD":"ECV2626", "Nombre":"Balears, Illes. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":3.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2625", "Nombre":"Balears, Illes. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":8.3, "Secreto":false}
+]
+}
+,{"COD":"ECV2624", "Nombre":"Canarias. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":66.8, "Secreto":false}
+]
+}
+,{"COD":"ECV9750", "Nombre":"Canarias. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":47.5, "Secreto":false}
+]
+}
+,{"COD":"ECV9749", "Nombre":"Canarias. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":19.3, "Secreto":false}
+]
+}
+,{"COD":"ECV2623", "Nombre":"Canarias. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":16.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2622", "Nombre":"Canarias. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":6.7, "Secreto":false}
+]
+}
+,{"COD":"ECV2621", "Nombre":"Canarias. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":9.7, "Secreto":false}
+]
+}
+,{"COD":"ECV2620", "Nombre":"Cantabria. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":80.9, "Secreto":false}
+]
+}
+,{"COD":"ECV9748", "Nombre":"Cantabria. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":54.4, "Secreto":false}
+]
+}
+,{"COD":"ECV9747", "Nombre":"Cantabria. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":26.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2619", "Nombre":"Cantabria. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":12.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2618", "Nombre":"Cantabria. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":1.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2617", "Nombre":"Cantabria. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":5.1, "Secreto":false}
+]
+}
+,{"COD":"ECV2616", "Nombre":"Castilla y León. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":81.2, "Secreto":false}
+]
+}
+,{"COD":"ECV9746", "Nombre":"Castilla y León. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":58.4, "Secreto":false}
+]
+}
+,{"COD":"ECV9745", "Nombre":"Castilla y León. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":22.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2615", "Nombre":"Castilla y León. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":11.2, "Secreto":false}
+]
+}
+,{"COD":"ECV2614", "Nombre":"Castilla y León. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":1.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2613", "Nombre":"Castilla y León. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":5.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2612", "Nombre":"Castilla - La Mancha. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":73.0, "Secreto":false}
+]
+}
+,{"COD":"ECV9744", "Nombre":"Castilla - La Mancha. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":50.3, "Secreto":false}
+]
+}
+,{"COD":"ECV9743", "Nombre":"Castilla - La Mancha. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":22.7, "Secreto":false}
+]
+}
+,{"COD":"ECV2611", "Nombre":"Castilla - La Mancha. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":13.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2610", "Nombre":"Castilla - La Mancha. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":4.2, "Secreto":false}
+]
+}
+,{"COD":"ECV2609", "Nombre":"Castilla - La Mancha. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":9.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2608", "Nombre":"Cataluña. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":67.1, "Secreto":false}
+]
+}
+,{"COD":"ECV9742", "Nombre":"Cataluña. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":40.9, "Secreto":false}
+]
+}
+,{"COD":"ECV9741", "Nombre":"Cataluña. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":26.2, "Secreto":false}
+]
+}
+,{"COD":"ECV2607", "Nombre":"Cataluña. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":23.2, "Secreto":false}
+]
+}
+,{"COD":"ECV2606", "Nombre":"Cataluña. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":4.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2605", "Nombre":"Cataluña. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":4.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2604", "Nombre":"Comunitat Valenciana. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":73.9, "Secreto":false}
+]
+}
+,{"COD":"ECV9740", "Nombre":"Comunitat Valenciana. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":49.6, "Secreto":false}
+]
+}
+,{"COD":"ECV9739", "Nombre":"Comunitat Valenciana. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":24.3, "Secreto":false}
+]
+}
+,{"COD":"ECV2603", "Nombre":"Comunitat Valenciana. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":17.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2602", "Nombre":"Comunitat Valenciana. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":2.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2601", "Nombre":"Comunitat Valenciana. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":6.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2600", "Nombre":"Extremadura. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":76.2, "Secreto":false}
+]
+}
+,{"COD":"ECV9738", "Nombre":"Extremadura. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":56.3, "Secreto":false}
+]
+}
+,{"COD":"ECV9737", "Nombre":"Extremadura. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":19.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2599", "Nombre":"Extremadura. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":13.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2598", "Nombre":"Extremadura. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":2.3, "Secreto":false}
+]
+}
+,{"COD":"ECV2597", "Nombre":"Extremadura. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":8.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2596", "Nombre":"Galicia. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":73.2, "Secreto":false}
+]
+}
+,{"COD":"ECV9736", "Nombre":"Galicia. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":55.8, "Secreto":false}
+]
+}
+,{"COD":"ECV9735", "Nombre":"Galicia. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":17.3, "Secreto":false}
+]
+}
+,{"COD":"ECV2595", "Nombre":"Galicia. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":14.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2594", "Nombre":"Galicia. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":2.2, "Secreto":false}
+]
+}
+,{"COD":"ECV2593", "Nombre":"Galicia. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":10.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2592", "Nombre":"Madrid, Comunidad de. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":69.1, "Secreto":false}
+]
+}
+,{"COD":"ECV9734", "Nombre":"Madrid, Comunidad de. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":44.0, "Secreto":false}
+]
+}
+,{"COD":"ECV9733", "Nombre":"Madrid, Comunidad de. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":25.1, "Secreto":false}
+]
+}
+,{"COD":"ECV2591", "Nombre":"Madrid, Comunidad de. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":22.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2590", "Nombre":"Madrid, Comunidad de. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":4.3, "Secreto":false}
+]
+}
+,{"COD":"ECV2589", "Nombre":"Madrid, Comunidad de. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":4.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2588", "Nombre":"Murcia, Región de. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":73.9, "Secreto":false}
+]
+}
+,{"COD":"ECV9732", "Nombre":"Murcia, Región de. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":48.3, "Secreto":false}
+]
+}
+,{"COD":"ECV9731", "Nombre":"Murcia, Región de. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":25.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2587", "Nombre":"Murcia, Región de. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":17.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2586", "Nombre":"Murcia, Región de. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":1.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2585", "Nombre":"Murcia, Región de. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":7.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2584", "Nombre":"Navarra, Comunidad Foral de. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":80.6, "Secreto":false}
+]
+}
+,{"COD":"ECV9730", "Nombre":"Navarra, Comunidad Foral de. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":54.7, "Secreto":false}
+]
+}
+,{"COD":"ECV9729", "Nombre":"Navarra, Comunidad Foral de. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":26.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2583", "Nombre":"Navarra, Comunidad Foral de. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":8.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2582", "Nombre":"Navarra, Comunidad Foral de. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":4.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2581", "Nombre":"Navarra, Comunidad Foral de. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":6.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2580", "Nombre":"País Vasco. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":78.7, "Secreto":false}
+]
+}
+,{"COD":"ECV9728", "Nombre":"País Vasco. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":52.2, "Secreto":false}
+]
+}
+,{"COD":"ECV9727", "Nombre":"País Vasco. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":26.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2579", "Nombre":"País Vasco. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":11.7, "Secreto":false}
+]
+}
+,{"COD":"ECV2578", "Nombre":"País Vasco. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":5.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2577", "Nombre":"País Vasco. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":4.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2576", "Nombre":"Rioja, La. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":80.7, "Secreto":false}
+]
+}
+,{"COD":"ECV9726", "Nombre":"Rioja, La. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":55.6, "Secreto":false}
+]
+}
+,{"COD":"ECV9725", "Nombre":"Rioja, La. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":25.1, "Secreto":false}
+]
+}
+,{"COD":"ECV2575", "Nombre":"Rioja, La. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":12.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2574", "Nombre":"Rioja, La. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":1.2, "Secreto":false}
+]
+}
+,{"COD":"ECV2573", "Nombre":"Rioja, La. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":5.6, "Secreto":false}
+]
+}
+,{"COD":"ECV2572", "Nombre":"Ceuta. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":61.3, "Secreto":false}
+]
+}
+,{"COD":"ECV9724", "Nombre":"Ceuta. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":38.4, "Secreto":false}
+]
+}
+,{"COD":"ECV9723", "Nombre":"Ceuta. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":22.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2571", "Nombre":"Ceuta. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":19.5, "Secreto":false}
+]
+}
+,{"COD":"ECV2570", "Nombre":"Ceuta. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":11.0, "Secreto":false}
+]
+}
+,{"COD":"ECV2569", "Nombre":"Ceuta. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":8.2, "Secreto":false}
+]
+}
+,{"COD":"ECV2568", "Nombre":"Melilla. Propiedad. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":63.4, "Secreto":false}
+]
+}
+,{"COD":"ECV9722", "Nombre":"Melilla. Propiedad sin hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":41.6, "Secreto":false}
+]
+}
+,{"COD":"ECV9721", "Nombre":"Melilla. Propiedad con hipoteca. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":21.8, "Secreto":false}
+]
+}
+,{"COD":"ECV2567", "Nombre":"Melilla. Alquiler a precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":18.4, "Secreto":false}
+]
+}
+,{"COD":"ECV2566", "Nombre":"Melilla. Alquiler inferior al precio de mercado. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":12.9, "Secreto":false}
+]
+}
+,{"COD":"ECV2565", "Nombre":"Melilla. Cesión. Hogar. ", "FK_Unidad":232, "FK_Escala":1, "Data":[{"Fecha":1735686000000, "FK_TipoDato":1, "FK_Periodo":28, "Anyo":2025, "Valor":5.3, "Secreto":false}
+]
+}
+]

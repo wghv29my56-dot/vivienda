@@ -149,6 +149,27 @@
       gap: 22px;
     }
 
+    .scope-notice {
+      padding: 20px 24px;
+      border: 2px solid #d96b6b;
+      border-radius: 8px;
+      background: #ffe5e5;
+      color: #742525;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .scope-notice h2 {
+      margin: 0 0 8px;
+      color: #9b2424;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .scope-notice p {
+      margin: 0;
+    }
+
     .panel {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -636,6 +657,8 @@
     }
   </style>
   <link rel="stylesheet" href="assets/mobile-app-nav.css">
+  <link rel="stylesheet" href="assets/site-footer.css?v=1">
+<link rel="stylesheet" href="assets/shared-footer.css">
 </head>
 <body>
   <header class="topbar">
@@ -706,6 +729,10 @@
     <section class="workspace">
       <div class="shell grid">
         <div class="stack">
+          <aside class="scope-notice" aria-label="Objetivo y límites del sistema">
+            <h2>Importante</h2>
+            <p>Este sistema busca limitar la rentabilidad excesiva de algunos inmuebles, permitiendo que el alquiler siga siendo un negocio rentable. No resuelve la escasez de vivienda, para la que hacen falta medidas complementarias.</p>
+          </aside>
           <section class="panel panel-teal">
             <h2>Supuestos de partida.</h2>
             <p>
@@ -856,10 +883,11 @@
     </section>
   </main>
 
-  <footer class="footer">
+
+  <footer class="shared-site-footer">
     <div class="shell">
       <strong>Vivienda Thinktank</strong>
-      <span class="footer-note">Este proyecto no ha recibido financiación ni pública ni privada.</span>
+      <span class="footer-note">Este proyecto no ha recibido financiación ni pública ni privada.<br><small>Running on autism and caffeine</small></span>
       <div class="footer-contact">
         <span class="footer-contact-title">Contacto</span>
         <a class="footer-link" href="https://x.com/viviendathinkt" target="_blank" rel="noreferrer">X @viviendathinkt</a>
@@ -867,6 +895,7 @@
     </div>
   </footer>
 
+  <script src="assets/simulator/housing-policy.js?v=controls-1"></script>
   <script>
     const euro = new Intl.NumberFormat("es-ES", {
       currency: "EUR",
@@ -1060,17 +1089,7 @@
       return age >= 0 && age < asset.life;
     };
 
-    const amortization = (asset, year) => {
-      if (!isActive(asset, year) || asset.life <= 0) {
-        return 0;
-      }
-
-      if (isHousing(asset)) {
-        return (adjustedAmount(asset, year) * (1 - HOUSING_RESIDUAL_RATE)) / asset.life;
-      }
-
-      return asset.amount / asset.life;
-    };
+    const amortization = (asset, year) => window.SIM_HOUSING_POLICY.amortization(asset, year, inflationFactor(asset, year), HOUSING_RESIDUAL_RATE);
 
     const assetStatus = (asset, year) => {
       if (year < asset.start) {
@@ -1129,7 +1148,7 @@
 
       const annualAmortization = rows.reduce((sum, row) => sum + row.annual, 0);
       const annualReturn = annualAmortization * (rate / 100);
-      const annualRent = annualAmortization + annualReturn;
+      const annualRent = window.SIM_HOUSING_POLICY.annualRent(annualAmortization, rate);
       const activeCount = rows.filter((row) => row.active).length;
       const housingAdjusted = rows.reduce((sum, row) => sum + row.adjusted, 0);
       const housingResidual = rows.reduce((sum, row) => sum + row.residual, 0);

@@ -1,0 +1,73 @@
+[
+  {
+    "file": "demography.xlsx",
+    "url": "https://www.ine.es/prensa/anexo_tablas/es/PROP20262076.xlsx",
+    "accessed": "2026-10-03",
+    "sha256": "a9850beddcf2bffa523e1cef33c8d7eebc126b75e10c54a0546ac624a3913787"
+  },
+  {
+    "file": "cofog.json",
+    "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?lang=EN&geo=ES&time=2024&unit=MIO_EUR&sector=S13&na_item=TE",
+    "accessed": "2026-10-03",
+    "sha256": "9f081c563ce66240ee65f78776f3ef0c2e0f5c6854526ff4f7fc6d151b6185f3"
+  },
+  {
+    "file": "tenure.json",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/9997?nult=1",
+    "accessed": "2026-10-03",
+    "sha256": "366740a20c7c8555d4c856c4ffd9289b1248a57b2581380b6cb4aa63ea99a7d0"
+  },
+  {
+    "file": "touristhomes.json",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/VTE71?nult=4",
+    "accessed": "2026-10-03",
+    "sha256": "00f61fad2b2335568fc76a0d4d9a911d93492eaaaa8077b03c58e9192d26085a"
+  },
+  {
+    "file": "sale.csv",
+    "url": "https://cdn.mivau.gob.es/portal-web-mivau/Datos_MIVAU/CSV/VDP006_01.csv",
+    "accessed": "2026-10-03",
+    "sha256": "21af4264fd80d617857885032a9a3164c19935dfb18afacf3d9b08647ba68a0b"
+  },
+  {
+    "file": "vat.xlsx",
+    "url": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_Anuales_de_Recaudacion_Tributaria/Ejercicio_2025/Cuadro_8.7_es_es.xlsx",
+    "accessed": "2026-10-03",
+    "sha256": "2e01307b301ac7d6f790ae90ea0b67a5377869987f43f5e8065cfbfdafecd5c9"
+  },
+  {
+    "file": "population-annual.json",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/PROP308",
+    "extracted_from_table": true,
+    "accessed": "2026-10-03",
+    "sha256": "265b3963b13c3b00cddf832527ef2895ef69c14ae252a4f3ed67abef42a9b228"
+  },
+  {
+    "file": "births-annual.json",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/PROP566",
+    "extracted_from_table": true,
+    "accessed": "2026-10-03",
+    "sha256": "d64411f5ad35db8ef16cba53f505729e21be29b588462d8f8309277839727a7d"
+  },
+  {
+    "file": "deaths-annual.json",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/PROP1127",
+    "extracted_from_table": true,
+    "accessed": "2026-10-03",
+    "sha256": "1893a527cda8d577c77661f7b38c43f9c3e602cfafc01e84370aff3f4efd5213"
+  },
+  {
+    "file": "immigration-annual.json",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/PROP1856",
+    "extracted_from_table": true,
+    "accessed": "2026-10-03",
+    "sha256": "a3fef75fa3c92e8e4100286c3358f1d5f42f2353fc81e7629daed3609f9353cd"
+  },
+  {
+    "file": "emigration-annual.json",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/PROP2558",
+    "extracted_from_table": true,
+    "accessed": "2026-10-03",
+    "sha256": "9554b11c3c59009284c36b163e25affd7b8412071df29ec60870d4587c4b671e"
+  }
+]

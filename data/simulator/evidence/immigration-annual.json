@@ -1,0 +1,390 @@
+{
+  "COD": "PROP1856",
+  "Nombre": "Total. Flujo de inmigraciones procedentes del extranjero. Total Nacional. Proyección a largo plazo. Total generación. ",
+  "T3_Unidad": "Movimientos migratorios",
+  "T3_Escala": " ",
+  "MetaData": [
+    {
+      "Id": 451,
+      "T3_Variable": "Sexo",
+      "Nombre": "Total",
+      "Codigo": ""
+    },
+    {
+      "Id": 23187,
+      "T3_Variable": "Conceptos demógraficos",
+      "Nombre": "Flujo de inmigraciones procedentes del extranjero",
+      "Codigo": ""
+    },
+    {
+      "Id": 16473,
+      "T3_Variable": "Total Nacional",
+      "Nombre": "Total Nacional",
+      "Codigo": "00"
+    },
+    {
+      "Id": 23184,
+      "T3_Variable": "Tipo de dato",
+      "Nombre": "Proyección a largo plazo",
+      "Codigo": ""
+    },
+    {
+      "Id": 15529,
+      "T3_Variable": "MNP",
+      "Nombre": "Total generación",
+      "Codigo": "0000"
+    }
+  ],
+  "Data": [
+    {
+      "Fecha": "2075-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2075,
+      "Valor": 797400.000201
+    },
+    {
+      "Fecha": "2074-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2074,
+      "Valor": 796022.000188
+    },
+    {
+      "Fecha": "2073-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2073,
+      "Valor": 797813.000173
+    },
+    {
+      "Fecha": "2072-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2072,
+      "Valor": 800064.000195
+    },
+    {
+      "Fecha": "2071-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2071,
+      "Valor": 801686.000197
+    },
+    {
+      "Fecha": "2070-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2070,
+      "Valor": 802493.000219
+    },
+    {
+      "Fecha": "2069-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2069,
+      "Valor": 802729.000202
+    },
+    {
+      "Fecha": "2068-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2068,
+      "Valor": 802769.00022
+    },
+    {
+      "Fecha": "2067-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2067,
+      "Valor": 802946.000196
+    },
+    {
+      "Fecha": "2066-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2066,
+      "Valor": 803470.000193
+    },
+    {
+      "Fecha": "2065-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2065,
+      "Valor": 804416.000191
+    },
+    {
+      "Fecha": "2064-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2064,
+      "Valor": 805736.00021
+    },
+    {
+      "Fecha": "2063-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2063,
+      "Valor": 807300.000184
+    },
+    {
+      "Fecha": "2062-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2062,
+      "Valor": 808946.000211
+    },
+    {
+      "Fecha": "2061-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2061,
+      "Valor": 810511.000207
+    },
+    {
+      "Fecha": "2060-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2060,
+      "Valor": 811872.000215
+    },
+    {
+      "Fecha": "2059-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2059,
+      "Valor": 812958.000195
+    },
+    {
+      "Fecha": "2058-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2058,
+      "Valor": 813761.000212
+    },
+    {
+      "Fecha": "2057-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2057,
+      "Valor": 814330.000192
+    },
+    {
+      "Fecha": "2056-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2056,
+      "Valor": 814760.000182
+    },
+    {
+      "Fecha": "2055-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2055,
+      "Valor": 815163.000197
+    },
+    {
+      "Fecha": "2054-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2054,
+      "Valor": 815654.000179
+    },
+    {
+      "Fecha": "2053-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2053,
+      "Valor": 816322.000203
+    },
+    {
+      "Fecha": "2052-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2052,
+      "Valor": 817217.000185
+    },
+    {
+      "Fecha": "2051-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2051,
+      "Valor": 818331.000194
+    },
+    {
+      "Fecha": "2050-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2050,
+      "Valor": 819604.00019
+    },
+    {
+      "Fecha": "2049-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2049,
+      "Valor": 820925.000202
+    },
+    {
+      "Fecha": "2048-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2048,
+      "Valor": 822153.000195
+    },
+    {
+      "Fecha": "2047-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2047,
+      "Valor": 823144.000213
+    },
+    {
+      "Fecha": "2046-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2046,
+      "Valor": 823787.0002
+    },
+    {
+      "Fecha": "2045-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2045,
+      "Valor": 824045.000205
+    },
+    {
+      "Fecha": "2044-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2044,
+      "Valor": 823998.000196
+    },
+    {
+      "Fecha": "2043-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2043,
+      "Valor": 823886.000193
+    },
+    {
+      "Fecha": "2042-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2042,
+      "Valor": 824135.0002
+    },
+    {
+      "Fecha": "2041-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2041,
+      "Valor": 825384.000192
+    },
+    {
+      "Fecha": "2040-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2040,
+      "Valor": 828485.01023
+    },
+    {
+      "Fecha": "2039-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2039,
+      "Valor": 834481.010251
+    },
+    {
+      "Fecha": "2038-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2038,
+      "Valor": 844555.010247
+    },
+    {
+      "Fecha": "2037-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2037,
+      "Valor": 859957.010292
+    },
+    {
+      "Fecha": "2036-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2036,
+      "Valor": 881887.010371
+    },
+    {
+      "Fecha": "2035-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2035,
+      "Valor": 911350.010203
+    },
+    {
+      "Fecha": "2034-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2034,
+      "Valor": 948992.010375
+    },
+    {
+      "Fecha": "2033-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2033,
+      "Valor": 994894.010216
+    },
+    {
+      "Fecha": "2032-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2032,
+      "Valor": 1048370.010274
+    },
+    {
+      "Fecha": "2031-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2031,
+      "Valor": 1107758.010301
+    },
+    {
+      "Fecha": "2030-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2030,
+      "Valor": 1170240.010264
+    },
+    {
+      "Fecha": "2029-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2029,
+      "Valor": 1231708.010206
+    },
+    {
+      "Fecha": "2028-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2028,
+      "Valor": 1286709.010258
+    },
+    {
+      "Fecha": "2027-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2027,
+      "Valor": 1328526.010306
+    },
+    {
+      "Fecha": "2026-01-01T00:00:00.000+01:00",
+      "T3_TipoDato": "Definitivo",
+      "T3_Periodo": "A",
+      "Anyo": 2026,
+      "Valor": 1349419.010321
+    }
+  ]
+}

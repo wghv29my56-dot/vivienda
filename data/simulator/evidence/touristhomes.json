@@ -1,0 +1,6 @@
+{"COD":"VTE71", "Nombre":"Total Nacional. Viviendas turísticas. Dato base. ", "FK_Unidad":214, "FK_Escala":1, "Data":[{"Fecha":1730415600000, "FK_TipoDato":1, "FK_Periodo":11, "Anyo":2024, "Valor":376463.0, "Secreto":false}
+,{"Fecha":1746050400000, "FK_TipoDato":1, "FK_Periodo":5, "Anyo":2025, "Valor":381837.0, "Secreto":false}
+,{"Fecha":1761951600000, "FK_TipoDato":1, "FK_Periodo":11, "Anyo":2025, "Valor":329764.0, "Secreto":false}
+,{"Fecha":1777586400000, "FK_TipoDato":1, "FK_Periodo":5, "Anyo":2026, "Valor":341001.0, "Secreto":false}
+]
+}

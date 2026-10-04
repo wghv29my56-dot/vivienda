@@ -1,0 +1,722 @@
+[
+  {
+    "id": "rent_up_0",
+    "variable": "rent",
+    "trend": "up",
+    "text": "El coste unitario del alquiler: registra una subida de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_up_1",
+    "variable": "rent",
+    "trend": "up",
+    "text": "El alquiler refleja la tensión del mercado: registra una subida de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_up_2",
+    "variable": "rent",
+    "trend": "up",
+    "text": "La evolución del alquiler afecta al presupuesto de los hogares: registra una subida de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_up_3",
+    "variable": "rent",
+    "trend": "up",
+    "text": "El indicador de alquiler permite seguir la accesibilidad: registra una subida de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_down_0",
+    "variable": "rent",
+    "trend": "down",
+    "text": "El coste unitario del alquiler: registra una bajada de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_down_1",
+    "variable": "rent",
+    "trend": "down",
+    "text": "El alquiler refleja la tensión del mercado: registra una bajada de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_down_2",
+    "variable": "rent",
+    "trend": "down",
+    "text": "La evolución del alquiler afecta al presupuesto de los hogares: registra una bajada de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_down_3",
+    "variable": "rent",
+    "trend": "down",
+    "text": "El indicador de alquiler permite seguir la accesibilidad: registra una bajada de {change}. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_flat_0",
+    "variable": "rent",
+    "trend": "flat",
+    "text": "El coste unitario del alquiler: se mantiene prácticamente estable. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_flat_1",
+    "variable": "rent",
+    "trend": "flat",
+    "text": "El alquiler refleja la tensión del mercado: se mantiene prácticamente estable. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_flat_2",
+    "variable": "rent",
+    "trend": "flat",
+    "text": "La evolución del alquiler afecta al presupuesto de los hogares: se mantiene prácticamente estable. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "rent_flat_3",
+    "variable": "rent",
+    "trend": "flat",
+    "text": "El indicador de alquiler permite seguir la accesibilidad: se mantiene prácticamente estable. Alquiler medio: {before} → {after}."
+  },
+  {
+    "id": "sale_up_0",
+    "variable": "sale",
+    "trend": "up",
+    "text": "El valor tasado de la vivienda: registra una subida de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_up_1",
+    "variable": "sale",
+    "trend": "up",
+    "text": "La tasación refleja el valor del parque residencial: registra una subida de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_up_2",
+    "variable": "sale",
+    "trend": "up",
+    "text": "La evolución de la tasación cambia la barrera de entrada a la compra: registra una subida de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_up_3",
+    "variable": "sale",
+    "trend": "up",
+    "text": "El indicador de venta permite seguir el esfuerzo de acceso: registra una subida de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_down_0",
+    "variable": "sale",
+    "trend": "down",
+    "text": "El valor tasado de la vivienda: registra una bajada de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_down_1",
+    "variable": "sale",
+    "trend": "down",
+    "text": "La tasación refleja el valor del parque residencial: registra una bajada de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_down_2",
+    "variable": "sale",
+    "trend": "down",
+    "text": "La evolución de la tasación cambia la barrera de entrada a la compra: registra una bajada de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_down_3",
+    "variable": "sale",
+    "trend": "down",
+    "text": "El indicador de venta permite seguir el esfuerzo de acceso: registra una bajada de {change}. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_flat_0",
+    "variable": "sale",
+    "trend": "flat",
+    "text": "El valor tasado de la vivienda: se mantiene prácticamente estable. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_flat_1",
+    "variable": "sale",
+    "trend": "flat",
+    "text": "La tasación refleja el valor del parque residencial: se mantiene prácticamente estable. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_flat_2",
+    "variable": "sale",
+    "trend": "flat",
+    "text": "La evolución de la tasación cambia la barrera de entrada a la compra: se mantiene prácticamente estable. Venta media: {before} → {after}."
+  },
+  {
+    "id": "sale_flat_3",
+    "variable": "sale",
+    "trend": "flat",
+    "text": "El indicador de venta permite seguir el esfuerzo de acceso: se mantiene prácticamente estable. Venta media: {before} → {after}."
+  },
+  {
+    "id": "happiness_up_0",
+    "variable": "happiness",
+    "trend": "up",
+    "text": "La felicidad ponderada de los colectivos: registra una subida de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_up_1",
+    "variable": "happiness",
+    "trend": "up",
+    "text": "El balance social reúne situaciones diferentes: registra una subida de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_up_2",
+    "variable": "happiness",
+    "trend": "up",
+    "text": "El promedio de felicidad no implica que todos mejoren: registra una subida de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_up_3",
+    "variable": "happiness",
+    "trend": "up",
+    "text": "La satisfacción agregada resume los pesos del modelo: registra una subida de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_down_0",
+    "variable": "happiness",
+    "trend": "down",
+    "text": "La felicidad ponderada de los colectivos: registra una bajada de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_down_1",
+    "variable": "happiness",
+    "trend": "down",
+    "text": "El balance social reúne situaciones diferentes: registra una bajada de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_down_2",
+    "variable": "happiness",
+    "trend": "down",
+    "text": "El promedio de felicidad no implica que todos mejoren: registra una bajada de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_down_3",
+    "variable": "happiness",
+    "trend": "down",
+    "text": "La satisfacción agregada resume los pesos del modelo: registra una bajada de {change}. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_flat_0",
+    "variable": "happiness",
+    "trend": "flat",
+    "text": "La felicidad ponderada de los colectivos: se mantiene prácticamente estable. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_flat_1",
+    "variable": "happiness",
+    "trend": "flat",
+    "text": "El balance social reúne situaciones diferentes: se mantiene prácticamente estable. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_flat_2",
+    "variable": "happiness",
+    "trend": "flat",
+    "text": "El promedio de felicidad no implica que todos mejoren: se mantiene prácticamente estable. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "happiness_flat_3",
+    "variable": "happiness",
+    "trend": "flat",
+    "text": "La satisfacción agregada resume los pesos del modelo: se mantiene prácticamente estable. Felicidad colectiva: {before} → {after}."
+  },
+  {
+    "id": "gdp_up_0",
+    "variable": "gdp",
+    "trend": "up",
+    "text": "La actividad económica en euros corrientes: registra una subida de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_up_1",
+    "variable": "gdp",
+    "trend": "up",
+    "text": "El PIB nominal incluye cantidades y precios: registra una subida de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_up_2",
+    "variable": "gdp",
+    "trend": "up",
+    "text": "La trayectoria económica condiciona los recursos disponibles: registra una subida de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_up_3",
+    "variable": "gdp",
+    "trend": "up",
+    "text": "El tamaño de la economía es parte del contexto de vivienda: registra una subida de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_down_0",
+    "variable": "gdp",
+    "trend": "down",
+    "text": "La actividad económica en euros corrientes: registra una bajada de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_down_1",
+    "variable": "gdp",
+    "trend": "down",
+    "text": "El PIB nominal incluye cantidades y precios: registra una bajada de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_down_2",
+    "variable": "gdp",
+    "trend": "down",
+    "text": "La trayectoria económica condiciona los recursos disponibles: registra una bajada de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_down_3",
+    "variable": "gdp",
+    "trend": "down",
+    "text": "El tamaño de la economía es parte del contexto de vivienda: registra una bajada de {change}. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_flat_0",
+    "variable": "gdp",
+    "trend": "flat",
+    "text": "La actividad económica en euros corrientes: se mantiene prácticamente estable. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_flat_1",
+    "variable": "gdp",
+    "trend": "flat",
+    "text": "El PIB nominal incluye cantidades y precios: se mantiene prácticamente estable. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_flat_2",
+    "variable": "gdp",
+    "trend": "flat",
+    "text": "La trayectoria económica condiciona los recursos disponibles: se mantiene prácticamente estable. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "gdp_flat_3",
+    "variable": "gdp",
+    "trend": "flat",
+    "text": "El tamaño de la economía es parte del contexto de vivienda: se mantiene prácticamente estable. PIB nominal: {before} → {after}."
+  },
+  {
+    "id": "population_up_0",
+    "variable": "population",
+    "trend": "up",
+    "text": "La población residente: registra una subida de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_up_1",
+    "variable": "population",
+    "trend": "up",
+    "text": "La evolución demográfica modifica las necesidades residenciales: registra una subida de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_up_2",
+    "variable": "population",
+    "trend": "up",
+    "text": "La senda demográfica combina nacimientos, defunciones y migración: registra una subida de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_up_3",
+    "variable": "population",
+    "trend": "up",
+    "text": "Los cambios de población pueden presionar el parque de vivienda: registra una subida de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_down_0",
+    "variable": "population",
+    "trend": "down",
+    "text": "La población residente: registra una bajada de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_down_1",
+    "variable": "population",
+    "trend": "down",
+    "text": "La evolución demográfica modifica las necesidades residenciales: registra una bajada de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_down_2",
+    "variable": "population",
+    "trend": "down",
+    "text": "La senda demográfica combina nacimientos, defunciones y migración: registra una bajada de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_down_3",
+    "variable": "population",
+    "trend": "down",
+    "text": "Los cambios de población pueden presionar el parque de vivienda: registra una bajada de {change}. Población: {before} → {after}."
+  },
+  {
+    "id": "population_flat_0",
+    "variable": "population",
+    "trend": "flat",
+    "text": "La población residente: se mantiene prácticamente estable. Población: {before} → {after}."
+  },
+  {
+    "id": "population_flat_1",
+    "variable": "population",
+    "trend": "flat",
+    "text": "La evolución demográfica modifica las necesidades residenciales: se mantiene prácticamente estable. Población: {before} → {after}."
+  },
+  {
+    "id": "population_flat_2",
+    "variable": "population",
+    "trend": "flat",
+    "text": "La senda demográfica combina nacimientos, defunciones y migración: se mantiene prácticamente estable. Población: {before} → {after}."
+  },
+  {
+    "id": "population_flat_3",
+    "variable": "population",
+    "trend": "flat",
+    "text": "Los cambios de población pueden presionar el parque de vivienda: se mantiene prácticamente estable. Población: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_up_0",
+    "variable": "rent_demand",
+    "trend": "up",
+    "text": "Los hogares estimados que buscan alquiler: registra una subida de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_up_1",
+    "variable": "rent_demand",
+    "trend": "up",
+    "text": "La demanda estimada de alquiler: registra una subida de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_up_2",
+    "variable": "rent_demand",
+    "trend": "up",
+    "text": "La búsqueda de alquiler responde a los supuestos del modelo: registra una subida de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_up_3",
+    "variable": "rent_demand",
+    "trend": "up",
+    "text": "El número estimado de demandantes permite seguir la presión de acceso: registra una subida de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_down_0",
+    "variable": "rent_demand",
+    "trend": "down",
+    "text": "Los hogares estimados que buscan alquiler: registra una bajada de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_down_1",
+    "variable": "rent_demand",
+    "trend": "down",
+    "text": "La demanda estimada de alquiler: registra una bajada de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_down_2",
+    "variable": "rent_demand",
+    "trend": "down",
+    "text": "La búsqueda de alquiler responde a los supuestos del modelo: registra una bajada de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_down_3",
+    "variable": "rent_demand",
+    "trend": "down",
+    "text": "El número estimado de demandantes permite seguir la presión de acceso: registra una bajada de {change}. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_flat_0",
+    "variable": "rent_demand",
+    "trend": "flat",
+    "text": "Los hogares estimados que buscan alquiler: se mantiene prácticamente estable. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_flat_1",
+    "variable": "rent_demand",
+    "trend": "flat",
+    "text": "La demanda estimada de alquiler: se mantiene prácticamente estable. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_flat_2",
+    "variable": "rent_demand",
+    "trend": "flat",
+    "text": "La búsqueda de alquiler responde a los supuestos del modelo: se mantiene prácticamente estable. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "rent_demand_flat_3",
+    "variable": "rent_demand",
+    "trend": "flat",
+    "text": "El número estimado de demandantes permite seguir la presión de acceso: se mantiene prácticamente estable. Demandantes de alquiler: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_up_0",
+    "variable": "buy_demand",
+    "trend": "up",
+    "text": "Los hogares estimados que buscan comprar: registra una subida de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_up_1",
+    "variable": "buy_demand",
+    "trend": "up",
+    "text": "La demanda estimada de compra: registra una subida de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_up_2",
+    "variable": "buy_demand",
+    "trend": "up",
+    "text": "La búsqueda de compra responde a los supuestos del modelo: registra una subida de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_up_3",
+    "variable": "buy_demand",
+    "trend": "up",
+    "text": "El número estimado de compradores permite seguir la presión de acceso: registra una subida de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_down_0",
+    "variable": "buy_demand",
+    "trend": "down",
+    "text": "Los hogares estimados que buscan comprar: registra una bajada de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_down_1",
+    "variable": "buy_demand",
+    "trend": "down",
+    "text": "La demanda estimada de compra: registra una bajada de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_down_2",
+    "variable": "buy_demand",
+    "trend": "down",
+    "text": "La búsqueda de compra responde a los supuestos del modelo: registra una bajada de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_down_3",
+    "variable": "buy_demand",
+    "trend": "down",
+    "text": "El número estimado de compradores permite seguir la presión de acceso: registra una bajada de {change}. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_flat_0",
+    "variable": "buy_demand",
+    "trend": "flat",
+    "text": "Los hogares estimados que buscan comprar: se mantiene prácticamente estable. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_flat_1",
+    "variable": "buy_demand",
+    "trend": "flat",
+    "text": "La demanda estimada de compra: se mantiene prácticamente estable. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_flat_2",
+    "variable": "buy_demand",
+    "trend": "flat",
+    "text": "La búsqueda de compra responde a los supuestos del modelo: se mantiene prácticamente estable. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "buy_demand_flat_3",
+    "variable": "buy_demand",
+    "trend": "flat",
+    "text": "El número estimado de compradores permite seguir la presión de acceso: se mantiene prácticamente estable. Demandantes de compra: {before} → {after}."
+  },
+  {
+    "id": "tourists_up_0",
+    "variable": "tourists",
+    "trend": "up",
+    "text": "El flujo anual de turistas: registra una subida de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_up_1",
+    "variable": "tourists",
+    "trend": "up",
+    "text": "La actividad turística del escenario: registra una subida de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_up_2",
+    "variable": "tourists",
+    "trend": "up",
+    "text": "La trayectoria de visitantes: registra una subida de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_up_3",
+    "variable": "tourists",
+    "trend": "up",
+    "text": "El volumen anual de turismo: registra una subida de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_down_0",
+    "variable": "tourists",
+    "trend": "down",
+    "text": "El flujo anual de turistas: registra una bajada de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_down_1",
+    "variable": "tourists",
+    "trend": "down",
+    "text": "La actividad turística del escenario: registra una bajada de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_down_2",
+    "variable": "tourists",
+    "trend": "down",
+    "text": "La trayectoria de visitantes: registra una bajada de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_down_3",
+    "variable": "tourists",
+    "trend": "down",
+    "text": "El volumen anual de turismo: registra una bajada de {change}. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_flat_0",
+    "variable": "tourists",
+    "trend": "flat",
+    "text": "El flujo anual de turistas: se mantiene prácticamente estable. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_flat_1",
+    "variable": "tourists",
+    "trend": "flat",
+    "text": "La actividad turística del escenario: se mantiene prácticamente estable. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_flat_2",
+    "variable": "tourists",
+    "trend": "flat",
+    "text": "La trayectoria de visitantes: se mantiene prácticamente estable. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourists_flat_3",
+    "variable": "tourists",
+    "trend": "flat",
+    "text": "El volumen anual de turismo: se mantiene prácticamente estable. Turistas anuales: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_up_0",
+    "variable": "tourist_homes",
+    "trend": "up",
+    "text": "El parque estimado de pisos turísticos: registra una subida de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_up_1",
+    "variable": "tourist_homes",
+    "trend": "up",
+    "text": "La oferta de alojamiento turístico: registra una subida de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_up_2",
+    "variable": "tourist_homes",
+    "trend": "up",
+    "text": "La trayectoria de los pisos destinados a turistas: registra una subida de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_up_3",
+    "variable": "tourist_homes",
+    "trend": "up",
+    "text": "El número de viviendas de uso turístico: registra una subida de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_down_0",
+    "variable": "tourist_homes",
+    "trend": "down",
+    "text": "El parque estimado de pisos turísticos: registra una bajada de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_down_1",
+    "variable": "tourist_homes",
+    "trend": "down",
+    "text": "La oferta de alojamiento turístico: registra una bajada de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_down_2",
+    "variable": "tourist_homes",
+    "trend": "down",
+    "text": "La trayectoria de los pisos destinados a turistas: registra una bajada de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_down_3",
+    "variable": "tourist_homes",
+    "trend": "down",
+    "text": "El número de viviendas de uso turístico: registra una bajada de {change}. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_flat_0",
+    "variable": "tourist_homes",
+    "trend": "flat",
+    "text": "El parque estimado de pisos turísticos: se mantiene prácticamente estable. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_flat_1",
+    "variable": "tourist_homes",
+    "trend": "flat",
+    "text": "La oferta de alojamiento turístico: se mantiene prácticamente estable. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_flat_2",
+    "variable": "tourist_homes",
+    "trend": "flat",
+    "text": "La trayectoria de los pisos destinados a turistas: se mantiene prácticamente estable. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "tourist_homes_flat_3",
+    "variable": "tourist_homes",
+    "trend": "flat",
+    "text": "El número de viviendas de uso turístico: se mantiene prácticamente estable. Pisos turísticos: {before} → {after}."
+  },
+  {
+    "id": "available_homes_up_0",
+    "variable": "available_homes",
+    "trend": "up",
+    "text": "El parque disponible del modelo: registra una subida de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_up_1",
+    "variable": "available_homes",
+    "trend": "up",
+    "text": "La disponibilidad residencial estimada: registra una subida de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_up_2",
+    "variable": "available_homes",
+    "trend": "up",
+    "text": "La evolución de la oferta residencial: registra una subida de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_up_3",
+    "variable": "available_homes",
+    "trend": "up",
+    "text": "El stock de viviendas del escenario: registra una subida de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_down_0",
+    "variable": "available_homes",
+    "trend": "down",
+    "text": "El parque disponible del modelo: registra una bajada de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_down_1",
+    "variable": "available_homes",
+    "trend": "down",
+    "text": "La disponibilidad residencial estimada: registra una bajada de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_down_2",
+    "variable": "available_homes",
+    "trend": "down",
+    "text": "La evolución de la oferta residencial: registra una bajada de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_down_3",
+    "variable": "available_homes",
+    "trend": "down",
+    "text": "El stock de viviendas del escenario: registra una bajada de {change}. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_flat_0",
+    "variable": "available_homes",
+    "trend": "flat",
+    "text": "El parque disponible del modelo: se mantiene prácticamente estable. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_flat_1",
+    "variable": "available_homes",
+    "trend": "flat",
+    "text": "La disponibilidad residencial estimada: se mantiene prácticamente estable. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_flat_2",
+    "variable": "available_homes",
+    "trend": "flat",
+    "text": "La evolución de la oferta residencial: se mantiene prácticamente estable. Viviendas disponibles: {before} → {after}."
+  },
+  {
+    "id": "available_homes_flat_3",
+    "variable": "available_homes",
+    "trend": "flat",
+    "text": "El stock de viviendas del escenario: se mantiene prácticamente estable. Viviendas disponibles: {before} → {after}."
+  }
+]
