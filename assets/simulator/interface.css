@@ -165,3 +165,5 @@
 .collective-policy-card{grid-column:1/-1;border-color:#9baebd}
 .collective-policy-card>strong{font-size:22px}
 .collective-policy-card>strong small{font-size:13px;margin-left:3px;color:#627285}
+.how-to-play li strong{display:inline;margin:0;font-size:inherit;letter-spacing:0;text-transform:none;color:var(--ink)}
+.how-to-play ul{list-style:none;padding-left:0}.how-to-play li{padding-left:0}
