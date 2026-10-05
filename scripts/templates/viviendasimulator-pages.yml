@@ -20,10 +20,25 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout deployment configuration
+        uses: actions/checkout@v4
+        with:
+          path: deployment-config
+      - name: Select source revision
+        id: source
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          ref=main
+          if [ "$EVENT_NAME" = push ] && [ -f deployment-config/source-ref.txt ]; then
+            ref=$(cat deployment-config/source-ref.txt)
+            [[ "$ref" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          fi
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
         with:
           repository: wghv29my56-dot/vivienda
-          ref: main
+          ref: ${{ steps.source.outputs.ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
