@@ -167,3 +167,12 @@
 .collective-policy-card>strong small{font-size:13px;margin-left:3px;color:#627285}
 .how-to-play li strong{display:inline;margin:0;font-size:inherit;letter-spacing:0;text-transform:none;color:var(--ink)}
 .how-to-play ul{list-style:none;padding-left:0}.how-to-play li{padding-left:0}
+
+/* Summary cards can flow to either decision column without stretching other cards. */
+.decision-flow{display:grid;gap:12px;margin-top:12px;min-width:0}
+.decision-flow:empty{display:none}
+.decision-flow .effect{margin:0;padding:13px 15px}
+.decision-flow .effect strong{font-size:11px}
+.decision-flow .effect h4{font-size:9px}
+#modal-effects:empty{display:none}
+@media(max-width:720px){.decision-flow{gap:10px}}
