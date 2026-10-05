@@ -438,21 +438,11 @@ $('funding-all').onclick=()=>{const s=D.funding_sources.find(s=>s.id===selectedS
 $('confirm-policy').onclick=()=>{readFunding();if(validateDraft().length)return;planned.set(draft.index,{...structuredClone(draft),start:turn+1});policyFiscalSnapshot={...fiscalPending};$('policy-workspace').close();renderMeasure();catalog();error('Medida preparada. Consulta sus ventajas y costes en el resumen de decisiones.');};
 function cancelPolicy(){fiscalPending={...policyFiscalSnapshot};$('policy-workspace').close();}
 $('close-policy').onclick=cancelPolicy;$('policy-workspace').oncancel=e=>{e.preventDefault();cancelPolicy();};
-function offerTutorial(){
- const previous=current,example=D.measures.findIndex(m=>m.id==='a3_public_build');
- if(example<0)return;
- window.SIM_TUTORIAL?.offer({
-  selectExample(){current=example;catalog();renderMeasure();},
-  openExample(){openPolicy(example);},
-  closeExample(){cancelPolicy();},
-  restore(){current=previous;catalog();renderMeasure();}
- });
-}
-$('start').onclick=()=>{configuration={scope:'national',country_code:'ES',model_version:D.version,objective:'Mejorar el acceso a la vivienda'};turn=0;history=[initialState()];active=[];fiscalEvents=[{turn:0,levels:{}}];fiscalPending={};current=0;planned.clear();$('catalog').innerHTML='';$('setup').hidden=true;$('game').hidden=false;error('');render();window.scrollTo(0,0);if(matchMedia('(max-width:620px)').matches&&!mobileWarningAccepted)$('mobile-warning').showModal();else offerTutorial();};
+$('start').onclick=()=>{configuration={scope:'national',country_code:'ES',model_version:D.version,objective:'Mejorar el acceso a la vivienda'};turn=0;history=[initialState()];active=[];fiscalEvents=[{turn:0,levels:{}}];fiscalPending={};current=0;planned.clear();$('catalog').innerHTML='';$('setup').hidden=true;$('game').hidden=false;error('');render();window.scrollTo(0,0);if(matchMedia('(max-width:620px)').matches&&!mobileWarningAccepted)$('mobile-warning').showModal()};
 $('advance').onclick=()=>{if(turn>=years*4){showTurnReport(true);return;}const next=turn+1,actions=[...planned.values()];const conflicts=[...H.migrationConflicts(D,[...active,...actions]),...H.fiscalConflicts(D.measures,[...active,...actions]),...H.programmeConflicts(D.measures,[...active,...actions]),...H.existingConflicts(D.measures,[...active,...actions]),...H.accessConflicts(D,[...active,...actions]),...H.tourismConflicts(D,[...active,...actions]),...H.taxConflicts(D.measures,[...active,...actions])];if(conflicts.length){error(conflicts.join(' '));return;}fiscalEvents.push({turn:next,levels:{...fiscalPending}});active.push(...actions);planned.clear();turn=next;history.push(outcome(turn,active,history.at(-1)));render();showTurnReport(turn>=years*4);error(turn>=years*4?'Has completado la partida. Revisa tu evolución y la recapitulación de decisiones.':`${actions.length} ${actions.length===1?'nueva medida aplicada':'nuevas medidas aplicadas'}. Ya puedes preparar el siguiente trimestre.`);};
 $('advance-bottom').onclick=()=>$('advance').click();
 $('configure').onclick=()=>{if((turn||planned.size)&&!confirm('Comenzar una nueva partida reiniciará la actual. ¿Continuar?'))return;$('game').hidden=true;$('setup').hidden=false;setupChoices();window.scrollTo(0,0)};
-let mobileWarningAccepted=false;$('mobile-warning').oncancel=e=>e.preventDefault();$('accept-mobile-warning').onclick=()=>{mobileWarningAccepted=true;$('mobile-warning').close();offerTutorial();};
+let mobileWarningAccepted=false;$('mobile-warning').oncancel=e=>e.preventDefault();$('accept-mobile-warning').onclick=()=>{mobileWarningAccepted=true;$('mobile-warning').close()};
 $('close-info').onclick=()=>$('info-dialog').close();document.addEventListener?.('click',e=>{const trigger=e.target.closest('[data-info]');if(trigger){e.preventDefault();e.stopPropagation();openInfo(trigger.dataset.info)}});document.addEventListener?.('keydown',e=>{const trigger=e.target.closest?.('[data-info][role="button"]');if(trigger&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openInfo(trigger.dataset.info)}});setupChoices();
 
 window.addEventListener?.('resize',()=>{if(history.length)drawChart()});

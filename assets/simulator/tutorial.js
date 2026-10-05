@@ -68,4 +68,18 @@ tour.querySelector('#tutorial-exit').onclick=finish;
 tour.oncancel=e=>{e.preventDefault();finish();};
 window.addEventListener('resize',place);document.addEventListener('scroll',place,true);
 window.SIM_TUTORIAL={offer(callbacks){hooks=callbacks;invite.showModal();}};
+window.SIM_MODEL_READY.then(()=>{
+ function offer(){
+  const previous=current,example=D.measures.findIndex(m=>m.id==='a3_public_build');
+  if(example<0)return;
+  window.SIM_TUTORIAL.offer({
+   selectExample(){current=example;catalog();renderMeasure();},
+   openExample(){openPolicy(example);},
+   closeExample(){cancelPolicy();},
+   restore(){current=previous;catalog();renderMeasure();}
+  });
+ }
+ document.getElementById('start').addEventListener('click',()=>{if(!document.getElementById('mobile-warning').open)offer();});
+ document.getElementById('accept-mobile-warning').addEventListener('click',offer);
+}).catch(()=>{});
 })();
