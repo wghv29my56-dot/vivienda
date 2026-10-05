@@ -2,6 +2,7 @@
 (function(){
 'use strict';
 const current=document.currentScript,control=current?.dataset.consumer==='control',M=window.SIM_MODEL,C=window.SIM_SUPABASE,CACHE='vivienda.simulator.remote-cache.v1'+(C.version?'.'+C.version:'');
+const assetVersion=encodeURIComponent(C.version||'price-controls-1');
 const start=document.getElementById('start');if(start)start.disabled=true;
 const notice=document.createElement('p');notice.setAttribute('role','status');notice.style.cssText='margin:12px 0;padding:12px 16px;border:1px solid #d7e2e9;background:#f3f7fa;color:#234e70;font:14px/1.5 system-ui;border-radius:6px';notice.textContent='Cargando configuración del juego…';
 (start?.parentElement||document.querySelector('main')||document.body).prepend(notice);
@@ -30,7 +31,7 @@ async function load(){
  catch(e){
   problem=e.message;source='cache';
   try{row=validate(JSON.parse(localStorage.getItem(CACHE)||'null'));}catch{
-   source='bundled';await script('data/simulator/catalog.js?v=public-debt-4');const pack=M.fromCatalog(window.SIM_CATALOG);
+   source='bundled';await script('data/simulator/catalog.js?v='+assetVersion);const pack=M.fromCatalog(window.SIM_CATALOG);
    row=validate({engine_id:C.engineId,version_id:pack.metadata.version,payload:pack,label:pack.model.version_label});
   }
  }
@@ -38,9 +39,9 @@ async function load(){
  window.SIM_MODEL_SOURCE=Object.freeze({source,version:row.version_id,checksum:row.payload_checksum||null,loadedAt:new Date().toISOString(),problem});
  if(source==='supabase')notice.remove();
  else{notice.style.background='#fff2e8';notice.style.borderColor='#dfb69b';notice.textContent='No se pudo conectar con la configuración publicada. Usas una copia de respaldo ('+row.payload.model.version_label+').';}
- if(control)await script('assets/simulator/control.js?v=control-lab-1');
+ if(control)await script('assets/simulator/control.js?v='+assetVersion);
  else{
-  for(const file of ['model-bootstrap.js','national.js','turn-report.js','public-debt.js','fiscal.js','advanced.js'])await script('assets/simulator/'+file+'?v=public-debt-4');
+  for(const file of ['model-bootstrap.js','national.js','turn-report.js','public-debt.js','fiscal.js','decision-tracking.js','advanced.js'])await script('assets/simulator/'+file+'?v='+assetVersion);
   if(start&&!start.textContent.includes('no disponible'))start.disabled=false;
  }
  return window.SIM_MODEL_SOURCE;

@@ -12,8 +12,8 @@ const reportDescriptors=[
  ['available_homes','Viviendas disponibles','El parque disponible del modelo','La disponibilidad residencial estimada','La evolución de la oferta residencial','El stock de viviendas del escenario']
 ];
 const REPORT_TEMPLATES=reportDescriptors.flatMap(([id,name,...phrases])=>['up','down','flat'].flatMap(trend=>phrases.map((phrase,i)=>({id:`${id}_${trend}_${i}`,variable:id,trend,text:`${phrase}: ${trend==='flat'?'se mantiene prácticamente estable':'registra una '+(trend==='up'?'subida':'bajada')+' de {change}'}. ${name}: {before} → {after}.`}))));
-function reportMetrics(before,after){
- const out=[{id:'rent',name:'Alquiler medio',before:before[6],after:after[6],unit:'€/m²/mes'},{id:'sale',name:'Venta media',before:before[7],after:after[7],unit:'€/m²'},{id:'happiness',name:'Felicidad colectiva',before:100-aggregate(before),after:100-aggregate(after),unit:'puntos',points:true}];
+function reportMetrics(before,after,beforeTurn=Math.max(0,turn-1),afterTurn=turn){
+ const out=[{id:'rent',name:'Alquiler medio',before:realPrice(before[6],beforeTurn),after:realPrice(after[6],afterTurn),unit:'€ de 2026/m²/mes'},{id:'sale',name:'Venta media',before:realPrice(before[7],beforeTurn),after:realPrice(after[7],afterTurn),unit:'€ de 2026/m²'},{id:'happiness',name:'Felicidad colectiva',before:100-aggregate(before),after:100-aggregate(after),unit:'puntos',points:true}];
  D.national.indicators.filter(i=>i.visible!==false).forEach((v,i)=>{const index=D.national.indicators.indexOf(v)+9;out.push({id:v.key,name:v.name,before:before[index],after:after[index],unit:v.unit||''});});
  modelGroups.filter(g=>g.visible!==false).forEach(g=>out.push({id:'group_'+g.id,name:g.name,before:groupValue(before,g),after:groupValue(after,g),unit:'puntos',points:true}));
  return out.map(m=>({...m,delta:m.after-m.before,change:m.points?m.after-m.before:m.before?(m.after/m.before-1)*100:null}));
@@ -27,7 +27,7 @@ function reportNarrative(m){
  return escapeHTML(text).replace('{before}',reportValue(m,m.before)).replace('{after}',reportValue(m,m.after)).replace('{change}',reportDelta(m));
 }
 function showTurnReport(final=false){
- const previous=history[final?0:Math.max(0,turn-1)],now=history[turn],metrics=reportMetrics(previous,now);
+ const previous=history[final?0:Math.max(0,turn-1)],now=history[turn],metrics=reportMetrics(previous,now,final?0:Math.max(0,turn-1),turn);
  const top=[...metrics].sort((a,b)=>Math.abs(b.change??0)-Math.abs(a.change??0)).slice(0,3),max=Math.max(1,...top.map(m=>Math.abs(m.change??0)));
  const dialog=$('turn-report');dialog.classList.toggle('is-final',final);
  $('turn-report-title').textContent=final?`Balance final · ${2027}–${2026+years}`:`Pasas a ${quarterLabel(turn)}`;
@@ -60,7 +60,7 @@ function finalReportDetails(metrics){
 
 function reportEvolution(top,final){
  const start=final?0:Math.max(0,turn-(D.report_settings?.quarterly_window||4)),points=history.slice(start,turn+1),palette=final?(D.report_settings?.final_colors||['#96723d','#5678a0','#38988b']):(D.report_settings?.quarterly_colors||['#32658c','#2a9b8e','#b67b45']);
- const lines=top.map((m,j)=>{const values=points.map(v=>reportMetrics(history[0],v).find(x=>x.id===m.id).after),base=values[0];return {m,values,index:values.map(v=>base?v/base*100:100+v),color:palette[j]};});
+ const lines=top.map((m,j)=>{const values=points.map((v,i)=>reportMetrics(history[0],v,0,start+i).find(x=>x.id===m.id).after),base=values[0];return {m,values,index:values.map(v=>base?v/base*100:100+v),color:palette[j]};});
  const all=lines.flatMap(l=>l.index),lo=Math.min(100,...all),hi=Math.max(100,...all),pad=Math.max(.2,(hi-lo)*.15),min=lo-pad,max=hi+pad;
  const x=i=>48+i/Math.max(1,points.length-1)*564,y=v=>205-(v-min)/(max-min)*180;
  const ticks=Array.from({length:5},(_,i)=>min+(max-min)*i/4);

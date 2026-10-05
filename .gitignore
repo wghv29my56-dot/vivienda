@@ -53,3 +53,7 @@ data/simulator/model-backups/
 
 # Private live policy workbench
 /assets/simulator/control-lab-live.js
+
+# Private observation dashboard and launcher
+/assets/simulator/control-tracking.js
+/Abrir_control_simulador.command

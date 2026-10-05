@@ -10,6 +10,7 @@ document.body.append(dialog);
 dialog.querySelector('#keep-playing').onclick=()=>dialog.close();
 dialog.querySelector('#confirm-new-game').onclick=()=>{
  dialog.close();
+ window.SIM_TRACKING?.end('reconfigured');
  document.getElementById('game').hidden=true;
  document.getElementById('setup').hidden=false;
  setupChoices();

@@ -1,17 +1,17 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-05",
-  "model_version": "0.12.0-alpha.collective1.mean1.debt4",
+  "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "2c60c05d9b45e2196603692064e4778337465864862e2b184790dd828981001f",
+  "source_sha256": "3e90619b61af99c86df113d31191aee974eaba34377e86a01a2c4c2d6f377569",
   "engine_manifest": {
-    "assets/simulator/housing-policy.js": "3d3f16b432cb8ae8da1fcd01d2e13066bea5de5c7400bae89a4b84600d73bc47",
-    "assets/simulator/model-config.js": "5e64180ace024e43722bf4fa62d3780ced118c7a2f4b47400aef9ad98a721cc8",
-    "assets/simulator/advanced.js": "f0e1a6163112b56362137b09616fb142b16fde4b919bb442f56351b48739a29b",
+    "assets/simulator/housing-policy.js": "5dc84e21a1c3f4dcb44d29075ece481c4a6f96e943b8ea8f93d4f65cb97901b4",
+    "assets/simulator/model-config.js": "c4a341d71f194a550864f58a079df5327cdf0a82badba4612bdc14469b69304a",
+    "assets/simulator/advanced.js": "ca5f9a90888161f0087a21d810df18fe299e76d85804ed9001da63f4b629ff3c",
     "assets/simulator/national.js": "099037f5602d5dd1e82821ec02c210883713dccdac8664eb7aef6d585b7d81f9",
     "assets/simulator/fiscal.js": "35ae7a021a9fa689917afca743f691961ffb88a84f6f596960341fd45cbd153e",
-    "assets/simulator/turn-report.js": "d3a14eccdb80fe69b4e7e61d6eab0132764c8e959fbeac9b3f74041af755c283",
+    "assets/simulator/turn-report.js": "4d4ecec796193c4d5344b543bbf044b033b1bc895cc6da5aae6788db31be0d88",
     "assets/simulator/public-debt.js": "46e376763b0ba24bc42941d987ea326e972712395bb5fd2b57ba64c3f3fbad6c"
   },
   "publication": {
@@ -31,6 +31,7 @@
     "Felicidad colectiva de todos los grupos nacionales, clima social por recortes, presión fiscal y PIB; impactos directos y comunes separados y previsualizados en cada medida.",
     "Alquiler inicial: media aritmética AEAT 2024 de 9,00 €/m²/mes, con ayuda y fuente corregidas.",
     "Financiación con deuda pública: amortización de cada emisión en 20 años, intereses y principal pagados por recortes desde el siguiente trimestre.",
-    "Reparto de las cuotas con barras sobre varias partidas; costes de deuda bloqueados permanentemente."
+    "Reparto de las cuotas con barras sobre varias partidas; costes de deuda bloqueados permanentemente.",
+    "Integración sin pérdida de deuda pública, nueva medida de teletrabajo internacional y revisión común de controles de precios."
   ]
 }
