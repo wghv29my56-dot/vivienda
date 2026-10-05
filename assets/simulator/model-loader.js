@@ -30,7 +30,7 @@ async function load(){
  catch(e){
   problem=e.message;source='cache';
   try{row=validate(JSON.parse(localStorage.getItem(CACHE)||'null'));}catch{
-   source='bundled';await script('data/simulator/catalog.js?v=collective-1');const pack=M.fromCatalog(window.SIM_CATALOG);
+   source='bundled';await script('data/simulator/catalog.js?v=public-debt-1');const pack=M.fromCatalog(window.SIM_CATALOG);
    row=validate({engine_id:C.engineId,version_id:pack.metadata.version,payload:pack,label:pack.model.version_label});
   }
  }
@@ -40,7 +40,7 @@ async function load(){
  else{notice.style.background='#fff2e8';notice.style.borderColor='#dfb69b';notice.textContent='No se pudo conectar con la configuración publicada. Usas una copia de respaldo ('+row.payload.model.version_label+').';}
  if(control)await script('assets/simulator/control.js?v=control-lab-1');
  else{
-  for(const file of ['model-bootstrap.js','national.js','turn-report.js','fiscal.js','advanced.js'])await script('assets/simulator/'+file+'?v=collective-1');
+  for(const file of ['model-bootstrap.js','national.js','turn-report.js','public-debt.js','fiscal.js','advanced.js'])await script('assets/simulator/'+file+'?v=public-debt-1');
   if(start&&!start.textContent.includes('no disponible'))start.disabled=false;
  }
  return window.SIM_MODEL_SOURCE;

@@ -85,6 +85,13 @@
       "budget_linear_share": 0.35,
       "tax_linear_share": 0.4,
       "note": "Calibración de juego editable, no encuesta ni elasticidad causal oficial. Primero se calculan los impactos propios de los colectivos; luego se suma el clima por pérdida de servicios/transferencias, presión tributaria y producción real. Un único rebote del índice directo relativo al contrafactual evita circularidad. El índice final es la media ponderada de las felicidades finales."
+    },
+    "public_debt": {
+      "annual_rate": 0.03,
+      "reduction_delay_turns": 1,
+      "repayment_turns": 80,
+      "baseline_annual_interest": 38793000000,
+      "note": "Hipótesis: interés fijo del 3% anual, amortización de principal constante en 80 cuotas trimestrales por emisión, desde el trimestre siguiente. Intereses AAPP COFOG 2024 de referencia: 38.793 M€/año."
     }
   },
   "groups": [
@@ -964,9 +971,15 @@
       "help_title": "Reservas financieras, servicios de seguro y transferencias",
       "url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
       "kind": "methodology"
+    },
+    "debt_cofog": {
+      "id": "debt_cofog",
+      "title": "IGAE · intereses de la deuda de las AAPP, 2024",
+      "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf",
+      "note": "Intereses consolidados de todas las AAPP: 38.793 millones de euros en 2024. No incluye devolución del principal."
     }
   },
-  "version": "0.12.0-alpha.collective1.mean1",
+  "version": "0.12.0-alpha.collective1.mean1.debt1",
   "measures": [
     {
       "id": "a3_freeze",
@@ -1272,7 +1285,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Mantiene la renta nominal de los contratos cubiertos en el importe que tenían al aprobar la medida. No rebaja esa renta ni congela el precio de venta. La barra decide qué proporción de contratos queda cubierta; 25 % significa uno de cada cuatro contratos del ámbito simulado, no una rebaja del 25 %. El segundo control financia registro, comprobación de subidas, reclamaciones y sanciones.",
       "price_control": {
@@ -1636,7 +1650,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Limita la subida anual de contratos vigentes. No fija la renta inicial de un contrato nuevo. El control muestra directamente la subida anual máxima permitida: 0 % equivale a congelar y 4 % permite hasta un 4 % anual. Es un límite de escenario, no el IRAV oficial futuro. El alcance nacional supuesto se puede editar en el panel interno.",
       "price_control": {
@@ -1689,7 +1704,7 @@
         0
       ],
       "national_effects": {
-        "gdp": -5e-05,
+        "gdp": -0.00005,
         "population": 0,
         "rent_demand": 0.005,
         "buy_demand": 0,
@@ -2000,7 +2015,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Fija una renta máxima por características y zona utilizando una base de contratos comparables. La rebaja elegida aproxima cuánto queda el tope por debajo del alquiler actual de referencia, no un porcentaje de municipios ni de inspectores. Se aplica a la cuota de contratos indicada en el modelo. Es una propuesta genérica; las modalidades nacionales del catálogo tienen reglas y excepciones propias.",
       "price_control": {
@@ -2364,7 +2380,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Limita el esfuerzo del hogar arrendatario en función de sus ingresos. El juego traduce ese límite a una rebaja equivalente del alquiler de referencia; no dispone de una distribución individual de ingresos y contratos para aplicar un porcentaje de esfuerzo a cada hogar. La comprobación de ingresos y contratos requiere medios. Es una propuesta hipotética, no una norma española vigente.",
       "price_control": {
@@ -2727,7 +2744,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Comparte la misma fórmula con la calculadora de alquiler por amortización de esta web: suma de amortizaciones anuales × (1 + rentabilidad / 100) / 12. La vivienda descuenta un 15 % residual y actualiza su base por IPC; reformas y equipamiento se amortizan a coste original. La rentabilidad del 8 % se aplica a la amortización anual, no al precio de mercado. La barra aproxima progresivamente el precio actual al calculado. Se usa una vivienda ilustrativa de 80 m², no una distribución nacional de activos. Los efectos sobre oferta, economía y felicidad son hipótesis del juego: la calculadora original no estima esos efectos.",
       "price_control": {
@@ -3117,7 +3135,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Vincula la renta inicial a la del contrato anterior dentro de una zona declarada tensionada, con excepciones legales. Para grandes tenedores puede añadir un índice estatal de referencia y, en ciertos supuestos, alcanzar viviendas sin alquiler previo reciente. Se aplicó en España con la Ley de Vivienda de 2023, pero no funciona como un descuento uniforme en todo el país. La barra del juego simula una rebaja equivalente sobre el parque afectado, no un porcentaje literal de la ley.",
       "price_control": {
@@ -3479,7 +3498,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Limita la renta inicial de un nuevo contrato a partir de una renta comparable local. Puede excluir viviendas nuevas y la primera cesión tras una modernización integral, por lo que no congela todos los contratos. Este mecanismo se aplicó en Alemania mediante la Mietpreisbremse, con un máximo habitual de la referencia local más un 10 %. La barra representa una rebaja equivalente respecto a la referencia del juego.",
       "price_control": {
@@ -3841,7 +3861,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Establece una renta de referencia por zona y características del inmueble, junto con un máximo por encima de esa referencia. Puede admitir un complemento bajo condiciones concretas y permitir su impugnación. Este mecanismo se aplicó en varias ciudades francesas, donde el límite mayorado es del 20 %, y se distingue de limitar las subidas entre contratos. La barra aplica una rebaja equivalente al escenario, no modifica literalmente el porcentaje francés.",
       "price_control": {
@@ -4203,7 +4224,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Calcula una renta máxima a partir de puntos por superficie, equipamiento, eficiencia y otras características de la vivienda. Puede abarcar alquiler social y segmento medio, mientras que el tramo libre queda fuera del tope según los puntos del inmueble. Se aplicó en Países Bajos, donde la regulación de 2024 alcanzó contratos de hasta 186 puntos. La barra aproxima una rebaja equivalente porque el simulador no dispone de fichas individuales para puntuar cada casa.",
       "price_control": {
@@ -4565,7 +4587,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Compara viviendas equivalentes para determinar una renta razonable, dando prioridad a los alquileres negociados entre propietarios y asociaciones locales de inquilinos. No fija un techo nacional uniforme: importan las características de la vivienda y los comparables de la zona. Este modelo se aplicó en Suecia mediante la negociación y el valor de uso. La barra simula el resultado de una negociación más restrictiva; no es una regla porcentual sueca.",
       "price_control": {
@@ -4927,7 +4950,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Combina una congelación de rentas con tablas de máximos y reducción de alquileres que superen esos límites. Es un tope fuerte que puede cambiar rápidamente las rentas cubiertas, pero exige una competencia legal clara y un sistema intenso de control. Se aplicó de forma temporal en Berlín como Mietendeckel y el Tribunal Constitucional alemán lo anuló en 2021 por una cuestión competencial. Aquí es un precedente histórico e hipotético, no una norma vigente ni trasladable sin reforma competencial.",
       "price_control": {
@@ -5272,7 +5296,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "fiscal_links": [
         {
@@ -5631,7 +5656,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Establece el máximo de venta y reventa de viviendas calificadas como protegidas durante su periodo de protección. Se verifica precio por m² útil, requisitos del comprador y transmisiones para evitar sobreprecios ocultos. No fija un precio máximo a toda la vivienda libre. La barra muestra la rebaja del máximo respecto al precio de referencia del juego; el peso del parque afectado es una hipótesis del 5 %, editable. Cada comunidad tiene módulos y reglas propios: la cifra nacional de la simulación no los sustituye.",
       "price_control": {
@@ -5982,7 +6008,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Contrata personal técnico, jurídico y administrativo para resolver licencias y reducir expedientes pendientes en los ayuntamientos. El presupuesto financia plantillas y herramientas repartidas según la carga de trabajo, en un país con miles de municipios. Más dotación permite tramitar más proyectos, pero las viviendas llegan a alquiler y venta cuando terminan las obras. Mantiene los requisitos técnicos y ambientales actuales.",
       "selection_description": "Contrata personal técnico, jurídico y administrativo para resolver licencias y reducir expedientes pendientes en los ayuntamientos. El presupuesto financia plantillas y herramientas repartidas según la carga de trabajo, en un país con miles de municipios. Más dotación permite tramitar más proyectos, pero las viviendas llegan a alquiler y venta cuando terminan las obras. Mantiene los requisitos técnicos y ambientales actuales.",
@@ -6336,7 +6363,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Crea equipos estatales y autonómicos compartidos que tramitan informes y apoyan a los municipios con menos medios. Su intervención requiere convenios y coordinación con la administración competente para otorgar la licencia. El presupuesto amplía la plantilla y los expedientes que puede asumir, evitando montar un equipo completo en cada localidad. Los proyectos viables aportan vivienda de alquiler y compra tras el plazo de construcción.",
       "selection_description": "Crea equipos estatales y autonómicos compartidos que tramitan informes y apoyan a los municipios con menos medios. Su intervención requiere convenios y coordinación con la administración competente para otorgar la licencia. El presupuesto amplía la plantilla y los expedientes que puede asumir, evitando montar un equipo completo en cada localidad. Los proyectos viables aportan vivienda de alquiler y compra tras el plazo de construcción.",
@@ -6705,7 +6733,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Reforma requisitos del Código Técnico y exigencias ambientales para reducir documentación, costes de adaptación y plazos. El presupuesto paga la revisión normativa, formación y aplicación municipal de los nuevos criterios. Su alcance aumenta con los equipos disponibles y puede hacer viables más proyectos para alquiler y venta. Es un escenario de reforma: rebajar estándares puede empeorar prestaciones o impactos ambientales y debe respetar los mínimos legales europeos.",
       "selection_description": "Reforma requisitos del Código Técnico y exigencias ambientales para reducir documentación, costes de adaptación y plazos. El presupuesto paga la revisión normativa, formación y aplicación municipal de los nuevos criterios. Su alcance aumenta con los equipos disponibles y puede hacer viables más proyectos para alquiler y venta. Es un escenario de reforma: rebajar estándares puede empeorar prestaciones o impactos ambientales y debe respetar los mínimos legales europeos.",
@@ -7075,7 +7104,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Amplía los supuestos en los que una declaración responsable sustituye la comprobación administrativa previa. El promotor declara que cumple los requisitos y la administración concentra recursos en comprobarlo después. Más presupuesto permite gestionar más expedientes e inspecciones, con menos demoras antes de empezar las obras. La ampliación a actuaciones hoy sujetas a licencia exigiría reformar su régimen; una declaración falsa puede detener la obra y generar sanciones.",
       "selection_description": "Amplía los supuestos en los que una declaración responsable sustituye la comprobación administrativa previa. El promotor declara que cumple los requisitos y la administración concentra recursos en comprobarlo después. Más presupuesto permite gestionar más expedientes e inspecciones, con menos demoras antes de empezar las obras. La ampliación a actuaciones hoy sujetas a licencia exigiría reformar su régimen; una declaración falsa puede detener la obra y generar sanciones.",
@@ -7443,7 +7473,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Propone permitir la construcción sin licencia previa y exigir la homologación al finalizar, trasladando al arquitecto y al propietario la responsabilidad de lo ejecutado. El presupuesto sostiene comprobaciones finales, inspecciones y equipos jurídicos para exigir responsabilidades civiles y penales cuando procedan. Puede acelerar proyectos, pero también dejar obras sin homologar, aumentar seguros y exigir correcciones o demolición. Es una reforma hipotética: la responsabilidad penal exige los presupuestos del delito y no nace automáticamente por cualquier defecto de la obra.",
       "selection_description": "Propone permitir la construcción sin licencia previa y exigir la homologación al finalizar, trasladando al arquitecto y al propietario la responsabilidad de lo ejecutado. El presupuesto sostiene comprobaciones finales, inspecciones y equipos jurídicos para exigir responsabilidades civiles y penales cuando procedan. Puede acelerar proyectos, pero también dejar obras sin homologar, aumentar seguros y exigir correcciones o demolición. Es una reforma hipotética: la responsabilidad penal exige los presupuestos del delito y no nace automáticamente por cualquier defecto de la obra.",
@@ -7783,7 +7814,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Encarga un programa de hasta dos millones de viviendas públicas de alquiler, con suelo, proyecto y obra incluidos en el coste. La entrega se reparte entre los años ocho y diez desde su aprobación. Durante la ejecución sigues pagando y no puedes aprobar otro programa igual. La cantidad máxima representa un escenario de gran expansión de capacidad, no una previsión de producción.",
       "explanation": "Encarga un programa de hasta dos millones de viviendas públicas de alquiler, con suelo, proyecto y obra incluidos en el coste. La entrega se reparte entre los años ocho y diez desde su aprobación. Durante la ejecución sigues pagando y no puedes aprobar otro programa igual. La cantidad máxima representa un escenario de gran expansión de capacidad, no una previsión de producción.",
@@ -8129,7 +8161,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Pone parcelas públicas ya aptas a disposición de promociones asequibles mediante concesiones o derechos de superficie. La movilización administrativa tarda de seis meses a un año; la obra privada viene después. El gasto público cubre inventarios, concursos y conexiones menores, mientras el promotor financia la edificación. Puede provocar oposición vecinal por el uso del suelo y la llegada de nuevas promociones.",
       "explanation": "Pone parcelas públicas ya aptas a disposición de promociones asequibles mediante concesiones o derechos de superficie. La movilización administrativa tarda de seis meses a un año; la obra privada viene después. El gasto público cubre inventarios, concursos y conexiones menores, mientras el promotor financia la edificación. Puede provocar oposición vecinal por el uso del suelo y la llegada de nuevas promociones.",
@@ -8482,7 +8515,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Cede suelo limitado a cooperativas que promueven vivienda a precio de coste para sus socios. Se inspira en el cooperativismo español de los años sesenta a ochenta, que adjudicaba principalmente viviendas en propiedad. El programa paga conexiones e infraestructura de apoyo y añade beneficios fiscales vinculados. La cesión de uso permanente es una opción distinta que requiere estatutos y financiación propios.",
       "explanation": "Cede suelo limitado a cooperativas que promueven vivienda a precio de coste para sus socios. Se inspira en el cooperativismo español de los años sesenta a ochenta, que adjudicaba principalmente viviendas en propiedad. El programa paga conexiones e infraestructura de apoyo y añade beneficios fiscales vinculados. La cesión de uso permanente es una opción distinta que requiere estatutos y financiación propios.",
@@ -8863,7 +8897,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Financia calles, agua, saneamiento, electricidad y conexiones para preparar nuevos ámbitos residenciales. Puedes urbanizar hasta 200 millones de metros cuadrados de suelo, equivalentes en el modelo a un millón de viviendas potenciales. La infraestructura se entrega entre los años tres y seis y la edificación posterior necesita otros tres años. El programa no puede repetirse mientras se ejecuta, y urbanizar no garantiza que toda la capacidad llegue a construirse.",
       "explanation": "Financia calles, agua, saneamiento, electricidad y conexiones para preparar nuevos ámbitos residenciales. Puedes urbanizar hasta 200 millones de metros cuadrados de suelo, equivalentes en el modelo a un millón de viviendas potenciales. La infraestructura se entrega entre los años tres y seis y la edificación posterior necesita otros tres años. El programa no puede repetirse mientras se ejecuta, y urbanizar no garantiza que toda la capacidad llegue a construirse.",
@@ -9209,7 +9244,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Obliga a admitir más plantas en ámbitos bien conectados donde todavía es viable construir o sustituir edificios. El espacio disponible es escaso y las promociones existentes tardan décadas en renovarse. Aumentar alturas puede reducir zonas verdes por habitante y generar rechazo entre los vecinos. El programa tiene una bolsa limitada para toda la partida y entrega resultados graduales durante veinte años.",
       "explanation": "Obliga a admitir más plantas en ámbitos bien conectados donde todavía es viable construir o sustituir edificios. El espacio disponible es escaso y las promociones existentes tardan décadas en renovarse. Aumentar alturas puede reducir zonas verdes por habitante y generar rechazo entre los vecinos. El programa tiene una bolsa limitada para toda la partida y entrega resultados graduales durante veinte años.",
@@ -9550,7 +9586,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Permite el uso residencial en suelo rústico o de servicios que cumpla criterios generales de aptitud, incluso si el plan local no lo contempla. Requiere reformar las normas competentes y conservar exclusiones por protección ambiental, riesgo y falta de servicios. La administración verifica criterios objetivos; la urbanización y la obra recaen después en los promotores. Es barata para el presupuesto público, pero provoca rechazo vecinal y ecologista y no entrega viviendas automáticamente.",
       "explanation": "Permite el uso residencial en suelo rústico o de servicios que cumpla criterios generales de aptitud, incluso si el plan local no lo contempla. Requiere reformar las normas competentes y conservar exclusiones por protección ambiental, riesgo y falta de servicios. La administración verifica criterios objetivos; la urbanización y la obra recaen después en los promotores. Es barata para el presupuesto público, pero provoca rechazo vecinal y ecologista y no entrega viviendas automáticamente.",
@@ -9732,7 +9769,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Subvenciona fábricas, proveedores y cadenas de valor capaces de producir componentes de vivienda a escala. Puedes comprometer hasta mil millones de euros en diez años y ajustar por separado una bonificación fiscal a promociones industrializadas. La capacidad necesita varios años para madurar y abarata proyectos contratados después. El impuesto bonificado no puede subirse en otra medida mientras dure el incentivo.",
       "explanation": "Subvenciona fábricas, proveedores y cadenas de valor capaces de producir componentes de vivienda a escala. Puedes comprometer hasta mil millones de euros en diez años y ajustar por separado una bonificación fiscal a promociones industrializadas. La capacidad necesita varios años para madurar y abarata proyectos contratados después. El impuesto bonificado no puede subirse en otra medida mientras dure el incentivo.",
@@ -9904,7 +9942,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Financia formación práctica y acreditación en oficios con escasez de profesionales. Las personas formadas necesitan completar el aprendizaje e incorporarse al sector antes de mejorar la productividad. En el juego el ahorro comienza a los cuatro años y madura durante los dos siguientes. Solo reduce costes de proyectos nuevos: por sí misma no añade viviendas ni baja directamente los alquileres.",
       "explanation": "Financia formación práctica y acreditación en oficios con escasez de profesionales. Las personas formadas necesitan completar el aprendizaje e incorporarse al sector antes de mejorar la productividad. En el juego el ahorro comienza a los cuatro años y madura durante los dos siguientes. Solo reduce costes de proyectos nuevos: por sí misma no añade viviendas ni baja directamente los alquileres.",
@@ -10227,7 +10266,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Revisa especificaciones de materiales, huella de carbono y eficiencia energética que encarecen las obras. Se diferencia de simplificar licencias: modifica el contenido técnico exigido y no la tramitación. Relajar obligaciones europeas requeriría una modificación acordada en la Unión Europea; no basta una decisión nacional. El ahorro aparece en nuevas obras, con rechazo ecologista y riesgo de mayores consumos durante la vida del edificio.",
       "explanation": "Revisa especificaciones de materiales, huella de carbono y eficiencia energética que encarecen las obras. Se diferencia de simplificar licencias: modifica el contenido técnico exigido y no la tramitación. Relajar obligaciones europeas requeriría una modificación acordada en la Unión Europea; no basta una decisión nacional. El ahorro aparece en nuevas obras, con rechazo ecologista y riesgo de mayores consumos durante la vida del edificio.",
@@ -10574,7 +10614,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Amplía de forma limitada los casos en que se autoriza vivienda en suelo rústico o terciario apto. Cada proyecto necesita justificar su encaje y obtener autorización, con límites de densidad y conexión a servicios. A diferencia de la habilitación automática, no convierte el cumplimiento de criterios en un derecho general a construir. Tiene poco gasto administrativo, pero la dispersión y el consumo de suelo generan oposición.",
       "explanation": "Amplía de forma limitada los casos en que se autoriza vivienda en suelo rústico o terciario apto. Cada proyecto necesita justificar su encaje y obtener autorización, con límites de densidad y conexión a servicios. A diferencia de la habilitación automática, no convierte el cumplimiento de criterios en un derecho general a construir. Tiene poco gasto administrativo, pero la dispersión y el consumo de suelo generan oposición.",
@@ -10840,7 +10881,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "existing_program": {
         "kind": "purchase",
@@ -11118,7 +11160,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "existing_program": {
         "kind": "purchase",
@@ -11388,7 +11431,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "existing_program": {
         "kind": "rehab",
@@ -11658,7 +11702,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 500000,
@@ -11931,7 +11976,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 20,
@@ -12194,7 +12240,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 200000,
@@ -12490,7 +12537,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 2000000,
@@ -12774,7 +12822,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 30000,
@@ -13071,7 +13120,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 50000,
@@ -13404,7 +13454,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 100000,
@@ -13728,7 +13779,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "fiscal_links": [
         {
@@ -14065,7 +14117,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "quantity_control": {
         "max": 100000,
@@ -14366,7 +14419,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "access_program": {
         "kind": "moratorium",
@@ -14735,7 +14789,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "fiscal_links": [
         {
@@ -15114,7 +15169,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "fiscal_links": [
         {
@@ -15486,7 +15542,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "tax_control": {
         "components": [
@@ -15859,7 +15916,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "tax_control": {
         "components": [
@@ -16225,7 +16283,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "tax_control": {
         "components": [
@@ -16583,7 +16642,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "tourism_program": {
         "kind": "days",
@@ -16924,7 +16984,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "term_control": {
         "min_turns": 1,
@@ -17266,7 +17327,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "tourism_program": {
         "kind": "inspection",
@@ -17632,7 +17694,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "tax_control": {
         "components": [
@@ -17973,7 +18036,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "tourism_program": {
         "kind": "ban",
@@ -18264,7 +18328,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "default_intensity": 0.01,
       "budget_control": {
@@ -18597,7 +18662,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "map_reference": {
         "path": "mapa_desarrollo_urbano.html",
@@ -19038,7 +19104,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "fiscal_links": [
         {
@@ -19395,7 +19462,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "default_intensity": 0.08,
       "budget_control": {
@@ -19797,7 +19865,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "default_intensity": 0.1,
@@ -20189,7 +20258,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "default_intensity": 0.1,
@@ -20586,7 +20656,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "competency_roles": {
@@ -20979,7 +21050,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "default_intensity": 0.1,
@@ -21375,7 +21447,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "default_intensity": 0.1,
@@ -21786,7 +21859,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "default_intensity": 0.1,
@@ -22195,7 +22269,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "default_intensity": 0.1,
@@ -22599,7 +22674,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
       "default_intensity": 0.1,
@@ -22877,7 +22953,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Limita el precio de reventa de viviendas que entran en un régimen asequible, tomando un precio inicial y una actualización anual limitada. La dureza fija el descuento inicial y el precio máximo evoluciona después con el índice del programa. Se inspira en la reventa controlada de Ginebra y en las cláusulas del bail réel solidaire francés, aplicadas a parques concretos. Requiere registro y vigilancia; no es un tope ya vigente para todas las viviendas españolas.",
       "price_control": {
@@ -23140,7 +23217,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Establece un precio máximo a partir del coste auditado de la promoción o rehabilitación más un margen permitido. La barra ajusta ese margen y otra barra financia la comprobación de costes y ventas. Se inspira en el control de precios y márgenes de las zonas de desarrollo de Ginebra; aquí se plantea extenderlo a un parque delimitado. Los costes declarados pueden inflarse y la vigilancia insuficiente reduce la efectividad.",
       "price_control": {
@@ -23407,7 +23485,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "explanation": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión.",
       "price_control": {
@@ -23657,7 +23736,8 @@
         "a3_tax_corporate",
         "a3_tax_excise",
         "a3_tax_itp",
-        "a3_tax_ajd"
+        "a3_tax_ajd",
+        "a3_public_debt"
       ],
       "selection_description": "Aprueba una legalización extraordinaria de viviendas consolidadas que cumplan los requisitos del nuevo régimen. La mayoría ya está ocupada, alquilada o transmitida de manera informal: legalizarla mejora su seguridad jurídica, pero no crea oferta adicional. Solo una pequeña fracción de inmuebles hasta ahora inutilizables se incorpora de golpe a la oferta disponible al aprobar el decreto. Facilita la inscripción y permite optar a hipoteca, manteniendo exclusiones y comprobaciones posteriores.",
       "explanation": "Aprueba una legalización extraordinaria de viviendas consolidadas que cumplan los requisitos del nuevo régimen. La mayoría ya está ocupada, alquilada o transmitida de manera informal: legalizarla mejora su seguridad jurídica, pero no crea oferta adicional. Solo una pequeña fracción de inmuebles hasta ahora inutilizables se incorpora de golpe a la oferta disponible al aprobar el decreto. Facilita la inscripción y permite optar a hipoteca, manteniendo exclusiones y comprobaciones posteriores.",
@@ -25872,13 +25952,13 @@
     {
       "id": "a3_cut_research",
       "kind": "spending_cut",
-      "name": "Investigación básica",
+      "name": "I+D",
       "scope": "Gasto ejecutado COFOG de todas las AAPP, 2024; no crédito presupuestario 2026/2027.",
       "sources": [
         "cofog"
       ],
       "response": 1,
-      "audit_note": "Cartera sin solapamiento con las demás opciones. GF0104. El límite de recorte del 20 % es una regla de juego, no dinero disponible ni garantía de viabilidad legal. Se lleva el nivel nominal observado al inicio como supuesto; después se indexa al deflactor del escenario. Vejez/supervivencia incluye prestaciones distintas de pensiones; protección social no es toda la función GF10.",
+      "audit_note": "Cartera sin solapamiento con las demás opciones. GF0104. El límite de recorte del 20 % es una regla de juego, no dinero disponible ni garantía de viabilidad legal. Se lleva el nivel nominal observado al inicio como supuesto; después se indexa al deflactor del escenario. Vejez/supervivencia incluye prestaciones distintas de pensiones; protección social no es toda la función GF10. El cuadro I+D representa la investigación básica incluida en esta referencia COFOG; no suma otras funciones para evitar duplicidades.",
       "cofog_codes": [
         "GF0104"
       ],
@@ -26378,6 +26458,67 @@
         -5,
         -5,
         -0.15
+      ]
+    },
+    {
+      "id": "a3_public_debt",
+      "kind": "public_debt",
+      "name": "Deuda pública",
+      "scope": "Financiación adicional; no es recaudación ni PIB.",
+      "sources": [
+        "debt_cofog"
+      ],
+      "response": 1,
+      "audit_note": "Hipótesis: interés fijo del 3% anual, amortización de principal constante en 80 cuotas trimestrales por emisión, desde el trimestre siguiente. Intereses AAPP COFOG 2024 de referencia: 38.793 M€/año.",
+      "consequences": "Recortes futuros de otra partida para pagar intereses y principal.",
+      "sandbox_share": 1,
+      "fiscal_control": {
+        "base": 1,
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "unit": "% de financiación",
+        "label": "Parte financiada con deuda",
+        "note": "Hipótesis: interés fijo del 3% anual, amortización de principal constante en 80 cuotas trimestrales por emisión, desde el trimestre siguiente. Intereses AAPP COFOG 2024 de referencia: 38.793 M€/año."
+      },
+      "gdp_multiplier": 0,
+      "max_adjustment": 1,
+      "reference_year": 2024,
+      "annual_reference": 1000000000000,
+      "incidence": {
+        "exposure_key": "resident",
+        "direct_points": 0,
+        "indirect_points": 0,
+        "note": "Los efectos recaen en la partida recortada, no en la emisión."
+      },
+      "group_effects": {
+        "landlords": 0,
+        "investors": 0,
+        "tenants": 0,
+        "domestic_buyers": 0,
+        "foreign_buyers": 0,
+        "resident_owners": 0,
+        "free_use_households": 0
+      },
+      "fiscal_response": {
+        "affected_household_share": 0.34126,
+        "income_reference": 32000,
+        "cash_sensitivity": 0,
+        "service_sensitivity": 0,
+        "political_points": 0,
+        "affects_income": false,
+        "purchase_tax": false,
+        "note": "Euros anuales por hogar afectado y fracción de renta disponible, o fracción del servicio perdido. La cuota expuesta distribuye el efecto; se distingue renta de servicios y rechazo político. Bases de recaudación/gasto observadas; exposición y sensibilidad supuestas. El clima común añade pérdida de seguridad/servicios y rechazo social, separado de la exposición directa. La pérdida de una partida completa tiene una penalización mucho mayor que un ajuste pequeño.",
+        "collective_loss_at_full": 0,
+        "collective_gain_at_full": 0
+      },
+      "happiness": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     }
   ],
@@ -27261,6 +27402,13 @@
           "budget_linear_share": 0.35,
           "tax_linear_share": 0.4,
           "note": "Calibración de juego editable, no encuesta ni elasticidad causal oficial. Primero se calculan los impactos propios de los colectivos; luego se suma el clima por pérdida de servicios/transferencias, presión tributaria y producción real. Un único rebote del índice directo relativo al contrafactual evita circularidad. El índice final es la media ponderada de las felicidades finales."
+        },
+        "public_debt": {
+          "annual_rate": 0.03,
+          "reduction_delay_turns": 1,
+          "repayment_turns": 80,
+          "baseline_annual_interest": 38793000000,
+          "note": "Hipótesis: interés fijo del 3% anual, amortización de principal constante en 80 cuotas trimestrales por emisión, desde el trimestre siguiente. Intereses AAPP COFOG 2024 de referencia: 38.793 M€/año."
         }
       },
       "groups": [
@@ -28463,9 +28611,15 @@
           "help_title": "Reservas financieras, servicios de seguro y transferencias",
           "url": "https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF",
           "kind": "methodology"
+        },
+        {
+          "id": "debt_cofog",
+          "title": "IGAE · intereses de la deuda de las AAPP, 2024",
+          "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf",
+          "note": "Intereses consolidados de todas las AAPP: 38.793 millones de euros en 2024. No incluye devolución del principal."
         }
       ],
-      "version": "0.12.0-alpha.help1",
+      "version": "0.12.0-alpha.collective1.mean1.debt1",
       "measures": [
         {
           "id": "a3_freeze",
@@ -28771,7 +28925,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Mantiene la renta nominal de los contratos cubiertos en el importe que tenían al aprobar la medida. No rebaja esa renta ni congela el precio de venta. La barra decide qué proporción de contratos queda cubierta; 25 % significa uno de cada cuatro contratos del ámbito simulado, no una rebaja del 25 %. El segundo control financia registro, comprobación de subidas, reclamaciones y sanciones.",
           "price_control": {
@@ -29114,7 +29269,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Limita la subida anual de contratos vigentes. No fija la renta inicial de un contrato nuevo. El control muestra directamente la subida anual máxima permitida: 0 % equivale a congelar y 4 % permite hasta un 4 % anual. Es un límite de escenario, no el IRAV oficial futuro. El alcance nacional supuesto se puede editar en el panel interno.",
           "price_control": {
@@ -29457,7 +29613,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Fija una renta máxima por características y zona utilizando una base de contratos comparables. La rebaja elegida aproxima cuánto queda el tope por debajo del alquiler actual de referencia, no un porcentaje de municipios ni de inspectores. Se aplica a la cuota de contratos indicada en el modelo. Es una propuesta genérica; las modalidades nacionales del catálogo tienen reglas y excepciones propias.",
           "price_control": {
@@ -29800,7 +29957,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Limita el esfuerzo del hogar arrendatario en función de sus ingresos. El juego traduce ese límite a una rebaja equivalente del alquiler de referencia; no dispone de una distribución individual de ingresos y contratos para aplicar un porcentaje de esfuerzo a cada hogar. La comprobación de ingresos y contratos requiere medios. Es una propuesta hipotética, no una norma española vigente.",
           "price_control": {
@@ -30142,7 +30300,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Comparte la misma fórmula con la calculadora de alquiler por amortización de esta web: suma de amortizaciones anuales × (1 + rentabilidad / 100) / 12. La vivienda descuenta un 15 % residual y actualiza su base por IPC; reformas y equipamiento se amortizan a coste original. La rentabilidad del 8 % se aplica a la amortización anual, no al precio de mercado. La barra aproxima progresivamente el precio actual al calculado. Se usa una vivienda ilustrativa de 80 m², no una distribución nacional de activos. Los efectos sobre oferta, economía y felicidad son hipótesis del juego: la calculadora original no estima esos efectos.",
           "price_control": {
@@ -30511,7 +30670,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Vincula la renta inicial a la del contrato anterior dentro de una zona declarada tensionada, con excepciones legales. Para grandes tenedores puede añadir un índice estatal de referencia y, en ciertos supuestos, alcanzar viviendas sin alquiler previo reciente. Se aplicó en España con la Ley de Vivienda de 2023, pero no funciona como un descuento uniforme en todo el país. La barra del juego simula una rebaja equivalente sobre el parque afectado, no un porcentaje literal de la ley.",
           "price_control": {
@@ -30852,7 +31012,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Limita la renta inicial de un nuevo contrato a partir de una renta comparable local. Puede excluir viviendas nuevas y la primera cesión tras una modernización integral, por lo que no congela todos los contratos. Este mecanismo se aplicó en Alemania mediante la Mietpreisbremse, con un máximo habitual de la referencia local más un 10 %. La barra representa una rebaja equivalente respecto a la referencia del juego.",
           "price_control": {
@@ -31193,7 +31354,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Establece una renta de referencia por zona y características del inmueble, junto con un máximo por encima de esa referencia. Puede admitir un complemento bajo condiciones concretas y permitir su impugnación. Este mecanismo se aplicó en varias ciudades francesas, donde el límite mayorado es del 20 %, y se distingue de limitar las subidas entre contratos. La barra aplica una rebaja equivalente al escenario, no modifica literalmente el porcentaje francés.",
           "price_control": {
@@ -31534,7 +31696,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Calcula una renta máxima a partir de puntos por superficie, equipamiento, eficiencia y otras características de la vivienda. Puede abarcar alquiler social y segmento medio, mientras que el tramo libre queda fuera del tope según los puntos del inmueble. Se aplicó en Países Bajos, donde la regulación de 2024 alcanzó contratos de hasta 186 puntos. La barra aproxima una rebaja equivalente porque el simulador no dispone de fichas individuales para puntuar cada casa.",
           "price_control": {
@@ -31875,7 +32038,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Compara viviendas equivalentes para determinar una renta razonable, dando prioridad a los alquileres negociados entre propietarios y asociaciones locales de inquilinos. No fija un techo nacional uniforme: importan las características de la vivienda y los comparables de la zona. Este modelo se aplicó en Suecia mediante la negociación y el valor de uso. La barra simula el resultado de una negociación más restrictiva; no es una regla porcentual sueca.",
           "price_control": {
@@ -32216,7 +32380,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Combina una congelación de rentas con tablas de máximos y reducción de alquileres que superen esos límites. Es un tope fuerte que puede cambiar rápidamente las rentas cubiertas, pero exige una competencia legal clara y un sistema intenso de control. Se aplicó de forma temporal en Berlín como Mietendeckel y el Tribunal Constitucional alemán lo anuló en 2021 por una cuestión competencial. Aquí es un precedente histórico e hipotético, no una norma vigente ni trasladable sin reforma competencial.",
           "price_control": {
@@ -32540,7 +32705,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "fiscal_links": [
             {
@@ -32878,7 +33044,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Establece el máximo de venta y reventa de viviendas calificadas como protegidas durante su periodo de protección. Se verifica precio por m² útil, requisitos del comprador y transmisiones para evitar sobreprecios ocultos. No fija un precio máximo a toda la vivienda libre. La barra muestra la rebaja del máximo respecto al precio de referencia del juego; el peso del parque afectado es una hipótesis del 5 %, editable. Cada comunidad tiene módulos y reglas propios: la cifra nacional de la simulación no los sustituye.",
           "price_control": {
@@ -33208,7 +33375,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Contrata personal técnico, jurídico y administrativo para resolver licencias y reducir expedientes pendientes en los ayuntamientos. El presupuesto financia plantillas y herramientas repartidas según la carga de trabajo, en un país con miles de municipios. Más dotación permite tramitar más proyectos, pero las viviendas llegan a alquiler y venta cuando terminan las obras. Mantiene los requisitos técnicos y ambientales actuales.",
           "selection_description": "Contrata personal técnico, jurídico y administrativo para resolver licencias y reducir expedientes pendientes en los ayuntamientos. El presupuesto financia plantillas y herramientas repartidas según la carga de trabajo, en un país con miles de municipios. Más dotación permite tramitar más proyectos, pero las viviendas llegan a alquiler y venta cuando terminan las obras. Mantiene los requisitos técnicos y ambientales actuales.",
@@ -33541,7 +33709,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Crea equipos estatales y autonómicos compartidos que tramitan informes y apoyan a los municipios con menos medios. Su intervención requiere convenios y coordinación con la administración competente para otorgar la licencia. El presupuesto amplía la plantilla y los expedientes que puede asumir, evitando montar un equipo completo en cada localidad. Los proyectos viables aportan vivienda de alquiler y compra tras el plazo de construcción.",
           "selection_description": "Crea equipos estatales y autonómicos compartidos que tramitan informes y apoyan a los municipios con menos medios. Su intervención requiere convenios y coordinación con la administración competente para otorgar la licencia. El presupuesto amplía la plantilla y los expedientes que puede asumir, evitando montar un equipo completo en cada localidad. Los proyectos viables aportan vivienda de alquiler y compra tras el plazo de construcción.",
@@ -33889,7 +34058,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Reforma requisitos del Código Técnico y exigencias ambientales para reducir documentación, costes de adaptación y plazos. El presupuesto paga la revisión normativa, formación y aplicación municipal de los nuevos criterios. Su alcance aumenta con los equipos disponibles y puede hacer viables más proyectos para alquiler y venta. Es un escenario de reforma: rebajar estándares puede empeorar prestaciones o impactos ambientales y debe respetar los mínimos legales europeos.",
           "selection_description": "Reforma requisitos del Código Técnico y exigencias ambientales para reducir documentación, costes de adaptación y plazos. El presupuesto paga la revisión normativa, formación y aplicación municipal de los nuevos criterios. Su alcance aumenta con los equipos disponibles y puede hacer viables más proyectos para alquiler y venta. Es un escenario de reforma: rebajar estándares puede empeorar prestaciones o impactos ambientales y debe respetar los mínimos legales europeos.",
@@ -34238,7 +34408,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Amplía los supuestos en los que una declaración responsable sustituye la comprobación administrativa previa. El promotor declara que cumple los requisitos y la administración concentra recursos en comprobarlo después. Más presupuesto permite gestionar más expedientes e inspecciones, con menos demoras antes de empezar las obras. La ampliación a actuaciones hoy sujetas a licencia exigiría reformar su régimen; una declaración falsa puede detener la obra y generar sanciones.",
           "selection_description": "Amplía los supuestos en los que una declaración responsable sustituye la comprobación administrativa previa. El promotor declara que cumple los requisitos y la administración concentra recursos en comprobarlo después. Más presupuesto permite gestionar más expedientes e inspecciones, con menos demoras antes de empezar las obras. La ampliación a actuaciones hoy sujetas a licencia exigiría reformar su régimen; una declaración falsa puede detener la obra y generar sanciones.",
@@ -34585,7 +34756,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Propone permitir la construcción sin licencia previa y exigir la homologación al finalizar, trasladando al arquitecto y al propietario la responsabilidad de lo ejecutado. El presupuesto sostiene comprobaciones finales, inspecciones y equipos jurídicos para exigir responsabilidades civiles y penales cuando procedan. Puede acelerar proyectos, pero también dejar obras sin homologar, aumentar seguros y exigir correcciones o demolición. Es una reforma hipotética: la responsabilidad penal exige los presupuestos del delito y no nace automáticamente por cualquier defecto de la obra.",
           "selection_description": "Propone permitir la construcción sin licencia previa y exigir la homologación al finalizar, trasladando al arquitecto y al propietario la responsabilidad de lo ejecutado. El presupuesto sostiene comprobaciones finales, inspecciones y equipos jurídicos para exigir responsabilidades civiles y penales cuando procedan. Puede acelerar proyectos, pero también dejar obras sin homologar, aumentar seguros y exigir correcciones o demolición. Es una reforma hipotética: la responsabilidad penal exige los presupuestos del delito y no nace automáticamente por cualquier defecto de la obra.",
@@ -34904,7 +35076,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Encarga un programa de hasta dos millones de viviendas públicas de alquiler, con suelo, proyecto y obra incluidos en el coste. La entrega se reparte entre los años ocho y diez desde su aprobación. Durante la ejecución sigues pagando y no puedes aprobar otro programa igual. La cantidad máxima representa un escenario de gran expansión de capacidad, no una previsión de producción.",
           "explanation": "Encarga un programa de hasta dos millones de viviendas públicas de alquiler, con suelo, proyecto y obra incluidos en el coste. La entrega se reparte entre los años ocho y diez desde su aprobación. Durante la ejecución sigues pagando y no puedes aprobar otro programa igual. La cantidad máxima representa un escenario de gran expansión de capacidad, no una previsión de producción.",
@@ -35229,7 +35402,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Pone parcelas públicas ya aptas a disposición de promociones asequibles mediante concesiones o derechos de superficie. La movilización administrativa tarda de seis meses a un año; la obra privada viene después. El gasto público cubre inventarios, concursos y conexiones menores, mientras el promotor financia la edificación. Puede provocar oposición vecinal por el uso del suelo y la llegada de nuevas promociones.",
           "explanation": "Pone parcelas públicas ya aptas a disposición de promociones asequibles mediante concesiones o derechos de superficie. La movilización administrativa tarda de seis meses a un año; la obra privada viene después. El gasto público cubre inventarios, concursos y conexiones menores, mientras el promotor financia la edificación. Puede provocar oposición vecinal por el uso del suelo y la llegada de nuevas promociones.",
@@ -35561,7 +35735,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Cede suelo limitado a cooperativas que promueven vivienda a precio de coste para sus socios. Se inspira en el cooperativismo español de los años sesenta a ochenta, que adjudicaba principalmente viviendas en propiedad. El programa paga conexiones e infraestructura de apoyo y añade beneficios fiscales vinculados. La cesión de uso permanente es una opción distinta que requiere estatutos y financiación propios.",
           "explanation": "Cede suelo limitado a cooperativas que promueven vivienda a precio de coste para sus socios. Se inspira en el cooperativismo español de los años sesenta a ochenta, que adjudicaba principalmente viviendas en propiedad. El programa paga conexiones e infraestructura de apoyo y añade beneficios fiscales vinculados. La cesión de uso permanente es una opción distinta que requiere estatutos y financiación propios.",
@@ -35921,7 +36096,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Financia calles, agua, saneamiento, electricidad y conexiones para preparar nuevos ámbitos residenciales. Puedes urbanizar hasta 200 millones de metros cuadrados de suelo, equivalentes en el modelo a un millón de viviendas potenciales. La infraestructura se entrega entre los años tres y seis y la edificación posterior necesita otros tres años. El programa no puede repetirse mientras se ejecuta, y urbanizar no garantiza que toda la capacidad llegue a construirse.",
           "explanation": "Financia calles, agua, saneamiento, electricidad y conexiones para preparar nuevos ámbitos residenciales. Puedes urbanizar hasta 200 millones de metros cuadrados de suelo, equivalentes en el modelo a un millón de viviendas potenciales. La infraestructura se entrega entre los años tres y seis y la edificación posterior necesita otros tres años. El programa no puede repetirse mientras se ejecuta, y urbanizar no garantiza que toda la capacidad llegue a construirse.",
@@ -36246,7 +36422,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Obliga a admitir más plantas en ámbitos bien conectados donde todavía es viable construir o sustituir edificios. El espacio disponible es escaso y las promociones existentes tardan décadas en renovarse. Aumentar alturas puede reducir zonas verdes por habitante y generar rechazo entre los vecinos. El programa tiene una bolsa limitada para toda la partida y entrega resultados graduales durante veinte años.",
           "explanation": "Obliga a admitir más plantas en ámbitos bien conectados donde todavía es viable construir o sustituir edificios. El espacio disponible es escaso y las promociones existentes tardan décadas en renovarse. Aumentar alturas puede reducir zonas verdes por habitante y generar rechazo entre los vecinos. El programa tiene una bolsa limitada para toda la partida y entrega resultados graduales durante veinte años.",
@@ -36566,7 +36743,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Permite el uso residencial en suelo rústico o de servicios que cumpla criterios generales de aptitud, incluso si el plan local no lo contempla. Requiere reformar las normas competentes y conservar exclusiones por protección ambiental, riesgo y falta de servicios. La administración verifica criterios objetivos; la urbanización y la obra recaen después en los promotores. Es barata para el presupuesto público, pero provoca rechazo vecinal y ecologista y no entrega viviendas automáticamente.",
           "explanation": "Permite el uso residencial en suelo rústico o de servicios que cumpla criterios generales de aptitud, incluso si el plan local no lo contempla. Requiere reformar las normas competentes y conservar exclusiones por protección ambiental, riesgo y falta de servicios. La administración verifica criterios objetivos; la urbanización y la obra recaen después en los promotores. Es barata para el presupuesto público, pero provoca rechazo vecinal y ecologista y no entrega viviendas automáticamente.",
@@ -36727,7 +36905,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Subvenciona fábricas, proveedores y cadenas de valor capaces de producir componentes de vivienda a escala. Puedes comprometer hasta mil millones de euros en diez años y ajustar por separado una bonificación fiscal a promociones industrializadas. La capacidad necesita varios años para madurar y abarata proyectos contratados después. El impuesto bonificado no puede subirse en otra medida mientras dure el incentivo.",
           "explanation": "Subvenciona fábricas, proveedores y cadenas de valor capaces de producir componentes de vivienda a escala. Puedes comprometer hasta mil millones de euros en diez años y ajustar por separado una bonificación fiscal a promociones industrializadas. La capacidad necesita varios años para madurar y abarata proyectos contratados después. El impuesto bonificado no puede subirse en otra medida mientras dure el incentivo.",
@@ -36878,7 +37057,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Financia formación práctica y acreditación en oficios con escasez de profesionales. Las personas formadas necesitan completar el aprendizaje e incorporarse al sector antes de mejorar la productividad. En el juego el ahorro comienza a los cuatro años y madura durante los dos siguientes. Solo reduce costes de proyectos nuevos: por sí misma no añade viviendas ni baja directamente los alquileres.",
           "explanation": "Financia formación práctica y acreditación en oficios con escasez de profesionales. Las personas formadas necesitan completar el aprendizaje e incorporarse al sector antes de mejorar la productividad. En el juego el ahorro comienza a los cuatro años y madura durante los dos siguientes. Solo reduce costes de proyectos nuevos: por sí misma no añade viviendas ni baja directamente los alquileres.",
@@ -37180,7 +37360,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Revisa especificaciones de materiales, huella de carbono y eficiencia energética que encarecen las obras. Se diferencia de simplificar licencias: modifica el contenido técnico exigido y no la tramitación. Relajar obligaciones europeas requeriría una modificación acordada en la Unión Europea; no basta una decisión nacional. El ahorro aparece en nuevas obras, con rechazo ecologista y riesgo de mayores consumos durante la vida del edificio.",
           "explanation": "Revisa especificaciones de materiales, huella de carbono y eficiencia energética que encarecen las obras. Se diferencia de simplificar licencias: modifica el contenido técnico exigido y no la tramitación. Relajar obligaciones europeas requeriría una modificación acordada en la Unión Europea; no basta una decisión nacional. El ahorro aparece en nuevas obras, con rechazo ecologista y riesgo de mayores consumos durante la vida del edificio.",
@@ -37506,7 +37687,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Amplía de forma limitada los casos en que se autoriza vivienda en suelo rústico o terciario apto. Cada proyecto necesita justificar su encaje y obtener autorización, con límites de densidad y conexión a servicios. A diferencia de la habilitación automática, no convierte el cumplimiento de criterios en un derecho general a construir. Tiene poco gasto administrativo, pero la dispersión y el consumo de suelo generan oposición.",
           "explanation": "Amplía de forma limitada los casos en que se autoriza vivienda en suelo rústico o terciario apto. Cada proyecto necesita justificar su encaje y obtener autorización, con límites de densidad y conexión a servicios. A diferencia de la habilitación automática, no convierte el cumplimiento de criterios en un derecho general a construir. Tiene poco gasto administrativo, pero la dispersión y el consumo de suelo generan oposición.",
@@ -37751,7 +37933,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "existing_program": {
             "kind": "purchase",
@@ -38008,7 +38191,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "existing_program": {
             "kind": "purchase",
@@ -38257,7 +38441,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "existing_program": {
             "kind": "rehab",
@@ -38506,7 +38691,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 500000,
@@ -38758,7 +38944,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 20,
@@ -39000,7 +39187,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 200000,
@@ -39275,7 +39463,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 2000000,
@@ -39538,7 +39727,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 30000,
@@ -39814,7 +40004,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 50000,
@@ -40126,7 +40317,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 100000,
@@ -40429,7 +40621,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "fiscal_links": [
             {
@@ -40745,7 +40938,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "quantity_control": {
             "max": 100000,
@@ -41025,7 +41219,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "access_program": {
             "kind": "moratorium",
@@ -41373,7 +41568,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "fiscal_links": [
             {
@@ -41731,7 +41927,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "fiscal_links": [
             {
@@ -42082,7 +42279,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "tax_control": {
             "components": [
@@ -42434,7 +42632,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "tax_control": {
             "components": [
@@ -42779,7 +42978,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "tax_control": {
             "components": [
@@ -43116,7 +43316,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "tourism_program": {
             "kind": "days",
@@ -43436,7 +43637,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "term_control": {
             "min_turns": 1,
@@ -43757,7 +43959,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "tourism_program": {
             "kind": "inspection",
@@ -44102,7 +44305,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "tax_control": {
             "components": [
@@ -44422,7 +44626,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "tourism_program": {
             "kind": "ban",
@@ -44692,7 +44897,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "default_intensity": 0.01,
           "budget_control": {
@@ -45004,7 +45210,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "map_reference": {
             "path": "mapa_desarrollo_urbano.html",
@@ -45424,7 +45631,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "fiscal_links": [
             {
@@ -45760,7 +45968,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "default_intensity": 0.08,
           "budget_control": {
@@ -46141,7 +46350,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "default_intensity": 0.1,
@@ -46512,7 +46722,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "default_intensity": 0.1,
@@ -46888,7 +47099,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "competency_roles": {
@@ -47260,7 +47472,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "default_intensity": 0.1,
@@ -47635,7 +47848,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "default_intensity": 0.1,
@@ -48025,7 +48239,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "default_intensity": 0.1,
@@ -48413,7 +48628,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "default_intensity": 0.1,
@@ -48796,7 +49012,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
           "default_intensity": 0.1,
@@ -49053,7 +49270,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Limita el precio de reventa de viviendas que entran en un régimen asequible, tomando un precio inicial y una actualización anual limitada. La dureza fija el descuento inicial y el precio máximo evoluciona después con el índice del programa. Se inspira en la reventa controlada de Ginebra y en las cláusulas del bail réel solidaire francés, aplicadas a parques concretos. Requiere registro y vigilancia; no es un tope ya vigente para todas las viviendas españolas.",
           "price_control": {
@@ -49295,7 +49513,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Establece un precio máximo a partir del coste auditado de la promoción o rehabilitación más un margen permitido. La barra ajusta ese margen y otra barra financia la comprobación de costes y ventas. Se inspira en el control de precios y márgenes de las zonas de desarrollo de Ginebra; aquí se plantea extenderlo a un parque delimitado. Los costes declarados pueden inflarse y la vigilancia insuficiente reduce la efectividad.",
           "price_control": {
@@ -49541,7 +49760,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "explanation": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión.",
           "price_control": {
@@ -49770,7 +49990,8 @@
             "a3_tax_corporate",
             "a3_tax_excise",
             "a3_tax_itp",
-            "a3_tax_ajd"
+            "a3_tax_ajd",
+            "a3_public_debt"
           ],
           "selection_description": "Aprueba una legalización extraordinaria de viviendas consolidadas que cumplan los requisitos del nuevo régimen. La mayoría ya está ocupada, alquilada o transmitida de manera informal: legalizarla mejora su seguridad jurídica, pero no crea oferta adicional. Solo una pequeña fracción de inmuebles hasta ahora inutilizables se incorpora de golpe a la oferta disponible al aprobar el decreto. Facilita la inscripción y permite optar a hipoteca, manteniendo exclusiones y comprobaciones posteriores.",
           "explanation": "Aprueba una legalización extraordinaria de viviendas consolidadas que cumplan los requisitos del nuevo régimen. La mayoría ya está ocupada, alquilada o transmitida de manera informal: legalizarla mejora su seguridad jurídica, pero no crea oferta adicional. Solo una pequeña fracción de inmuebles hasta ahora inutilizables se incorpora de golpe a la oferta disponible al aprobar el decreto. Facilita la inscripción y permite optar a hipoteca, manteniendo exclusiones y comprobaciones posteriores.",
@@ -51911,13 +52132,13 @@
         {
           "id": "a3_cut_research",
           "kind": "spending_cut",
-          "name": "Investigación básica",
+          "name": "I+D",
           "scope": "Gasto ejecutado COFOG de todas las AAPP, 2024; no crédito presupuestario 2026/2027.",
           "sources": [
             "cofog"
           ],
           "response": 1,
-          "audit_note": "Cartera sin solapamiento con las demás opciones. GF0104. El límite de recorte del 20 % es una regla de juego, no dinero disponible ni garantía de viabilidad legal. Se lleva el nivel nominal observado al inicio como supuesto; después se indexa al deflactor del escenario. Vejez/supervivencia incluye prestaciones distintas de pensiones; protección social no es toda la función GF10.",
+          "audit_note": "Cartera sin solapamiento con las demás opciones. GF0104. El límite de recorte del 20 % es una regla de juego, no dinero disponible ni garantía de viabilidad legal. Se lleva el nivel nominal observado al inicio como supuesto; después se indexa al deflactor del escenario. Vejez/supervivencia incluye prestaciones distintas de pensiones; protección social no es toda la función GF10. El cuadro I+D representa la investigación básica incluida en esta referencia COFOG; no suma otras funciones para evitar duplicidades.",
           "cofog_codes": [
             "GF0104"
           ],
@@ -52354,6 +52575,59 @@
             "collective_loss_at_full": 20,
             "collective_gain_at_full": 6
           }
+        },
+        {
+          "id": "a3_public_debt",
+          "kind": "public_debt",
+          "name": "Deuda pública",
+          "scope": "Financiación adicional; no es recaudación ni PIB.",
+          "sources": [
+            "debt_cofog"
+          ],
+          "response": 1,
+          "audit_note": "Hipótesis: interés fijo del 3% anual, amortización de principal constante en 80 cuotas trimestrales por emisión, desde el trimestre siguiente. Intereses AAPP COFOG 2024 de referencia: 38.793 M€/año.",
+          "consequences": "Recortes futuros de otra partida para pagar intereses y principal.",
+          "sandbox_share": 1,
+          "fiscal_control": {
+            "base": 1,
+            "min": 0,
+            "max": 100,
+            "step": 0.1,
+            "unit": "% de financiación",
+            "label": "Parte financiada con deuda",
+            "note": "Hipótesis: interés fijo del 3% anual, amortización de principal constante en 80 cuotas trimestrales por emisión, desde el trimestre siguiente. Intereses AAPP COFOG 2024 de referencia: 38.793 M€/año."
+          },
+          "gdp_multiplier": 0,
+          "max_adjustment": 1,
+          "reference_year": 2024,
+          "annual_reference": 1000000000000,
+          "incidence": {
+            "exposure_key": "resident",
+            "direct_points": 0,
+            "indirect_points": 0,
+            "note": "Los efectos recaen en la partida recortada, no en la emisión."
+          },
+          "group_effects": {
+            "landlords": 0,
+            "investors": 0,
+            "tenants": 0,
+            "domestic_buyers": 0,
+            "foreign_buyers": 0,
+            "resident_owners": 0,
+            "free_use_households": 0
+          },
+          "fiscal_response": {
+            "affected_household_share": 0.34126,
+            "income_reference": 32000,
+            "cash_sensitivity": 0,
+            "service_sensitivity": 0,
+            "political_points": 0,
+            "affects_income": false,
+            "purchase_tax": false,
+            "note": "Euros anuales por hogar afectado y fracción de renta disponible, o fracción del servicio perdido. La cuota expuesta distribuye el efecto; se distingue renta de servicios y rechazo político. Bases de recaudación/gasto observadas; exposición y sensibilidad supuestas. El clima común añade pérdida de seguridad/servicios y rechazo social, separado de la exposición directa. La pérdida de una partida completa tiene una penalización mucho mayor que un ajuste pequeño.",
+            "collective_loss_at_full": 0,
+            "collective_gain_at_full": 0
+          }
         }
       ],
       "release_history": {
@@ -52459,7 +52733,7 @@
       "id": "vivienda-realism",
       "notes": "Añadida regularización de viviendas consolidadas con oferta formal, aptitud registral y financiación potencial separadas. Acceso y protección: costes por beneficiario, referencias ejecutadas, avales contingentes, parque público y suspensión cancelable. Regularización: máximo conservador 100.000 expedientes; 95 % ya utilizado, solo 5 % de disponibilidad adicional; efectos colectivos reducidos. Fiscalidad: selectores de tipo/recargo, dos componentes ITP/AJD, IRPF/IS, nuevas bases explícitas, recaudación propia y bloqueo transversal del mismo impuesto. Expropiación para alquiler público: justiprecio aproximado, 5 % legal separado, tramitación y rechazo político explícitos. Aplicadas todas las recomendaciones de coherencia: mercado segmentado, stock público, producción privada, beneficiarios, contabilidad financiera, esfuerzo de compra y fiscalidad por hogar. Felicidad social: todos los colectivos salvo no residentes, incidencia fiscal reforzada, PIB real y rebote colectivo finito. Alquiler inicial corregido a la media aritmética AEAT 2024: 9,00 €/m²/mes, territorio fiscal común; mediana SERPAVI sustituida.",
       "title": "Modelo nacional de vivienda",
-      "version": "0.12.0-alpha.collective1.mean1",
+      "version": "0.12.0-alpha.collective1.mean1.debt1",
       "created_at": "2026-10-04T00:00:00.000Z",
       "updated_at": "2026-10-05T00:00:00.000Z"
     },

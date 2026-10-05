@@ -191,3 +191,5 @@
 .policy-lidealisto .policy-listing-ads{border-top:0;margin-top:0;padding-top:0}
 .policy-lidealisto .policy-listing-ads b{font-size:23px}
 @media(max-width:440px){.policy-market-prices{grid-template-columns:1fr}}
+
+.tax .debt-tile{grid-column:3 / span 4;background:#efd27c;color:#594519}.debt-service-tile{background:#45958f;color:#fff}.debt-dialog{width:min(480px,calc(100vw - 32px));max-height:85vh;border:1px solid #dfcb8d;border-radius:14px;padding:24px;overflow:auto}.debt-dialog::backdrop{background:#142d4e66}.debt-dialog h2{font-size:21px;margin:0 0 14px}.debt-dialog p{font-size:13px;line-height:1.6;color:#536479}.debt-dialog label{display:block;margin-top:16px;font-size:13px}.debt-dialog input,.debt-dialog select{display:block;width:100%;box-sizing:border-box;margin:8px 0;padding:11px;border:1px solid #c5d3dc;border-radius:7px;background:#fff}.debt-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.debt-error{color:#a84232!important}.debt-ledger{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:13px;font-size:12px}.debt-ledger p{margin:8px 0;line-height:1.5}.debt-ledger h3{font-size:14px;margin:0 0 8px}

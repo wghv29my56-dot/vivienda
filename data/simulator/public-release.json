@@ -1,17 +1,18 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-05",
-  "model_version": "0.12.0-alpha.collective1.mean1",
+  "model_version": "0.12.0-alpha.collective1.mean1.debt1",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "6096e0f2dd097744c49c346aa4b190d4896d6090b183962a760524ed2797360e",
+  "source_sha256": "850ed5a988d89ffba7e9c6f16df719e883a418e802920597951daf462502e2c9",
   "engine_manifest": {
     "assets/simulator/housing-policy.js": "3d3f16b432cb8ae8da1fcd01d2e13066bea5de5c7400bae89a4b84600d73bc47",
-    "assets/simulator/model-config.js": "30bd434cc6798fad4a8ff748f7ce01e332c1910d1581b846cfa500ec4290f749",
-    "assets/simulator/advanced.js": "614131310b57cf17c9c659c50a08355a4e95678d1fd0a941912f57ab0e28ad08",
+    "assets/simulator/model-config.js": "5e64180ace024e43722bf4fa62d3780ced118c7a2f4b47400aef9ad98a721cc8",
+    "assets/simulator/advanced.js": "57fc165994be337d2d3192e64074e7218becccdd21c5e2c13ef02b6514a5715e",
     "assets/simulator/national.js": "099037f5602d5dd1e82821ec02c210883713dccdac8664eb7aef6d585b7d81f9",
-    "assets/simulator/fiscal.js": "3e7f8c8cf217b6577d5d9582079467047e3723cb61a087d01d8132de01dcd940",
-    "assets/simulator/turn-report.js": "ede1ea9ae39a8e90961d26bfdcc14b9d3397bff1df30a63075acdb5943093731"
+    "assets/simulator/fiscal.js": "f730e40117b2e97c9c8f7f4d5d30d9541047f507492a767d6cd864fca3f91f4c",
+    "assets/simulator/turn-report.js": "d3a14eccdb80fe69b4e7e61d6eab0132764c8e959fbeac9b3f74041af755c283",
+    "assets/simulator/public-debt.js": "a7e90f7f4c5ade679bd77040b38b5ecd308bae8489ca416ebb8d37ac741b4017"
   },
   "publication": {
     "provider": "GitHub Pages",
@@ -28,6 +29,7 @@
     "Expropiación indemnizada para alquiler público, con premio de afección del 5 %, costes de tramitación y rechazo de propietarios.",
     "Revisión de coherencia de las 67 medidas: esfuerzo de acceso, oferta anunciada, parque público, inversión privada, beneficiarios, reservas y efectos fiscales por hogar.",
     "Felicidad colectiva de todos los grupos nacionales, clima social por recortes, presión fiscal y PIB; impactos directos y comunes separados y previsualizados en cada medida.",
-    "Alquiler inicial: media aritmética AEAT 2024 de 9,00 €/m²/mes, con ayuda y fuente corregidas."
+    "Alquiler inicial: media aritmética AEAT 2024 de 9,00 €/m²/mes, con ayuda y fuente corregidas.",
+    "Financiación con deuda pública: amortización de cada emisión en 20 años, intereses y principal pagados por recortes desde el siguiente trimestre."
   ]
 }

@@ -6,7 +6,7 @@ const pack=M.fromCatalog(JSON.parse(fs.readFileSync(path.join(root,'data/simulat
 pack.comments=[];delete pack.review_progress;
 const errors=M.validate(pack);if(errors.length)throw new Error(JSON.stringify(errors));
 const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
-const files=['housing-policy.js','model-config.js','advanced.js','national.js','fiscal.js','turn-report.js'];
+const files=['housing-policy.js','model-config.js','advanced.js','national.js','fiscal.js','turn-report.js','public-debt.js'];
 const manifest=Object.fromEntries(files.map(f=>['assets/simulator/'+f,sha(fs.readFileSync(path.join(root,'assets/simulator',f)))]));
 const text=JSON.stringify(pack),q=s=>"'"+String(s).replace(/'/g,"''")+"'";
 const sql='BEGIN;\nINSERT INTO public.sim_model_versions(id,label,status,engine_id,payload,engine_manifest,source_sha256) VALUES ('+
