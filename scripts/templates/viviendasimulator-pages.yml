@@ -1,0 +1,41 @@
+# Install as .github/workflows/pages.yml in a NEW public repository.
+name: Publish Vivienda Simulator
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: wghv29my56-dot/vivienda
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source release
+        run: node scripts/verify_public_release.cjs
+      - name: Verify simulator
+        run: node scripts/check_simulator.cjs
+      - name: Build standalone simulator
+        run: python3 scripts/prepare_simulator_site.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _simulator_site
+      - uses: actions/deploy-pages@v4
+        id: deployment

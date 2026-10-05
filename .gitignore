@@ -45,6 +45,11 @@ data/simulator/model-backups/
 
 # Public deployment artifact
 /_site/
+/_simulator_site/
+/configuracion_dominio_simulator/
 # Local review launcher
 /Abrir_panel_revision.command
 /revision_solicitudes_mapas_local.html
+
+# Private live policy workbench
+/assets/simulator/control-lab-live.js
