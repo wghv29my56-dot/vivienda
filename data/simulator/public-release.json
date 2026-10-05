@@ -1,14 +1,14 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-05",
-  "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1",
+  "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "3e90619b61af99c86df113d31191aee974eaba34377e86a01a2c4c2d6f377569",
+  "source_sha256": "0a8e31299f039e2f95b38aa20bca7315f13894c24a0312d29da8ae5e428d8223",
   "engine_manifest": {
     "assets/simulator/housing-policy.js": "5dc84e21a1c3f4dcb44d29075ece481c4a6f96e943b8ea8f93d4f65cb97901b4",
     "assets/simulator/model-config.js": "c4a341d71f194a550864f58a079df5327cdf0a82badba4612bdc14469b69304a",
-    "assets/simulator/advanced.js": "ca5f9a90888161f0087a21d810df18fe299e76d85804ed9001da63f4b629ff3c",
+    "assets/simulator/advanced.js": "6324141a54d360a0a4738a44dd07d95c632fc1cbb0882eb4aac0fa5130f095c7",
     "assets/simulator/national.js": "099037f5602d5dd1e82821ec02c210883713dccdac8664eb7aef6d585b7d81f9",
     "assets/simulator/fiscal.js": "35ae7a021a9fa689917afca743f691961ffb88a84f6f596960341fd45cbd153e",
     "assets/simulator/turn-report.js": "4d4ecec796193c4d5344b543bbf044b033b1bc895cc6da5aae6788db31be0d88",
@@ -32,6 +32,7 @@
     "Alquiler inicial: media aritmética AEAT 2024 de 9,00 €/m²/mes, con ayuda y fuente corregidas.",
     "Financiación con deuda pública: amortización de cada emisión en 20 años, intereses y principal pagados por recortes desde el siguiente trimestre.",
     "Reparto de las cuotas con barras sobre varias partidas; costes de deuda bloqueados permanentemente.",
-    "Integración sin pérdida de deuda pública, nueva medida de teletrabajo internacional y revisión común de controles de precios."
+    "Integración sin pérdida de deuda pública, nueva medida de teletrabajo internacional y revisión común de controles de precios.",
+    "Las previsualizaciones aplican el efecto aislado de cada medida al precio actual, sin adelantar el precio futuro del mercado."
   ]
 }
