@@ -12,7 +12,7 @@ const D=M.toCatalog(M.fromCatalog(JSON.parse(fs.readFileSync('data/simulator/cat
 for(const f of ['housing-policy','national','public-debt','fiscal','turn-report','advanced'])vm.runInContext(fs.readFileSync('assets/simulator/'+f+'.js','utf8'),ctx);
 const run=s=>vm.runInContext(s,ctx);
 run("years=20;turn=0;draft={index:D.measures.findIndex(m=>m.id==='a3_public_build'),intensity:.1,start:1,shares:{a3_public_debt:100},funding:[],debt:{source_ids:['a3_cut_health'],terms:D.rules.public_debt}};readFunding(); active=[structuredClone(draft)]");
-assert.equal(run('debtTotals(1,active).reduction'),0);
+assert.equal(run('debtTotals(1,active).reduction'),0);assert.ok(Math.abs(run('aggregate(outcome(1,active))-aggregate(outcome(1,[{...active[0],funding:[],debt:undefined}]))'))<1e-9,'Issuing debt alone has no immediate direct social effect');assert.ok(run('aggregate(outcome(2,active))>aggregate(outcome(2,[{...active[0],funding:[],debt:undefined}]))'),'Repayment budget cuts lower happiness from the following quarter');
 assert.ok(run('debtTotals(2,active).interest>0&&debtTotals(2,active).principal>0'));
 for(const t of [1,2,16,40,80,160])assert.ok(Math.abs(run(`fiscalBalance({},${t},active)`))<.02,'Borrowing, programme costs and repayments balance at '+t);
 assert.equal(run("amountFor(active[0],D.funding_sources.find(s=>s.id==='a3_cut_health'),2)"),run('debtTotals(2,active).reduction'));

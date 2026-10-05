@@ -1,14 +1,14 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-05",
-  "model_version": "0.12.0-alpha.collective1.mean1.debt3",
+  "model_version": "0.12.0-alpha.collective1.mean1.debt4",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "d9c673eaaca9472096057ca768afc8b0cf7536b4d3ac82630c3f45aa9908095f",
+  "source_sha256": "2c60c05d9b45e2196603692064e4778337465864862e2b184790dd828981001f",
   "engine_manifest": {
     "assets/simulator/housing-policy.js": "3d3f16b432cb8ae8da1fcd01d2e13066bea5de5c7400bae89a4b84600d73bc47",
     "assets/simulator/model-config.js": "5e64180ace024e43722bf4fa62d3780ced118c7a2f4b47400aef9ad98a721cc8",
-    "assets/simulator/advanced.js": "b4ac98f91bc0af71564e76b25809fd628a58bfdc10f455df37f0cb18d4bbb7df",
+    "assets/simulator/advanced.js": "f0e1a6163112b56362137b09616fb142b16fde4b919bb442f56351b48739a29b",
     "assets/simulator/national.js": "099037f5602d5dd1e82821ec02c210883713dccdac8664eb7aef6d585b7d81f9",
     "assets/simulator/fiscal.js": "35ae7a021a9fa689917afca743f691961ffb88a84f6f596960341fd45cbd153e",
     "assets/simulator/turn-report.js": "d3a14eccdb80fe69b4e7e61d6eab0132764c8e959fbeac9b3f74041af755c283",

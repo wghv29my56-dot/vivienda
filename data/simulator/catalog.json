@@ -979,7 +979,7 @@
       "note": "Intereses consolidados de todas las AAPP: 38.793 millones de euros en 2024. No incluye devolución del principal."
     }
   },
-  "version": "0.12.0-alpha.collective1.mean1.debt3",
+  "version": "0.12.0-alpha.collective1.mean1.debt4",
   "measures": [
     {
       "id": "a3_freeze",
@@ -28619,7 +28619,7 @@
           "note": "Intereses consolidados de todas las AAPP: 38.793 millones de euros en 2024. No incluye devolución del principal."
         }
       ],
-      "version": "0.12.0-alpha.collective1.mean1.debt3",
+      "version": "0.12.0-alpha.collective1.mean1.debt4",
       "measures": [
         {
           "id": "a3_freeze",
@@ -52733,7 +52733,7 @@
       "id": "vivienda-realism",
       "notes": "Añadida regularización de viviendas consolidadas con oferta formal, aptitud registral y financiación potencial separadas. Acceso y protección: costes por beneficiario, referencias ejecutadas, avales contingentes, parque público y suspensión cancelable. Regularización: máximo conservador 100.000 expedientes; 95 % ya utilizado, solo 5 % de disponibilidad adicional; efectos colectivos reducidos. Fiscalidad: selectores de tipo/recargo, dos componentes ITP/AJD, IRPF/IS, nuevas bases explícitas, recaudación propia y bloqueo transversal del mismo impuesto. Expropiación para alquiler público: justiprecio aproximado, 5 % legal separado, tramitación y rechazo político explícitos. Aplicadas todas las recomendaciones de coherencia: mercado segmentado, stock público, producción privada, beneficiarios, contabilidad financiera, esfuerzo de compra y fiscalidad por hogar. Felicidad social: todos los colectivos salvo no residentes, incidencia fiscal reforzada, PIB real y rebote colectivo finito. Alquiler inicial corregido a la media aritmética AEAT 2024: 9,00 €/m²/mes, territorio fiscal común; mediana SERPAVI sustituida.",
       "title": "Modelo nacional de vivienda",
-      "version": "0.12.0-alpha.collective1.mean1.debt3",
+      "version": "0.12.0-alpha.collective1.mean1.debt4",
       "created_at": "2026-10-04T00:00:00.000Z",
       "updated_at": "2026-10-05T00:00:00.000Z"
     },
