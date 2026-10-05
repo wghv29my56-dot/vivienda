@@ -59,8 +59,14 @@
 
   .mobile-game-button {
     min-width: 74px !important;
+    width: 74px;
+    flex: 0 0 74px;
     padding: 4px 5px !important;
     font-size: 8px !important;
+    line-height: 1.1 !important;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
   }
 
   .mobile-app-nav {
