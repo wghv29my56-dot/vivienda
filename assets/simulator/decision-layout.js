@@ -15,7 +15,7 @@ function separatePrices(){
  const date=portal.querySelector('.policy-market-date').cloneNode(true);summary.append(date);
  const grid=document.createElement('div');grid.className='policy-market-prices';summary.append(grid);
  portal.querySelectorAll('.policy-listing').forEach((listing,i)=>{
-  const card=document.createElement('article');card.className='policy-listing policy-price-card';
+  const card=document.createElement('article');card.className='policy-listing policy-price-card '+(i===0?'rent-card':'sale-card');
   const title=listing.querySelector('.policy-listing-title').cloneNode(true);
   title.firstChild.textContent=i===0?'Alquiler medio ':'Venta media ';card.append(title);
   for(const selector of [':scope > small','.policy-listing-price','.policy-listing-delta']){

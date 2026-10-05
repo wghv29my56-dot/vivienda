@@ -22,7 +22,7 @@ function debtAt(a,t){
  return window.SIM_PUBLIC_DEBT.at(a,t,q=>q>=H.actionEnd(m,a)?(c.quarter?c.maintenance*funding.quarterly_amount/c.quarter:0):funding.quarterly_amount+(q===a.start?funding.initial_amount:0),a.debt?.terms||D.rules.public_debt);
 }
 function debtTotals(t,acts){return acts.reduce((sum,a)=>{const d=debtAt(a,t);for(const key of Object.keys(sum))sum[key]+=d[key];return sum;},{balance:0,draw:0,interest:0,principal:0,reduction:0});}
-function debtCut(a,s,t){if(s.kind!=='spending_cut'||!a.debt?.source_ids?.includes(s.id))return 0;return window.SIM_PUBLIC_DEBT.allocate(debtAt(a,t).reduction,a.debt.source_ids,D.funding_sources)[s.id]||0;}
+function debtCut(a,s,t){if(s.kind!=='spending_cut'||!a.debt?.source_ids?.includes(s.id))return 0;return window.SIM_PUBLIC_DEBT.allocate(debtAt(a,t).reduction,a.debt.source_ids,D.funding_sources,a.debt.source_shares)[s.id]||0;}
 function debtBudgetError(acts,horizon){
  for(let t=turn+1;t<=horizon;t++)for(const s of D.funding_sources.filter(s=>s.kind==='spending_cut'))if(fiscalUsed(s,t,acts)>s.annual_reference/4*moneyIndex(t)+.02)return 'La devolución de deuda agota '+s.name+' en '+quarterLabel(t-1)+'. Elige otra partida o reduce la financiación con deuda.';
  return '';

@@ -1,18 +1,18 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-05",
-  "model_version": "0.12.0-alpha.collective1.mean1.debt1",
+  "model_version": "0.12.0-alpha.collective1.mean1.debt2",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "850ed5a988d89ffba7e9c6f16df719e883a418e802920597951daf462502e2c9",
+  "source_sha256": "91381c8714316fe4572490f895b5a88024c415057640eacee1572514ad114608",
   "engine_manifest": {
     "assets/simulator/housing-policy.js": "3d3f16b432cb8ae8da1fcd01d2e13066bea5de5c7400bae89a4b84600d73bc47",
     "assets/simulator/model-config.js": "5e64180ace024e43722bf4fa62d3780ced118c7a2f4b47400aef9ad98a721cc8",
-    "assets/simulator/advanced.js": "57fc165994be337d2d3192e64074e7218becccdd21c5e2c13ef02b6514a5715e",
+    "assets/simulator/advanced.js": "25fe80e0cb38198f87c31c79643d9b76c78f003d7765934a3974616af9f6e681",
     "assets/simulator/national.js": "099037f5602d5dd1e82821ec02c210883713dccdac8664eb7aef6d585b7d81f9",
-    "assets/simulator/fiscal.js": "f730e40117b2e97c9c8f7f4d5d30d9541047f507492a767d6cd864fca3f91f4c",
+    "assets/simulator/fiscal.js": "35ae7a021a9fa689917afca743f691961ffb88a84f6f596960341fd45cbd153e",
     "assets/simulator/turn-report.js": "d3a14eccdb80fe69b4e7e61d6eab0132764c8e959fbeac9b3f74041af755c283",
-    "assets/simulator/public-debt.js": "a7e90f7f4c5ade679bd77040b38b5ecd308bae8489ca416ebb8d37ac741b4017"
+    "assets/simulator/public-debt.js": "46e376763b0ba24bc42941d987ea326e972712395bb5fd2b57ba64c3f3fbad6c"
   },
   "publication": {
     "provider": "GitHub Pages",
@@ -30,6 +30,7 @@
     "Revisión de coherencia de las 67 medidas: esfuerzo de acceso, oferta anunciada, parque público, inversión privada, beneficiarios, reservas y efectos fiscales por hogar.",
     "Felicidad colectiva de todos los grupos nacionales, clima social por recortes, presión fiscal y PIB; impactos directos y comunes separados y previsualizados en cada medida.",
     "Alquiler inicial: media aritmética AEAT 2024 de 9,00 €/m²/mes, con ayuda y fuente corregidas.",
-    "Financiación con deuda pública: amortización de cada emisión en 20 años, intereses y principal pagados por recortes desde el siguiente trimestre."
+    "Financiación con deuda pública: amortización de cada emisión en 20 años, intereses y principal pagados por recortes desde el siguiente trimestre.",
+    "Reparto de las cuotas con barras sobre varias partidas; costes de deuda bloqueados permanentemente."
   ]
 }

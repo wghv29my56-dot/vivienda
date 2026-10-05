@@ -14,9 +14,10 @@ function at(action,turn,drawAt,terms){
  }
  result.reduction=result.principal+result.interest;return result;
 }
-function allocate(amount,sourceIds,sources){
+function allocate(amount,sourceIds,sources,weights){
  const selected=[...new Set(sourceIds)].map(id=>sources.find(s=>s.id===id));
  if(!selected.length||selected.some(s=>!s||s.kind!=='spending_cut'||s.debt_service))throw new Error('Selecciona otra partida de gasto para devolver la deuda.');
+ if(weights){const total=selected.reduce((n,s)=>n+(weights[s.id]||0),0);if(!Number.isFinite(total)||total<=0||selected.some(s=>!Number.isFinite(weights[s.id])||weights[s.id]<0))throw new Error('Reparto de la cuota no válido.');return Object.fromEntries(selected.map(s=>[s.id,amount*weights[s.id]/total]));}
  const total=selected.reduce((n,s)=>n+s.annual_reference,0);
  return Object.fromEntries(selected.map(s=>[s.id,amount*s.annual_reference/total]));
 }

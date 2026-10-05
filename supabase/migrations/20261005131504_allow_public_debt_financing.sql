@@ -117,4 +117,3 @@ begin
  return errors;
 exception when others then return jsonb_build_array(jsonb_build_object('path','$','message','Invalid structure or scalar type: '||sqlerrm));
 end $function$
-
