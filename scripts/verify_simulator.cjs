@@ -91,7 +91,7 @@ for (let year=2027;year<=2047;year++) {
 assert.ok(Math.abs(nationalCall(4,[])[9]/baseNational[9]-1.043)<1e-10,'2027 nominal GDP +4.3%, not real GDP or CPI');
 assert.equal(nationalCall(80,[])[13],baseNational[13],'No invented automatic tourist growth');
 assert.equal(nationalCall(80,[])[14],baseNational[14]+catalogue.scenario.tourism.annual_new_homes*20,'Explicit editable tourist-home entry scenario');
-assert.equal(catalogue.prices.rent.value,8.2);assert.equal(catalogue.prices.sale.value,2355);
+assert.equal(catalogue.prices.rent.value,9);assert.equal(catalogue.prices.sale.value,2355);
 assert.equal(Object.values(catalogue.scenario.tenure_percent).reduce((a,b)=>a+b),100);
 assert.deepEqual(catalogue.weights,[8.62,2.59,17.41,2.59,0,63.19],'Weighted social index includes all national agents and excludes nonresident investors');
 const iva=catalogue.funding_sources.find(s=>s.id==='a3_tax_iva');

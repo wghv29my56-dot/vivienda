@@ -97,13 +97,13 @@
   ],
   "prices": {
     "rent": {
-      "note": "8,20 €/m² al mes: mediana SERPAVI de viviendas colectivas arrendadas en 2024. Publicación 2026. El agregado de precios no incluye País Vasco y Navarra; no es una media de anuncios ni el alquiler de entrada de 2027. Se conserva esta referencia sin inventar una actualización. 80 m² × 8,20 = 656 €/mes, conversión ilustrativa; no es la mediana publicada de 600 €/vivienda.",
+      "note": "9,00 €/m² al mes: media aritmética del alquiler de viviendas habituales declaradas en el IRPF, AEAT, ejercicio 2024. Territorio de régimen fiscal común; excluye País Vasco y Navarra y viviendas de propietarios personas jurídicas. No es una mediana ni un precio de anuncios o de nuevos contratos. Se utiliza el último dato observado como referencia del inicio ficticio de enero de 2027. 80 m² × 9,00 = 720 €/mes es una conversión ilustrativa; no es el alquiler medio por vivienda de 691 €/mes publicado por la AEAT.",
       "title": "Alquiler medio",
-      "value": 8.2,
+      "value": 9,
       "sources": [
         "rent_observed"
       ],
-      "help_summary": "Referencia: 8,20 €/m²/mes; 80 m² equivalen a 656 €/mes. El juego usa la mediana oficial SERPAVI de 2024 como aproximación: no es una media de anuncios actuales."
+      "help_summary": "Referencia inicial: 9,00 €/m² al mes, media aritmética oficial de la AEAT para viviendas habituales arrendadas en 2024. Incluye viviendas declaradas por propietarios personas físicas en el territorio fiscal común (sin País Vasco ni Navarra). No es una mediana ni la media de anuncios actuales. Para una vivienda de 80 m², el juego muestra 720 €/mes; es una conversión ilustrativa, distinta de los 691 €/mes de media por vivienda publicados por la AEAT."
     },
     "sale": {
       "note": "2.355 €/m²: valor tasado medio nacional de vivienda libre, segundo trimestre de 2026. No es precio de anuncio ni precio escriturado. 80 m² × 2.355 = 188.400 €. Se mantiene el último nivel observado al inicio ficticio de enero de 2027.",
@@ -337,11 +337,11 @@
     },
     "rent_observed": {
       "id": "rent_observed",
-      "url": "https://publicaciones.transportes.gob.es/downloadcustom/sample/4078",
+      "url": "https://www3.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfvivienda/2024/jrubikf53b07ce4916495be456684ec99760a9e5f321e9c.html",
       "kind": "official_reference",
-      "title": "MIVAU · SERPAVI 2026, tabla 1, alquileres de 2024",
-      "accessed": "2026-10-03",
-      "help_title": "MIVAU · SERPAVI 2026, tabla 1, alquileres de 2024"
+      "title": "AEAT · Viviendas declaradas en el IRPF 2024, alquiler medio de vivienda habitual",
+      "accessed": "2026-10-05",
+      "help_title": "AEAT · Media aritmética del alquiler de vivienda habitual, 2024"
     },
     "sale_observed": {
       "id": "sale_observed",
@@ -966,7 +966,7 @@
       "kind": "methodology"
     }
   },
-  "version": "0.12.0-alpha.collective1",
+  "version": "0.12.0-alpha.collective1.mean1",
   "measures": [
     {
       "id": "a3_freeze",
@@ -1689,7 +1689,7 @@
         0
       ],
       "national_effects": {
-        "gdp": -0.00005,
+        "gdp": -5e-05,
         "population": 0,
         "rent_demand": 0.005,
         "buy_demand": 0,
@@ -27596,13 +27596,13 @@
       ],
       "prices": {
         "rent": {
-          "note": "8,20 €/m² al mes: mediana SERPAVI de viviendas colectivas arrendadas en 2024. Publicación 2026. El agregado de precios no incluye País Vasco y Navarra; no es una media de anuncios ni el alquiler de entrada de 2027. Se conserva esta referencia sin inventar una actualización. 80 m² × 8,20 = 656 €/mes, conversión ilustrativa; no es la mediana publicada de 600 €/vivienda.",
+          "note": "9,00 €/m² al mes: media aritmética del alquiler de viviendas habituales declaradas en el IRPF, AEAT, ejercicio 2024. Territorio de régimen fiscal común; excluye País Vasco y Navarra y viviendas de propietarios personas jurídicas. No es una mediana ni un precio de anuncios o de nuevos contratos. Se utiliza el último dato observado como referencia del inicio ficticio de enero de 2027. 80 m² × 9,00 = 720 €/mes es una conversión ilustrativa; no es el alquiler medio por vivienda de 691 €/mes publicado por la AEAT.",
           "title": "Alquiler medio",
-          "value": 8.2,
+          "value": 9,
           "sources": [
             "rent_observed"
           ],
-          "help_summary": "Referencia: 8,20 €/m²/mes; 80 m² equivalen a 656 €/mes. El juego usa la mediana oficial SERPAVI de 2024 como aproximación: no es una media de anuncios actuales."
+          "help_summary": "Referencia inicial: 9,00 €/m² al mes, media aritmética oficial de la AEAT para viviendas habituales arrendadas en 2024. Incluye viviendas declaradas por propietarios personas físicas en el territorio fiscal común (sin País Vasco ni Navarra). No es una mediana ni la media de anuncios actuales. Para una vivienda de 80 m², el juego muestra 720 €/mes; es una conversión ilustrativa, distinta de los 691 €/mes de media por vivienda publicados por la AEAT."
         },
         "sale": {
           "note": "2.355 €/m²: valor tasado medio nacional de vivienda libre, segundo trimestre de 2026. No es precio de anuncio ni precio escriturado. 80 m² × 2.355 = 188.400 €. Se mantiene el último nivel observado al inicio ficticio de enero de 2027.",
@@ -27836,11 +27836,11 @@
         },
         {
           "id": "rent_observed",
-          "url": "https://publicaciones.transportes.gob.es/downloadcustom/sample/4078",
+          "url": "https://www3.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfvivienda/2024/jrubikf53b07ce4916495be456684ec99760a9e5f321e9c.html",
           "kind": "official_reference",
-          "title": "MIVAU · SERPAVI 2026, tabla 1, alquileres de 2024",
-          "accessed": "2026-10-03",
-          "help_title": "MIVAU · SERPAVI 2026, tabla 1, alquileres de 2024"
+          "title": "AEAT · Viviendas declaradas en el IRPF 2024, alquiler medio de vivienda habitual",
+          "accessed": "2026-10-05",
+          "help_title": "AEAT · Media aritmética del alquiler de vivienda habitual, 2024"
         },
         {
           "id": "sale_observed",
@@ -52457,9 +52457,9 @@
     "comments": [],
     "metadata": {
       "id": "vivienda-realism",
-      "notes": "Añadida regularización de viviendas consolidadas con oferta formal, aptitud registral y financiación potencial separadas. Acceso y protección: costes por beneficiario, referencias ejecutadas, avales contingentes, parque público y suspensión cancelable. Regularización: máximo conservador 100.000 expedientes; 95 % ya utilizado, solo 5 % de disponibilidad adicional; efectos colectivos reducidos. Fiscalidad: selectores de tipo/recargo, dos componentes ITP/AJD, IRPF/IS, nuevas bases explícitas, recaudación propia y bloqueo transversal del mismo impuesto. Expropiación para alquiler público: justiprecio aproximado, 5 % legal separado, tramitación y rechazo político explícitos. Aplicadas todas las recomendaciones de coherencia: mercado segmentado, stock público, producción privada, beneficiarios, contabilidad financiera, esfuerzo de compra y fiscalidad por hogar. Felicidad social: todos los colectivos salvo no residentes, incidencia fiscal reforzada, PIB real y rebote colectivo finito.",
+      "notes": "Añadida regularización de viviendas consolidadas con oferta formal, aptitud registral y financiación potencial separadas. Acceso y protección: costes por beneficiario, referencias ejecutadas, avales contingentes, parque público y suspensión cancelable. Regularización: máximo conservador 100.000 expedientes; 95 % ya utilizado, solo 5 % de disponibilidad adicional; efectos colectivos reducidos. Fiscalidad: selectores de tipo/recargo, dos componentes ITP/AJD, IRPF/IS, nuevas bases explícitas, recaudación propia y bloqueo transversal del mismo impuesto. Expropiación para alquiler público: justiprecio aproximado, 5 % legal separado, tramitación y rechazo político explícitos. Aplicadas todas las recomendaciones de coherencia: mercado segmentado, stock público, producción privada, beneficiarios, contabilidad financiera, esfuerzo de compra y fiscalidad por hogar. Felicidad social: todos los colectivos salvo no residentes, incidencia fiscal reforzada, PIB real y rebote colectivo finito. Alquiler inicial corregido a la media aritmética AEAT 2024: 9,00 €/m²/mes, territorio fiscal común; mediana SERPAVI sustituida.",
       "title": "Modelo nacional de vivienda",
-      "version": "0.12.0-alpha.collective1",
+      "version": "0.12.0-alpha.collective1.mean1",
       "created_at": "2026-10-04T00:00:00.000Z",
       "updated_at": "2026-10-05T00:00:00.000Z"
     },

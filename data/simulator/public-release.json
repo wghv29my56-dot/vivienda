@@ -1,10 +1,10 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-05",
-  "model_version": "0.12.0-alpha.collective1",
+  "model_version": "0.12.0-alpha.collective1.mean1",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "7ef6ad1afb13b96d1afa3166e3d1bf6760f4148c274d7d3a6336f0f563ebca3f",
+  "source_sha256": "6096e0f2dd097744c49c346aa4b190d4896d6090b183962a760524ed2797360e",
   "engine_manifest": {
     "assets/simulator/housing-policy.js": "3d3f16b432cb8ae8da1fcd01d2e13066bea5de5c7400bae89a4b84600d73bc47",
     "assets/simulator/model-config.js": "30bd434cc6798fad4a8ff748f7ce01e332c1910d1581b846cfa500ec4290f749",
@@ -27,6 +27,7 @@
     "Integración en la web, navegación móvil y pie de página común.",
     "Expropiación indemnizada para alquiler público, con premio de afección del 5 %, costes de tramitación y rechazo de propietarios.",
     "Revisión de coherencia de las 67 medidas: esfuerzo de acceso, oferta anunciada, parque público, inversión privada, beneficiarios, reservas y efectos fiscales por hogar.",
-    "Felicidad colectiva de todos los grupos nacionales, clima social por recortes, presión fiscal y PIB; impactos directos y comunes separados y previsualizados en cada medida."
+    "Felicidad colectiva de todos los grupos nacionales, clima social por recortes, presión fiscal y PIB; impactos directos y comunes separados y previsualizados en cada medida.",
+    "Alquiler inicial: media aritmética AEAT 2024 de 9,00 €/m²/mes, con ayuda y fuente corregidas."
   ]
 }
