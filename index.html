@@ -952,8 +952,9 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="assets/mobile-app-nav.css?v=simulator-integration-2">
+
 <link rel="stylesheet" href="assets/shared-footer.css">
+<link rel="stylesheet" href="assets/mobile-app-nav.css?v=shared-nav-3">
 </head>
 <body>
   <header class="topbar">
@@ -974,39 +975,6 @@
       </div>
     </div>
   </header>
-
-  <nav class="mobile-app-nav" aria-label="Navegación móvil">
-    <div class="mobile-app-nav__inner">
-      <a class="mobile-app-nav__button is-active" href="index.html" aria-label="Inicio" aria-current="page" title="Inicio">
-        <img class="mobile-app-nav__logo" src="assets/brand/vivienda-thinktank-logo-final.png" alt="">
-      </a>
-      <a class="mobile-app-nav__button" href="vivienda_simulator.html" aria-label="Vivienda Simulator" title="Vivienda Simulator">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none">
-          <rect x="5" y="3" width="14" height="18" rx="2.5"></rect>
-          <rect x="8" y="6" width="8" height="3" rx="0.8"></rect>
-          <circle cx="8.5" cy="12.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <circle cx="11.8" cy="12.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <circle cx="8.5" cy="16.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <circle cx="11.8" cy="16.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <path d="M15.5 12v5"></path>
-          <path d="M13.2 14.5h4.6"></path>
-        </svg>
-      </a>
-      <a class="mobile-app-nav__button" href="simulador_total.html" aria-label="Calculadora de alquiler regulado" title="Calculadora de alquiler regulado">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none">
-          <path d="M5 4h14v16H5z"></path>
-          <path d="M8 8h8M8 12h2M14 12h2M8 16h2M14 16h2"></path>
-        </svg>
-      </a>
-      <div class="mobile-map-picker">
-        <div class="mobile-map-menu" id="mobile-map-menu" hidden>
-          <a href="mapa_desarrollo_urbano.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14M7 20V6h10v14M10 9h1M13 9h1M10 13h1M13 13h1"/></svg><span>Desarrollo urbano</span></a>
-          <a href="mapa_fiscalidad_mejorada.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h8l3-7h5M7 17v-4h3l2 4M17 14v7M14 18h6"/></svg><span>Fiscalidad rural</span></a>
-        </div>
-        <button class="mobile-app-nav__button" id="mobile-map-toggle" type="button" aria-expanded="false" aria-controls="mobile-map-menu" aria-label="Abrir mapas" title="Mapas"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><path d="m4 6 5-2 6 2 5-2v14l-5 2-6-2-5 2V6Z"></path><path d="M9 4v14M15 6v14"></path></svg></button>
-      </div>
-    </div>
-  </nav>
 
   <main>
     <section class="hero">
@@ -1281,23 +1249,6 @@
     </div>
   </footer>
 
-  <script>
-    (() => {
-      const toggle = document.getElementById('mobile-map-toggle');
-      const menu = document.getElementById('mobile-map-menu');
-      if (!toggle || !menu) return;
-      const close = () => { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); };
-      toggle.addEventListener('click', () => {
-        const opening = menu.hidden;
-        menu.hidden = !opening;
-        toggle.setAttribute('aria-expanded', String(opening));
-      });
-      document.addEventListener('click', event => {
-        if (!event.target.closest('.mobile-map-picker')) close();
-      });
-      document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
-    })();
-  </script>
-
+<script src="assets/mobile-app-nav.js?v=shared-nav-3"></script>
 </body>
 </html>

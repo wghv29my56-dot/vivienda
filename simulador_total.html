@@ -656,9 +656,10 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="assets/mobile-app-nav.css">
+
   <link rel="stylesheet" href="assets/site-footer.css?v=1">
 <link rel="stylesheet" href="assets/shared-footer.css">
+<link rel="stylesheet" href="assets/mobile-app-nav.css?v=shared-nav-3">
 </head>
 <body>
   <header class="topbar">
@@ -670,49 +671,6 @@
       <a class="back-link" href="index.html">Volver</a>
     </div>
   </header>
-
-  <nav class="mobile-app-nav" aria-label="Navegación móvil">
-    <div class="mobile-app-nav__inner">
-      <a class="mobile-app-nav__button" href="index.html" aria-label="Inicio" title="Inicio">
-        <img class="mobile-app-nav__logo" src="assets/brand/vivienda-thinktank-logo-final.png" alt="">
-      </a>
-      <a class="mobile-app-nav__button is-active" href="simulador_total.html" aria-label="Simulador" aria-current="page" title="Simulador">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none">
-          <rect x="5" y="3" width="14" height="18" rx="2.5"></rect>
-          <rect x="8" y="6" width="8" height="3" rx="0.8"></rect>
-          <circle cx="8.5" cy="12.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <circle cx="11.8" cy="12.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <circle cx="8.5" cy="16.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <circle cx="11.8" cy="16.5" r="0.75" fill="currentColor" stroke="none"></circle>
-          <path d="M15.5 12v5"></path>
-          <path d="M13.2 14.5h4.6"></path>
-        </svg>
-      </a>
-      <a class="mobile-app-nav__button" href="mapa_desarrollo_urbano.html" aria-label="Mapa de desarrollo urbano" title="Mapa de desarrollo urbano">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none">
-          <path d="M4.5 21h15"></path>
-          <path d="M6.5 21V5.8c0-.8.6-1.4 1.4-1.4h8.2c.8 0 1.4.6 1.4 1.4V21"></path>
-          <path d="M9.5 8h1.2"></path>
-          <path d="M13.3 8h1.2"></path>
-          <path d="M9.5 11.5h1.2"></path>
-          <path d="M13.3 11.5h1.2"></path>
-          <path d="M10 21v-4h4v4"></path>
-        </svg>
-      </a>
-      <a class="mobile-app-nav__button" href="mapa_fiscalidad_mejorada.html" aria-label="Mapa de fiscalidad mejorada para la España vaciada" title="Mapa de fiscalidad mejorada para la España vaciada">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none">
-          <path d="M4 16.5h8.2l2.3-5.5H19"></path>
-          <path d="M8 11h3.8"></path>
-          <path d="M6.2 16.5V13h2.6l2.2 3.5"></path>
-          <path d="M14.5 11V8.5h2.8"></path>
-          <circle cx="6.5" cy="18" r="2.5"></circle>
-          <circle cx="17" cy="18" r="3"></circle>
-          <path d="M17 15v6"></path>
-          <path d="M14 18h6"></path>
-        </svg>
-      </a>
-    </div>
-  </nav>
 
   <main>
     <section class="hero">
@@ -1238,5 +1196,6 @@
     refresh();
     loadIpcSeries();
   </script>
+<script src="assets/mobile-app-nav.js?v=shared-nav-3"></script>
 </body>
 </html>

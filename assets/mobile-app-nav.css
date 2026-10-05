@@ -1,4 +1,7 @@
 .mobile-app-nav {
+  --navy: #1f385b;
+  --white: #fff;
+  --line: #e1e7ed;
   display: none;
 }
 
@@ -199,5 +202,10 @@
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
+  }
+
+  .mobile-map-menu a.is-active {
+    background: var(--navy);
+    color: var(--white);
   }
 }
