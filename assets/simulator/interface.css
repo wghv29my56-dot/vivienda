@@ -183,3 +183,11 @@
 .new-game-confirm h2{font-size:22px;line-height:1.3}
 .new-game-confirm-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
 @media(max-width:520px){.new-game-confirm-actions{flex-direction:column}.new-game-confirm-actions button{width:100%}}
+.tracking-preference{font-size:11px;font-weight:400;margin-top:10px;display:block}.tracking-preference input{display:inline-block;width:auto;margin:0 6px 0 0}.tracking-preference small{display:block;margin-top:3px}
+
+.policy-market-prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.policy-price-card{border:1px solid #d4dfe8}
+.policy-price-summary .policy-market-date{color:var(--muted);margin-top:0}
+.policy-lidealisto .policy-listing-ads{border-top:0;margin-top:0;padding-top:0}
+.policy-lidealisto .policy-listing-ads b{font-size:23px}
+@media(max-width:440px){.policy-market-prices{grid-template-columns:1fr}}

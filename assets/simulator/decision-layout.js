@@ -4,10 +4,31 @@
 const workspace=document.getElementById('policy-workspace');
 const columns=[workspace.querySelector('.decision-config'),workspace.querySelector('.decision-results')];
 const macro=document.getElementById('policy-macro-preview'),effects=document.getElementById('modal-effects');
+const market=document.getElementById('national-preview');
 const hosts=columns.map(column=>{const host=document.createElement('div');host.className='decision-flow';column.append(host);return host;});
 let cards=[null,null,null],frame;
+function separatePrices(){
+ const portal=market.querySelector('.policy-lidealisto');
+ if(!portal||portal.dataset.pricesSeparated)return;
+ portal.dataset.pricesSeparated='true';
+ const summary=document.createElement('section');summary.className='policy-price-summary';summary.setAttribute('aria-label','Precios medios estimados');
+ const date=portal.querySelector('.policy-market-date').cloneNode(true);summary.append(date);
+ const grid=document.createElement('div');grid.className='policy-market-prices';summary.append(grid);
+ portal.querySelectorAll('.policy-listing').forEach((listing,i)=>{
+  const card=document.createElement('article');card.className='policy-listing policy-price-card';
+  const title=listing.querySelector('.policy-listing-title').cloneNode(true);
+  title.firstChild.textContent=i===0?'Alquiler medio ':'Venta media ';card.append(title);
+  for(const selector of [':scope > small','.policy-listing-price','.policy-listing-delta']){
+   const value=listing.querySelector(selector);if(value)card.append(value);
+  }
+  listing.querySelector('.policy-listing-title').textContent=i===0?'Anuncios de alquiler':'Anuncios de venta';
+  grid.append(card);
+ });
+ market.prepend(summary);
+}
 function balance(){
  frame=null;
+ separatePrices();
  const collective=macro.querySelector('.collective-policy-card');
  if(collective){cards[0]?.remove();cards[0]=collective;hosts[0].append(collective);}
  const fresh=[...effects.children];
@@ -27,6 +48,7 @@ function balance(){
 }
 function schedule(){if(!frame)frame=requestAnimationFrame(balance);}
 const observer=new MutationObserver(schedule);
+observer.observe(market,{childList:true});
 observer.observe(macro,{childList:true});observer.observe(effects,{childList:true});
 new MutationObserver(schedule).observe(workspace,{attributes:true,attributeFilter:['open']});
 window.addEventListener('resize',schedule);
