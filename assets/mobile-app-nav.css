@@ -50,6 +50,7 @@
 
   .mobile-header-actions {
     gap: 4px;
+    align-items: center;
   }
 
   .mobile-video-button {
@@ -58,15 +59,17 @@
   }
 
   .mobile-game-button {
-    min-width: 74px !important;
-    width: 74px;
-    flex: 0 0 74px;
-    padding: 4px 5px !important;
+    min-width: 88px !important;
+    width: 88px !important;
+    max-width: 88px !important;
+    flex: 0 0 88px !important;
+    padding: 4px !important;
     font-size: 8px !important;
     line-height: 1.1 !important;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    text-align: center !important;
+    white-space: normal;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
   .mobile-app-nav {
