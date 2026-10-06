@@ -8,10 +8,10 @@
   "engine_manifest": {
     "assets/simulator/housing-policy.js": "cbc245a787784499255a3be2bfcde83e1c9655c1f9ea438764cd23102d0f8de1",
     "assets/simulator/model-config.js": "c531ae9c0c5f255d35da9a8196c044370e428c46116f454d5be4f4a83c7a5c01",
-    "assets/simulator/advanced.js": "e619d1547e7f6008777b47eba20c0c19eeeacc548e37443d4f18ba0f2713ae35",
+    "assets/simulator/advanced.js": "8f51f35bc2ca18d4d04eef7744e863be7602597f3823cf122b59ad05cbe3da04",
     "assets/simulator/national.js": "248b9984291ab0863ce8d9a1dd2d4cf5a973394ee6406212efe1071d1d927e2b",
     "assets/simulator/fiscal.js": "5dc8828eb0cf755bc22e7134768cb946b126ff4013ca48f467acf3cdc892204a",
-    "assets/simulator/turn-report.js": "ea66117e19cd41c19e72692d0af4fa85885f17a697ed69728cc00097de57bfc4",
+    "assets/simulator/turn-report.js": "b4ebc064ca6956576ac2ea877082a1fc0397b03d563d69dd7f84b329dc8a6147",
     "assets/simulator/public-debt.js": "46e376763b0ba24bc42941d987ea326e972712395bb5fd2b57ba64c3f3fbad6c"
   },
   "publication": {
