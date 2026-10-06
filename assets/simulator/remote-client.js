@@ -1,9 +1,9 @@
 /* Public client: sends controls and renders results; contains no model or simulation engine. */
 (function(){
 'use strict';
-const C=window.SIM_SUPABASE,endpoint=C.url+'/functions/v1/simulator-play',KEY='vivienda.remote.session.v1';
-let session=null,busy=false,lastView=null,pending=null,started=false,presentation=null,selected=null,policyWanted=null,helpKey=null,reportDismissed=-1,chartVisible=null,chartScale='auto';
-try{session=JSON.parse(sessionStorage.getItem(KEY)||'null');}catch{}
+const C=window.SIM_SUPABASE,endpoint=C.url+'/functions/v1/simulator-play',KEY='vivienda.remote.session.v1',PRESENTATION_CACHE='vivienda.remote.presentation.v2';
+let session=null,busy=false,lastView=null,pending=null,started=false,presentation=null,selected=null,policyWanted=null,helpKey=null,reportDismissed=-1,chartVisible=null,chartScale='auto',presentationStamp=null;
+try{session=JSON.parse(sessionStorage.getItem(KEY)||'null');const cached=JSON.parse(sessionStorage.getItem(PRESENTATION_CACHE)||'null');if(cached?.stamp&&cached.presentation?.cards?.length){presentation=cached.presentation;presentationStamp=cached.stamp;}}catch{}
 const status=document.createElement('div');status.className='remote-status';status.setAttribute('role','status');status.hidden=true;document.body.append(status);
 const retry=document.createElement('button');retry.className='quiet';retry.textContent='Reintentar';retry.hidden=true;status.append(retry);
 function message(text,failed=false){status.hidden=!text;status.replaceChildren(document.createTextNode(text),retry);retry.hidden=!failed;}
@@ -12,13 +12,13 @@ const $=id=>document.getElementById(id);
 const loadScript=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.body.append(s);});
 function localDialogClose(id){const el=$(id);if(el?.open)el.close();if(id==='policy-workspace')policyWanted=false;if(id==='info-dialog')helpKey=null;if(id==='turn-report')reportDismissed=lastView.turn;}
 function selectMeasure(index){if(!presentation?.cards[index])return false;selected=index;renderSelection();const card=presentation.cards[index];window.SIM_TRACKING?.open(card.id,null,'catalog');return true;}
-function renderSelection(){if(selected===null||!presentation?.cards[selected])return;const detail=$('detail');detail.innerHTML=presentation.cards[selected].html;detail.querySelectorAll('button').forEach(e=>e.setAttribute('data-remote-key','local'));document.querySelectorAll('[data-measure]').forEach(e=>{const chosen=Number(e.dataset.measure)===selected;e.classList.toggle('current',chosen);e.setAttribute('aria-pressed',chosen);});if(lastView)lastView.context={...lastView.context,selected_index:selected,selected_measure:presentation.cards[selected].id};}
+function renderSelection(){if(selected===null||!presentation?.cards[selected])return;const detail=$('detail');detail.innerHTML=presentation.cards[selected].html;const state=lastView?.card_states?.[selected];if(state){const button=detail.querySelector('#open-policy');button.disabled=state.disabled;button.textContent=state.label;if(state.cancel){const cancel=document.createElement('button');cancel.id='cancel-active-policy';cancel.className='quiet';cancel.textContent='Cancelar desde el próximo trimestre';detail.append(cancel);}const foot=detail.querySelector('.detail-foot span:last-child'),money=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);foot.textContent=money(state.initial)+' iniciales + '+money(state.quarter)+'/trimestre '+presentation.cards[selected].footerSuffix;}detail.querySelectorAll('button').forEach(e=>e.setAttribute('data-remote-key','local'));document.querySelectorAll('[data-measure]').forEach(e=>{const chosen=Number(e.dataset.measure)===selected;e.classList.toggle('current',chosen);e.setAttribute('aria-pressed',chosen);});if(lastView)lastView.context={...lastView.context,selected_index:selected,selected_measure:presentation.cards[selected].id};}
 function showHelp(key){const help=presentation?.helps[key];if(!help)return false;if(help.url){const url=new URL(help.url,location.href);if(url.origin===location.origin)window.open(url.href,'_blank','noopener');return true;}helpKey=key;$('info-title').textContent=help.title;$('info-body').textContent=help.body;$('info-sources').innerHTML=help.sources;if(!$('info-dialog').open)$('info-dialog').showModal();return true;}
 function control(el){if(el.id)return {id:el.id};for(const attribute of ['data-source','data-budget-pick','data-budget-bar','data-part','data-edit','data-remove','data-amount','data-tax-component','data-tax-carrier','data-policy-enabled','data-cancel','data-save','data-close'])if(el.hasAttribute(attribute))return {attribute,value:el.getAttribute(attribute)};return null;}
 function uiState(){return {local:true,selected:selected??lastView.context.selected_index,policyOpen:policyWanted??!!$('policy-workspace').open,reportOpen:!!$('turn-report').open,debtOpen:!!document.querySelector('.debt-dialog[open]')};}
 function openEditorShell(){policyWanted=true;const el=$('policy-workspace');el.dataset.loading='true';$('policy-title').textContent=presentation.cards[selected].name;$('policy-help').dataset.info='measure:'+presentation.cards[selected].id;let text=el.querySelector('.local-editor-loading');if(!text){text=document.createElement('p');text.className='local-editor-loading';text.setAttribute('role','status');text.textContent='Calculando la previsualización…';el.querySelector('.workspace-head').after(text);}if(!el.open)el.showModal();}
 function patch(view){
- if(view.presentation)presentation=view.presentation;
+ if(view.presentation){presentation=view.presentation;presentationStamp=view.presentation_stamp;try{sessionStorage.setItem(PRESENTATION_CACHE,JSON.stringify({stamp:presentationStamp,presentation}));}catch{}}
  if(selected===null||!presentation?.cards[selected])selected=view.context.selected_index;
  if(policyWanted===null)policyWanted=/\sopen(?:[\s=>])/.test(view.fragments['policy-workspace']);
  if(!/\sopen(?:[\s=>])/.test(view.fragments['policy-workspace']))policyWanted=false;
@@ -45,7 +45,7 @@ function patch(view){
 }
 async function request(payload,retryRequest=false){
  if(busy)return false;busy=true;message('Calculando…');document.documentElement.classList.add('remote-busy');
- if(!retryRequest){payload.presentation_stamp=lastView?.presentation_stamp;pending=payload;}
+ if(!retryRequest){payload.presentation_stamp=presentation?presentationStamp:undefined;payload.presentation_protocol=2;pending=payload;}
  const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),25000);
  try{
   const response=await fetch(endpoint,{method:'POST',headers:{apikey:C.publishableKey,'Content-Type':'application/json',...(session?.token?{Authorization:'Bearer '+session.token}:{})},body:JSON.stringify(payload),signal:abort.signal});
