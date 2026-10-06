@@ -2,13 +2,22 @@
 (function(){
 'use strict';
 const C=window.SIM_SUPABASE,endpoint=C.url+'/functions/v1/simulator-play',KEY='vivienda.remote.session.v1',PRESENTATION_CACHE='vivienda.remote.presentation.v2';
-let session=null,busy=false,lastView=null,pending=null,started=false,presentation=null,selected=null,policyWanted=null,helpKey=null,reportDismissed=-1,chartVisible=null,chartScale='auto',presentationStamp=null;
+let session=null,busy=false,lastView=null,pending=null,started=false,presentation=null,selected=null,policyWanted=null,helpKey=null,reportDismissed=-1,chartVisible=null,chartScale='auto',presentationStamp=null,mobileWarningAccepted=false,startAnnouncementPending=false;
 try{session=JSON.parse(sessionStorage.getItem(KEY)||'null');const cached=JSON.parse(sessionStorage.getItem(PRESENTATION_CACHE)||'null');if(cached?.stamp&&cached.presentation?.cards?.length){presentation=cached.presentation;presentationStamp=cached.stamp;}}catch{}
 const status=document.createElement('div');status.className='remote-status';status.setAttribute('role','status');status.hidden=true;document.body.append(status);
 const retry=document.createElement('button');retry.className='quiet';retry.textContent='Reintentar';retry.hidden=true;status.append(retry);
 function message(text,failed=false){status.hidden=!text;status.replaceChildren(document.createTextNode(text),retry);retry.hidden=!failed;}
 function remember(){try{sessionStorage.setItem(KEY,JSON.stringify(session));}catch{}}
 const $=id=>document.getElementById(id);
+function announceStarted(){startAnnouncementPending=false;window.scrollTo(0,0);document.dispatchEvent(new Event('simulator:started'));}
+function finishStarting(){
+ const warning=$('mobile-warning');
+ if(matchMedia('(max-width:620px)').matches&&!mobileWarningAccepted&&warning){startAnnouncementPending=true;if(!warning.open)warning.showModal();return;}
+ announceStarted();
+}
+const mobileWarning=$('mobile-warning'),acceptMobileWarning=$('accept-mobile-warning');
+if(mobileWarning)mobileWarning.addEventListener('cancel',e=>e.preventDefault());
+if(acceptMobileWarning)acceptMobileWarning.addEventListener('click',()=>{mobileWarningAccepted=true;if(mobileWarning?.open)mobileWarning.close();if(startAnnouncementPending)announceStarted();});
 const loadScript=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.body.append(s);});
 function localDialogClose(id){const el=$(id);if(el?.open)el.close();if(id==='policy-workspace')policyWanted=false;if(id==='info-dialog')helpKey=null;if(id==='turn-report')reportDismissed=lastView.turn;}
 function selectMeasure(index){if(!presentation?.cards[index])return false;selected=index;renderSelection();const card=presentation.cards[index];window.SIM_TRACKING?.open(card.id,null,'catalog');return true;}
@@ -76,7 +85,7 @@ async function activate(el){
  const target=control(el),initial=el.id==='start';
  if(el.id==='open-policy'||el.hasAttribute('data-edit')){if(el.hasAttribute('data-edit'))selectMeasure(Number(el.dataset.edit));openEditorShell();}
  const ok=await action({type:'click',...(target?{control:target}:{key:el.dataset.remoteKey})});
- if(ok&&initial){window.scrollTo(0,0);document.dispatchEvent(new Event('simulator:started'));}
+ if(ok&&initial)finishStarting();
  return ok;
 }
 async function click(selector){const el=document.querySelector(selector);if(!el||el.disabled)return false;return activate(el);}
