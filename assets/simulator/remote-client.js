@@ -80,7 +80,7 @@ async function activate(el){
  return ok;
 }
 async function click(selector){const el=document.querySelector(selector);if(!el||el.disabled)return false;return activate(el);}
-window.SIM_REMOTE={action,click,get view(){return lastView;},get busy(){return busy;}};
+window.SIM_REMOTE={action,click,get view(){return lastView;},get presentation(){return presentation;},get busy(){return busy;}};
 retry.onclick=()=>{if(pending)request(pending,true);};
 document.addEventListener('click',e=>{const el=e.target.closest('[data-remote-key],[data-series],[data-scale],[data-info],[data-measure]');if(!el||el.tagName==='INPUT'||el.tagName==='SELECT')return;e.preventDefault();e.stopImmediatePropagation();activate(el);},true);
 document.addEventListener('input',e=>{const el=e.target;if(el.tagName!=='INPUT'||el.type!=='range')return;el.setAttribute('aria-valuetext',el.value);if(el.id==='intensity')$('intensity-value').textContent=new Intl.NumberFormat('es-ES',{maximumFractionDigits:3}).format(Number(el.value));},true);

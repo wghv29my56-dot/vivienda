@@ -4,7 +4,23 @@ const host=document.getElementById('mobile-measure-picker'),catalog=document.get
 if(!host||!catalog)return;
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 let active='all',query='',signature='',building=false,allExpanded=false;
-function data(){return window.SIM_CATALOG||null;}
+function remoteData(){
+ const presentation=window.SIM_REMOTE?.presentation;
+ if(!presentation?.cards?.length)return null;
+ const categories={},categoryByIndex={};
+ catalog.querySelectorAll('details[data-category]').forEach(group=>{
+  const id=group.dataset.category,label=group.querySelector('summary')?.childNodes[0]?.textContent.trim()||id;
+  categories[id]=label;
+  group.querySelectorAll('[data-measure]').forEach(button=>categoryByIndex[Number(button.dataset.measure)]=id);
+ });
+ const measures=presentation.cards.map((item,index)=>{
+  const template=document.createElement('template');template.innerHTML=item.html||'';
+  const effects=template.content.querySelectorAll('.effects .effect strong');
+  return {id:item.id,name:item.name,category:categoryByIndex[index]||'',selection_description:template.content.querySelector('.measure-description')?.textContent.trim()||'',pros:[effects[0]?.textContent.trim()||'Consulta los efectos previstos.'],cons:[effects[1]?.textContent.trim()||'Consulta los riesgos previstos.']};
+ });
+ return {categories,measures};
+}
+function data(){return window.SIM_CATALOG||remoteData();}
 function select(index){const button=catalog.querySelector('[data-measure="'+index+'"]');if(!button)return false;button.click();return true;}
 function appendHelpEffects(index){const source=host.querySelector('.mobile-policy-card[data-index="'+index+'"] .mobile-policy-effects'),dialog=document.getElementById('info-dialog'),links=document.getElementById('info-sources');if(!source||!dialog||!links)return;dialog.querySelector('.mobile-info-effects')?.remove();const effects=source.cloneNode(true);effects.className='mobile-info-effects effects';links.before(effects);}
 function open(index,kind){if(!select(index))return;requestAnimationFrame(()=>{if(kind==='help'){document.querySelector('#detail [data-info^="measure:"]')?.click();requestAnimationFrame(()=>appendHelpEffects(index));}else document.getElementById('open-policy')?.click();});}
