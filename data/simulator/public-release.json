@@ -1,14 +1,14 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-06",
-  "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1.audit1.real2026",
+  "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1.audit1.real2026.tourism2.distribution1.migration2",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "9d8ce3a88e78ce5a46881dd0795c754b9a26301e20acc9030231054592deedf4",
+  "source_sha256": "966ef9fbcdf6b2d66118575295f49ccd182806d41df4b9239cce3044ea5d7c8f",
   "engine_manifest": {
-    "assets/simulator/housing-policy.js": "cbc245a787784499255a3be2bfcde83e1c9655c1f9ea438764cd23102d0f8de1",
-    "assets/simulator/model-config.js": "c531ae9c0c5f255d35da9a8196c044370e428c46116f454d5be4f4a83c7a5c01",
-    "assets/simulator/advanced.js": "8f51f35bc2ca18d4d04eef7744e863be7602597f3823cf122b59ad05cbe3da04",
+    "assets/simulator/housing-policy.js": "e06d49549a5e6a48e7bdb10b3dfc94a3a719ffe0e25eb7ed5634cbda74521532",
+    "assets/simulator/model-config.js": "d970c2698c16888a66ffc89b91a7130cddf3c32588db9a3af0b9378b7c951803",
+    "assets/simulator/advanced.js": "fe6e14d4460c5374cecd0b4d3f25e1978b573f6ba0742666ce26dbdab66ada63",
     "assets/simulator/national.js": "248b9984291ab0863ce8d9a1dd2d4cf5a973394ee6406212efe1071d1d927e2b",
     "assets/simulator/fiscal.js": "5dc8828eb0cf755bc22e7134768cb946b126ff4013ca48f467acf3cdc892204a",
     "assets/simulator/turn-report.js": "b4ebc064ca6956576ac2ea877082a1fc0397b03d563d69dd7f84b329dc8a6147",
@@ -39,6 +39,12 @@
     "Lidealisto reúne anuncios y demandantes con balanzas continuas; distribución compacta y adaptada al móvil.",
     "Selector desplegable de variables agrupadas y tutorial actualizado.",
     "Ayudas de compra y alquiler explican los precios reales, la inflación, la variación trimestral y las fechas de referencia.",
-    "Ayudas y notas de medidas dirigidas al jugador, sin referencias a la edición del panel interno."
+    "Ayudas y notas de medidas dirigidas al jugador, sin referencias a la edición del panel interno.",
+    "Recalibración de rechazo por regulación de alquiler y venta, recargos fiscales y suspensión de desahucios; beneficio de inquilinos ajustado.",
+    "Vigilancia turística independiente para días y nuevas licencias: presupuesto, cumplimiento y efectos visibles sobre viviendas turísticas, turistas y PIB.",
+    "Recargos con selección fiscal visible y explicación numérica; checklist local de revisión de medidas.",
+    "Descongestión territorial aproximada mediante demanda efectiva de alquiler y compra, sin nuevas variables ni descuento de precios duplicado. Teletrabajo intacto.",
+    "Dos indicadores dinámicos por medida en el editor: turismo, oferta de alquiler o demanda de compra según relevancia.",
+    "Migración: canales económicos de salidas reforzados, reubicación territorial recalibrada, alojamiento de temporeros renovable y productividad constructiva de 0,35 viviendas/trabajador/año."
   ]
 }
