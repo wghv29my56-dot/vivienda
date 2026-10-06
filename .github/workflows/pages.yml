@@ -1,75 +1,26 @@
-name: Deploy GitHub Pages
-
+name: Deploy public static files
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          node-version: '22'
-
-      - name: Verify public release
-        run: node scripts/verify_public_release.cjs
-
-      - name: Verify simulator
-        run: node scripts/check_simulator.cjs
-
-      - name: Prepare public files
-        run: python3 scripts/prepare_public_site.py
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - name: Deploy to GitHub Pages
+          path: .
+      - uses: actions/deploy-pages@v4
         id: deployment
-        uses: actions/deploy-pages@v4
-
-  synchronize-simulator:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout simulator deployment repository
-        uses: actions/checkout@v4
-        with:
-          repository: wghv29my56-dot/viviendasimulator
-          ref: main
-          ssh-key: ${{ secrets.SIMULATOR_DEPLOY_KEY }}
-      - name: Publish source revision to simulator
-        env:
-          SOURCE_SHA: ${{ github.sha }}
-        run: |
-          printf '%s\n' "$SOURCE_SHA" > source-ref.txt
-          git config user.name 'Vivienda release'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add source-ref.txt
-          if ! git diff --cached --quiet; then
-            git commit -m "Publish simulator from $SOURCE_SHA"
-            git push origin HEAD:main
-          fi

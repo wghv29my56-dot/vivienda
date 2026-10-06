@@ -22,9 +22,9 @@ const steps=[
  [5,'Prepara tu decisión','#confirm-policy',['Pulsa **Preparar medida** para añadirla al resumen de decisiones.','Puedes editarla o retirarla **antes de avanzar**.','Este tutorial es un ejemplo y **no guarda la medida**.']],
  [5,'Avanza y comprueba','#advance',['Al **avanzar** se aplican tus medidas y pasan 3 meses.','Revisa el **informe** para ver qué ha cambiado.','Algunos efectos tardan **varios turnos** en aparecer.']]
 ];
-let hooks,index=0,exampleOpen=false,frame;
+let hooks,index=0,exampleOpen=false,frame,transition=false;
 const panel=tour.querySelector('.tutorial-panel'),spot=tour.querySelector('.tutorial-spotlight');
-function finish(){cancelAnimationFrame(frame);if(tour.open)tour.close();if(exampleOpen){hooks.closeExample();exampleOpen=false;}hooks.restore();window.scrollTo(0,0);document.getElementById('advance').focus({preventScroll:true});}
+async function finish(){cancelAnimationFrame(frame);if(tour.open)tour.close();if(exampleOpen){await hooks.closeExample();exampleOpen=false;}await hooks.restore();window.scrollTo(0,0);document.getElementById('advance').focus({preventScroll:true});}
 function place(){
  if(!tour.open)return;
  const target=document.querySelector(steps[index][2]);if(!target)return;
@@ -46,12 +46,13 @@ function place(){
  const x=Math.max(12,Math.min(w-pw-12,(left+right-pw)/2));
  Object.assign(panel.style,{left:x+'px',top:Math.max(12,y)+'px'});panel.dataset.side=below?'below':'above';panel.style.setProperty('--arrow-x',Math.max(18,Math.min(pw-18,(left+right)/2-x))+'px');
 }
-function show(){
+async function show(){
+ transition=true;document.getElementById('tutorial-next').disabled=true;document.getElementById('tutorial-back').disabled=true;document.getElementById('tutorial-exit').disabled=true;
  const [,title,selector,copy]=steps[index];
  const needsExample=['.decision-config .modulation','.cost-grid','.finance-section','#confirm-policy'].includes(selector);
- if(exampleOpen&&!needsExample){hooks.closeExample();exampleOpen=false;}
- if(selector==='#detail')hooks.selectExample();
- if(needsExample&&!exampleOpen){tour.close();hooks.openExample();exampleOpen=true;tour.showModal();}
+ if(exampleOpen&&!needsExample){await hooks.closeExample();exampleOpen=false;}
+ if(selector==='#detail')await hooks.selectExample();
+ if(needsExample&&!exampleOpen){tour.close();await hooks.openExample();exampleOpen=true;tour.showModal();}
  tour.querySelector('.tutorial-progress').textContent='Paso '+(index+1)+' de '+steps.length;
  document.getElementById('tutorial-title').textContent=title;
  const list=document.createElement('ul');
@@ -65,17 +66,18 @@ function show(){
  document.getElementById('tutorial-next').textContent=index===steps.length-1?'Empezar a jugar':'Siguiente →';
  const target=document.querySelector(selector);
  if(target)target.scrollIntoView({block:target.getBoundingClientRect().height>innerHeight-panel.offsetHeight-48?'start':'center',behavior:'instant'});
- place();cancelAnimationFrame(frame);frame=requestAnimationFrame(place);panel.focus({preventScroll:true});
+ place();cancelAnimationFrame(frame);frame=requestAnimationFrame(place);panel.focus({preventScroll:true});transition=false;document.getElementById('tutorial-next').disabled=false;document.getElementById('tutorial-exit').disabled=false;
 }
 invite.querySelector('#tutorial-decline').onclick=()=>invite.close();
 invite.querySelector('#tutorial-accept').onclick=()=>{invite.close();index=0;tour.showModal();show();};
-tour.querySelector('#tutorial-next').onclick=()=>{if(index===steps.length-1)finish();else{index++;show();}};
-tour.querySelector('#tutorial-back').onclick=()=>{if(index){index--;show();}};
+tour.querySelector('#tutorial-next').onclick=()=>{if(transition)return;if(index===steps.length-1)finish();else{index++;show();}};
+tour.querySelector('#tutorial-back').onclick=()=>{if(transition)return;if(index){index--;show();}};
 tour.querySelector('#tutorial-exit').onclick=finish;
 tour.oncancel=e=>{e.preventDefault();finish();};
 window.addEventListener('resize',place);document.addEventListener('scroll',place,true);
 window.SIM_TUTORIAL={offer(callbacks){hooks=callbacks;invite.showModal();}};
 window.SIM_MODEL_READY.then(()=>{
+ if(window.SIM_REMOTE){document.addEventListener('simulator:started',()=>{const r=window.SIM_REMOTE,previous=r.view.context.selected_index,example=r.view.context.tutorial_example;if(example<0)return;window.SIM_TUTORIAL.offer({selectExample:()=>r.click('[data-measure=\"'+example+'\"]'),openExample:async()=>{await r.click('[data-measure=\"'+example+'\"]');return r.click('#open-policy');},closeExample:()=>r.action({type:'close-policy'}),restore:()=>r.click('[data-measure=\"'+previous+'\"]')});});return;}
  function offer(){
   const previous=current,example=D.measures.findIndex(m=>m.id==='a3_public_build');
   if(example<0)return;

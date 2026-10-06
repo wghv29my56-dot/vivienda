@@ -22,6 +22,7 @@ category.onchange=updateCategory;
 let sending=false,sent=false,pending=null;
 function context(){
  const data={tracking_game_id:window.SIM_TRACKING?.gameId||null,viewport:{width:innerWidth,height:innerHeight},language:navigator.language};
+ if(window.SIM_REMOTE?.view){const v=window.SIM_REMOTE.view;return {...data,turn:v.turn,years:v.years,...v.context,screen:document.getElementById('setup').hidden?'game':'setup'};}
  try{data.turn=turn;data.years=years;data.prepared_measures=[...planned.values()].map(a=>({id:D.measures[a.index].id,intensity:a.intensity}));data.selected_measure=D.measures[current]?.id;data.screen=document.getElementById('setup').hidden?'game':'setup';}catch{}
  return data;
 }

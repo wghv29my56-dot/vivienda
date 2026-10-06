@@ -1,6 +1,8 @@
 /* Balance movable summaries without changing the published simulation engine. */
 (function(){
 'use strict';
+let cleanup=()=>{};
+function init(){cleanup();
 const workspace=document.getElementById('policy-workspace');
 const columns=[workspace.querySelector('.decision-config'),workspace.querySelector('.decision-results')];
 const macro=document.getElementById('policy-macro-preview'),effects=document.getElementById('modal-effects');
@@ -50,7 +52,10 @@ function schedule(){if(!frame)frame=requestAnimationFrame(balance);}
 const observer=new MutationObserver(schedule);
 observer.observe(market,{childList:true});
 observer.observe(macro,{childList:true});observer.observe(effects,{childList:true});
-new MutationObserver(schedule).observe(workspace,{attributes:true,attributeFilter:['open']});
+const openObserver=new MutationObserver(schedule);openObserver.observe(workspace,{attributes:true,attributeFilter:['open']});
 window.addEventListener('resize',schedule);
 document.fonts?.ready.then(schedule);
+cleanup=()=>{observer.disconnect();openObserver.disconnect();window.removeEventListener('resize',schedule);if(frame)cancelAnimationFrame(frame);};
+}
+init();document.addEventListener('simulator:render',init);
 })();
