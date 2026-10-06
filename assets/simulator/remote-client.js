@@ -107,7 +107,7 @@ window.addEventListener('resize',drawLocalChart);
 window.SIM_MODEL_READY=(async()=>{
  const ok=await request(session?{op:'action',id:session.id,revision:session.revision,request_id:crypto.randomUUID(),action:{type:'sync'}}:{op:'create'});
  if(!ok)throw Error('No se pudo abrir la sesión.');
- for(const file of ['decision-layout.js','tutorial.js','bug-report.js'])await loadScript('assets/simulator/'+file+'?v=remote-1');
+ for(const file of ['decision-layout.js','tutorial.js','bug-report.js'])await loadScript('assets/simulator/'+file+'?v='+(file==='tutorial.js'?'tutorial-mobile-1':'remote-1'));
  started=true;return window.SIM_MODEL_SOURCE;
 })();
 window.SIM_MODEL_READY.catch(()=>{});

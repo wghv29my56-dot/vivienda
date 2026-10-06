@@ -24,16 +24,17 @@ const steps=[
 ];
 let hooks,index=0,exampleOpen=false,frame,transition=false;
 const panel=tour.querySelector('.tutorial-panel'),spot=tour.querySelector('.tutorial-spotlight');
+function targetForStep(){const selector=steps[index][2];return document.querySelector(selector==='#detail'&&matchMedia('(max-width:720px)').matches?'.mobile-policy-card.is-current':selector);}
 async function finish(){cancelAnimationFrame(frame);if(tour.open)tour.close();if(exampleOpen){await hooks.closeExample();exampleOpen=false;}await hooks.restore();window.scrollTo(0,0);document.getElementById('advance').focus({preventScroll:true});}
 function place(){
  if(!tour.open)return;
- const target=document.querySelector(steps[index][2]);if(!target)return;
+ const target=targetForStep();if(!target)return;
  const r=target.getBoundingClientRect(),w=innerWidth,h=innerHeight,pad=6,ph=panel.offsetHeight,pw=panel.offsetWidth;
  const top=Math.max(8,r.top-pad),left=Math.max(8,r.left-pad),right=Math.min(w-8,r.right+pad);
  const side= w-right>=pw+24?'right':left>=pw+24?'left':null;
  let bottom=Math.min(h-8,r.bottom+pad);
  // Reserve room for the explanation when a section exceeds the viewport.
- if(!side&&h-bottom<ph+24&&top<ph+24)bottom=Math.max(top+20,h-ph-32);
+ if(!side&&!target.matches('.listings-card,.mobile-policy-card')&&h-bottom<ph+24&&top<ph+24)bottom=Math.max(top+20,h-ph-32);
  Object.assign(spot.style,{top:top+'px',left:left+'px',width:Math.max(0,right-left)+'px',height:Math.max(0,bottom-top)+'px'});
  if(side){
   const x=side==='right'?right+16:left-pw-16,y=Math.max(12,Math.min(h-ph-12,(top+bottom-ph)/2));
@@ -64,7 +65,7 @@ async function show(){
  document.getElementById('tutorial-copy').replaceChildren(list);
  document.getElementById('tutorial-back').disabled=index===0;
  document.getElementById('tutorial-next').textContent=index===steps.length-1?'Empezar a jugar':'Siguiente →';
- const target=document.querySelector(selector);
+ const target=targetForStep();
  if(target)target.scrollIntoView({block:target.getBoundingClientRect().height>innerHeight-panel.offsetHeight-48?'start':'center',behavior:'instant'});
  place();cancelAnimationFrame(frame);frame=requestAnimationFrame(place);panel.focus({preventScroll:true});transition=false;document.getElementById('tutorial-next').disabled=false;document.getElementById('tutorial-exit').disabled=false;
 }
@@ -77,12 +78,12 @@ tour.oncancel=e=>{e.preventDefault();finish();};
 window.addEventListener('resize',place);document.addEventListener('scroll',place,true);
 window.SIM_TUTORIAL={offer(callbacks){hooks=callbacks;invite.showModal();}};
 window.SIM_MODEL_READY.then(()=>{
- if(window.SIM_REMOTE){document.addEventListener('simulator:started',()=>{const r=window.SIM_REMOTE,previous=r.view.context.selected_index,example=r.view.context.tutorial_example;if(example<0)return;window.SIM_TUTORIAL.offer({selectExample:()=>r.click('[data-measure=\"'+example+'\"]'),openExample:async()=>{await r.click('[data-measure=\"'+example+'\"]');return r.click('#open-policy');},closeExample:()=>r.action({type:'close-policy'}),restore:()=>r.click('[data-measure=\"'+previous+'\"]')});});return;}
+ if(window.SIM_REMOTE){document.addEventListener('simulator:started',()=>{const r=window.SIM_REMOTE,previous=r.view.context.selected_index,example=r.view.context.tutorial_example;if(example<0)return;window.SIM_TUTORIAL.offer({selectExample:async()=>{await r.click('[data-measure=\"'+example+'\"]');window.SIM_MOBILE_PICKER?.reveal(example);},openExample:async()=>{await r.click('[data-measure=\"'+example+'\"]');return r.click('#open-policy');},closeExample:()=>r.action({type:'close-policy'}),restore:()=>r.click('[data-measure=\"'+previous+'\"]')});});return;}
  function offer(){
   const previous=current,example=D.measures.findIndex(m=>m.id==='a3_public_build');
   if(example<0)return;
   window.SIM_TUTORIAL.offer({
-   selectExample(){current=example;catalog();renderMeasure();},
+   selectExample(){current=example;catalog();renderMeasure();window.SIM_MOBILE_PICKER?.reveal(example);},
    openExample(){openPolicy(example);},
    closeExample(){cancelPolicy();},
    restore(){current=previous;catalog();renderMeasure();}
