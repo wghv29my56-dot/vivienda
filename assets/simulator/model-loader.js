@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const current=document.currentScript,control=current?.dataset.consumer==='control',M=window.SIM_MODEL,C=window.SIM_SUPABASE,CACHE='vivienda.simulator.remote-cache.v1'+(C.version?'.'+C.version:'');
-const assetVersion=encodeURIComponent((C.version||'price-controls-1')+'-audit-real2026-panel-1');
+const assetVersion=encodeURIComponent((C.version||'price-controls-1')+'-player-help-20261006-1');
 const start=document.getElementById('start');if(start)start.disabled=true;
 const notice=document.createElement('p');notice.setAttribute('role','status');notice.style.cssText='margin:12px 0;padding:12px 16px;border:1px solid #d7e2e9;background:#f3f7fa;color:#234e70;font:14px/1.5 system-ui;border-radius:6px';notice.textContent='Cargando configuración del juego…';
 (start?.parentElement||document.querySelector('main')||document.body).prepend(notice);

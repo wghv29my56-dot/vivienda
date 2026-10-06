@@ -1,6 +1,6 @@
 {
   "label": "Alfa 0.12",
-  "release_date": "2026-10-05",
+  "release_date": "2026-10-06",
   "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1.audit1.real2026",
   "engine_id": "js-national-v1",
   "measures": 67,
@@ -8,7 +8,7 @@
   "engine_manifest": {
     "assets/simulator/housing-policy.js": "cbc245a787784499255a3be2bfcde83e1c9655c1f9ea438764cd23102d0f8de1",
     "assets/simulator/model-config.js": "c531ae9c0c5f255d35da9a8196c044370e428c46116f454d5be4f4a83c7a5c01",
-    "assets/simulator/advanced.js": "dda6fe9bff9c5d02fe579cf1ec69d5592447a8a3f4f3ada7f11f5292351d862a",
+    "assets/simulator/advanced.js": "e619d1547e7f6008777b47eba20c0c19eeeacc548e37443d4f18ba0f2713ae35",
     "assets/simulator/national.js": "248b9984291ab0863ce8d9a1dd2d4cf5a973394ee6406212efe1071d1d927e2b",
     "assets/simulator/fiscal.js": "5dc8828eb0cf755bc22e7134768cb946b126ff4013ca48f467acf3cdc892204a",
     "assets/simulator/turn-report.js": "ea66117e19cd41c19e72692d0af4fa85885f17a697ed69728cc00097de57bfc4",
@@ -37,6 +37,8 @@
     "Restricción general de entradas migratorias sostenida, efectos demográficos y sobre el PIB revisados.",
     "Importes y PIB expresados en euros constantes de 2026, con controles de precios coherentes con la inflación.",
     "Lidealisto reúne anuncios y demandantes con balanzas continuas; distribución compacta y adaptada al móvil.",
-    "Selector desplegable de variables agrupadas y tutorial actualizado."
+    "Selector desplegable de variables agrupadas y tutorial actualizado.",
+    "Ayudas de compra y alquiler explican los precios reales, la inflación, la variación trimestral y las fechas de referencia.",
+    "Ayudas y notas de medidas dirigidas al jugador, sin referencias a la edición del panel interno."
   ]
 }
