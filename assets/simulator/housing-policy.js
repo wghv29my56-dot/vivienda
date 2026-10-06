@@ -13,7 +13,7 @@ function control(m,a){
  return {enforcement,compliance:p.compliance_floor+(p.compliance_ceiling-p.compliance_floor)*enforcement,
   reduction:p.max_reduction*a.intensity,coverage:p.coverage};
 }
-function target(m,a,current,elapsed=0){
+function target(m,a,current,elapsed=0,consumerIndex=1){
  const p=m.price_control,c=control(m,a);if(!c)return current;
  const reference=a.reference_price??current;
  if(p.mode==='sale'&&p.basis==='cost_margin'){const ceiling=p.reference_cost_per_m2*(1+p.margin_max*(1-a.intensity)/100)*Math.pow(1+p.cost_growth,elapsed/4);return Math.min(current,ceiling);}
@@ -26,7 +26,8 @@ function target(m,a,current,elapsed=0){
   const formula=annualRent(sum,b.return_rate)/12/b.area;
   return current+(Math.min(current,formula)-current)*a.intensity;
  }
- return reference*(1-c.reduction/100);
+ // Percentage reductions preserve their real reference; freezes remain nominal.
+ return reference*(1-c.reduction/100)*(p.indexation==='consumer_prices'?consumerIndex:1);
 }
 // End is exclusive. Cancellation affects future turns; recorded history is retained.
 function actionEnd(m,a){return Math.min(a.start+((m.temporal_control||m.term_control)?(a.duration_turns??(m.temporal_control||m.term_control).default_turns):m.duration_turns),a.cancelled_turn??Infinity);}
@@ -197,13 +198,17 @@ function fiscalConflicts(measures,actions){
 // Coherence v1: every price, beneficiary and accounting channel is explicit.
 function migrationPipeline(d,t,actions){
  if(!d.rules.coherence)return legacyMigrationPipeline(d,t,actions);
- const out={immigration_per_year:0,emigration_per_year:0,gdp:0,rent_demand:0,departures:0,workers:0,relocated:0,buy_demand:0,remote_workers:0,annual_tax_loss:0,byAction:new Map(),currentByAction:new Map(),activeByAction:new Map()},used=new Map(),shared=new Map(),cohorts=[],generalPermits=new Map();
+ const out={immigration_per_year:0,emigration_per_year:0,gdp:0,rent_demand:0,departures:0,workers:0,relocated:0,buy_demand:0,remote_workers:0,annual_tax_loss:0,byAction:new Map(),currentByAction:new Map(),activeByAction:new Map()},used=new Map(),shared=new Map(),cohorts=[],generalPermits=new Map(),preventedEntries=new Map();
  const initial=d.national?.baseline?.population??d.variables.find(v=>v.id==='population').initial;
+ const remainingEntries=q=>Math.max(0,(d.scenario.demography[d.scenario.start_year+Math.floor((q-1)/4)].immigration/4)-(preventedEntries.get(q)||0));
+ const entryRestriction=q=>Math.max(0,...actions.map(a=>{const m=d.measures[a.index],p=m.migration_program,f=m.migration_flows;if(!m.enabled||!p?.entry_reduction||q<a.start+m.delay_turns||q>=actionEnd(m,a))return 0;const ramp=f.maturation_turns?clamp((q-a.start-m.delay_turns+1)/f.maturation_turns,0,1):1;return clamp(p.entry_reduction*a.intensity*ramp,0,1);}));
  for(let q=1;q<=t;q++)for(const a of [...actions].sort((a,b)=>a.start-b.start||d.measures[a.index].id.localeCompare(d.measures[b.index].id))){
   const m=d.measures[a.index],p=m.migration_program,f=m.migration_flows;if(!p||p.kind==='remote_workers'||!f||!m.enabled||q<a.start+m.delay_turns||q>=actionEnd(m,a))continue;
   const ramp=f.maturation_turns?clamp((q-a.start-m.delay_turns+1)/f.maturation_turns,0,1):1,key=p.overlap_pool??p.pool_key,departure=f.emigration_per_year>0,limited=f.immigration_per_year<0;
   const cap=p.overlap_pool?p.shared_pool:(departure?d.scenario.migration_programs.departure_pool:p.eligible_pool),prior=used.get(m.id)||0;
-  const count=Math.min(migrationCapacity(m,a)*ramp/4,Math.max(0,p.eligible_pool-prior),Math.max(0,cap-(shared.get(key)||0)));
+  const general=limited&&p.entry_reduction,requested=general?d.scenario.demography[d.scenario.start_year+Math.floor((q-1)/4)].immigration/4*p.entry_reduction*a.intensity*ramp:migrationCapacity(m,a)*ramp/4;
+  const count=Math.min(requested*(p.kind==='construction'?1-entryRestriction(q):1),general?Infinity:Math.max(0,p.eligible_pool-prior),general?Infinity:Math.max(0,cap-(shared.get(key)||0)),limited?remainingEntries(q):Infinity);
+  if(limited)preventedEntries.set(q,(preventedEntries.get(q)||0)+count);
   if(p.kind==='permits')generalPermits.set(q,(generalPermits.get(q)||0)+count);
   used.set(m.id,prior+count);shared.set(key,(shared.get(key)||0)+count);out.byAction.set(a,(out.byAction.get(a)||0)+count);cohorts.push({a,p,q,count});
   if(q===t){out.currentByAction.set(a,count);out.emigration_per_year+=departure?count*4:0;out.immigration_per_year+=p.kind==='construction'?count*4:limited?-count*4:0;}
@@ -216,7 +221,8 @@ function migrationPipeline(d,t,actions){
  for(let q=1;q<=t;q++)for(const a of [...actions].sort((a,b)=>a.start-b.start||d.measures[a.index].id.localeCompare(d.measures[b.index].id))){
   const m=d.measures[a.index],p=m.migration_program;if(p?.kind!=='remote_workers'||!m.enabled||q<a.start+m.delay_turns||q>=actionEnd(m,a))continue;
   const r=p.remote_workers,f=m.migration_flows,ramp=f.maturation_turns?clamp((q-a.start-m.delay_turns+1)/f.maturation_turns,0,1):1,broad=clamp((generalPermits.get(q)||0)*4/r.broad_permit_reference,0,1),prior=used.get(m.id)||0;
-  const count=Math.min(migrationCapacity(m,a)*ramp*(1-broad)/4,Math.max(0,p.eligible_pool-prior)),income=a.income_threshold??r.reference_income,incomeScale=Math.pow(income/r.reference_income,.3);
+  const count=Math.min(migrationCapacity(m,a)*ramp*(1-broad)/4,Math.max(0,p.eligible_pool-prior),remainingEntries(q)),income=a.income_threshold??r.reference_income,incomeScale=Math.pow(income/r.reference_income,.3);
+  preventedEntries.set(q,(preventedEntries.get(q)||0)+count);
   used.set(m.id,prior+count);out.byAction.set(a,(out.byAction.get(a)||0)+count);cohorts.push({a,p,q,count});out.remote_workers+=count;
   out.gdp-=count/initial*p.gdp_per_resident*incomeScale;out.rent_demand-=count/initial*p.rental_extra_multiplier*incomeScale;out.buy_demand-=count/initial*r.buy_extra_multiplier*incomeScale;out.annual_tax_loss+=count*r.annual_tax_per_worker*incomeScale;
   if(q===t){out.currentByAction.set(a,count);out.immigration_per_year-=count*4;}
@@ -259,19 +265,24 @@ function privateInvestmentAt(d,t,actions,privateSupply){const c=d.rules.coherenc
  }
  return total+(privateSupply?.investmentQuarter||0);
 }
+function gdpPriceIndex(d,t){const s=d.scenario;return Math.pow(1+s.gdp_deflator[2027],Math.min(t,4)/4)*Math.pow(1+s.extrapolation.gdp_deflator,Math.max(0,t-4)/4);}
+function realFiscalAmount(d,value,t){return value/consumerPriceIndex(d,Math.max(0,t-1));}
 function consumerPriceIndex(d,t){return Math.pow(1+(d.scenario.consumer_inflation?.annual_rate??.02),Math.max(0,t)/4);}
-function controlRestriction(m,a,price,elapsed){const p=m.price_control;if(!p)return 0;if(p.mode==='freeze')return a.intensity;return clamp((1-target(m,a,price,elapsed)/price)/Math.max(.01,p.max_reduction/100),0,1);}
+function controlRestriction(m,a,price,elapsed,consumerIndex=1){const p=m.price_control;if(!p)return 0;if(p.mode==='freeze')return a.intensity;return clamp((1-target(m,a,price,elapsed,consumerIndex)/price)/Math.max(.01,p.max_reduction/100),0,1);}
 function controlExposure(d,t,actions){let rentCoverage=0,rentalWithdrawal=0,saleWithdrawal=0;
- for(const a of actions){const m=d.measures[a.index],p=m.price_control;if(!m.enabled||!p||t<a.start+m.delay_turns||t>=actionEnd(m,a))continue;const elapsed=Math.max(0,t-a.start),price=(a.reference_price??d.prices[p.mode==='sale'?'sale':'rent'].value)*Math.pow(1+d.scenario.extrapolation.gdp_deflator,elapsed/4);if(p.mode!=='freeze'&&target(m,a,price,elapsed)>=price)continue;const k=control(m,a),mat=clamp((t-a.start-m.delay_turns+1)/d.rules.maturation_turns,0,1),coverage=p.coverage*k.compliance*mat*(p.mode==='freeze'?a.intensity:1);
-  if(p.mode==='sale')saleWithdrawal+=p.withdrawal_at_full*controlRestriction(m,a,price,elapsed)*coverage;
-  else {rentCoverage+=coverage;rentalWithdrawal+=p.withdrawal_at_full*controlRestriction(m,a,price,elapsed)*coverage;}
+ for(const a of actions){const m=d.measures[a.index],p=m.price_control;if(!m.enabled||!p||t<a.start+m.delay_turns||t>=actionEnd(m,a))continue;const elapsed=Math.max(0,t-a.start),price=(a.reference_price??d.prices[p.mode==='sale'?'sale':'rent'].value)*Math.pow(1+d.scenario.extrapolation.gdp_deflator,elapsed/4);if(p.mode!=='freeze'&&target(m,a,price,elapsed,consumerPriceIndex(d,elapsed))>=price)continue;const k=control(m,a),mat=clamp((t-a.start-m.delay_turns+1)/d.rules.maturation_turns,0,1),coverage=p.coverage*k.compliance*mat*(p.mode==='freeze'?a.intensity:1);
+  if(p.mode==='sale')saleWithdrawal+=p.withdrawal_at_full*controlRestriction(m,a,price,elapsed,consumerPriceIndex(d,elapsed))*coverage;
+  else {rentCoverage+=coverage;rentalWithdrawal+=p.withdrawal_at_full*controlRestriction(m,a,price,elapsed,consumerPriceIndex(d,elapsed))*coverage;}
  }
  for(const a of actions){const m=d.measures[a.index];if(m.access_program&&t>=a.start&&t<actionEnd(m,a))rentalWithdrawal+=m.access_program.rental_withdrawal*a.intensity*accessManagement(m,a).capacity;}
  return {rentCoverage:clamp(rentCoverage,0,1),rentalWithdrawal:clamp(rentalWithdrawal,0,.8),saleWithdrawal:clamp(saleWithdrawal,0,.8)};
 }
-function marketListings(d,t,actions,pipelines){
- const s=d.scenario,ten=s.tenure_percent,exposure=controlExposure(d,t,actions),rentBase=s.households_at_start*(ten.rent_market+ten.rent_reduced)/100*s.rental_listing_turnover,saleBase=s.households_at_start*(ten.owner_mortgage+ten.owner_no_mortgage)/100*s.sale_listing_turnover;
- const add=key=>Object.values(pipelines).reduce((n,p)=>n+(p?.[key]||0),0),rent=rentBase*(1-exposure.rentalWithdrawal)+add('rentListings')+(pipelines.publicStock?.delta||0)*(d.rules.coherence.public_listing_turnover||0),sale=(Math.max(1,saleBase-(pipelines.existing?.reserved||0)))*(1-exposure.saleWithdrawal)+add('saleListings');
+function marketListings(d,t,actions,pipelines,stocks={}){
+ const s=d.scenario,ten=s.tenure_percent,exposure=controlExposure(d,t,actions),households=s.households_at_start*(stocks.population??d.national.baseline.population)/d.national.baseline.population,rentBase=households*(ten.rent_market+ten.rent_reduced)/100*s.rental_listing_turnover,saleBase=households*(ten.owner_mortgage+ten.owner_no_mortgage)/100*s.sale_listing_turnover;
+ // Deliveries create a temporary listing flow, then join the stock's normal turnover.
+ // Acquired homes leave sale stock once; only undelivered acquisitions reserve live ads.
+ const publicDelta=pipelines.publicStock?.delta||0,privateRentDelta=(stocks.rentHomes??publicDelta)-publicDelta,pending=Math.max(0,(pipelines.existing?.reserved||0)-(pipelines.existing?.delivered||0));
+ const add=key=>Object.values(pipelines).reduce((n,p)=>n+(p?.[key]||0),0),rent=(Math.max(1,rentBase+privateRentDelta*s.rental_listing_turnover))*(1-exposure.rentalWithdrawal)+add('rentListings')+publicDelta*(d.rules.coherence.public_listing_turnover||0),sale=(Math.max(1,saleBase+(stocks.saleHomes||0)*s.sale_listing_turnover-pending))*(1-exposure.saleWithdrawal)+add('saleListings');
  return {rent:clamp(rent,s.listing_behavior.rent_min,s.listing_behavior.rent_max),sale:clamp(sale,s.listing_behavior.sale_min,s.listing_behavior.sale_max),rentBase,saleBase,...exposure};
 }
 function fiscalIncidence(d,source,amount,index=1){
@@ -315,6 +326,6 @@ function collectiveHappiness(d,values,gdp,population,deflator,amounts,reference,
  const peer=reference?c.peer_feedback*(directIndex-(reference.diagnostics.collective?.directIndex??directIndex)):0,shared=clamp(fiscal+macro+peer,-c.loss_limit,c.gain_limit),final={},byGroup={};for(const g of groups){const rebound=shared*g.collective_sensitivity;final[g.id]=clamp(values[g.id]+rebound,g.min??0,g.max??100);byGroup[g.id]={direct:values[g.id],sensitivity:g.collective_sensitivity,rebound,final:final[g.id]};}
  return {directIndex,finalIndex:mean(final),fiscal,macro,peer,shared,bySource,byGroup,final};
 }
-const api={consumerPriceIndex,controlRestriction,remoteWorkerTarget,remoteWorkerPermits,remoteWorkerForce,collectiveHappiness,privateInvestmentAt,beneficiaryForce,privatePipeline,mobilisationPipeline,controlExposure,marketListings,fiscalIncidence,gdpExpenditure,purchaseCost,territorialShift,migrationCapacity,migrationPipeline,migrationConflicts,fundingScopeFraction,taxComponentForce,territoryAt,territoryPipeline,tourismForce,tourismConflicts,tourismPipeline,accessManagement,durationLabel,durationHappiness,taxBase,taxRate,taxForce,taxReceipts,taxConflicts,actionEnd,accessAt,publicStockAt,accessConflicts,amortization,annualRent,control,target,costs,existingUnitCost,fiscalConflicts,adminPipeline,existingAt,existingPipeline,existingConflicts,fiscalScale,constructionCostFactor,supplyAt,supplyPipeline,programmeConflicts};root.SIM_HOUSING_POLICY=api;
+const api={gdpPriceIndex,realFiscalAmount,consumerPriceIndex,controlRestriction,remoteWorkerTarget,remoteWorkerPermits,remoteWorkerForce,collectiveHappiness,privateInvestmentAt,beneficiaryForce,privatePipeline,mobilisationPipeline,controlExposure,marketListings,fiscalIncidence,gdpExpenditure,purchaseCost,territorialShift,migrationCapacity,migrationPipeline,migrationConflicts,fundingScopeFraction,taxComponentForce,territoryAt,territoryPipeline,tourismForce,tourismConflicts,tourismPipeline,accessManagement,durationLabel,durationHappiness,taxBase,taxRate,taxForce,taxReceipts,taxConflicts,actionEnd,accessAt,publicStockAt,accessConflicts,amortization,annualRent,control,target,costs,existingUnitCost,fiscalConflicts,adminPipeline,existingAt,existingPipeline,existingConflicts,fiscalScale,constructionCostFactor,supplyAt,supplyPipeline,programmeConflicts};root.SIM_HOUSING_POLICY=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

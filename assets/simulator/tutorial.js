@@ -10,10 +10,10 @@ const steps=[
  [0,'El tiempo de tu partida','.timeline-panel',['Empiezas en **enero de 2027** y juegas los años elegidos.','Cada turno dura **3 meses**. El cronograma marca tu progreso.','Tus decisiones se aplican **al avanzar** y sus efectos pueden durar años.']],
  [1,'La felicidad de cada colectivo','.status',['La felicidad va **de 0 a 100**. Cuanto más alta la barra, mejor.','**Cada colectivo reacciona distinto**. Beneficiar a unos puede perjudicar a otros.']],
  [1,'La felicidad colectiva','.collective-column',['Cada colectivo residente pesa **según su población** en este resumen.','Influyen los **precios, impuestos, servicios públicos y economía**.']],
- [2,'Las viviendas en Lidealisto','.listings-card',['Este portal ficticio muestra **anuncios de alquiler y venta**.','Cuenta las viviendas **anunciadas**, no todas las existentes.','Los precios también dependen de **cuántas personas buscan vivienda**.']],
+ [2,'Las cifras del país','.national-panel',['Debajo de la felicidad están el **PIB real, población, turistas internacionales y pisos turísticos**.','Los **demandantes de alquiler y compra** están en Lidealisto, junto a los anuncios.','Son **estimaciones del juego**, no predicciones del futuro.']],
+ [2,'Oferta y demanda en Lidealisto','.listings-card',['Compara **anuncios y demandantes** para alquiler y venta. Los anuncios son viviendas disponibles; los demandantes son **hogares que buscan vivienda**, según la estimación del juego.','La **balanza se inclina de forma continua** hacia el lado con mayor cantidad. Cuando ambas se igualan, queda horizontal.','La proporción indica **cuántos demandantes hay por anuncio**. No cuenta todo el parque de viviendas.']],
  [2,'Precios y cambios trimestrales','.prices',['El alquiler aparece en **€/m² al mes** y la venta en **€/m²**. Debajo, el equivalente para 80 m².','La **flecha y el porcentaje** muestran el cambio desde el trimestre anterior.','La **pequeña curva** muestra la evolución del precio.']],
- [3,'Las cifras del país','.national-panel',['Sigue la **economía, población y otras variables** que afectan a la vivienda.','Son **estimaciones del juego**, no predicciones del futuro.']],
- [3,'Compara la evolución','.chart-card',['Elige en la **leyenda** qué variables comparar.','Todas empiezan en **100**. Llegar a 110 significa +10 %; bajar a 90, −10 %.','Son **cambios relativos**, no euros ni cantidades de viviendas.']],
+ [3,'Compara la evolución','.chart-card',['Abre **Variables** para elegir qué comparar. Están agrupadas por felicidad, precios y país.','Debajo del selector solo aparecen las **variables seleccionadas**. Pulsa una para quitarla de la gráfica.','Todas empiezan en **100**. Llegar a 110 significa +10 %; bajar a 90, −10 %.','Son **cambios relativos**, no euros ni cantidades de viviendas.']],
  [4,'Hasta 5 medidas por trimestre','.measures-heading',['Puedes preparar **hasta 5 medidas**. El contador muestra cuántas llevas.','Puedes combinarlas, revisarlas o retirarlas **antes de avanzar**.','También puedes aprobar menos o ninguna. **Cada trimestre** permite nuevas decisiones.']],
  [4,'Elige una medida','#detail',['Vamos a construir **vivienda pública para alquiler** como ejemplo.','Elige en el **catálogo** y consulta sus ventajas y costes en la ficha.']],
  [4,'Decide cuánto construir','.decision-config .modulation',['Ajusta **cuántas viviendas** quieres construir.','La cantidad cambia los **costes y los efectos**.','**Construir lleva tiempo**. Las viviendas no se entregan al pagar.']],
@@ -30,10 +30,17 @@ function place(){
  const target=document.querySelector(steps[index][2]);if(!target)return;
  const r=target.getBoundingClientRect(),w=innerWidth,h=innerHeight,pad=6,ph=panel.offsetHeight,pw=panel.offsetWidth;
  const top=Math.max(8,r.top-pad),left=Math.max(8,r.left-pad),right=Math.min(w-8,r.right+pad);
+ const side= w-right>=pw+24?'right':left>=pw+24?'left':null;
  let bottom=Math.min(h-8,r.bottom+pad);
  // Reserve room for the explanation when a section exceeds the viewport.
- if(h-bottom<ph+24&&top<ph+24)bottom=Math.max(top+20,h-ph-32);
+ if(!side&&h-bottom<ph+24&&top<ph+24)bottom=Math.max(top+20,h-ph-32);
  Object.assign(spot.style,{top:top+'px',left:left+'px',width:Math.max(0,right-left)+'px',height:Math.max(0,bottom-top)+'px'});
+ if(side){
+  const x=side==='right'?right+16:left-pw-16,y=Math.max(12,Math.min(h-ph-12,(top+bottom-ph)/2));
+  Object.assign(panel.style,{left:x+'px',top:y+'px'});panel.dataset.side=side;
+  panel.style.setProperty('--arrow-y',Math.max(18,Math.min(ph-18,(top+bottom)/2-y))+'px');
+  return;
+ }
  const below=h-bottom>=ph+24,above=top>=ph+24;
  const y=below?bottom+16:above?top-ph-16:h-ph-12;
  const x=Math.max(12,Math.min(w-pw-12,(left+right-pw)/2));

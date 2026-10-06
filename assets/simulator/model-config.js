@@ -120,6 +120,7 @@ function validate(pack){
    for(const k of ['coverage','default_enforcement','compliance_floor','compliance_ceiling','withdrawal_at_full'])number(c[k],cp+'.'+k,0,1);
    if(c.compliance_ceiling<c.compliance_floor)add(cp,'El cumplimiento máximo no puede ser menor que el mínimo.');
    number(c.max_reduction,cp+'.max_reduction',0,90);number(c.annual_limit_max,cp+'.annual_limit_max',0,20);
+   if(c.indexation!==undefined&&(!['consumer_prices'].includes(c.indexation)||(c.mode!=='reduction'&&!(c.mode==='sale'&&c.basis==='market_discount'))))add(cp+'.indexation','Indexación solo disponible para rebajas de referencia y venta general.');
    if(c.basis!==undefined&&!['cost_margin','indexed_resale','market_discount'].includes(c.basis))add(cp+'.basis','Base de tope desconocida.');
    if(c.basis==='cost_margin'){number(c.reference_cost_per_m2,cp+'.reference_cost_per_m2',1);number(c.margin_max,cp+'.margin_max',0,100);number(c.cost_growth,cp+'.cost_growth',0,1);}
    if(c.basis==='indexed_resale')number(c.resale_growth,cp+'.resale_growth',0,1);
@@ -133,6 +134,7 @@ function validate(pack){
    else for(const link of measure.fiscal_links){if(!link.tax_name)add(p+'.fiscal_links','Nombre de impuesto obligatorio.');if(link.source_id!=null&&!sets.funding_sources.has(link.source_id))add(p+'.fiscal_links','Fuente fiscal inexistente.');number(link.quarterly_loss,p+'.fiscal_links.quarterly_loss',0);if(link.control_component&&!measure.tax_control?.components.some(c=>c.id===link.control_component&&c.mode==='cut'))add(p+'.fiscal_links','Componente de rebaja inexistente.');}
   }
   if(measure.migration_program){const c=measure.migration_program;for(const k of ['annual_capacity','unit_cost','eligible_pool'])number(c[k],p+'.migration_program.'+k,1);for(const k of ['gdp_per_resident','rental_extra_multiplier'])number(c[k],p+'.migration_program.'+k,0,10);if(!['removal','regularise','permits','seasonal','relocation','return','reception','construction','remote_workers'].includes(c.kind))add(p+'.migration_program.kind','Tipo de programa no válido.');if(!measure.migration_flows||(c.kind!=='remote_workers'&&!measure.budget_control))add(p+'.migration_program','Faltan flujos o selector presupuestario.');if(c.bonus){const b=c.bonus;for(const k of ['min','max','default'])number(b[k],p+'.migration_program.bonus.'+k,0,100000);number(b.step,p+'.migration_program.bonus.step',1,100000);number(b.participation_floor,p+'.migration_program.bonus.participation_floor',0,1);if(b.min>b.default||b.default>b.max||b.max<=b.min||(b.default-b.min)%b.step||(b.max-b.min)%b.step)add(p+'.migration_program.bonus','Intervalo o pasos de bonificación incoherentes.');}}
+  if(measure.migration_program?.entry_reduction!==undefined){number(measure.migration_program.entry_reduction,p+'.migration_program.entry_reduction',0,1);if(measure.migration_program.kind!=='permits')add(p+'.migration_program.entry_reduction','La restricción general debe ser un programa de permisos.');}
   if(measure.migration_program?.kind==='remote_workers'){const r=measure.migration_program.remote_workers;if(!r)add(p+'.migration_program.remote_workers','Falta configuración del cupo.');else{for(const k of ['annual_applicants','permit_step','reference_income','income_min','income_max','income_step','broad_permit_reference'])integer(r[k],p+'.remote_workers.'+k,1,1e7);number(r.income_tail,p+'.remote_workers.income_tail',.1,10);number(r.buy_extra_multiplier,p+'.remote_workers.buy_extra_multiplier',0,10);number(r.annual_tax_per_worker,p+'.remote_workers.annual_tax_per_worker',0,1e6);if(r.annual_applicants!==measure.migration_program.annual_capacity||r.reference_income!==r.income_min||r.income_max<r.income_min||r.annual_applicants%r.permit_step||(r.income_max-r.income_min)%r.income_step)add(p+'.remote_workers','Rangos o escala del cupo incoherentes.');}}
   if(measure.migration_flows){number(measure.migration_flows.immigration_per_year,p+'.migration_flows.immigration_per_year',-5000000,5000000);number(measure.migration_flows.emigration_per_year,p+'.migration_flows.emigration_per_year',-5000000,5000000);integer(measure.migration_flows.maturation_turns,p+'.migration_flows.maturation_turns');}
   if(measure.additional_homes_at_full!==undefined)number(measure.additional_homes_at_full,p+'.additional_homes_at_full',0);
@@ -268,11 +270,11 @@ function policyAt(d,m,a,t,acts,context={}){
    const p=m.price_control,targetId=p.mode==='sale'?'sale':'rent';
    amount*=control.compliance;
    if(e.coverage_scaled)amount*=p.coverage;
-   if(d.rules.coherence&&e.target_type==='variable'){const current=(a.reference_price??d.prices[targetId].value)*Math.pow(1+d.scenario.extrapolation.gdp_deflator,Math.max(0,t-a.start)/4),goal=H.target(m,a,current,t-a.start);amount*=Math.min(1,Math.max(0,1-goal/current)/Math.max(.01,p.max_reduction*a.intensity/100));}
+   if(d.rules.coherence&&e.target_type==='variable'){const current=(a.reference_price??d.prices[targetId].value)*Math.pow(1+d.scenario.extrapolation.gdp_deflator,Math.max(0,t-a.start)/4),goal=H.target(m,a,current,t-a.start,H.consumerPriceIndex(d,Math.max(0,t-a.start)));amount*=Math.min(1,Math.max(0,1-goal/current)/Math.max(.01,p.max_reduction*a.intensity/100));}
    if(e.target_type==='price'&&e.target_id===targetId){
     const original=d.prices[targetId].value,elapsed=Math.max(0,t-a.start),inflation=d.scenario.extrapolation.gdp_deflator;
     const unconstrained=(a.reference_price??original)*Math.pow(1+inflation,elapsed/4);
-    const goal=H.target(m,{...a,reference_price:a.reference_price??original},unconstrained,elapsed),coverage=p.coverage*(p.mode==='freeze'?a.intensity:1);
+    const goal=H.target(m,{...a,reference_price:a.reference_price??original},unconstrained,elapsed,H.consumerPriceIndex(d,elapsed)),coverage=p.coverage*(p.mode==='freeze'?a.intensity:1);
     amount=Math.min(0,(goal/unconstrained-1)*100)*coverage*control.compliance*maturity;
    }
   }

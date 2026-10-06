@@ -1,17 +1,17 @@
 {
   "label": "Alfa 0.12",
   "release_date": "2026-10-05",
-  "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1",
+  "model_version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1.audit1.real2026",
   "engine_id": "js-national-v1",
   "measures": 67,
-  "source_sha256": "0a8e31299f039e2f95b38aa20bca7315f13894c24a0312d29da8ae5e428d8223",
+  "source_sha256": "9d8ce3a88e78ce5a46881dd0795c754b9a26301e20acc9030231054592deedf4",
   "engine_manifest": {
-    "assets/simulator/housing-policy.js": "5dc84e21a1c3f4dcb44d29075ece481c4a6f96e943b8ea8f93d4f65cb97901b4",
-    "assets/simulator/model-config.js": "c4a341d71f194a550864f58a079df5327cdf0a82badba4612bdc14469b69304a",
-    "assets/simulator/advanced.js": "6324141a54d360a0a4738a44dd07d95c632fc1cbb0882eb4aac0fa5130f095c7",
-    "assets/simulator/national.js": "099037f5602d5dd1e82821ec02c210883713dccdac8664eb7aef6d585b7d81f9",
-    "assets/simulator/fiscal.js": "35ae7a021a9fa689917afca743f691961ffb88a84f6f596960341fd45cbd153e",
-    "assets/simulator/turn-report.js": "4d4ecec796193c4d5344b543bbf044b033b1bc895cc6da5aae6788db31be0d88",
+    "assets/simulator/housing-policy.js": "cbc245a787784499255a3be2bfcde83e1c9655c1f9ea438764cd23102d0f8de1",
+    "assets/simulator/model-config.js": "c531ae9c0c5f255d35da9a8196c044370e428c46116f454d5be4f4a83c7a5c01",
+    "assets/simulator/advanced.js": "dda6fe9bff9c5d02fe579cf1ec69d5592447a8a3f4f3ada7f11f5292351d862a",
+    "assets/simulator/national.js": "248b9984291ab0863ce8d9a1dd2d4cf5a973394ee6406212efe1071d1d927e2b",
+    "assets/simulator/fiscal.js": "5dc8828eb0cf755bc22e7134768cb946b126ff4013ca48f467acf3cdc892204a",
+    "assets/simulator/turn-report.js": "ea66117e19cd41c19e72692d0af4fa85885f17a697ed69728cc00097de57bfc4",
     "assets/simulator/public-debt.js": "46e376763b0ba24bc42941d987ea326e972712395bb5fd2b57ba64c3f3fbad6c"
   },
   "publication": {
@@ -33,6 +33,10 @@
     "Financiación con deuda pública: amortización de cada emisión en 20 años, intereses y principal pagados por recortes desde el siguiente trimestre.",
     "Reparto de las cuotas con barras sobre varias partidas; costes de deuda bloqueados permanentemente.",
     "Integración sin pérdida de deuda pública, nueva medida de teletrabajo internacional y revisión común de controles de precios.",
-    "Las previsualizaciones aplican el efecto aislado de cada medida al precio actual, sin adelantar el precio futuro del mercado."
+    "Las previsualizaciones aplican el efecto aislado de cada medida al precio actual, sin adelantar el precio futuro del mercado.",
+    "Restricción general de entradas migratorias sostenida, efectos demográficos y sobre el PIB revisados.",
+    "Importes y PIB expresados en euros constantes de 2026, con controles de precios coherentes con la inflación.",
+    "Lidealisto reúne anuncios y demandantes con balanzas continuas; distribución compacta y adaptada al móvil.",
+    "Selector desplegable de variables agrupadas y tutorial actualizado."
   ]
 }

@@ -17,8 +17,7 @@ window.SIM_NATIONAL = {
   return anchors[lo]+(anchors[hi]-anchors[lo])*(y-lo)/5;
  },
  deflatorAt(t) {
-  const s=window.SIM_CATALOG.scenario;
-  return Math.pow(1+s.gdp_deflator[2027],Math.min(t,4)/4)*Math.pow(1+s.extrapolation.gdp_deflator,Math.max(0,t-4)/4);
+  return window.SIM_HOUSING_POLICY.gdpPriceIndex(window.SIM_CATALOG,t);
  },
  gdpAt(t) {
   const d=window.SIM_CATALOG,s=d.scenario;

@@ -1007,7 +1007,7 @@
       "accessed": "2026-10-05"
     }
   },
-  "version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1",
+  "version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1.audit1.real2026",
   "measures": [
     {
       "id": "a3_freeze",
@@ -2076,7 +2076,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Fija una renta máxima por características y zona utilizando una base de contratos comparables. La rebaja elegida aproxima cuánto queda el tope por debajo del alquiler actual de referencia, no un porcentaje de municipios ni de inspectores. Se aplica a la cuota de contratos indicada en el modelo. Es una propuesta genérica; las modalidades nacionales del catálogo tienen reglas y excepciones propias. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Fija una renta máxima por características y zona utilizando una base de contratos comparables. La rebaja elegida aproxima cuánto queda el tope por debajo del alquiler actual de referencia, no un porcentaje de municipios ni de inspectores. Se aplica a la cuota de contratos indicada en el modelo. Es una propuesta genérica; las modalidades nacionales del catálogo tienen reglas y excepciones propias. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -2085,7 +2085,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.12
+        "withdrawal_at_full": 0.12,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -2455,7 +2456,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Limita el esfuerzo del hogar arrendatario en función de sus ingresos. El juego traduce ese límite a una rebaja equivalente del alquiler de referencia; no dispone de una distribución individual de ingresos y contratos para aplicar un porcentaje de esfuerzo a cada hogar. La comprobación de ingresos y contratos requiere medios. Es una propuesta hipotética, no una norma española vigente. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Limita el esfuerzo del hogar arrendatario en función de sus ingresos. El juego traduce ese límite a una rebaja equivalente del alquiler de referencia; no dispone de una distribución individual de ingresos y contratos para aplicar un porcentaje de esfuerzo a cada hogar. La comprobación de ingresos y contratos requiere medios. Es una propuesta hipotética, no una norma española vigente. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -2464,7 +2465,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.12
+        "withdrawal_at_full": 0.12,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 1000 puestos equivalentes. Implantación: 15,000,000 € (15,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 17,500,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -3196,7 +3198,7 @@
       "dependencies": [],
       "effect_scale": 1,
       "initial_cost": 10000000,
-      "legal_status": "comparative_scenario_not_spanish_law",
+      "legal_status": "spanish_law_with_simplified_scenario",
       "intensity_max": 1,
       "intensity_min": 0,
       "cost_breakdown": {
@@ -3238,7 +3240,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Vincula la renta inicial a la del contrato anterior dentro de una zona declarada tensionada, con excepciones legales. Para grandes tenedores puede añadir un índice estatal de referencia y, en ciertos supuestos, alcanzar viviendas sin alquiler previo reciente. Se aplicó en España con la Ley de Vivienda de 2023, pero no funciona como un descuento uniforme en todo el país. La barra del juego simula una rebaja equivalente sobre el parque afectado, no un porcentaje literal de la ley. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Vincula la renta inicial a la del contrato anterior dentro de una zona declarada tensionada, con excepciones legales. Para grandes tenedores puede añadir un índice estatal de referencia y, en ciertos supuestos, alcanzar viviendas sin alquiler previo reciente. Se aplicó en España con la Ley de Vivienda de 2023, pero no funciona como un descuento uniforme en todo el país. La barra del juego simula una rebaja equivalente sobre el parque afectado, no un porcentaje literal de la ley. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -3247,7 +3249,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.096
+        "withdrawal_at_full": 0.096,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -3615,7 +3618,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Limita la renta inicial de un nuevo contrato a partir de una renta comparable local. Puede excluir viviendas nuevas y la primera cesión tras una modernización integral, por lo que no congela todos los contratos. Este mecanismo se aplicó en Alemania mediante la Mietpreisbremse, con un máximo habitual de la referencia local más un 10 %. La barra representa una rebaja equivalente respecto a la referencia del juego. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Limita la renta inicial de un nuevo contrato a partir de una renta comparable local. Puede excluir viviendas nuevas y la primera cesión tras una modernización integral, por lo que no congela todos los contratos. Este mecanismo se aplicó en Alemania mediante la Mietpreisbremse, con un máximo habitual de la referencia local más un 10 %. La barra representa una rebaja equivalente respecto a la referencia del juego. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -3624,7 +3627,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.08399999999999999
+        "withdrawal_at_full": 0.08399999999999999,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -3992,7 +3996,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Establece una renta de referencia por zona y características del inmueble, junto con un máximo por encima de esa referencia. Puede admitir un complemento bajo condiciones concretas y permitir su impugnación. Este mecanismo se aplicó en varias ciudades francesas, donde el límite mayorado es del 20 %, y se distingue de limitar las subidas entre contratos. La barra aplica una rebaja equivalente al escenario, no modifica literalmente el porcentaje francés. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Establece una renta de referencia por zona y características del inmueble, junto con un máximo por encima de esa referencia. Puede admitir un complemento bajo condiciones concretas y permitir su impugnación. Este mecanismo se aplicó en varias ciudades francesas, donde el límite mayorado es del 20 %, y se distingue de limitar las subidas entre contratos. La barra aplica una rebaja equivalente al escenario, no modifica literalmente el porcentaje francés. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -4001,7 +4005,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.096
+        "withdrawal_at_full": 0.096,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -4369,7 +4374,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Calcula una renta máxima a partir de puntos por superficie, equipamiento, eficiencia y otras características de la vivienda. Puede abarcar alquiler social y segmento medio, mientras que el tramo libre queda fuera del tope según los puntos del inmueble. Se aplicó en Países Bajos, donde la regulación de 2024 alcanzó contratos de hasta 186 puntos. La barra aproxima una rebaja equivalente porque el simulador no dispone de fichas individuales para puntuar cada casa. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Calcula una renta máxima a partir de puntos por superficie, equipamiento, eficiencia y otras características de la vivienda. Puede abarcar alquiler social y segmento medio, mientras que el tramo libre queda fuera del tope según los puntos del inmueble. Se aplicó en Países Bajos, donde la regulación de 2024 alcanzó contratos de hasta 186 puntos. La barra aproxima una rebaja equivalente porque el simulador no dispone de fichas individuales para puntuar cada casa. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -4378,7 +4383,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.12
+        "withdrawal_at_full": 0.12,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -4746,7 +4752,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Compara viviendas equivalentes para determinar una renta razonable, dando prioridad a los alquileres negociados entre propietarios y asociaciones locales de inquilinos. No fija un techo nacional uniforme: importan las características de la vivienda y los comparables de la zona. Este modelo se aplicó en Suecia mediante la negociación y el valor de uso. La barra simula el resultado de una negociación más restrictiva; no es una regla porcentual sueca. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Compara viviendas equivalentes para determinar una renta razonable, dando prioridad a los alquileres negociados entre propietarios y asociaciones locales de inquilinos. No fija un techo nacional uniforme: importan las características de la vivienda y los comparables de la zona. Este modelo se aplicó en Suecia mediante la negociación y el valor de uso. La barra simula el resultado de una negociación más restrictiva; no es una regla porcentual sueca. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -4755,7 +4761,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.078
+        "withdrawal_at_full": 0.078,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -5123,7 +5130,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Combina una congelación de rentas con tablas de máximos y reducción de alquileres que superen esos límites. Es un tope fuerte que puede cambiar rápidamente las rentas cubiertas, pero exige una competencia legal clara y un sistema intenso de control. Se aplicó de forma temporal en Berlín como Mietendeckel y el Tribunal Constitucional alemán lo anuló en 2021 por una cuestión competencial. Aquí es un precedente histórico e hipotético, no una norma vigente ni trasladable sin reforma competencial. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Combina una congelación de rentas con tablas de máximos y reducción de alquileres que superen esos límites. Es un tope fuerte que puede cambiar rápidamente las rentas cubiertas, pero exige una competencia legal clara y un sistema intenso de control. Se aplicó de forma temporal en Berlín como Mietendeckel y el Tribunal Constitucional alemán lo anuló en 2021 por una cuestión competencial. Aquí es un precedente histórico e hipotético, no una norma vigente ni trasladable sin reforma competencial. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "reduction",
         "max_reduction": 40,
@@ -5132,7 +5139,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.15
+        "withdrawal_at_full": 0.15,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
       "competency_roles": {
@@ -8795,7 +8803,7 @@
         "evidence": "Fuentes oficiales para referencias y mecanismos; elasticidades, plazos y felicidad son supuestos explícitos y editables."
       },
       "fiscal_benefit_targets": [
-        "investors"
+        "domestic_buyers"
       ],
       "price": {
         "rent": 0,
@@ -15074,7 +15082,7 @@
         "evidence": "Fuentes oficiales para referencias y mecanismos; elasticidades, plazos y felicidad son supuestos explícitos y editables."
       },
       "fiscal_benefit_targets": [
-        "investors"
+        "domestic_buyers"
       ],
       "price": {
         "rent": 0,
@@ -16586,7 +16594,7 @@
       "effects": [
         {
           "id": "effect_1",
-          "amount": -2,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -16600,7 +16608,7 @@
         },
         {
           "id": "effect_2",
-          "amount": -1,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -16614,7 +16622,7 @@
         },
         {
           "id": "effect_3",
-          "amount": -2,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -16726,7 +16734,7 @@
         },
         {
           "id": "effect_11",
-          "amount": -2.5,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -16740,7 +16748,7 @@
         },
         {
           "id": "effect_12",
-          "amount": -0.5,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -16779,7 +16787,7 @@
       "mechanism": "Reducir uso turístico puede retornar viviendas si se fiscaliza y existe demanda residencial",
       "permanent": false,
       "risk_high": true,
-      "audit_note": "Límite anual por vivienda, de 7 a 90 días. A 90 días queda un 1 % de la intensidad máxima. En el extremo restrictivo se retira hasta el 65 % del parque inicial y el 70 % de lo retirado se ofrece para residencia (65 % alquiler, 35 % venta); el resto no se anuncia. Estas proporciones son parámetros editables, no estimaciones causales oficiales. No se crean viviendas físicas nuevas. Supervisión máxima: 30 M€ iniciales y 300 M€/año; recursos agregados de personal, sistemas y expedientes, no solo salario. Referencia de personal: tablas Hacienda 2026; coste total y ratios de puestos son parámetros de programa.",
+      "audit_note": "Límite anual por vivienda, de 7 a 90 días. A 90 días queda un 1 % de la intensidad máxima. En el extremo restrictivo se retira hasta el 65 % del parque inicial y el 70 % de lo retirado se ofrece para residencia (65 % alquiler, 35 % venta); el resto no se anuncia. Estas proporciones son parámetros editables, no estimaciones causales oficiales. No se crean viviendas físicas nuevas. Supervisión máxima: 30 M€ iniciales y 300 M€/año; recursos agregados de personal, sistemas y expedientes, no solo salario. Referencia de personal: tablas Hacienda 2026; coste total y ratios de puestos son parámetros de programa. Revisión de doble cómputo: el efecto residencial sobre precios procede únicamente de las viviendas y anuncios transferidos por tourismPipeline. No se añade una reducción directa de precios ni se eliminan hogares de la demanda residencial.",
       "cost_audit": {
         "note": "Límite anual por vivienda, de 7 a 90 días. A 90 días queda un 1 % de la intensidad máxima. En el extremo restrictivo se retira hasta el 65 % del parque inicial y el 70 % de lo retirado se ofrece para residencia (65 % alquiler, 35 % venta); el resto no se anuncia. Estas proporciones son parámetros editables, no estimaciones causales oficiales. No se crean viviendas físicas nuevas. Supervisión máxima: 30 M€ iniciales y 300 M€/año; recursos agregados de personal, sistemas y expedientes, no solo salario. Referencia de personal: tablas Hacienda 2026; coste total y ratios de puestos son parámetros de programa.",
         "unit": "puestos y soporte de supervisión",
@@ -16896,9 +16904,9 @@
         "evidence": "Fuentes oficiales para referencias y mecanismos; elasticidades, plazos y felicidad son supuestos explícitos y editables."
       },
       "price": {
-        "rent": -2,
-        "sale": -1,
-        "free_rent": -2
+        "rent": 0,
+        "sale": 0,
+        "free_rent": 0
       },
       "happiness": [
         -3,
@@ -16911,8 +16919,8 @@
       "national_effects": {
         "gdp": -0.002,
         "population": 0,
-        "rent_demand": -0.025,
-        "buy_demand": -0.005,
+        "rent_demand": 0,
+        "buy_demand": 0,
         "tourists": -0.015,
         "tourist_homes": 0
       }
@@ -16930,7 +16938,7 @@
       "effects": [
         {
           "id": "effect_1",
-          "amount": -1,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -16944,7 +16952,7 @@
         },
         {
           "id": "effect_2",
-          "amount": -1,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -16958,7 +16966,7 @@
         },
         {
           "id": "effect_3",
-          "amount": -1,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -17070,7 +17078,7 @@
         },
         {
           "id": "effect_11",
-          "amount": -0.8,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -17122,7 +17130,7 @@
       "mechanism": "Frenar nuevas conversiones preserva oferta sin recuperar automáticamente la existente",
       "permanent": false,
       "risk_high": true,
-      "audit_note": "Referencia del juego: 20.000 incorporaciones anuales antes de nuevas restricciones. Se contrasta con INE VTE71: 329.764 anuncios en noviembre 2025 y 341.001 en mayo 2026, +11.237 en seis meses; annualizar da 22.474 y se redondea a 20.000. No equivale a altas brutas de licencias ni a una previsión oficial: entre mayo 2025 y mayo 2026 el saldo es negativo (-40.836). No se descompone una estadística de anuncios en licencias legales. Se mantiene la última cifra observada como aproximación del parque inicial del escenario y se separa la bolsa de falsos alquileres de temporada. Máximo de supervisión: 10 M€ de arranque y 50 M€/año. El mínimo de restricción apenas exige recursos; los costes escalan con las altas bloqueadas. Tras vencer el plazo se reanuda el ritmo de altas, sin añadir de golpe las que se impidieron.",
+      "audit_note": "Referencia del juego: 20.000 incorporaciones anuales antes de nuevas restricciones. Se contrasta con INE VTE71: 329.764 anuncios en noviembre 2025 y 341.001 en mayo 2026, +11.237 en seis meses; annualizar da 22.474 y se redondea a 20.000. No equivale a altas brutas de licencias ni a una previsión oficial: entre mayo 2025 y mayo 2026 el saldo es negativo (-40.836). No se descompone una estadística de anuncios en licencias legales. Se mantiene la última cifra observada como aproximación del parque inicial del escenario y se separa la bolsa de falsos alquileres de temporada. Máximo de supervisión: 10 M€ de arranque y 50 M€/año. El mínimo de restricción apenas exige recursos; los costes escalan con las altas bloqueadas. Tras vencer el plazo se reanuda el ritmo de altas, sin añadir de golpe las que se impidieron. Revisión de doble cómputo: el efecto residencial sobre precios procede únicamente de las viviendas y anuncios transferidos por tourismPipeline. No se añade una reducción directa de precios ni se eliminan hogares de la demanda residencial.",
       "cost_audit": {
         "note": "Referencia del juego: 20.000 incorporaciones anuales antes de nuevas restricciones. Se contrasta con INE VTE71: 329.764 anuncios en noviembre 2025 y 341.001 en mayo 2026, +11.237 en seis meses; annualizar da 22.474 y se redondea a 20.000. No equivale a altas brutas de licencias ni a una previsión oficial: entre mayo 2025 y mayo 2026 el saldo es negativo (-40.836). No se descompone una estadística de anuncios en licencias legales. Se mantiene la última cifra observada como aproximación del parque inicial del escenario y se separa la bolsa de falsos alquileres de temporada. Máximo de supervisión: 10 M€ de arranque y 50 M€/año. El mínimo de restricción apenas exige recursos; los costes escalan con las altas bloqueadas. Tras vencer el plazo se reanuda el ritmo de altas, sin añadir de golpe las que se impidieron.",
         "unit": "puestos de registro y coordinación",
@@ -17237,9 +17245,9 @@
         "evidence": "Fuentes oficiales para referencias y mecanismos; elasticidades, plazos y felicidad son supuestos explícitos y editables."
       },
       "price": {
-        "rent": -1,
-        "sale": -1,
-        "free_rent": -1
+        "rent": 0,
+        "sale": 0,
+        "free_rent": 0
       },
       "happiness": [
         -1,
@@ -17252,7 +17260,7 @@
       "national_effects": {
         "gdp": -0.0005,
         "population": 0,
-        "rent_demand": -0.008,
+        "rent_demand": 0,
         "buy_demand": 0,
         "tourists": -0.003,
         "tourist_homes": 0
@@ -17271,7 +17279,7 @@
       "effects": [
         {
           "id": "effect_1",
-          "amount": -1.5,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -17285,7 +17293,7 @@
         },
         {
           "id": "effect_2",
-          "amount": -0.75,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -17299,7 +17307,7 @@
         },
         {
           "id": "effect_3",
-          "amount": -1.5,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -17411,7 +17419,7 @@
         },
         {
           "id": "effect_11",
-          "amount": -2,
+          "amount": 0,
           "requires": [],
           "max_value": null,
           "min_value": null,
@@ -17464,7 +17472,7 @@
       "mechanism": "Comprobar uso real reduce vías de elusión del alquiler habitual",
       "permanent": false,
       "risk_high": true,
-      "audit_note": "Bolsa separada de hasta 150.000 viviendas de temporada susceptibles de volver al mercado residencial, no parque turístico legal. Cada efectivo tramita 200 casos/año y el 3 % moviliza una vivienda: 6 viviendas por efectivo/año. Los casos sin resultado no generan oferta. Bolsa, productividad y reparto 75 % alquiler / 25 % venta son calibraciones editables. No existe aquí un censo oficial nacional de falsos contratos. Coste completo: 25.000 €/efectivo de puesta en marcha y 90.000 €/efectivo/año, que incluye salario, cotizaciones, apoyo, oficinas y sistemas. Hacienda 2026 documenta retribuciones básicas y complementos; no da un coste nacional único de este nuevo cuerpo. El coste completo es una estimación de diseño. Rango: 1,25 M€ de arranque y 4,5 M€/año con 50 efectivos, hasta 500 M€ y 1.800 M€/año con 20.000 efectivos.",
+      "audit_note": "Bolsa separada de hasta 150.000 viviendas de temporada susceptibles de volver al mercado residencial, no parque turístico legal. Cada efectivo tramita 200 casos/año y el 3 % moviliza una vivienda: 6 viviendas por efectivo/año. Los casos sin resultado no generan oferta. Bolsa, productividad y reparto 75 % alquiler / 25 % venta son calibraciones editables. No existe aquí un censo oficial nacional de falsos contratos. Coste completo: 25.000 €/efectivo de puesta en marcha y 90.000 €/efectivo/año, que incluye salario, cotizaciones, apoyo, oficinas y sistemas. Hacienda 2026 documenta retribuciones básicas y complementos; no da un coste nacional único de este nuevo cuerpo. El coste completo es una estimación de diseño. Rango: 1,25 M€ de arranque y 4,5 M€/año con 50 efectivos, hasta 500 M€ y 1.800 M€/año con 20.000 efectivos. Revisión de doble cómputo: el efecto residencial sobre precios procede únicamente de las viviendas y anuncios transferidos por tourismPipeline. No se añade una reducción directa de precios ni se eliminan hogares de la demanda residencial.",
       "cost_audit": {
         "quantity": 20000,
         "unit": "efectivos especializados",
@@ -17593,9 +17601,9 @@
         "evidence": "Fuentes oficiales para referencias y mecanismos; elasticidades, plazos y felicidad son supuestos explícitos y editables."
       },
       "price": {
-        "rent": -1.5,
-        "sale": -0.75,
-        "free_rent": -1.5
+        "rent": 0,
+        "sale": 0,
+        "free_rent": 0
       },
       "happiness": [
         -3,
@@ -17608,7 +17616,7 @@
       "national_effects": {
         "gdp": -0.0002,
         "population": 0,
-        "rent_demand": -0.02,
+        "rent_demand": 0,
         "buy_demand": 0,
         "tourists": 0,
         "tourist_homes": 0
@@ -20931,13 +20939,13 @@
     {
       "id": "a3_migration_permits_limit",
       "cons": [
-        "Menos trabajadores disponibles y menor PIB",
-        "No controla reagrupación, asilo ni todos los flujos de entrada"
+        "Menor disponibilidad laboral, consumo y PIB agregado",
+        "Cobertura total hipotética, con costes y límites jurídicos y de ejecución"
       ],
-      "name": "Reducir nuevas autorizaciones laborales discrecionales",
+      "name": "Restricción general sostenida de entradas migratorias",
       "pros": [
-        "Menos nuevas entradas de este canal y menor crecimiento de demanda",
-        "Presupuesto explícito para revisión y ejecución"
+        "Menor presión de búsqueda de vivienda por reducción sostenida de entradas",
+        "Permite explorar escenarios con saldo demográfico negativo"
       ],
       "curve": "linear",
       "effects": [
@@ -20952,7 +20960,7 @@
           "target_id": "rent",
           "delay_turns": 1,
           "target_type": "price",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4
         },
         {
@@ -20966,7 +20974,7 @@
           "target_id": "sale",
           "delay_turns": 1,
           "target_type": "price",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4
         },
         {
@@ -20980,7 +20988,7 @@
           "target_id": "free_rent",
           "delay_turns": 1,
           "target_type": "price",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4
         },
         {
@@ -20994,7 +21002,7 @@
           "target_id": "landlords",
           "delay_turns": 1,
           "target_type": "group",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true,
           "profile_id": "migrants",
@@ -21011,7 +21019,7 @@
           "target_id": "investors",
           "delay_turns": 1,
           "target_type": "group",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true,
           "profile_id": "migrants",
@@ -21028,7 +21036,7 @@
           "target_id": "tenants",
           "delay_turns": 1,
           "target_type": "group",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true,
           "profile_id": "migrants",
@@ -21045,7 +21053,7 @@
           "target_id": "domestic_buyers",
           "delay_turns": 1,
           "target_type": "group",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true,
           "profile_id": "migrants",
@@ -21062,7 +21070,7 @@
           "target_id": "foreign_buyers",
           "delay_turns": 1,
           "target_type": "group",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true
         },
@@ -21077,7 +21085,7 @@
           "target_id": "resident_owners",
           "delay_turns": 1,
           "target_type": "group",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true,
           "profile_id": "migrants",
@@ -21094,7 +21102,7 @@
           "target_id": "gdp",
           "delay_turns": 1,
           "target_type": "variable",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true
         },
@@ -21109,7 +21117,7 @@
           "target_id": "population",
           "delay_turns": 1,
           "target_type": "variable",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4
         },
         {
@@ -21123,7 +21131,7 @@
           "target_id": "rent_demand",
           "delay_turns": 1,
           "target_type": "variable",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4,
           "on_beneficiaries": true
         },
@@ -21138,7 +21146,7 @@
           "target_id": "buy_demand",
           "delay_turns": 1,
           "target_type": "variable",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4
         },
         {
@@ -21152,7 +21160,7 @@
           "target_id": "tourists",
           "delay_turns": 1,
           "target_type": "variable",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4
         },
         {
@@ -21166,7 +21174,7 @@
           "target_id": "tourist_homes",
           "delay_turns": 1,
           "target_type": "variable",
-          "duration_turns": 12,
+          "duration_turns": 80,
           "maturation_turns": 4
         }
       ],
@@ -21179,12 +21187,12 @@
         "migration_gdp_bde"
       ],
       "category": "migration",
-      "mechanism": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal. El presupuesto paga personal, controles y tramitación: no convierte una decisión normativa en una prohibición de toda inmigración. La capacidad administrativa limita cuántas entradas pueden evitarse y el despliegue es gradual. Reduce crecimiento de hogares y demanda de vivienda, con menor disponibilidad laboral y producción.",
+      "mechanism": "Reduce entre el 1 % y el 100 % las nuevas entradas migratorias del escenario, con despliegue gradual y vigencia de veinte años. Al 100 %, las entradas son cero tras el despliegue; también se restringe la entrada de trabajadores de otros programas. No expulsa a residentes. Las entradas evitadas reducen la población, la demanda de vivienda y el PIB respecto al escenario sin la medida. Es una hipótesis de simulación de cobertura general, no una previsión de ejecución ni una validación jurídica.",
       "permanent": false,
       "risk_high": false,
-      "audit_note": "Coste unitario estimado: 4,000 €/persona o plaza según programa; presupuesto anual máximo 400 M€, inicial 40 M€. Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas. PIB: referencia contextual Banco de España; elasticidades de 0,9–1,2 por residente son supuestos, no coeficientes del informe. La felicidad es una valoración de diseño, no una encuesta de opinión.",
+      "audit_note": "Cobertura general de entradas y eficacia hasta el 100 % son supuestos del escenario solicitados para explorar tendencias. Gestión máxima 400 M€/año e implantación 40 M€ se mantienen como hipótesis editables, sin coste unitario empírico por entrada impedida. PIB: elasticidad por residente 0,9, supuesto editable. La medida no expulsa residentes y no se agota por una bolsa de expedientes.",
       "cost_audit": {
-        "note": "Coste unitario estimado: 4,000 €/persona o plaza según programa; presupuesto anual máximo 400 M€, inicial 40 M€. Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas. PIB: referencia contextual Banco de España; elasticidades de 0,9–1,2 por residente son supuestos, no coeficientes del informe. La felicidad es una valoración de diseño, no una encuesta de opinión.",
+        "note": "Cobertura general de entradas y eficacia hasta el 100 % son supuestos del escenario solicitados para explorar tendencias. Gestión máxima 400 M€/año e implantación 40 M€ se mantienen como hipótesis editables, sin coste unitario empírico por entrada impedida. PIB: elasticidad por residente 0,9, supuesto editable. La medida no expulsa residentes y no se agota por una bolsa de expedientes.",
         "unit": "personas o plazas/año (capacidad máxima)",
         "sources": [
           "migration_law",
@@ -21220,7 +21228,7 @@
         "homes_at_full": 0,
         "annual_maintenance_per_home": 0
       },
-      "duration_turns": 12,
+      "duration_turns": 80,
       "intensity_step": 0.01,
       "quarterly_cost": 100000000,
       "exclusive_group": "labor_migration_capacity",
@@ -21228,10 +21236,10 @@
         "immigration_per_year": -100000,
         "emigration_per_year": 0,
         "maturation_turns": 4,
-        "note": "Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas."
+        "note": "Referencia anual informativa; el motor impide el porcentaje elegido del flujo de cada año, no una cantidad fija de 100.000."
       },
-      "regulation_note": "Regula nuevas autorizaciones laborales; no controla mediante este canal todos los flujos migratorios.",
-      "full_application": "Presupuesto anual de 4–400 M€; implantación 40 M€ al máximo",
+      "regulation_note": "Escenario hipotético de restricción general de entradas; la cobertura total no acredita viabilidad normativa.",
+      "full_application": "100 % de entradas impedidas tras el despliegue; vigencia veinte años; gestión 400 M€/año e implantación 40 M€ (supuestos).",
       "unit_cost_status": "explicit_programme_estimate_with_separate_official_references",
       "effect_scale_note": "Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas.",
       "coefficient_status": "game_assumption_not_empirical_estimate",
@@ -21240,8 +21248,8 @@
         "migration_law",
         "migration_regulation"
       ],
-      "intensity_description": "Elige el gasto anual de gestión y operación: más medios amplían la capacidad gradualmente, hasta el límite del programa.",
-      "national_effects_note": "Población acumulada por entradas evitadas o salidas ejecutadas; PIB y sesgo de alquiler persisten tras cesar estas variaciones de flujo. Regularizar, acoger y reubicar residentes no aumenta el censo. Bonificación y cobertura usan supuestos editables; financiación conserva sus propios efectos.",
+      "intensity_description": "Elige el porcentaje de entradas impedidas: 100 % equivale a cero entradas una vez completado el despliegue. El coste de gestión escala con ese alcance.",
+      "national_effects_note": "Restricción anual proporcional al flujo del escenario, sin agotamiento de una bolsa histórica. Entradas evitadas acumuladas reducen población y PIB; no se cuentan entradas inexistentes ni se duplican las restricciones específicas. Expulsiones y retornos son medidas separadas.",
       "allowed_funding_sources": [
         "a3_cut_pensions",
         "a3_cut_health",
@@ -21264,9 +21272,9 @@
         "a3_public_debt"
       ],
       "additional_homes_at_full": 0,
-      "default_intensity": 0.1,
-      "selection_description": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal. El presupuesto paga personal, controles y tramitación: no convierte una decisión normativa en una prohibición de toda inmigración. La capacidad administrativa limita cuántas entradas pueden evitarse y el despliegue es gradual. Reduce crecimiento de hogares y demanda de vivienda, con menor disponibilidad laboral y producción.",
-      "explanation": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal. El presupuesto paga personal, controles y tramitación: no convierte una decisión normativa en una prohibición de toda inmigración. La capacidad administrativa limita cuántas entradas pueden evitarse y el despliegue es gradual. Reduce crecimiento de hogares y demanda de vivienda, con menor disponibilidad laboral y producción. Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas.",
+      "default_intensity": 1,
+      "selection_description": "Reduce entre el 1 % y el 100 % las nuevas entradas migratorias del escenario, con despliegue gradual y vigencia de veinte años. Al 100 %, las entradas son cero tras el despliegue; también se restringe la entrada de trabajadores de otros programas. No expulsa a residentes. Las entradas evitadas reducen la población, la demanda de vivienda y el PIB respecto al escenario sin la medida. Es una hipótesis de simulación de cobertura general, no una previsión de ejecución ni una validación jurídica.",
+      "explanation": "Reduce entre el 1 % y el 100 % las nuevas entradas migratorias del escenario, con despliegue gradual y vigencia de veinte años. Al 100 %, las entradas son cero tras el despliegue; también se restringe la entrada de trabajadores de otros programas. No expulsa a residentes. Las entradas evitadas reducen la población, la demanda de vivienda y el PIB respecto al escenario sin la medida. Es una hipótesis de simulación de cobertura general, no una previsión de ejecución ni una validación jurídica.",
       "budget_control": {
         "period": "annual",
         "note": "Gestión y operación del programa; implantación inicial aparte."
@@ -21279,10 +21287,11 @@
         "pool_key": "permits_limit",
         "gdp_per_resident": 0.9,
         "rental_extra_multiplier": 1.5,
-        "note": "Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas. Bolsas hipotéticas: expulsiones 400.000 y retorno 100.000, compartiendo un límite conjunto de 400.000 salidas adicionales en toda la partida. No estiman todos los extranjeros ni todos los residentes irregulares. Beneficiarios efectivamente atendidos, bolsas compartidas y cohortes; los efectos económicos persistentes se separan del servicio anual. Presupuesto no ejecutado se reserva, no se transforma automáticamente en PIB.",
+        "note": "Restricción anual proporcional al flujo del escenario, sin agotamiento de una bolsa histórica. Entradas evitadas acumuladas reducen población y PIB; no se cuentan entradas inexistentes ni se duplican las restricciones específicas. Expulsiones y retornos son medidas separadas.",
         "annual_central_overhead": 0,
         "beneficiary_reference": 300000,
-        "service_turns": 4
+        "service_turns": 4,
+        "entry_reduction": 1
       },
       "competency_roles": {
         "national": {
@@ -21294,7 +21303,7 @@
           ]
         }
       },
-      "help_summary": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal.",
+      "help_summary": "Restricción sostenida de nuevas entradas: al 100 %, cero entradas tras el despliegue.",
       "coherence_review": {
         "status": "implemented",
         "economic_channel": "Precios finales, disponibilidad, beneficiarios y financiación separadas.",
@@ -23699,7 +23708,7 @@
         "a3_tax_ajd",
         "a3_public_debt"
       ],
-      "explanation": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+      "explanation": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
       "price_control": {
         "mode": "sale",
         "basis": "market_discount",
@@ -23709,7 +23718,8 @@
         "compliance_floor": 0.1,
         "compliance_ceiling": 0.95,
         "annual_limit_max": 4,
-        "withdrawal_at_full": 0.45
+        "withdrawal_at_full": 0.45,
+        "indexation": "consumer_prices"
       },
       "enforcement_explanation": "Personal, registros, inspección de escrituras y comprobación de precios/costes; sin estos medios aumenta el incumplimiento.",
       "selection_description": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión.",
@@ -25027,73 +25037,73 @@
     },
     {
       "id": "gdp_up_0",
-      "text": "La actividad económica en euros corrientes: registra una subida de {change}. PIB nominal: {before} → {after}.",
+      "text": "La actividad económica en euros de 2026: registra una subida de {change}. PIB real: {before} → {after}.",
       "trend": "up",
       "variable": "gdp"
     },
     {
       "id": "gdp_up_1",
-      "text": "El PIB nominal incluye cantidades y precios: registra una subida de {change}. PIB nominal: {before} → {after}.",
+      "text": "El PIB real descuenta la variación general de precios: registra una subida de {change}. PIB real: {before} → {after}.",
       "trend": "up",
       "variable": "gdp"
     },
     {
       "id": "gdp_up_2",
-      "text": "La trayectoria económica condiciona los recursos disponibles: registra una subida de {change}. PIB nominal: {before} → {after}.",
+      "text": "La trayectoria económica condiciona los recursos disponibles: registra una subida de {change}. PIB real: {before} → {after}.",
       "trend": "up",
       "variable": "gdp"
     },
     {
       "id": "gdp_up_3",
-      "text": "El tamaño de la economía es parte del contexto de vivienda: registra una subida de {change}. PIB nominal: {before} → {after}.",
+      "text": "El tamaño de la economía es parte del contexto de vivienda: registra una subida de {change}. PIB real: {before} → {after}.",
       "trend": "up",
       "variable": "gdp"
     },
     {
       "id": "gdp_down_0",
-      "text": "La actividad económica en euros corrientes: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+      "text": "La actividad económica en euros de 2026: registra una bajada de {change}. PIB real: {before} → {after}.",
       "trend": "down",
       "variable": "gdp"
     },
     {
       "id": "gdp_down_1",
-      "text": "El PIB nominal incluye cantidades y precios: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+      "text": "El PIB real descuenta la variación general de precios: registra una bajada de {change}. PIB real: {before} → {after}.",
       "trend": "down",
       "variable": "gdp"
     },
     {
       "id": "gdp_down_2",
-      "text": "La trayectoria económica condiciona los recursos disponibles: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+      "text": "La trayectoria económica condiciona los recursos disponibles: registra una bajada de {change}. PIB real: {before} → {after}.",
       "trend": "down",
       "variable": "gdp"
     },
     {
       "id": "gdp_down_3",
-      "text": "El tamaño de la economía es parte del contexto de vivienda: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+      "text": "El tamaño de la economía es parte del contexto de vivienda: registra una bajada de {change}. PIB real: {before} → {after}.",
       "trend": "down",
       "variable": "gdp"
     },
     {
       "id": "gdp_flat_0",
-      "text": "La actividad económica en euros corrientes: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+      "text": "La actividad económica en euros de 2026: se mantiene prácticamente estable. PIB real: {before} → {after}.",
       "trend": "flat",
       "variable": "gdp"
     },
     {
       "id": "gdp_flat_1",
-      "text": "El PIB nominal incluye cantidades y precios: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+      "text": "El PIB real descuenta la variación general de precios: se mantiene prácticamente estable. PIB real: {before} → {after}.",
       "trend": "flat",
       "variable": "gdp"
     },
     {
       "id": "gdp_flat_2",
-      "text": "La trayectoria económica condiciona los recursos disponibles: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+      "text": "La trayectoria económica condiciona los recursos disponibles: se mantiene prácticamente estable. PIB real: {before} → {after}.",
       "trend": "flat",
       "variable": "gdp"
     },
     {
       "id": "gdp_flat_3",
-      "text": "El tamaño de la economía es parte del contexto de vivienda: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+      "text": "El tamaño de la economía es parte del contexto de vivienda: se mantiene prácticamente estable. PIB real: {before} → {after}.",
       "trend": "flat",
       "variable": "gdp"
     },
@@ -29934,7 +29944,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Fija una renta máxima por características y zona utilizando una base de contratos comparables. La rebaja elegida aproxima cuánto queda el tope por debajo del alquiler actual de referencia, no un porcentaje de municipios ni de inspectores. Se aplica a la cuota de contratos indicada en el modelo. Es una propuesta genérica; las modalidades nacionales del catálogo tienen reglas y excepciones propias. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Fija una renta máxima por características y zona utilizando una base de contratos comparables. La rebaja elegida aproxima cuánto queda el tope por debajo del alquiler actual de referencia, no un porcentaje de municipios ni de inspectores. Se aplica a la cuota de contratos indicada en el modelo. Es una propuesta genérica; las modalidades nacionales del catálogo tienen reglas y excepciones propias. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -29943,7 +29953,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.12
+            "withdrawal_at_full": 0.12,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -30292,7 +30303,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Limita el esfuerzo del hogar arrendatario en función de sus ingresos. El juego traduce ese límite a una rebaja equivalente del alquiler de referencia; no dispone de una distribución individual de ingresos y contratos para aplicar un porcentaje de esfuerzo a cada hogar. La comprobación de ingresos y contratos requiere medios. Es una propuesta hipotética, no una norma española vigente. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Limita el esfuerzo del hogar arrendatario en función de sus ingresos. El juego traduce ese límite a una rebaja equivalente del alquiler de referencia; no dispone de una distribución individual de ingresos y contratos para aplicar un porcentaje de esfuerzo a cada hogar. La comprobación de ingresos y contratos requiere medios. Es una propuesta hipotética, no una norma española vigente. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -30301,7 +30312,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.12
+            "withdrawal_at_full": 0.12,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 1000 puestos equivalentes. Implantación: 15,000,000 € (15,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 17,500,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -30991,7 +31003,7 @@
           "dependencies": [],
           "effect_scale": 1,
           "initial_cost": 10000000,
-          "legal_status": "comparative_scenario_not_spanish_law",
+          "legal_status": "spanish_law_with_simplified_scenario",
           "intensity_max": 1,
           "intensity_min": 0,
           "cost_breakdown": {
@@ -31033,7 +31045,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Vincula la renta inicial a la del contrato anterior dentro de una zona declarada tensionada, con excepciones legales. Para grandes tenedores puede añadir un índice estatal de referencia y, en ciertos supuestos, alcanzar viviendas sin alquiler previo reciente. Se aplicó en España con la Ley de Vivienda de 2023, pero no funciona como un descuento uniforme en todo el país. La barra del juego simula una rebaja equivalente sobre el parque afectado, no un porcentaje literal de la ley. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Vincula la renta inicial a la del contrato anterior dentro de una zona declarada tensionada, con excepciones legales. Para grandes tenedores puede añadir un índice estatal de referencia y, en ciertos supuestos, alcanzar viviendas sin alquiler previo reciente. Se aplicó en España con la Ley de Vivienda de 2023, pero no funciona como un descuento uniforme en todo el país. La barra del juego simula una rebaja equivalente sobre el parque afectado, no un porcentaje literal de la ley. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -31042,7 +31054,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.096
+            "withdrawal_at_full": 0.096,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -31389,7 +31402,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Limita la renta inicial de un nuevo contrato a partir de una renta comparable local. Puede excluir viviendas nuevas y la primera cesión tras una modernización integral, por lo que no congela todos los contratos. Este mecanismo se aplicó en Alemania mediante la Mietpreisbremse, con un máximo habitual de la referencia local más un 10 %. La barra representa una rebaja equivalente respecto a la referencia del juego. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Limita la renta inicial de un nuevo contrato a partir de una renta comparable local. Puede excluir viviendas nuevas y la primera cesión tras una modernización integral, por lo que no congela todos los contratos. Este mecanismo se aplicó en Alemania mediante la Mietpreisbremse, con un máximo habitual de la referencia local más un 10 %. La barra representa una rebaja equivalente respecto a la referencia del juego. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -31398,7 +31411,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.08399999999999999
+            "withdrawal_at_full": 0.08399999999999999,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -31745,7 +31759,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Establece una renta de referencia por zona y características del inmueble, junto con un máximo por encima de esa referencia. Puede admitir un complemento bajo condiciones concretas y permitir su impugnación. Este mecanismo se aplicó en varias ciudades francesas, donde el límite mayorado es del 20 %, y se distingue de limitar las subidas entre contratos. La barra aplica una rebaja equivalente al escenario, no modifica literalmente el porcentaje francés. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Establece una renta de referencia por zona y características del inmueble, junto con un máximo por encima de esa referencia. Puede admitir un complemento bajo condiciones concretas y permitir su impugnación. Este mecanismo se aplicó en varias ciudades francesas, donde el límite mayorado es del 20 %, y se distingue de limitar las subidas entre contratos. La barra aplica una rebaja equivalente al escenario, no modifica literalmente el porcentaje francés. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -31754,7 +31768,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.096
+            "withdrawal_at_full": 0.096,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -32101,7 +32116,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Calcula una renta máxima a partir de puntos por superficie, equipamiento, eficiencia y otras características de la vivienda. Puede abarcar alquiler social y segmento medio, mientras que el tramo libre queda fuera del tope según los puntos del inmueble. Se aplicó en Países Bajos, donde la regulación de 2024 alcanzó contratos de hasta 186 puntos. La barra aproxima una rebaja equivalente porque el simulador no dispone de fichas individuales para puntuar cada casa. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Calcula una renta máxima a partir de puntos por superficie, equipamiento, eficiencia y otras características de la vivienda. Puede abarcar alquiler social y segmento medio, mientras que el tramo libre queda fuera del tope según los puntos del inmueble. Se aplicó en Países Bajos, donde la regulación de 2024 alcanzó contratos de hasta 186 puntos. La barra aproxima una rebaja equivalente porque el simulador no dispone de fichas individuales para puntuar cada casa. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -32110,7 +32125,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.12
+            "withdrawal_at_full": 0.12,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -32457,7 +32473,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Compara viviendas equivalentes para determinar una renta razonable, dando prioridad a los alquileres negociados entre propietarios y asociaciones locales de inquilinos. No fija un techo nacional uniforme: importan las características de la vivienda y los comparables de la zona. Este modelo se aplicó en Suecia mediante la negociación y el valor de uso. La barra simula el resultado de una negociación más restrictiva; no es una regla porcentual sueca. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Compara viviendas equivalentes para determinar una renta razonable, dando prioridad a los alquileres negociados entre propietarios y asociaciones locales de inquilinos. No fija un techo nacional uniforme: importan las características de la vivienda y los comparables de la zona. Este modelo se aplicó en Suecia mediante la negociación y el valor de uso. La barra simula el resultado de una negociación más restrictiva; no es una regla porcentual sueca. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -32466,7 +32482,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.078
+            "withdrawal_at_full": 0.078,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -32813,7 +32830,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Combina una congelación de rentas con tablas de máximos y reducción de alquileres que superen esos límites. Es un tope fuerte que puede cambiar rápidamente las rentas cubiertas, pero exige una competencia legal clara y un sistema intenso de control. Se aplicó de forma temporal en Berlín como Mietendeckel y el Tribunal Constitucional alemán lo anuló en 2021 por una cuestión competencial. Aquí es un precedente histórico e hipotético, no una norma vigente ni trasladable sin reforma competencial. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Combina una congelación de rentas con tablas de máximos y reducción de alquileres que superen esos límites. Es un tope fuerte que puede cambiar rápidamente las rentas cubiertas, pero exige una competencia legal clara y un sistema intenso de control. Se aplicó de forma temporal en Berlín como Mietendeckel y el Tribunal Constitucional alemán lo anuló en 2021 por una cuestión competencial. Aquí es un precedente histórico e hipotético, no una norma vigente ni trasladable sin reforma competencial. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "reduction",
             "max_reduction": 40,
@@ -32822,7 +32839,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.15
+            "withdrawal_at_full": 0.15,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Capacidad máxima: 500 puestos equivalentes. Implantación: 10,000,000 € (20,000 €/puesto) para herramientas, integración de registros y puesta en marcha. Operación: 8,750,000 €/trimestre; hipótesis de 70.000 €/puesto/año incluyendo personal y medios. El 50 % financia la mitad de esta capacidad. Estos importes no son un presupuesto oficial aprobado. La dureza y la vigilancia son independientes; mantener el mismo equipo cuesta lo mismo aunque cambie el tope.",
           "competency_roles": {
@@ -36275,7 +36293,7 @@
             "evidence": "Fuentes oficiales para referencias y mecanismos; elasticidades, plazos y felicidad son supuestos explícitos y editables."
           },
           "fiscal_benefit_targets": [
-            "investors"
+            "domestic_buyers"
           ]
         },
         {
@@ -42113,7 +42131,7 @@
             "evidence": "Fuentes oficiales para referencias y mecanismos; elasticidades, plazos y felicidad son supuestos explícitos y editables."
           },
           "fiscal_benefit_targets": [
-            "investors"
+            "domestic_buyers"
           ]
         },
         {
@@ -43520,7 +43538,7 @@
           "effects": [
             {
               "id": "effect_1",
-              "amount": -2,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43534,7 +43552,7 @@
             },
             {
               "id": "effect_2",
-              "amount": -1,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43548,7 +43566,7 @@
             },
             {
               "id": "effect_3",
-              "amount": -2,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43660,7 +43678,7 @@
             },
             {
               "id": "effect_11",
-              "amount": -2.5,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43674,7 +43692,7 @@
             },
             {
               "id": "effect_12",
-              "amount": -0.5,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43713,7 +43731,7 @@
           "mechanism": "Reducir uso turístico puede retornar viviendas si se fiscaliza y existe demanda residencial",
           "permanent": false,
           "risk_high": true,
-          "audit_note": "Límite anual por vivienda, de 7 a 90 días. A 90 días queda un 1 % de la intensidad máxima. En el extremo restrictivo se retira hasta el 65 % del parque inicial y el 70 % de lo retirado se ofrece para residencia (65 % alquiler, 35 % venta); el resto no se anuncia. Estas proporciones son parámetros editables, no estimaciones causales oficiales. No se crean viviendas físicas nuevas. Supervisión máxima: 30 M€ iniciales y 300 M€/año; recursos agregados de personal, sistemas y expedientes, no solo salario. Referencia de personal: tablas Hacienda 2026; coste total y ratios de puestos son parámetros de programa.",
+          "audit_note": "Límite anual por vivienda, de 7 a 90 días. A 90 días queda un 1 % de la intensidad máxima. En el extremo restrictivo se retira hasta el 65 % del parque inicial y el 70 % de lo retirado se ofrece para residencia (65 % alquiler, 35 % venta); el resto no se anuncia. Estas proporciones son parámetros editables, no estimaciones causales oficiales. No se crean viviendas físicas nuevas. Supervisión máxima: 30 M€ iniciales y 300 M€/año; recursos agregados de personal, sistemas y expedientes, no solo salario. Referencia de personal: tablas Hacienda 2026; coste total y ratios de puestos son parámetros de programa. Revisión de doble cómputo: el efecto residencial sobre precios procede únicamente de las viviendas y anuncios transferidos por tourismPipeline. No se añade una reducción directa de precios ni se eliminan hogares de la demanda residencial.",
           "cost_audit": {
             "note": "Límite anual por vivienda, de 7 a 90 días. A 90 días queda un 1 % de la intensidad máxima. En el extremo restrictivo se retira hasta el 65 % del parque inicial y el 70 % de lo retirado se ofrece para residencia (65 % alquiler, 35 % venta); el resto no se anuncia. Estas proporciones son parámetros editables, no estimaciones causales oficiales. No se crean viviendas físicas nuevas. Supervisión máxima: 30 M€ iniciales y 300 M€/año; recursos agregados de personal, sistemas y expedientes, no solo salario. Referencia de personal: tablas Hacienda 2026; coste total y ratios de puestos son parámetros de programa.",
             "unit": "puestos y soporte de supervisión",
@@ -43843,7 +43861,7 @@
           "effects": [
             {
               "id": "effect_1",
-              "amount": -1,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43857,7 +43875,7 @@
             },
             {
               "id": "effect_2",
-              "amount": -1,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43871,7 +43889,7 @@
             },
             {
               "id": "effect_3",
-              "amount": -1,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -43983,7 +44001,7 @@
             },
             {
               "id": "effect_11",
-              "amount": -0.8,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -44035,7 +44053,7 @@
           "mechanism": "Frenar nuevas conversiones preserva oferta sin recuperar automáticamente la existente",
           "permanent": false,
           "risk_high": true,
-          "audit_note": "Referencia del juego: 20.000 incorporaciones anuales antes de nuevas restricciones. Se contrasta con INE VTE71: 329.764 anuncios en noviembre 2025 y 341.001 en mayo 2026, +11.237 en seis meses; annualizar da 22.474 y se redondea a 20.000. No equivale a altas brutas de licencias ni a una previsión oficial: entre mayo 2025 y mayo 2026 el saldo es negativo (-40.836). No se descompone una estadística de anuncios en licencias legales. Se mantiene la última cifra observada como aproximación del parque inicial del escenario y se separa la bolsa de falsos alquileres de temporada. Máximo de supervisión: 10 M€ de arranque y 50 M€/año. El mínimo de restricción apenas exige recursos; los costes escalan con las altas bloqueadas. Tras vencer el plazo se reanuda el ritmo de altas, sin añadir de golpe las que se impidieron.",
+          "audit_note": "Referencia del juego: 20.000 incorporaciones anuales antes de nuevas restricciones. Se contrasta con INE VTE71: 329.764 anuncios en noviembre 2025 y 341.001 en mayo 2026, +11.237 en seis meses; annualizar da 22.474 y se redondea a 20.000. No equivale a altas brutas de licencias ni a una previsión oficial: entre mayo 2025 y mayo 2026 el saldo es negativo (-40.836). No se descompone una estadística de anuncios en licencias legales. Se mantiene la última cifra observada como aproximación del parque inicial del escenario y se separa la bolsa de falsos alquileres de temporada. Máximo de supervisión: 10 M€ de arranque y 50 M€/año. El mínimo de restricción apenas exige recursos; los costes escalan con las altas bloqueadas. Tras vencer el plazo se reanuda el ritmo de altas, sin añadir de golpe las que se impidieron. Revisión de doble cómputo: el efecto residencial sobre precios procede únicamente de las viviendas y anuncios transferidos por tourismPipeline. No se añade una reducción directa de precios ni se eliminan hogares de la demanda residencial.",
           "cost_audit": {
             "note": "Referencia del juego: 20.000 incorporaciones anuales antes de nuevas restricciones. Se contrasta con INE VTE71: 329.764 anuncios en noviembre 2025 y 341.001 en mayo 2026, +11.237 en seis meses; annualizar da 22.474 y se redondea a 20.000. No equivale a altas brutas de licencias ni a una previsión oficial: entre mayo 2025 y mayo 2026 el saldo es negativo (-40.836). No se descompone una estadística de anuncios en licencias legales. Se mantiene la última cifra observada como aproximación del parque inicial del escenario y se separa la bolsa de falsos alquileres de temporada. Máximo de supervisión: 10 M€ de arranque y 50 M€/año. El mínimo de restricción apenas exige recursos; los costes escalan con las altas bloqueadas. Tras vencer el plazo se reanuda el ritmo de altas, sin añadir de golpe las que se impidieron.",
             "unit": "puestos de registro y coordinación",
@@ -44163,7 +44181,7 @@
           "effects": [
             {
               "id": "effect_1",
-              "amount": -1.5,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -44177,7 +44195,7 @@
             },
             {
               "id": "effect_2",
-              "amount": -0.75,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -44191,7 +44209,7 @@
             },
             {
               "id": "effect_3",
-              "amount": -1.5,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -44303,7 +44321,7 @@
             },
             {
               "id": "effect_11",
-              "amount": -2,
+              "amount": 0,
               "requires": [],
               "max_value": null,
               "min_value": null,
@@ -44356,7 +44374,7 @@
           "mechanism": "Comprobar uso real reduce vías de elusión del alquiler habitual",
           "permanent": false,
           "risk_high": true,
-          "audit_note": "Bolsa separada de hasta 150.000 viviendas de temporada susceptibles de volver al mercado residencial, no parque turístico legal. Cada efectivo tramita 200 casos/año y el 3 % moviliza una vivienda: 6 viviendas por efectivo/año. Los casos sin resultado no generan oferta. Bolsa, productividad y reparto 75 % alquiler / 25 % venta son calibraciones editables. No existe aquí un censo oficial nacional de falsos contratos. Coste completo: 25.000 €/efectivo de puesta en marcha y 90.000 €/efectivo/año, que incluye salario, cotizaciones, apoyo, oficinas y sistemas. Hacienda 2026 documenta retribuciones básicas y complementos; no da un coste nacional único de este nuevo cuerpo. El coste completo es una estimación de diseño. Rango: 1,25 M€ de arranque y 4,5 M€/año con 50 efectivos, hasta 500 M€ y 1.800 M€/año con 20.000 efectivos.",
+          "audit_note": "Bolsa separada de hasta 150.000 viviendas de temporada susceptibles de volver al mercado residencial, no parque turístico legal. Cada efectivo tramita 200 casos/año y el 3 % moviliza una vivienda: 6 viviendas por efectivo/año. Los casos sin resultado no generan oferta. Bolsa, productividad y reparto 75 % alquiler / 25 % venta son calibraciones editables. No existe aquí un censo oficial nacional de falsos contratos. Coste completo: 25.000 €/efectivo de puesta en marcha y 90.000 €/efectivo/año, que incluye salario, cotizaciones, apoyo, oficinas y sistemas. Hacienda 2026 documenta retribuciones básicas y complementos; no da un coste nacional único de este nuevo cuerpo. El coste completo es una estimación de diseño. Rango: 1,25 M€ de arranque y 4,5 M€/año con 50 efectivos, hasta 500 M€ y 1.800 M€/año con 20.000 efectivos. Revisión de doble cómputo: el efecto residencial sobre precios procede únicamente de las viviendas y anuncios transferidos por tourismPipeline. No se añade una reducción directa de precios ni se eliminan hogares de la demanda residencial.",
           "cost_audit": {
             "quantity": 20000,
             "unit": "efectivos especializados",
@@ -47613,13 +47631,13 @@
         {
           "id": "a3_migration_permits_limit",
           "cons": [
-            "Menos trabajadores disponibles y menor PIB",
-            "No controla reagrupación, asilo ni todos los flujos de entrada"
+            "Menor disponibilidad laboral, consumo y PIB agregado",
+            "Cobertura total hipotética, con costes y límites jurídicos y de ejecución"
           ],
-          "name": "Reducir nuevas autorizaciones laborales discrecionales",
+          "name": "Restricción general sostenida de entradas migratorias",
           "pros": [
-            "Menos nuevas entradas de este canal y menor crecimiento de demanda",
-            "Presupuesto explícito para revisión y ejecución"
+            "Menor presión de búsqueda de vivienda por reducción sostenida de entradas",
+            "Permite explorar escenarios con saldo demográfico negativo"
           ],
           "curve": "linear",
           "effects": [
@@ -47634,7 +47652,7 @@
               "target_id": "rent",
               "delay_turns": 1,
               "target_type": "price",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4
             },
             {
@@ -47648,7 +47666,7 @@
               "target_id": "sale",
               "delay_turns": 1,
               "target_type": "price",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4
             },
             {
@@ -47662,7 +47680,7 @@
               "target_id": "free_rent",
               "delay_turns": 1,
               "target_type": "price",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4
             },
             {
@@ -47676,7 +47694,7 @@
               "target_id": "landlords",
               "delay_turns": 1,
               "target_type": "group",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true,
               "profile_id": "migrants",
@@ -47693,7 +47711,7 @@
               "target_id": "investors",
               "delay_turns": 1,
               "target_type": "group",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true,
               "profile_id": "migrants",
@@ -47710,7 +47728,7 @@
               "target_id": "tenants",
               "delay_turns": 1,
               "target_type": "group",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true,
               "profile_id": "migrants",
@@ -47727,7 +47745,7 @@
               "target_id": "domestic_buyers",
               "delay_turns": 1,
               "target_type": "group",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true,
               "profile_id": "migrants",
@@ -47744,7 +47762,7 @@
               "target_id": "foreign_buyers",
               "delay_turns": 1,
               "target_type": "group",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true
             },
@@ -47759,7 +47777,7 @@
               "target_id": "resident_owners",
               "delay_turns": 1,
               "target_type": "group",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true,
               "profile_id": "migrants",
@@ -47776,7 +47794,7 @@
               "target_id": "gdp",
               "delay_turns": 1,
               "target_type": "variable",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true
             },
@@ -47791,7 +47809,7 @@
               "target_id": "population",
               "delay_turns": 1,
               "target_type": "variable",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4
             },
             {
@@ -47805,7 +47823,7 @@
               "target_id": "rent_demand",
               "delay_turns": 1,
               "target_type": "variable",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4,
               "on_beneficiaries": true
             },
@@ -47820,7 +47838,7 @@
               "target_id": "buy_demand",
               "delay_turns": 1,
               "target_type": "variable",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4
             },
             {
@@ -47834,7 +47852,7 @@
               "target_id": "tourists",
               "delay_turns": 1,
               "target_type": "variable",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4
             },
             {
@@ -47848,7 +47866,7 @@
               "target_id": "tourist_homes",
               "delay_turns": 1,
               "target_type": "variable",
-              "duration_turns": 12,
+              "duration_turns": 80,
               "maturation_turns": 4
             }
           ],
@@ -47861,12 +47879,12 @@
             "migration_gdp_bde"
           ],
           "category": "migration",
-          "mechanism": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal. El presupuesto paga personal, controles y tramitación: no convierte una decisión normativa en una prohibición de toda inmigración. La capacidad administrativa limita cuántas entradas pueden evitarse y el despliegue es gradual. Reduce crecimiento de hogares y demanda de vivienda, con menor disponibilidad laboral y producción.",
+          "mechanism": "Reduce entre el 1 % y el 100 % las nuevas entradas migratorias del escenario, con despliegue gradual y vigencia de veinte años. Al 100 %, las entradas son cero tras el despliegue; también se restringe la entrada de trabajadores de otros programas. No expulsa a residentes. Las entradas evitadas reducen la población, la demanda de vivienda y el PIB respecto al escenario sin la medida. Es una hipótesis de simulación de cobertura general, no una previsión de ejecución ni una validación jurídica.",
           "permanent": false,
           "risk_high": false,
-          "audit_note": "Coste unitario estimado: 4,000 €/persona o plaza según programa; presupuesto anual máximo 400 M€, inicial 40 M€. Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas. PIB: referencia contextual Banco de España; elasticidades de 0,9–1,2 por residente son supuestos, no coeficientes del informe. La felicidad es una valoración de diseño, no una encuesta de opinión.",
+          "audit_note": "Cobertura general de entradas y eficacia hasta el 100 % son supuestos del escenario solicitados para explorar tendencias. Gestión máxima 400 M€/año e implantación 40 M€ se mantienen como hipótesis editables, sin coste unitario empírico por entrada impedida. PIB: elasticidad por residente 0,9, supuesto editable. La medida no expulsa residentes y no se agota por una bolsa de expedientes.",
           "cost_audit": {
-            "note": "Coste unitario estimado: 4,000 €/persona o plaza según programa; presupuesto anual máximo 400 M€, inicial 40 M€. Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas. PIB: referencia contextual Banco de España; elasticidades de 0,9–1,2 por residente son supuestos, no coeficientes del informe. La felicidad es una valoración de diseño, no una encuesta de opinión.",
+            "note": "Cobertura general de entradas y eficacia hasta el 100 % son supuestos del escenario solicitados para explorar tendencias. Gestión máxima 400 M€/año e implantación 40 M€ se mantienen como hipótesis editables, sin coste unitario empírico por entrada impedida. PIB: elasticidad por residente 0,9, supuesto editable. La medida no expulsa residentes y no se agota por una bolsa de expedientes.",
             "unit": "personas o plazas/año (capacidad máxima)",
             "sources": [
               "migration_law",
@@ -47902,7 +47920,7 @@
             "homes_at_full": 0,
             "annual_maintenance_per_home": 0
           },
-          "duration_turns": 12,
+          "duration_turns": 80,
           "intensity_step": 0.01,
           "quarterly_cost": 100000000,
           "exclusive_group": "labor_migration_capacity",
@@ -47910,10 +47928,10 @@
             "immigration_per_year": -100000,
             "emigration_per_year": 0,
             "maturation_turns": 4,
-            "note": "Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas."
+            "note": "Referencia anual informativa; el motor impide el porcentaje elegido del flujo de cada año, no una cantidad fija de 100.000."
           },
-          "regulation_note": "Regula nuevas autorizaciones laborales; no controla mediante este canal todos los flujos migratorios.",
-          "full_application": "Presupuesto anual de 4–400 M€; implantación 40 M€ al máximo",
+          "regulation_note": "Escenario hipotético de restricción general de entradas; la cobertura total no acredita viabilidad normativa.",
+          "full_application": "100 % de entradas impedidas tras el despliegue; vigencia veinte años; gestión 400 M€/año e implantación 40 M€ (supuestos).",
           "unit_cost_status": "explicit_programme_estimate_with_separate_official_references",
           "effect_scale_note": "Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas.",
           "coefficient_status": "game_assumption_not_empirical_estimate",
@@ -47922,8 +47940,8 @@
             "migration_law",
             "migration_regulation"
           ],
-          "intensity_description": "Elige el gasto anual de gestión y operación: más medios amplían la capacidad gradualmente, hasta el límite del programa.",
-          "national_effects_note": "Población acumulada por entradas evitadas o salidas ejecutadas; PIB y sesgo de alquiler persisten tras cesar estas variaciones de flujo. Regularizar, acoger y reubicar residentes no aumenta el censo. Bonificación y cobertura usan supuestos editables; financiación conserva sus propios efectos.",
+          "intensity_description": "Elige el porcentaje de entradas impedidas: 100 % equivale a cero entradas una vez completado el despliegue. El coste de gestión escala con ese alcance.",
+          "national_effects_note": "Restricción anual proporcional al flujo del escenario, sin agotamiento de una bolsa histórica. Entradas evitadas acumuladas reducen población y PIB; no se cuentan entradas inexistentes ni se duplican las restricciones específicas. Expulsiones y retornos son medidas separadas.",
           "allowed_funding_sources": [
             "a3_cut_pensions",
             "a3_cut_health",
@@ -47946,9 +47964,9 @@
             "a3_public_debt"
           ],
           "additional_homes_at_full": 0,
-          "default_intensity": 0.1,
-          "selection_description": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal. El presupuesto paga personal, controles y tramitación: no convierte una decisión normativa en una prohibición de toda inmigración. La capacidad administrativa limita cuántas entradas pueden evitarse y el despliegue es gradual. Reduce crecimiento de hogares y demanda de vivienda, con menor disponibilidad laboral y producción.",
-          "explanation": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal. El presupuesto paga personal, controles y tramitación: no convierte una decisión normativa en una prohibición de toda inmigración. La capacidad administrativa limita cuántas entradas pueden evitarse y el despliegue es gradual. Reduce crecimiento de hogares y demanda de vivienda, con menor disponibilidad laboral y producción. Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas.",
+          "default_intensity": 1,
+          "selection_description": "Reduce entre el 1 % y el 100 % las nuevas entradas migratorias del escenario, con despliegue gradual y vigencia de veinte años. Al 100 %, las entradas son cero tras el despliegue; también se restringe la entrada de trabajadores de otros programas. No expulsa a residentes. Las entradas evitadas reducen la población, la demanda de vivienda y el PIB respecto al escenario sin la medida. Es una hipótesis de simulación de cobertura general, no una previsión de ejecución ni una validación jurídica.",
+          "explanation": "Reduce entre el 1 % y el 100 % las nuevas entradas migratorias del escenario, con despliegue gradual y vigencia de veinte años. Al 100 %, las entradas son cero tras el despliegue; también se restringe la entrada de trabajadores de otros programas. No expulsa a residentes. Las entradas evitadas reducen la población, la demanda de vivienda y el PIB respecto al escenario sin la medida. Es una hipótesis de simulación de cobertura general, no una previsión de ejecución ni una validación jurídica.",
           "budget_control": {
             "period": "annual",
             "note": "Gestión y operación del programa; implantación inicial aparte."
@@ -47961,10 +47979,11 @@
             "pool_key": "permits_limit",
             "gdp_per_resident": 0.9,
             "rental_extra_multiplier": 1.5,
-            "note": "Los presupuestos y capacidades siguientes son estimaciones editables del simulador, no tarifas oficiales ni previsiones. Los grupos se definen por relación con la vivienda, no por nacionalidad; compradores extranjeros son no residentes. No se ha verificado que extranjeros representen el 45 % de demandantes de alquiler; no se usa esa cifra. La demanda responde a hogares y población; el sesgo adicional hacia alquiler es un supuesto, sin contar dos veces las salidas. Bolsas hipotéticas: expulsiones 400.000 y retorno 100.000, compartiendo un límite conjunto de 400.000 salidas adicionales en toda la partida. No estiman todos los extranjeros ni todos los residentes irregulares. Beneficiarios efectivamente atendidos, bolsas compartidas y cohortes; los efectos económicos persistentes se separan del servicio anual. Presupuesto no ejecutado se reserva, no se transforma automáticamente en PIB.",
+            "note": "Restricción anual proporcional al flujo del escenario, sin agotamiento de una bolsa histórica. Entradas evitadas acumuladas reducen población y PIB; no se cuentan entradas inexistentes ni se duplican las restricciones específicas. Expulsiones y retornos son medidas separadas.",
             "annual_central_overhead": 0,
             "beneficiary_reference": 300000,
-            "service_turns": 4
+            "service_turns": 4,
+            "entry_reduction": 1
           },
           "competency_roles": {
             "national": {
@@ -47976,7 +47995,7 @@
               ]
             }
           },
-          "help_summary": "Refuerza la revisión de nuevas autorizaciones laborales discrecionales para reducir las entradas de este canal.",
+          "help_summary": "Restricción sostenida de nuevas entradas: al 100 %, cero entradas tras el despliegue.",
           "coherence_review": {
             "status": "implemented",
             "economic_channel": "Precios finales, disponibilidad, beneficiarios y financiación separadas.",
@@ -50234,7 +50253,7 @@
             "a3_tax_ajd",
             "a3_public_debt"
           ],
-          "explanation": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado.",
+          "explanation": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión. Vigencia elegible: 1–10 años. Los importes legales son nominales; los precios del tablero y la comparación se muestran en euros constantes de 2026. La media incluye contratos no cubiertos y puede evolucionar aunque un contrato esté congelado. La referencia de esta rebaja se actualiza con el IPC del escenario desde su activación; no es una congelación nominal. Es una simplificación del juego.",
           "price_control": {
             "mode": "sale",
             "basis": "market_discount",
@@ -50244,7 +50263,8 @@
             "compliance_floor": 0.1,
             "compliance_ceiling": 0.95,
             "annual_limit_max": 4,
-            "withdrawal_at_full": 0.45
+            "withdrawal_at_full": 0.45,
+            "indexation": "consumer_prices"
           },
           "enforcement_explanation": "Personal, registros, inspección de escrituras y comprobación de precios/costes; sin estos medios aumenta el incumplimiento.",
           "selection_description": "Fija un máximo de venta respecto al precio de referencia y permite elegir su rebaja. La vigilancia se financia por separado para comprobar operaciones e impedir pagos ocultos. Es una extensión hipotética al mercado libre de mecanismos que en los precedentes consultados se aplican a vivienda controlada o protegida. Baja los precios regulados, pero puede retirar anuncios y dificultar la venta o inversión.",
@@ -51547,73 +51567,73 @@
         },
         {
           "id": "gdp_up_0",
-          "text": "La actividad económica en euros corrientes: registra una subida de {change}. PIB nominal: {before} → {after}.",
+          "text": "La actividad económica en euros de 2026: registra una subida de {change}. PIB real: {before} → {after}.",
           "trend": "up",
           "variable": "gdp"
         },
         {
           "id": "gdp_up_1",
-          "text": "El PIB nominal incluye cantidades y precios: registra una subida de {change}. PIB nominal: {before} → {after}.",
+          "text": "El PIB real descuenta la variación general de precios: registra una subida de {change}. PIB real: {before} → {after}.",
           "trend": "up",
           "variable": "gdp"
         },
         {
           "id": "gdp_up_2",
-          "text": "La trayectoria económica condiciona los recursos disponibles: registra una subida de {change}. PIB nominal: {before} → {after}.",
+          "text": "La trayectoria económica condiciona los recursos disponibles: registra una subida de {change}. PIB real: {before} → {after}.",
           "trend": "up",
           "variable": "gdp"
         },
         {
           "id": "gdp_up_3",
-          "text": "El tamaño de la economía es parte del contexto de vivienda: registra una subida de {change}. PIB nominal: {before} → {after}.",
+          "text": "El tamaño de la economía es parte del contexto de vivienda: registra una subida de {change}. PIB real: {before} → {after}.",
           "trend": "up",
           "variable": "gdp"
         },
         {
           "id": "gdp_down_0",
-          "text": "La actividad económica en euros corrientes: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+          "text": "La actividad económica en euros de 2026: registra una bajada de {change}. PIB real: {before} → {after}.",
           "trend": "down",
           "variable": "gdp"
         },
         {
           "id": "gdp_down_1",
-          "text": "El PIB nominal incluye cantidades y precios: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+          "text": "El PIB real descuenta la variación general de precios: registra una bajada de {change}. PIB real: {before} → {after}.",
           "trend": "down",
           "variable": "gdp"
         },
         {
           "id": "gdp_down_2",
-          "text": "La trayectoria económica condiciona los recursos disponibles: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+          "text": "La trayectoria económica condiciona los recursos disponibles: registra una bajada de {change}. PIB real: {before} → {after}.",
           "trend": "down",
           "variable": "gdp"
         },
         {
           "id": "gdp_down_3",
-          "text": "El tamaño de la economía es parte del contexto de vivienda: registra una bajada de {change}. PIB nominal: {before} → {after}.",
+          "text": "El tamaño de la economía es parte del contexto de vivienda: registra una bajada de {change}. PIB real: {before} → {after}.",
           "trend": "down",
           "variable": "gdp"
         },
         {
           "id": "gdp_flat_0",
-          "text": "La actividad económica en euros corrientes: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+          "text": "La actividad económica en euros de 2026: se mantiene prácticamente estable. PIB real: {before} → {after}.",
           "trend": "flat",
           "variable": "gdp"
         },
         {
           "id": "gdp_flat_1",
-          "text": "El PIB nominal incluye cantidades y precios: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+          "text": "El PIB real descuenta la variación general de precios: se mantiene prácticamente estable. PIB real: {before} → {after}.",
           "trend": "flat",
           "variable": "gdp"
         },
         {
           "id": "gdp_flat_2",
-          "text": "La trayectoria económica condiciona los recursos disponibles: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+          "text": "La trayectoria económica condiciona los recursos disponibles: se mantiene prácticamente estable. PIB real: {before} → {after}.",
           "trend": "flat",
           "variable": "gdp"
         },
         {
           "id": "gdp_flat_3",
-          "text": "El tamaño de la economía es parte del contexto de vivienda: se mantiene prácticamente estable. PIB nominal: {before} → {after}.",
+          "text": "El tamaño de la economía es parte del contexto de vivienda: se mantiene prácticamente estable. PIB real: {before} → {after}.",
           "trend": "flat",
           "variable": "gdp"
         },
@@ -53253,10 +53273,13 @@
       "id": "vivienda-realism",
       "notes": "Añadida regularización de viviendas consolidadas con oferta formal, aptitud registral y financiación potencial separadas. Acceso y protección: costes por beneficiario, referencias ejecutadas, avales contingentes, parque público y suspensión cancelable. Regularización: máximo conservador 100.000 expedientes; 95 % ya utilizado, solo 5 % de disponibilidad adicional; efectos colectivos reducidos. Fiscalidad: selectores de tipo/recargo, dos componentes ITP/AJD, IRPF/IS, nuevas bases explícitas, recaudación propia y bloqueo transversal del mismo impuesto. Expropiación para alquiler público: justiprecio aproximado, 5 % legal separado, tramitación y rechazo político explícitos. Aplicadas todas las recomendaciones de coherencia: mercado segmentado, stock público, producción privada, beneficiarios, contabilidad financiera, esfuerzo de compra y fiscalidad por hogar. Felicidad social: todos los colectivos salvo no residentes, incidencia fiscal reforzada, PIB real y rebote colectivo finito. Alquiler inicial corregido a la media aritmética AEAT 2024: 9,00 €/m²/mes, territorio fiscal común; mediana SERPAVI sustituida. Sustituida acogida temporal por cupo para nuevas autorizaciones de teletrabajo internacional de rentas altas; controles, costes y canales económicos propios.",
       "title": "Modelo nacional de vivienda",
-      "version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1",
+      "version": "0.12.0-alpha.collective1.mean1.debt4.remote1.controls1.preview1.audit1.real2026",
       "created_at": "2026-10-04T00:00:00.000Z",
       "updated_at": "2026-10-05T11:58:00.648Z"
     },
-    "schema_version": 1
+    "schema_version": 1,
+    "applied_review_batches": [
+      "migration-general-2026-10-05"
+    ]
   }
 }
