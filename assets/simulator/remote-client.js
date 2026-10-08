@@ -55,7 +55,7 @@ function patch(view){
  if(view.openUrl){try{const url=new URL(view.openUrl,location.href);if(url.origin===location.origin)window.open(url.href,'_blank','noopener');}catch{}}
 }
 async function request(payload,retryRequest=false){
- if(busy)return false;busy=true;message('Calculando…');document.documentElement.classList.add('remote-busy');
+ if(busy)return false;busy=true;message('Cargando…');document.documentElement.classList.add('remote-busy');
  if(!retryRequest){payload.presentation_stamp=presentation?presentationStamp:undefined;payload.presentation_protocol=2;pending=payload;}
  const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),25000);
  try{
