@@ -17,8 +17,9 @@ function finishStarting(){
 }
 document.addEventListener('click',e=>{
  if(!e.target.closest?.('#accept-mobile-warning'))return;
+ e.preventDefault();e.stopImmediatePropagation();
  mobileWarningAccepted=true;const warning=$('mobile-warning');if(warning?.open)warning.close();if(startAnnouncementPending)announceStarted();
-});
+},true);
 const loadScript=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.body.append(s);});
 function localDialogClose(id){const el=$(id);if(el?.open)el.close();if(id==='policy-workspace')policyWanted=false;if(id==='info-dialog')helpKey=null;if(id==='turn-report')reportDismissed=lastView.turn;}
 function selectMeasure(index){if(!presentation?.cards[index])return false;selected=index;renderSelection();const card=presentation.cards[index];window.SIM_TRACKING?.open(card.id,null,'catalog');return true;}
