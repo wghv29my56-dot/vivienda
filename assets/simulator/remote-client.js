@@ -15,9 +15,10 @@ function finishStarting(){
  if(matchMedia('(max-width:620px)').matches&&!mobileWarningAccepted&&warning){startAnnouncementPending=true;if(!warning.open)warning.showModal();return;}
  announceStarted();
 }
-const mobileWarning=$('mobile-warning'),acceptMobileWarning=$('accept-mobile-warning');
-if(mobileWarning)mobileWarning.addEventListener('cancel',e=>e.preventDefault());
-if(acceptMobileWarning)acceptMobileWarning.addEventListener('click',()=>{mobileWarningAccepted=true;if(mobileWarning?.open)mobileWarning.close();if(startAnnouncementPending)announceStarted();});
+document.addEventListener('click',e=>{
+ if(!e.target.closest?.('#accept-mobile-warning'))return;
+ mobileWarningAccepted=true;const warning=$('mobile-warning');if(warning?.open)warning.close();if(startAnnouncementPending)announceStarted();
+});
 const loadScript=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.body.append(s);});
 function localDialogClose(id){const el=$(id);if(el?.open)el.close();if(id==='policy-workspace')policyWanted=false;if(id==='info-dialog')helpKey=null;if(id==='turn-report')reportDismissed=lastView.turn;}
 function selectMeasure(index){if(!presentation?.cards[index])return false;selected=index;renderSelection();const card=presentation.cards[index];window.SIM_TRACKING?.open(card.id,null,'catalog');return true;}
@@ -94,7 +95,7 @@ retry.onclick=()=>{if(pending)request(pending,true);};
 document.addEventListener('click',e=>{const el=e.target.closest('[data-remote-key],[data-series],[data-scale],[data-info],[data-measure]');if(!el||el.tagName==='INPUT'||el.tagName==='SELECT')return;e.preventDefault();e.stopImmediatePropagation();activate(el);},true);
 document.addEventListener('input',e=>{const el=e.target;if(el.tagName!=='INPUT'||el.type!=='range')return;el.setAttribute('aria-valuetext',el.value);if(el.id==='intensity')$('intensity-value').textContent=new Intl.NumberFormat('es-ES',{maximumFractionDigits:3}).format(Number(el.value));},true);
 document.addEventListener('change',e=>{const el=e.target.closest('input[data-remote-key]');if(!el)return;e.preventDefault();const target=control(el);action({type:'input',...(target?{control:target}:{key:el.dataset.remoteKey}),value:el.value});},true);
-document.addEventListener('cancel',e=>{if(!e.target.matches('#policy-workspace,#turn-report,#info-dialog,.debt-dialog'))return;e.preventDefault();if(e.target.classList.contains('debt-dialog'))e.target.remove();else localDialogClose(e.target.id);},true);
+document.addEventListener('cancel',e=>{if(!e.target.matches('#mobile-warning,#policy-workspace,#turn-report,#info-dialog,.debt-dialog'))return;e.preventDefault();if(e.target.id==='mobile-warning')return;if(e.target.classList.contains('debt-dialog'))e.target.remove();else localDialogClose(e.target.id);},true);
 function drawLocalChart(){
  const data=lastView?.chart;if(!data?.values.length)return;
  if(!chartVisible)chartVisible=new Set([...document.querySelectorAll('#chart-selected [data-series]')].map(e=>Number(e.dataset.series)));
